@@ -6,6 +6,9 @@ import Link from "next/link";
 import HeroSection from "@/components/HeroSection";
 import FeaturesSection from "@/components/FeaturesSection";
 import EcommerceCategory, { CATEGORIES } from "@/components/EcommerceCategory";
+import TapeShowcase from "@/components/TapeShowcase";
+import ProcessFlow from "@/components/ProcessFlow";
+import WorkflowSection from "@/components/WorkflowSection";
 
 function generateSlug(name: string) {
   return name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
@@ -46,15 +49,16 @@ export default async function LocationOrCategoryPage({ params }: Props) {
     return (
       <main className="min-h-screen bg-[var(--color-bg)] text-[var(--color-text)] overflow-hidden relative selection:bg-[#C05800] selection:text-[#FDFBD4]">
         <HeroSection locationName={location.name} />
+        <TapeShowcase />
         <FeaturesSection locationName={location.name} locationSlug={location.slug} />
         
         {/* Product Link Overrides specific to this area */}
         <div className="bg-white py-20 px-6">
           <div className="max-w-7xl mx-auto">
-            <div className="flex flex-col md:flex-row justify-between items-end gap-6 mb-12 pb-6 border-b border-[var(--color-border)]">
+            <div className="flex flex-col md:flex-row justify-between md:items-end gap-6 mb-12 pb-6 border-b border-[var(--color-border)]">
               <div>
-                <h2 className="text-4xl font-black text-[var(--color-heading)] uppercase tracking-tighter">Available in {location.name}</h2>
-                <p className="text-lg font-bold text-[var(--color-heading)] opacity-40">Complete industrial catalog ready for shipping</p>
+                <h2 className="text-3xl sm:text-4xl font-black text-[var(--color-heading)] uppercase tracking-tighter">Available in {location.name}</h2>
+                <p className="text-base sm:text-lg font-bold text-[var(--color-heading)] opacity-40">Complete industrial catalog ready for shipping</p>
               </div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -73,6 +77,8 @@ export default async function LocationOrCategoryPage({ params }: Props) {
             </div>
           </div>
         </div>
+        <ProcessFlow />
+        <WorkflowSection />
       </main>
     );
   }

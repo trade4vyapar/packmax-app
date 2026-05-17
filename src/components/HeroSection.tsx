@@ -6,6 +6,7 @@ import { ArrowRight, ChevronDown, ChevronLeft, ChevronRight, CheckCircle2, MapPi
 import { usePathname } from "next/navigation";
 import { siteData } from "@/data/siteData";
 import Link from "next/link";
+import PremiumCTA from "@/components/PremiumCTA";
 
 function generateSlug(name: string) {
   return name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
@@ -98,10 +99,10 @@ export default function HeroSection({ locationName }: { locationName?: string })
             <AnimatePresence custom={direction} mode="wait">
               <motion.div
                 key={currentSlide}
-                initial={{ opacity: 0, x: direction > 0 ? 50 : -50, filter: "blur(10px)" }}
-                animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
-                exit={{ opacity: 0, x: direction < 0 ? 50 : -50, filter: "blur(10px)" }}
-                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                initial={{ opacity: 0, y: direction > 0 ? 40 : -40, scale: 0.97, filter: "blur(8px)" }}
+                animate={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
+                exit={{ opacity: 0, y: direction > 0 ? -40 : 40, scale: 0.97, filter: "blur(8px)" }}
+                transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
                 className="w-full flex flex-col items-start"
               >
                 <h1
@@ -122,18 +123,24 @@ export default function HeroSection({ locationName }: { locationName?: string })
 
                 {/* CTA Buttons */}
                 <div className="flex flex-wrap gap-4">
-                  <a href="/contact" className="group px-10 py-5 rounded-full bg-[var(--color-cta)] text-[#FDFBD4] font-black text-xs shadow-2xl shadow-[#C05800]/30 hover:bg-[var(--color-cta-hover)] hover:-translate-y-1 transition-all flex items-center gap-3 tracking-widest uppercase">
-                    Get a Quote <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                  </a>
+                  <PremiumCTA 
+                    href="/contact"
+                    label="Get a Quote"
+                    variant="primary"
+                    icon={<ArrowRight className="w-5 h-5" />}
+                  />
 
                   <div
                     className="relative group/dropdown"
                     onMouseEnter={() => setIsHovered(true)}
                     onMouseLeave={() => setIsHovered(false)}
                   >
-                    <a href="/products" className="px-10 py-5 rounded-full bg-white border-2 border-[var(--color-border)] text-[var(--color-heading)] font-black text-xs hover:shadow-xl hover:-translate-y-1 transition-all tracking-widest uppercase inline-flex items-center gap-2">
-                      Our Products <ChevronDown className="w-4 h-4 group-hover/dropdown:rotate-180 transition-transform" />
-                    </a>
+                    <PremiumCTA 
+                      href="/products"
+                      label="Our Products"
+                      variant="secondary"
+                      icon={<ChevronDown className="w-4 h-4 transition-transform group-hover/dropdown:rotate-180" />}
+                    />
 
                     {/* Dropdown Menu */}
                     <div className="absolute top-full left-0 mt-4 w-72 bg-white rounded-2xl shadow-2xl border border-[var(--color-border)] opacity-0 invisible group-hover/dropdown:opacity-100 group-hover/dropdown:visible transition-all duration-300 z-50 overflow-hidden transform origin-top scale-95 group-hover/dropdown:scale-100">
@@ -174,12 +181,24 @@ export default function HeroSection({ locationName }: { locationName?: string })
             {/* Controls */}
             <div className="flex items-center gap-6">
               <div className="flex gap-2">
-                <button onClick={prevSlide} className="w-11 h-11 rounded-full border-2 border-[var(--color-border)] flex items-center justify-center text-[var(--color-heading)] hover:bg-[var(--color-heading)] hover:text-white transition-all">
+                <motion.button 
+                  onClick={prevSlide} 
+                  whileHover={{ scale: 1.1, rotate: -8 }}
+                  whileTap={{ scale: 0.9 }}
+                  transition={{ type: "spring", stiffness: 500, damping: 15 }}
+                  className="w-11 h-11 rounded-full border-2 border-[var(--color-border)] flex items-center justify-center text-[var(--color-heading)] hover:bg-[var(--color-heading)] hover:text-white transition-all cursor-pointer"
+                >
                   <ChevronLeft className="w-4 h-4" />
-                </button>
-                <button onClick={nextSlide} className="w-11 h-11 rounded-full border-2 border-[var(--color-border)] flex items-center justify-center text-[var(--color-heading)] hover:bg-[var(--color-heading)] hover:text-white transition-all">
+                </motion.button>
+                <motion.button 
+                  onClick={nextSlide} 
+                  whileHover={{ scale: 1.1, rotate: 8 }}
+                  whileTap={{ scale: 0.9 }}
+                  transition={{ type: "spring", stiffness: 500, damping: 15 }}
+                  className="w-11 h-11 rounded-full border-2 border-[var(--color-border)] flex items-center justify-center text-[var(--color-heading)] hover:bg-[var(--color-heading)] hover:text-white transition-all cursor-pointer"
+                >
                   <ChevronRight className="w-4 h-4" />
-                </button>
+                </motion.button>
               </div>
               <div className="flex flex-col">
                 <span className="text-[10px] font-black text-[var(--color-heading)] tracking-[0.2em] uppercase mb-1">
@@ -217,12 +236,12 @@ export default function HeroSection({ locationName }: { locationName?: string })
 
         {/* Right Side Visual */}
         <div className="lg:col-span-5 relative hidden lg:flex items-center justify-center min-h-[500px]">
-          <AnimatePresence mode="wait">
+          <AnimatePresence custom={direction} mode="wait">
             <motion.div
               key={currentSlide}
-              initial={{ opacity: 0, scale: 0.8, y: 30 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.8, y: -30 }}
+              initial={{ opacity: 0, scale: 0.8, rotate: direction > 0 ? -8 : 8, y: direction > 0 ? 40 : -40, filter: "blur(8px)" }}
+              animate={{ opacity: 1, scale: 1, rotate: 0, y: 0, filter: "blur(0px)" }}
+              exit={{ opacity: 0, scale: 0.8, rotate: direction > 0 ? 8 : -8, y: direction > 0 ? -40 : 40, filter: "blur(8px)" }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               className="relative w-80 h-80 lg:w-96 lg:h-96"
             >

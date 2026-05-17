@@ -5,11 +5,30 @@ import Link from "next/link";
 
 const cities = [
   { name: "Indore", slug: "indore" },
+  { name: "Bhopal", slug: "bhopal" },
+  { name: "Jabalpur", slug: "jabalpur" },
+  { name: "Satna", slug: "satna" },
+  { name: "Gwalior", slug: "gwalior" },
+  { name: "Sagar", slug: "sagar" },
+  { name: "Ratlam", slug: "ratlam" },
+  { name: "Ujjain", slug: "ujjain" },
+  { name: "Dewas", slug: "dewas" },
+  { name: "Jaipur", slug: "jaipur" },
+  { name: "Udaipur", slug: "udaipur" },
+  { name: "Jodhpur", slug: "jodhpur" },
+  { name: "Jalgaon", slug: "jalgaon" },
+  { name: "Agra", slug: "agra" },
+  { name: "Kanpur", slug: "kanpur" },
+  { name: "Raipur", slug: "raipur" },
+  { name: "Bhilai", slug: "bhilai" },
+  { name: "Raigarh", slug: "raigarh" },
+  { name: "Rajkot", slug: "rajkot" },
   { name: "Mumbai", slug: "mumbai" },
-  { name: "Delhi NCR", slug: "delhi-ncr" },
-  { name: "Ahmedabad", slug: "ahmedabad" },
-  { name: "Pune", slug: "pune" },
-  // Add more as needed...
+  { name: "Hyderabad", slug: "hyderabad" },
+  { name: "Kerala", slug: "kerala" },
+  { name: "Guwahati", slug: "guwahati" },
+  { name: "Bengaluru", slug: "bengaluru" },
+  { name: "Pune", slug: "pune" }
 ];
 
 const containerVariants = {
@@ -40,16 +59,16 @@ export default function MarketArea() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <div className="inline-block bg-[var(--color-cta)] text-[#FDFBD4] px-8 py-3 rounded-full font-black text-2xl tracking-widest uppercase shadow-md mb-8">
+          <div className="inline-block bg-[var(--color-cta)] text-[#FDFBD4] px-6 py-2 rounded-full font-black text-sm sm:text-lg tracking-widest uppercase shadow-md mb-8">
             Market Area
           </div>
           <h1
-            className="text-4xl md:text-5xl font-black text-[var(--color-heading)] tracking-tight uppercase"
+            className="text-3xl sm:text-5xl font-black text-[var(--color-heading)] tracking-tight uppercase"
             style={{ fontFamily: "Space Grotesk, sans-serif" }}
           >
             Pan India Delivery
           </h1>
-          <p className="mt-4 text-lg font-medium max-w-2xl mx-auto">
+          <p className="mt-4 text-base sm:text-lg font-medium max-w-2xl mx-auto opacity-70">
             We proudly supply our premium packaging solutions across all major cities and states in India. From our manufacturing plant in Indore to your doorstep.
           </p>
         </motion.div>
@@ -59,17 +78,17 @@ export default function MarketArea() {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 md:gap-6"
+          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4"
         >
           {cities.map((city) => (
             <Link key={city.slug} href={`/${city.slug}`}>
               <motion.div
                 variants={itemVariants}
-                whileHover={{ scale: 1.05, y: -5, borderColor: "#C05800" }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-white border-2 border-[var(--color-border)] rounded-2xl py-6 px-4 text-center shadow-sm hover:shadow-lg transition-all cursor-pointer"
+                whileHover={{ scale: 1.03, y: -4, borderColor: "#C05800" }}
+                whileTap={{ scale: 0.97 }}
+                className="bg-white border border-[var(--color-border)] rounded-2xl py-5 px-3 text-center shadow-sm hover:shadow-lg transition-all cursor-pointer"
               >
-                <span className="font-bold text-[var(--color-heading)] text-sm md:text-base tracking-wide uppercase">
+                <span className="font-bold text-[var(--color-heading)] text-xs sm:text-sm tracking-wide uppercase">
                   {city.name}
                 </span>
               </motion.div>
@@ -82,7 +101,7 @@ export default function MarketArea() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.6 }}
-          className="mt-20 text-center bg-white p-12 rounded-[3rem] border border-[var(--color-border)] shadow-sm max-w-3xl mx-auto"
+          className="mt-20 text-center bg-white p-6 sm:p-12 rounded-[2.5rem] border border-[var(--color-border)] shadow-sm max-w-3xl mx-auto"
         >
           <h3 className="text-xl font-black text-[var(--color-heading)] mb-4 uppercase">Don't see your city?</h3>
           <p className="font-bold text-[var(--color-text)] mb-8 opacity-60">We deliver to every corner of India. Contact us to confirm logistics for your location.</p>

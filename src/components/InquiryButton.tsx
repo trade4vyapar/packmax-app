@@ -8,19 +8,28 @@ import { siteData } from "@/data/siteData";
 interface Props {
   locationName: string;
   productName: string;
+  buttonText?: string;
+  className?: string;
 }
 
-export default function InquiryButton({ locationName, productName }: Props) {
+export default function InquiryButton({ locationName, productName, buttonText, className }: Props) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <>
-      <button
+      <motion.button
         onClick={() => setIsOpen(true)}
-        className="w-full group px-6 py-4 rounded-full bg-[var(--color-cta)] text-white font-black text-center text-xs shadow-xl hover:bg-[var(--color-cta-hover)] transition-all flex items-center justify-center gap-3 tracking-widest uppercase"
+        whileHover={{ 
+          scale: 1.04,
+          boxShadow: "0 20px 35px -10px rgba(192, 88, 0, 0.35)",
+          y: -2
+        }}
+        whileTap={{ scale: 0.97 }}
+        transition={{ type: "spring", stiffness: 500, damping: 15 }}
+        className={className || "w-full group px-6 py-4 rounded-full bg-[var(--color-cta)] text-white font-black text-center text-xs shadow-xl hover:bg-[var(--color-cta-hover)] transition-all flex items-center justify-center gap-3 tracking-widest uppercase"}
       >
-        Inquiry for {locationName} <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-      </button>
+        {buttonText || `Inquiry for ${locationName}`} <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
+      </motion.button>
 
       <AnimatePresence>
         {isOpen && (
@@ -126,12 +135,19 @@ export default function InquiryButton({ locationName, productName }: Props) {
                   </div>
 
                   <div className="md:col-span-2 flex justify-end mt-2">
-                    <button
+                    <motion.button
                       type="submit"
-                      className="group px-8 py-4 rounded-full bg-[var(--color-cta)] text-white font-black text-xs shadow-xl hover:bg-[var(--color-cta-hover)] transition-all flex items-center justify-center gap-3 tracking-widest uppercase"
+                      whileHover={{ 
+                        scale: 1.04,
+                        boxShadow: "0 20px 35px -10px rgba(192, 88, 0, 0.35)",
+                        y: -2
+                      }}
+                      whileTap={{ scale: 0.97 }}
+                      transition={{ type: "spring", stiffness: 500, damping: 15 }}
+                      className="group px-8 py-4 rounded-full bg-[var(--color-cta)] text-white font-black text-xs shadow-xl hover:bg-[var(--color-cta-hover)] transition-all flex items-center justify-center gap-3 tracking-widest uppercase cursor-pointer"
                     >
                       Submit Inquiry <Send className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                    </button>
+                    </motion.button>
                   </div>
 
                 </form>

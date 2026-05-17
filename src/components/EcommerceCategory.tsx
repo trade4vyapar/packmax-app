@@ -72,14 +72,15 @@ export default function EcommerceCategory({ locationSlug, categorySlug }: { loca
 
         <div className="flex flex-col lg:flex-row gap-8 items-start">
           
-          {/* Clean Sticky Sidebar */}
-          <aside className="w-full lg:w-[22rem] shrink-0 lg:sticky lg:top-32 z-20">
-            <div className="bg-white rounded-xl border border-gray-200 pt-5 px-5 pb-10 shadow-sm max-h-[calc(100vh-10rem)] overflow-y-auto custom-scrollbar">
-              <h3 className="text-xs font-bold text-gray-900 uppercase tracking-widest mb-4 flex items-center gap-2 border-b border-gray-100 pb-3">
+          {/* Sticky Sidebar / Mobile Scrolling Pill Ribbon */}
+          <aside className="w-full lg:w-[22rem] shrink-0 lg:sticky lg:top-32 z-20 overflow-visible">
+            <div className="w-full bg-transparent lg:bg-white lg:rounded-xl lg:border lg:border-gray-200 pt-0 px-0 pb-2 lg:pt-5 lg:px-5 lg:pb-10 lg:shadow-sm lg:max-h-[calc(100vh-10rem)] lg:overflow-y-auto lg:custom-scrollbar lg:flex-col lg:flex overflow-x-auto whitespace-nowrap scrollbar-none flex flex-row gap-2.5">
+              
+              <h3 className="hidden lg:flex text-xs font-bold text-gray-900 uppercase tracking-widest mb-4 items-center gap-2 border-b border-gray-100 pb-3">
                 <PackageSearch className="w-4 h-4 text-[var(--color-cta)]" /> Categories
               </h3>
               
-              <div className="flex flex-col space-y-1 pb-8">
+              <div className="flex flex-row lg:flex-col gap-2 lg:gap-0 lg:space-y-1 pb-0 lg:pb-8 shrink-0">
                 {CATEGORIES.map(category => {
                   const slug = generateSlug(category);
                   const isActive = slug === categorySlug;
@@ -87,17 +88,17 @@ export default function EcommerceCategory({ locationSlug, categorySlug }: { loca
                     <Link 
                       key={slug} 
                       href={`${locationPrefix}/${slug}`}
-                      className={`group flex items-center justify-between px-3 py-2.5 rounded-lg transition-colors duration-200 ${isActive ? 'bg-orange-50 text-[var(--color-cta)]' : 'hover:bg-gray-50 text-gray-700'}`}
+                      className={`group flex items-center justify-between px-4 py-2.5 lg:px-3 lg:py-2.5 rounded-full lg:rounded-lg transition-all duration-200 shrink-0 text-xs lg:text-sm font-semibold ${isActive ? 'bg-orange-50 text-[var(--color-cta)] border border-orange-200 lg:border-none' : 'bg-white border border-gray-200 lg:border-none lg:bg-transparent hover:bg-gray-50 text-gray-700'}`}
                     >
-                      <span className={`text-sm font-semibold ${isActive ? 'text-[var(--color-cta)]' : 'text-gray-700'}`}>
+                      <span className={`${isActive ? 'text-[var(--color-cta)]' : 'text-gray-700'}`}>
                         {category}
                       </span>
-                      {isActive && <ChevronRight className="w-4 h-4 text-[var(--color-cta)]" />}
+                      {isActive && <ChevronRight className="hidden lg:block w-4 h-4 text-[var(--color-cta)]" />}
                     </Link>
                   );
                 })}
-                {/* Visual Scroll Buffer / Spacer to prevent corner clipping */}
-                <div className="h-6 w-full block shrink-0 pointer-events-none" />
+                {/* Visual Scroll Buffer / Spacer to prevent corner clipping on desktop */}
+                <div className="hidden lg:block h-6 w-full shrink-0 pointer-events-none" />
               </div>
             </div>
           </aside>

@@ -1,30 +1,35 @@
-import { Metadata } from "next";
+"use client";
+
+import { use } from "react";
 import { notFound } from "next/navigation";
 import { siteData } from "@/data/siteData";
 import { CheckCircle2, ArrowRight, ShieldCheck, Zap, Package, Info, ChevronRight, FileText } from "lucide-react";
 import Link from "next/link";
+import { motion } from "framer-motion";
+import PremiumCTA from "@/components/PremiumCTA";
+
+const MotionLink = motion.create(Link);
 
 interface Props {
   params: Promise<{ slug: string }>;
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug } = await params;
-  const product = siteData.products.find((p) => p.slug === slug);
-
-  if (!product) return { title: "Product Not Found" };
-
-  return {
-    title: `${product.name} | Packmax India`,
-    description: product.description,
-  };
-}
-
-export default async function ProductPage({ params }: Props) {
-  const { slug } = await params;
+export default function ProductPage({ params }: Props) {
+  const resolvedParams = use(params);
+  const { slug } = resolvedParams;
   const product = siteData.products.find((p) => p.slug === slug);
 
   if (!product) notFound();
+
+  // Animation variants
+  const scaleReveal = {
+    hidden: { opacity: 0, scale: 0.96 },
+    visible: { 
+      opacity: 1, 
+      scale: 1,
+      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as const }
+    }
+  };
 
   return (
     <main className="min-h-screen bg-[var(--color-bg)] pt-28 pb-16 selection:bg-[var(--color-cta)] selection:text-white">
@@ -41,8 +46,13 @@ export default async function ProductPage({ params }: Props) {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
           
-          {/* Left: Compact Image Section */}
-          <div className="lg:col-span-5">
+          {/* Left: Compact Image Section with Zoom Reveal */}
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-5"
+          >
             <div className="relative aspect-square rounded-[2.5rem] overflow-hidden bg-white border border-[var(--color-border)] shadow-xl">
               <img 
                 src={product.image} 
@@ -58,8 +68,8 @@ export default async function ProductPage({ params }: Props) {
             <div className="grid grid-cols-3 gap-3 mt-6">
               {[
                 { icon: ShieldCheck, label: "Secured" },
-                { icon: Zap, label: "Industrial" },
-                { icon: Package, label: "Bulk" }
+                { icon: Zap, label: "Strong Stick" },
+                { icon: Package, label: "Bulk Box" }
               ].map((item, i) => (
                 <div key={i} className="bg-white/50 p-4 rounded-2xl border border-[var(--color-border)] flex flex-col items-center">
                   <item.icon className="w-5 h-5 text-[var(--color-cta)] mb-2" strokeWidth={1.5} />
@@ -67,12 +77,17 @@ export default async function ProductPage({ params }: Props) {
                 </div>
               ))}
             </div>
-          </div>
+          </motion.div>
 
           {/* Right: Focused Content Section */}
-          <div className="lg:col-span-7">
+          <motion.div 
+            initial="hidden"
+            animate="visible"
+            variants={scaleReveal}
+            className="lg:col-span-7"
+          >
             <div className="mb-4 inline-flex items-center gap-2 text-[var(--color-cta)] font-black text-[10px] uppercase tracking-[0.3em]">
-              Product Overview
+              Product Details
             </div>
             
             <h1 className="text-4xl lg:text-6xl font-black text-[var(--color-heading)] tracking-tighter leading-tight mb-4 uppercase">
@@ -83,7 +98,7 @@ export default async function ProductPage({ params }: Props) {
               {product.tagline}
             </p>
 
-            <p className="text-base text-[var(--color-text)] leading-relaxed mb-8 font-medium">
+            <p className="text-sm text-[var(--color-text)] leading-relaxed mb-8 font-medium opacity-85">
               {product.description}
             </p>
 
@@ -104,15 +119,19 @@ export default async function ProductPage({ params }: Props) {
 
             {/* Action Bar (More Compact) */}
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link
+              <PremiumCTA 
                 href="/contact"
-                className="flex-[2] group px-8 py-5 rounded-full bg-[var(--color-cta)] text-white font-black text-center text-xs shadow-xl shadow-[#C05800]/20 hover:bg-[var(--color-cta-hover)] transition-all flex items-center justify-center gap-3 tracking-widest uppercase"
-              >
-                Get Bulk Quote <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
-              <button className="flex-1 px-8 py-5 rounded-full bg-white border-2 border-[var(--color-border)] text-[var(--color-heading)] font-black text-xs hover:shadow-lg transition-all flex items-center justify-center gap-3 tracking-widest uppercase">
-                <FileText className="w-4 h-4" /> Specs
-              </button>
+                label="Get Cheap Bulk Quote"
+                variant="primary"
+                icon={<ArrowRight className="w-4 h-4" />}
+                className="flex-[2]"
+              />
+              <PremiumCTA 
+                label="Specs"
+                variant="secondary"
+                icon={<FileText className="w-4 h-4" />}
+                className="flex-1"
+              />
             </div>
 
             {/* Features Row */}
@@ -124,7 +143,7 @@ export default async function ProductPage({ params }: Props) {
                 </div>
               ))}
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </main>

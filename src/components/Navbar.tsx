@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Search, X, ChevronDown, Menu } from "lucide-react";
+import { Search, X, ChevronDown, Menu, Globe } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { siteData } from "@/data/siteData";
@@ -20,6 +20,142 @@ const navLinks = [
   { label: "CONTACT", href: "/contact" },
 ];
 
+interface NavbarLinkProps {
+  href: string;
+  label: string;
+  hasDropdown?: boolean;
+  locationPrefix: string;
+}
+
+function NavbarLink({ href, label, hasDropdown, locationPrefix }: NavbarLinkProps) {
+  const [isHovered, setIsHovered] = useState(false);
+
+  return (
+    <div 
+      className="relative group/navdrop"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <Link
+        href={href}
+        className="relative bg-white px-6 py-3.5 rounded-full text-[13px] font-bold text-[var(--color-heading)] shadow-sm hover:shadow-xl transition-all duration-300 uppercase tracking-wide flex items-center gap-2 overflow-hidden select-none"
+      >
+        {/* Dynamic Liquid Bubble Backdrop */}
+        <motion.span
+          className="absolute inset-0 bg-gradient-to-r from-[var(--color-cta)] to-orange-500 rounded-full"
+          initial={{ scale: 0, opacity: 0 }}
+          animate={isHovered ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }}
+          transition={{ type: "spring", stiffness: 350, damping: 18 }}
+        />
+
+        {/* Dual Text Vertical Slide-Wipe */}
+        <span className="relative z-10 h-4 overflow-hidden block">
+          <motion.span
+            animate={isHovered ? { y: "-50%" } : { y: "0%" }}
+            transition={{ type: "spring", stiffness: 400, damping: 22 }}
+            className="flex flex-col"
+          >
+            <span className="text-[var(--color-heading)] font-bold uppercase tracking-wide block h-4 flex items-center leading-none">
+              {label}
+            </span>
+            <span className="text-white font-bold uppercase tracking-wide block h-4 flex items-center leading-none">
+              {label}
+            </span>
+          </motion.span>
+        </span>
+
+        {hasDropdown && (
+          <ChevronDown 
+            className={`w-4 h-4 relative z-10 transition-all duration-300 ${
+              isHovered ? 'rotate-180 text-white' : 'text-[var(--color-heading)]'
+            }`} 
+          />
+        )}
+      </Link>
+
+      {hasDropdown && (
+        /* Dropdown Menu */
+        <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-72 bg-white rounded-2xl shadow-2xl border border-[var(--color-border)] opacity-0 invisible group-hover/navdrop:opacity-100 group-hover/navdrop:visible transition-all duration-300 z-50 overflow-hidden transform origin-top scale-95 group-hover/navdrop:scale-100">
+          <div className="py-2 max-h-[60vh] overflow-y-auto flex flex-col">
+            {[
+              "Ecommerce Tapes",
+              "Printed & plain Ecommerce Polybags",
+              "Stretch filmroll",
+              "BOPP Color Tape",
+              "BOPP Transparent Tape",
+              "Box Strapping roll & clip",
+              "Corrugated Roll",
+              "Custom Brand Logo Name Printed tape",
+              "Air bubble roll",
+              "BOPP Brown Tape"
+            ].map((product, idx) => {
+              const slug = generateSlug(product);
+              return (
+                <Link 
+                  key={idx} 
+                  href={`${locationPrefix}/${slug}`}
+                  className="px-5 py-3 text-[13px] font-bold text-[var(--color-heading)] hover:bg-[var(--color-bg)] hover:text-[var(--color-cta)] transition-colors border-b border-[var(--color-border)]/50 last:border-0"
+                >
+                  {product}
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function LanguageBadge() {
+  const [isHovered, setIsHovered] = useState(false);
+
+  return (
+    <motion.div
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      whileTap={{ scale: 0.98 }}
+      className="flex items-center gap-2 bg-white border border-[var(--color-border)] px-4 py-3.5 rounded-full shadow-sm ml-4 cursor-pointer select-none relative overflow-hidden group"
+    >
+      {/* Background slide */}
+      <motion.span
+        className="absolute inset-0 bg-gradient-to-r from-[var(--color-heading)] to-black rounded-full"
+        initial={{ scale: 0, opacity: 0 }}
+        animate={isHovered ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }}
+        transition={{ type: "spring", stiffness: 350, damping: 18 }}
+      />
+
+      <Globe 
+        className={`w-4 h-4 relative z-10 transition-all duration-500 ${
+          isHovered ? 'rotate-45 text-white' : 'text-[var(--color-cta)]'
+        }`} 
+      />
+      
+      {/* Dual Text Vertical Slide-Wipe */}
+      <span className="relative z-10 h-4 overflow-hidden block">
+        <motion.span
+          animate={isHovered ? { y: "-50%" } : { y: "0%" }}
+          transition={{ type: "spring", stiffness: 400, damping: 22 }}
+          className="flex flex-col"
+        >
+          <span className="text-[var(--color-heading)] font-bold tracking-wider block h-4 flex items-center leading-none text-[12px]">
+            EN
+          </span>
+          <span className="text-white font-bold tracking-wider block h-4 flex items-center leading-none text-[12px]">
+            EN
+          </span>
+        </motion.span>
+      </span>
+
+      <ChevronDown 
+        className={`w-3.5 h-3.5 relative z-10 transition-all duration-300 ${
+          isHovered ? 'rotate-180 text-white' : 'text-[var(--color-heading)] opacity-40'
+        }`} 
+      />
+    </motion.div>
+  );
+}
+
 export default function Navbar() {
   const [isSearchActive, setIsSearchActive] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -29,13 +165,14 @@ export default function Navbar() {
   const possibleLocation = segments[0] || '';
   const isLocation = siteData.locations.some(l => l.slug === possibleLocation);
   const locationPrefix = isLocation ? `/${possibleLocation}` : '';
+  const isHomepage = pathname === "/";
 
   return (
     <>
       <motion.header
-        initial={{ y: -100, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        initial={isHomepage ? { y: -100, opacity: 0 } : false}
+        animate={isHomepage ? { y: 0, opacity: 1 } : false}
+        transition={isHomepage ? { duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.3 } : undefined}
         className="fixed top-0 left-0 right-0 z-50 py-6 px-8 flex items-center justify-between pointer-events-none"
       >
         <div className="flex items-center gap-6 pointer-events-auto">
@@ -103,71 +240,18 @@ export default function Navbar() {
 
         {/* Right Nav (Desktop) */}
         <div className="hidden lg:flex items-center gap-3 pointer-events-auto">
-          {navLinks.map((link) => {
-            if (link.label === "PRODUCTS") {
-              return (
-                <div key={link.label} className="relative group/navdrop">
-                  <MotionLink
-                    href={link.href}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="bg-white px-6 py-3.5 rounded-full text-[13px] font-bold text-[var(--color-heading)] shadow-sm hover:shadow-md transition-shadow uppercase tracking-wide flex items-center gap-2"
-                  >
-                    {link.label}
-                    <ChevronDown className="w-4 h-4 group-hover/navdrop:rotate-180 transition-transform" />
-                  </MotionLink>
-                  
-                  {/* Dropdown Menu */}
-                  <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-72 bg-white rounded-2xl shadow-2xl border border-[var(--color-border)] opacity-0 invisible group-hover/navdrop:opacity-100 group-hover/navdrop:visible transition-all duration-300 z-50 overflow-hidden transform origin-top scale-95 group-hover/navdrop:scale-100">
-                    <div className="py-2 max-h-[60vh] overflow-y-auto flex flex-col">
-                      {[
-                        "Ecommerce Tapes",
-                        "Printed & plain Ecommerce Polybags",
-                        "Stretch filmroll",
-                        "BOPP Color Tape",
-                        "BOPP Transparent Tape",
-                        "Box Strapping roll & clip",
-                        "Corrugated Roll",
-                        "Custom Brand Logo Name Printed tape",
-                        "Air bubble roll",
-                        "BOPP Brown Tape"
-                      ].map((product, idx) => {
-                        const slug = generateSlug(product);
-                        return (
-                        <Link 
-                          key={idx} 
-                          href={`${locationPrefix}/${slug}`}
-                          className="px-5 py-3 text-[13px] font-bold text-[var(--color-heading)] hover:bg-[var(--color-bg)] hover:text-[var(--color-cta)] transition-colors border-b border-[var(--color-border)]/50 last:border-0"
-                        >
-                          {product}
-                        </Link>
-                      )})}
-                    </div>
-                  </div>
-                </div>
-              );
-            }
-            return (
-              <MotionLink
-                key={link.label}
-                href={link.href}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-white px-6 py-3.5 rounded-full text-[13px] font-bold text-[var(--color-heading)] shadow-sm hover:shadow-md transition-shadow uppercase tracking-wide"
-              >
-                {link.label}
-              </MotionLink>
-            );
-          })}
+          {navLinks.map((link) => (
+            <NavbarLink
+              key={link.label}
+              href={link.href}
+              label={link.label}
+              hasDropdown={link.label === "PRODUCTS"}
+              locationPrefix={locationPrefix}
+            />
+          ))}
 
-          {/* Language Selector */}
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="flex items-center gap-1 text-[13px] font-bold text-[var(--color-heading)] ml-4 uppercase tracking-wide"
-          >
-            EN <ChevronDown className="w-4 h-4" />
-          </motion.button>
+          {/* Premium Language Badge */}
+          <LanguageBadge />
         </div>
 
         {/* Mobile Toggle */}
