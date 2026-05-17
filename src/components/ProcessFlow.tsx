@@ -7,33 +7,33 @@ export default function ProcessFlow() {
   const steps = [
     {
       num: "01",
-      title: "Extrusion & Print",
-      sub: "Logo Calibrations",
-      desc: "Pure raw materials are co-extruded and rotogravure printed with your high-impact brand logo details inside our Madhya Pradesh factory.",
+      title: "Making & Printing",
+      sub: "Your Brand Logo",
+      desc: "We use high-quality raw materials to make tape and print your company logo clearly in our factory.",
       icon: Factory,
       color: "from-orange-500 to-amber-600"
     },
     {
       num: "02",
-      title: "Precision Sealing",
-      sub: "BOPP Slitting",
-      desc: "High-grade water-based acrylic adhesives are precision-coated onto sheets, slitted to exact width/length rolls with secure tension metrics.",
+      title: "Glue & Cutting",
+      sub: "Perfect Roll Sizes",
+      desc: "We coat the tape with strong, long-lasting glue and cut the rolls into the exact width and length you need for your boxes.",
       icon: Layers,
       color: "from-amber-600 to-[#38240D]"
     },
     {
       num: "03",
-      title: "Armor Packaging",
-      sub: "Transit Security",
-      desc: "Cartons are safely wrapped in high-micron stretch films or tamper-evident e-commerce bags, sealing packages against rain and tear forces.",
+      title: "Safe Packaging",
+      sub: "Waterproof & Tearproof",
+      desc: "We pack your rolls in strong boxes and wrap them in waterproof stretch film to keep them safe from rain and damage during shipping.",
       icon: ShieldAlert,
       color: "from-[#38240D] to-orange-900"
     },
     {
       num: "04",
-      title: "Fleet Dispatch",
-      sub: "Scheduled Supply",
-      desc: "Procured bulk supplies are loaded straight onto local dispatch trucks and shipped to fulfillment hubs and warehouses Pan India.",
+      title: "Fast Shipping",
+      sub: "Direct To Your Door",
+      desc: "We load your bulk order onto trucks and ship them directly to your warehouse, store, or office anywhere in India.",
       icon: Truck,
       color: "from-orange-900 to-[var(--color-cta)]"
     }
@@ -71,12 +71,12 @@ export default function ProcessFlow() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="text-center max-w-3xl mx-auto mb-20"
         >
-          <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[var(--color-cta)] block mb-3">Supply Roadmap</span>
+          <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[var(--color-cta)] block mb-3">How It Works</span>
           <h2 className="text-3xl sm:text-5xl font-black text-[var(--color-heading)] tracking-tighter uppercase leading-[0.95] mb-6">
-            End-To-End Packaging <br />& Delivery Flow
+            How We Make & Deliver <br />Your Order
           </h2>
           <p className="text-sm font-bold text-[var(--color-heading)] opacity-50 leading-relaxed">
-            Follow the physical logistics workflow of our custom-manufactured BOPP tapes, courier mailers, and stretch wraps from prototype to active doorstep shipping.
+            See how we manufacture your custom tapes and shipping bags, package them safely, and deliver them directly to your business.
           </p>
         </motion.div>
 

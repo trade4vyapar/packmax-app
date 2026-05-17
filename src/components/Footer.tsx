@@ -67,7 +67,7 @@ export default function Footer() {
           </div>
 
           {/* Product Categories */}
-          <div className="lg:col-span-3">
+          <div className="hidden sm:block lg:col-span-3">
             <h4 className="text-[10px] font-black uppercase tracking-[0.3em] mb-4 sm:mb-6 text-[var(--color-cta)]">Products</h4>
             <ul className="grid grid-cols-2 gap-x-4 gap-y-2 sm:flex sm:flex-col sm:space-y-4">
               {CATEGORIES.slice(0, 8).map((cat) => (
@@ -143,7 +143,7 @@ export default function Footer() {
               </Link>
             ))}
           </div>
-          <p className="text-[9px] sm:text-[10px] font-black text-white/20 uppercase tracking-[0.3em]">
+          <p className="hidden md:block text-[9px] sm:text-[10px] font-black text-white/20 uppercase tracking-[0.3em]">
             Quality Guaranteed
           </p>
         </div>

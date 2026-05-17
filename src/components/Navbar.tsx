@@ -159,6 +159,7 @@ function LanguageBadge() {
 export default function Navbar() {
   const [isSearchActive, setIsSearchActive] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [mobileProductsOpen, setMobileProductsOpen] = useState(false);
   
   const pathname = usePathname() || "";
   const segments = pathname.split('/').filter(Boolean);
@@ -177,12 +178,15 @@ export default function Navbar() {
       >
         <div className="flex items-center gap-6 pointer-events-auto">
           {/* Logo */}
-          <Link href="/" className="group relative">
+          <Link 
+            href="/" 
+            className="group relative px-5 py-2.5 bg-white lg:bg-transparent rounded-full shadow-sm lg:shadow-none flex items-center justify-center transition-all duration-300 pointer-events-auto"
+          >
             <h1
-              className="text-3xl font-black tracking-tight text-[var(--color-heading)]"
+              className="text-2xl sm:text-3xl font-black tracking-tight text-[var(--color-heading)] leading-none"
               style={{ fontFamily: "Space Grotesk, sans-serif" }}
             >
-              PackMax<span className="text-[12px] align-top font-bold text-[var(--color-cta)]">®</span>
+              PackMax<span className="text-[10px] sm:text-[12px] align-top font-bold text-[var(--color-cta)]">®</span>
             </h1>
           </Link>
 
@@ -284,44 +288,80 @@ export default function Navbar() {
               />
             </div>
 
-            {navLinks.map((link) => (
-              <div key={link.label} className="flex flex-col gap-2">
-                <Link
-                  href={link.href}
-                  onClick={() => link.label !== "PRODUCTS" && setMobileOpen(false)}
-                  className="block px-4 py-3 text-center text-sm font-bold text-[var(--color-heading)] bg-gray-50 hover:bg-gray-100 rounded-xl transition-all uppercase tracking-wide"
-                >
-                  {link.label}
-                </Link>
-                {link.label === "PRODUCTS" && (
-                  <div className="flex flex-col gap-1 px-2 max-h-48 overflow-y-auto">
-                    {[
-                      "Ecommerce Tapes",
-                      "Printed & plain Ecommerce Polybags",
-                      "Stretch filmroll",
-                      "BOPP Color Tape",
-                      "BOPP Transparent Tape",
-                      "Box Strapping roll & clip",
-                      "Corrugated Roll",
-                      "Custom Brand Logo Name Printed tape",
-                      "Air bubble roll",
-                      "BOPP Brown Tape"
-                    ].map((product, idx) => {
-                      const slug = generateSlug(product);
-                      return (
-                      <Link 
-                        key={idx} 
-                        href={`${locationPrefix}/${slug}`}
-                        onClick={() => setMobileOpen(false)}
-                        className="block px-4 py-2.5 text-center text-xs font-semibold text-[var(--color-text)] bg-gray-50/50 hover:bg-gray-100 rounded-lg transition-colors"
+            {navLinks.map((link) => {
+              const isProducts = link.label === "PRODUCTS";
+              return (
+                <div key={link.label} className="flex flex-col gap-2">
+                  {isProducts ? (
+                    <button
+                      onClick={() => setMobileProductsOpen(!mobileProductsOpen)}
+                      className="w-full px-4 py-3 flex items-center justify-between text-sm font-bold text-[var(--color-heading)] bg-gray-50 hover:bg-gray-100 rounded-xl transition-all uppercase tracking-wide cursor-pointer border-none"
+                    >
+                      <span className="w-full text-center pl-4">{link.label}</span>
+                      <ChevronDown 
+                        className={`w-4 h-4 text-[var(--color-heading)] transition-transform duration-300 ${
+                          mobileProductsOpen ? 'rotate-180' : ''
+                        }`} 
+                      />
+                    </button>
+                  ) : (
+                    <Link
+                      href={link.href}
+                      onClick={() => setMobileOpen(false)}
+                      className="block px-4 py-3 text-center text-sm font-bold text-[var(--color-heading)] bg-gray-50 hover:bg-gray-100 rounded-xl transition-all uppercase tracking-wide"
+                    >
+                      {link.label}
+                    </Link>
+                  )}
+                  {isProducts && mobileProductsOpen && (
+                    <motion.div 
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      exit={{ opacity: 0, height: 0 }}
+                      className="flex flex-col gap-1 px-2 max-h-48 overflow-y-auto"
+                    >
+                      {[
+                        "Ecommerce Tapes",
+                        "Printed & plain Ecommerce Polybags",
+                        "Stretch filmroll",
+                        "BOPP Color Tape",
+                        "BOPP Transparent Tape",
+                        "Box Strapping roll & clip",
+                        "Corrugated Roll",
+                        "Custom Brand Logo Name Printed tape",
+                        "Air bubble roll",
+                        "BOPP Brown Tape"
+                      ].map((product, idx) => {
+                        const slug = generateSlug(product);
+                        return (
+                          <Link 
+                            key={idx} 
+                            href={`${locationPrefix}/${slug}`}
+                            onClick={() => {
+                              setMobileOpen(false);
+                              setMobileProductsOpen(false);
+                            }}
+                            className="block px-4 py-2.5 text-center text-xs font-semibold text-[var(--color-text)] bg-gray-50/50 hover:bg-gray-100 rounded-lg transition-colors"
+                          >
+                            {product}
+                          </Link>
+                        )
+                      })}
+                      <Link
+                        href="/products"
+                        onClick={() => {
+                          setMobileOpen(false);
+                          setMobileProductsOpen(false);
+                        }}
+                        className="block px-4 py-2.5 text-center text-xs font-black text-[var(--color-cta)] bg-orange-50/50 hover:bg-orange-100 rounded-lg transition-colors uppercase tracking-wider mt-1"
                       >
-                        {product}
+                        Browse All Products
                       </Link>
-                    )})}
-                  </div>
-                )}
-              </div>
-            ))}
+                    </motion.div>
+                  )}
+                </div>
+              );
+            })}
           </motion.div>
         )}
       </AnimatePresence>

@@ -78,16 +78,16 @@ export default function PremiumCTA({
       />
 
       {/* Dual Text Vertical Slide-Wipe Container */}
-      <span className="relative z-10 h-4 overflow-hidden block">
+      <span className="relative z-10 h-4 overflow-hidden block whitespace-nowrap">
         <motion.span
           animate={isHovered ? { y: "-50%" } : { y: "0%" }}
           transition={{ type: "spring", stiffness: 400, damping: 22 }}
           className="flex flex-col"
         >
-          <span className={`${defaultTextColor} font-black uppercase tracking-widest block h-4 flex items-center leading-none text-xs`}>
+          <span className={`${defaultTextColor} font-black uppercase tracking-widest block h-4 flex items-center leading-none text-[10px] sm:text-xs whitespace-nowrap`}>
             {label}
           </span>
-          <span className={`${hoverTextColor} font-black uppercase tracking-widest block h-4 flex items-center leading-none text-xs`}>
+          <span className={`${hoverTextColor} font-black uppercase tracking-widest block h-4 flex items-center leading-none text-[10px] sm:text-xs whitespace-nowrap`}>
             {label}
           </span>
         </motion.span>
@@ -101,7 +101,7 @@ export default function PremiumCTA({
     </>
   );
 
-  const containerClasses = `relative ${wFull ? "w-full" : "inline-flex"} ${defaultBg} ${borderStyle} ${shadowStyle} px-8 py-4.5 rounded-full flex items-center justify-center gap-3 overflow-hidden select-none cursor-pointer transition-all duration-300 ${className}`;
+  const containerClasses = `relative ${wFull ? "w-full" : "inline-flex"} ${defaultBg} ${borderStyle} ${shadowStyle} px-4.5 py-3 sm:px-8 sm:py-4.5 rounded-full flex items-center justify-center gap-2 sm:gap-3 overflow-hidden select-none cursor-pointer transition-all duration-300 ${className}`;
 
   const hoverAnimation = {
     boxShadow: `0 15px 25px -8px ${hoverShadow}`,

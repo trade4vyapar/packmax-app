@@ -20,42 +20,42 @@ const products = [
     title: "Brown Tape",
     slug: "bopp-brown-tape",
     description:
-      "High-strength brown packaging tape suitable for all your heavy-duty box sealing and logistics needs.",
+      "Strong brown tape designed to seal heavy cartons and shipping boxes safely.",
   },
   {
     icon: Layers,
     title: "Transparent Tape",
     slug: "transparent-tape",
     description:
-      "Crystal clear BOPP tape offering excellent adhesion and finish for retail and standard packaging.",
+      "Clear packing tape that sticks strongly and looks clean on any package.",
   },
   {
     icon: ShoppingBag,
     title: "Packaging Bags",
     slug: "packaging-bags",
     description:
-      "Durable, tear-resistant packaging bags available in multiple sizes for safe and secure transit.",
+      "Strong, tear-resistant shipping bags available in all standard sizes.",
   },
   {
     icon: Truck,
     title: "Courier Bags",
     slug: "tamper-proof-courier-bags",
     description:
-      "Amazon, Meesho, and Flipkart style tamper-proof courier bags for reliable e-commerce shipping.",
+      "Tamper-proof courier bags exactly like Amazon and Flipkart use for e-commerce deliveries.",
   },
   {
     icon: Stamp,
     title: "Printed Logo Tapes",
     slug: "custom-printed-tape",
     description:
-      "Turn your packaging into a branding tool. We print your company logo directly onto high-quality tape.",
+      "Print your own company logo or name directly on high-quality adhesive tape.",
   },
   {
     icon: Box,
     title: "Branded Packaging",
     slug: "branded-packaging",
     description:
-      "Fully customized boxes and packaging solutions tailored to your exact brand colors, size, and design.",
+      "Fully customized boxes and packing materials designed exactly how you want.",
   },
 ];
 
@@ -97,10 +97,10 @@ export default function FeaturesSection({ locationName, locationSlug }: { locati
             className="text-4xl sm:text-5xl font-black mb-6 tracking-tight text-[var(--color-heading)] uppercase"
             style={{ fontFamily: "Space Grotesk, sans-serif" }}
           >
-            Premium Packaging
+            High-Quality Packing Supplies
           </h2>
           <p className="text-[var(--color-text)] text-lg max-w-2xl mx-auto font-medium">
-            We supply a comprehensive range of packaging solutions serving e-commerce, pharma, FMCG, and manufacturing industries {locationName ? `in ${locationName}` : 'Pan India'}.
+            We make and supply a full range of packing materials for online shops, factories, and businesses {locationName ? `in ${locationName}` : 'Pan India'}.
           </p>
         </motion.div>
 

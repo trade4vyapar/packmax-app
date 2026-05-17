@@ -8,29 +8,29 @@ export default function WorkflowSection() {
     {
       num: "01",
       icon: Send,
-      title: "Submit Inquiry",
-      desc: "Log your roll width, micron thickness, logo artwork, or polybag specs in under 60 seconds using our simple forms.",
+      title: "Send Your Details",
+      desc: "Fill out our quick 60-second form with your required tape size, thickness, or courier bag details.",
       side: "left"
     },
     {
       num: "02",
       icon: TestTube,
-      title: "Get Free Samples",
-      desc: "Our Indore plant extrudes and dispatches certified physical samples directly to your packing line for absolute peel adhesion testing.",
+      title: "Free Testing Samples",
+      desc: "We make and ship free physical samples directly to your office so you can test the quality and stickiness yourself.",
       side: "right"
     },
     {
       num: "03",
       icon: Printer,
-      title: "Custom Printing & Slitting",
-      desc: "Upon prototype approval, high-speed rotogravure slitting systems coat adhesives and print custom brand logos onto BOPP films.",
+      title: "Custom Manufacturing",
+      desc: "Once you approve the samples, we print your logo and coat the tape rolls using our advanced factory machines.",
       side: "left"
     },
     {
       num: "04",
       icon: Truck,
-      title: "Scheduled Freight Dispatch",
-      desc: "Procured bulk supplies are loaded onto local freight trucks and shipped securely to your regional fulfillment hubs.",
+      title: "Safe Delivery",
+      desc: "We pack your bulk order safely on trucks and deliver them directly to your warehouse or office anywhere in India.",
       side: "right"
     }
   ];
@@ -69,7 +69,7 @@ export default function WorkflowSection() {
       {/* Soft Ambient Background Glows */}
       <div className="absolute top-1/4 left-10 w-96 h-96 bg-orange-50 opacity-60 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-10 right-10 w-[30rem] h-[30rem] bg-orange-100/30 rounded-full blur-[140px] pointer-events-none" />
-
+ 
       <div className="max-w-7xl mx-auto relative z-10">
         
         {/* Section Header */}
@@ -80,12 +80,12 @@ export default function WorkflowSection() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="text-center max-w-2xl mx-auto mb-28"
         >
-          <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[var(--color-cta)] block mb-3">Roadmap Flow</span>
+          <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[var(--color-cta)] block mb-3">Easy 4-Step Process</span>
           <h2 className="text-3xl sm:text-5xl font-black text-[var(--color-heading)] uppercase tracking-tight leading-none mb-6">
-            Supply Chain Roadmap
+            How To Order Bulk Packaging
           </h2>
           <p className="text-xs sm:text-sm font-bold text-[var(--color-heading)] opacity-50 leading-relaxed">
-            A visual B2B roadmap tracing your packaging from direct factory submission to scheduled hub dispatch.
+            Get custom-made packaging for your business in 4 simple, stress-free steps.
           </p>
         </motion.div>
 
@@ -137,10 +137,10 @@ export default function WorkflowSection() {
                   className="grid grid-cols-1 lg:grid-cols-9 items-center gap-4 lg:gap-0"
                 >
                   
-                  {/* Left Side Component (Desktop only) */}
+                   {/* Left Side Component (Desktop only) */}
                   <motion.div 
                     variants={slideInLeft}
-                    className={`lg:col-span-4 ${isLeft ? "lg:text-right lg:pr-12" : "hidden lg:block lg:opacity-0"}`}
+                    className={`hidden lg:block lg:col-span-4 ${isLeft ? "lg:text-right lg:pr-12" : "lg:opacity-0 pointer-events-none"}`}
                   >
                     {isLeft && (
                       <div className="space-y-3">
@@ -173,7 +173,7 @@ export default function WorkflowSection() {
                   {/* Right Side Component / Mobile Container */}
                   <motion.div 
                     variants={slideInRight}
-                    className={`col-span-1 lg:col-span-4 pl-16 lg:pl-12 text-left ${!isLeft ? "" : "lg:hidden"}`}
+                    className={`col-span-1 lg:col-span-4 pl-16 lg:pl-12 text-left ${isLeft ? "block lg:hidden" : "block"}`}
                   >
                     
                     {/* Render content on the right for desktop right-steps, or for all steps on mobile */}

@@ -46,13 +46,13 @@ export default function TapeShowcase() {
           className="flex flex-col md:flex-row justify-between md:items-end gap-6 mb-12"
         >
           <div>
-            <span className="text-[9px] font-black uppercase tracking-[0.3em] text-[var(--color-cta)] block mb-2">New Arrivals</span>
+            <span className="text-[9px] font-black uppercase tracking-[0.3em] text-[var(--color-cta)] block mb-2">Top Sellers</span>
             <h2 className="text-2xl sm:text-4xl font-black text-[var(--color-heading)] uppercase tracking-tight leading-none">
-              E-Commerce Brand Tapes
+              Printed Tapes & Bags
             </h2>
           </div>
           <p className="text-xs font-bold text-[var(--color-heading)] opacity-50 max-w-sm">
-            Newly added high-adhesion printed seller tapes meeting strict e-commerce shipping specifications.
+            Strong packing tapes and waterproof shipping bags that keep your parcels safe during transport.
           </p>
         </motion.div>
 

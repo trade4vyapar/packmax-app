@@ -15,28 +15,28 @@ function generateSlug(name: string) {
 const slides = [
   {
     id: 1,
-    headingLine1: "All Customized",
-    headingLine2: "Packing Solutions",
-    tagline: "Your Trusted Partner in Premium Packaging",
-    description: "Based in Indore, we manufacture top-quality Brown Tape, Courier Bags, and Custom Logo Tapes. Serving B2B clients Pan India with samples before bulk production.",
+    headingLine1: "Custom Printed",
+    headingLine2: "Packing Supplies",
+    tagline: "Strong Tapes & Shipping Bags For Your Business",
+    description: "Based in Indore, we make high-quality brown tape, courier bags, and custom logo tapes. We serve business owners across India and offer free testing samples.",
     color: "#C05800",
     icon: Package
   },
   {
     id: 2,
-    headingLine1: "Premium Printed",
-    headingLine2: "Logo Tapes",
-    tagline: "Turn packaging into a branding tool",
-    description: "Every brand's packaging can be customized. We print your company logo directly onto high-quality tape with your exact brand colors and dimensions.",
+    headingLine1: "Custom Brand Logo",
+    headingLine2: "Packing Tapes",
+    tagline: "Put your company logo on your shipping boxes",
+    description: "Make your brand look premium. We print your company logo or name directly on high-quality adhesive tape with your exact brand colors and sizes.",
     color: "#38240D",
     icon: ShieldCheck
   },
   {
     id: 3,
-    headingLine1: "Durable & Secure",
+    headingLine1: "Tear-Resistant",
     headingLine2: "Courier Bags",
-    tagline: "Secure transit for e-commerce",
-    description: "Amazon, Meesho, and Flipkart style tamper-proof courier bags. Tear-resistant and available in multiple sizes for safe shipping across all states.",
+    tagline: "Strong waterproof mailing bags for online stores",
+    description: "Strong, tamper-proof courier bags exactly like Amazon and Flipkart use. Available in all standard sizes with strong glue peel-seals to keep packages safe.",
     color: "#C05800",
     icon: Box
   }
@@ -89,9 +89,9 @@ export default function HeroSection({ locationName }: { locationName?: string })
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            className="mb-8 inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-white border border-[var(--color-border)] shadow-sm text-[11px] font-black text-[var(--color-cta)] tracking-[0.2em] uppercase"
+            className="mb-8 inline-flex items-center gap-2 xs:gap-3 px-4 py-2 xs:px-5 xs:py-2.5 rounded-full bg-white border border-[var(--color-border)] shadow-sm text-[9px] xs:text-[10px] sm:text-[11px] font-black text-[var(--color-cta)] tracking-[0.1em] xs:tracking-[0.2em] uppercase whitespace-nowrap"
           >
-            <span className="w-2 h-2 rounded-full bg-[var(--color-cta)] animate-pulse" />
+            <span className="w-1.5 h-1.5 xs:w-2 xs:h-2 rounded-full bg-[var(--color-cta)] animate-pulse" />
             {locationName ? `Serving ${locationName} • Factory in Indore` : "Est. December 2021 • Indore, MP"}
           </motion.div>
 
@@ -106,7 +106,7 @@ export default function HeroSection({ locationName }: { locationName?: string })
                 className="w-full flex flex-col items-start"
               >
                 <h1
-                  className="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tighter leading-[0.95] mb-8 text-[var(--color-heading)] uppercase"
+                  className="text-[1.95rem] xs:text-3xl sm:text-6xl lg:text-7xl font-black tracking-tighter leading-[0.95] mb-8 text-[var(--color-heading)] uppercase"
                   style={{ fontFamily: "Space Grotesk, sans-serif" }}
                 >
                   {slides[currentSlide].headingLine1} <br />
@@ -118,16 +118,16 @@ export default function HeroSection({ locationName }: { locationName?: string })
                 </p>
 
                 <p className="text-lg text-[var(--color-text)] max-w-xl leading-relaxed font-medium mb-10 opacity-80">
-                  {currentSlide === 0 && locationName ? `Delivering premium packaging solutions directly to businesses and industrial zones across ${locationName} with guaranteed quality.` : slides[currentSlide].description}
+                  {currentSlide === 0 && locationName ? `We supply top-quality packing tapes and courier bags directly to businesses in ${locationName} at cheap factory wholesale prices.` : slides[currentSlide].description}
                 </p>
 
                 {/* CTA Buttons */}
-                <div className="flex flex-wrap gap-4">
+                <div className="flex flex-row gap-2 sm:gap-4">
                   <PremiumCTA 
                     href="/contact"
                     label="Get a Quote"
                     variant="primary"
-                    icon={<ArrowRight className="w-5 h-5" />}
+                    icon={<ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />}
                   />
 
                   <div
