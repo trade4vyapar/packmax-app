@@ -3,6 +3,13 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, ChevronDown, ChevronLeft, ChevronRight, CheckCircle2, MapPin, Package, ShieldCheck, Box } from "lucide-react";
+import { usePathname } from "next/navigation";
+import { siteData } from "@/data/siteData";
+import Link from "next/link";
+
+function generateSlug(name: string) {
+  return name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+}
 
 const slides = [
   {
@@ -38,6 +45,12 @@ export default function HeroSection({ locationName }: { locationName?: string })
   const [currentSlide, setCurrentSlide] = useState(0);
   const [direction, setDirection] = useState(1);
   const [isHovered, setIsHovered] = useState(false);
+
+  const pathname = usePathname() || "";
+  const segments = pathname.split('/').filter(Boolean);
+  const possibleLocation = segments[0] || '';
+  const isLocation = siteData.locations.some(l => l.slug === possibleLocation);
+  const locationPrefix = isLocation ? `/${possibleLocation}` : '';
 
   useEffect(() => {
     if (isHovered) return;
@@ -136,15 +149,17 @@ export default function HeroSection({ locationName }: { locationName?: string })
                           "Custom Brand Logo Name Printed tape",
                           "Air bubble roll",
                           "BOPP Brown Tape"
-                        ].map((product, idx) => (
-                          <a 
+                        ].map((product, idx) => {
+                          const slug = generateSlug(product);
+                          return (
+                          <Link 
                             key={idx} 
-                            href={`/products`}
+                            href={`${locationPrefix}/${slug}`}
                             className="px-5 py-3 text-[13px] font-bold text-[var(--color-heading)] hover:bg-[var(--color-bg)] hover:text-[var(--color-cta)] transition-colors border-b border-[var(--color-border)]/50 last:border-0"
                           >
                             {product}
-                          </a>
-                        ))}
+                          </Link>
+                        )})}
                       </div>
                     </div>
                   </div>

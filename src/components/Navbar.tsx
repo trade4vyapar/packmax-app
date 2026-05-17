@@ -4,6 +4,12 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Search, X, ChevronDown, Menu } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { siteData } from "@/data/siteData";
+
+function generateSlug(name: string) {
+  return name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+}
 
 const MotionLink = motion.create(Link);
 
@@ -17,6 +23,12 @@ const navLinks = [
 export default function Navbar() {
   const [isSearchActive, setIsSearchActive] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  
+  const pathname = usePathname() || "";
+  const segments = pathname.split('/').filter(Boolean);
+  const possibleLocation = segments[0] || '';
+  const isLocation = siteData.locations.some(l => l.slug === possibleLocation);
+  const locationPrefix = isLocation ? `/${possibleLocation}` : '';
 
   return (
     <>
@@ -119,15 +131,17 @@ export default function Navbar() {
                         "Custom Brand Logo Name Printed tape",
                         "Air bubble roll",
                         "BOPP Brown Tape"
-                      ].map((product, idx) => (
+                      ].map((product, idx) => {
+                        const slug = generateSlug(product);
+                        return (
                         <Link 
                           key={idx} 
-                          href="/products"
+                          href={`${locationPrefix}/${slug}`}
                           className="px-5 py-3 text-[13px] font-bold text-[var(--color-heading)] hover:bg-[var(--color-bg)] hover:text-[var(--color-cta)] transition-colors border-b border-[var(--color-border)]/50 last:border-0"
                         >
                           {product}
                         </Link>
-                      ))}
+                      )})}
                     </div>
                   </div>
                 </div>
@@ -208,16 +222,18 @@ export default function Navbar() {
                       "Custom Brand Logo Name Printed tape",
                       "Air bubble roll",
                       "BOPP Brown Tape"
-                    ].map((product, idx) => (
+                    ].map((product, idx) => {
+                      const slug = generateSlug(product);
+                      return (
                       <Link 
                         key={idx} 
-                        href="/products"
+                        href={`${locationPrefix}/${slug}`}
                         onClick={() => setMobileOpen(false)}
                         className="block px-4 py-2.5 text-center text-xs font-semibold text-[var(--color-text)] bg-gray-50/50 hover:bg-gray-100 rounded-lg transition-colors"
                       >
                         {product}
                       </Link>
-                    ))}
+                    )})}
                   </div>
                 )}
               </div>

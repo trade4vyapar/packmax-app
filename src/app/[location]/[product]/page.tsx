@@ -1,8 +1,13 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { siteData } from "@/data/siteData";
-import { MapPin, CheckCircle2, ArrowRight, ShieldCheck, Zap, Package, Truck, Info } from "lucide-react";
+import EcommerceCategory, { CATEGORIES } from "@/components/EcommerceCategory";
+import { MapPin, CheckCircle2, ArrowRight, ShieldCheck, Truck } from "lucide-react";
 import Link from "next/link";
+
+function generateSlug(name: string) {
+  return name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+}
 
 interface Props {
   params: Promise<{ location: string; product: string }>;
@@ -11,22 +16,43 @@ interface Props {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { location: locSlug, product: prodSlug } = await params;
   const location = siteData.locations.find((l) => l.slug === locSlug);
+  
+  if (!location) return { title: "Location Not Found" };
+
+  const category = CATEGORIES.find(c => generateSlug(c) === prodSlug);
+  if (category) {
+    return {
+      title: `${category} Manufacturer in ${location.name} - Buy Online | Packmax India`,
+      description: `Leading manufacturer of ${category} serving ${location.name}. Direct factory prices and fast delivery.`,
+    };
+  }
+
   const product = siteData.products.find((p) => p.slug === prodSlug);
+  if (product) {
+    return {
+      title: `${product.name} in ${location.name} | Packmax India`,
+      description: `Leading manufacturer of ${product.name} serving ${location.name}.`,
+    };
+  }
 
-  if (!location || !product) return { title: "Page Not Found" };
-
-  return {
-    title: `${product.name} in ${location.name} | Packmax India`,
-    description: `Leading manufacturer of ${product.name} serving ${location.name}.`,
-  };
+  return { title: "Page Not Found" };
 }
 
-export default async function MatrixPage({ params }: Props) {
+export default async function LocationProductOrCategoryPage({ params }: Props) {
   const { location: locSlug, product: prodSlug } = await params;
   const location = siteData.locations.find((l) => l.slug === locSlug);
-  const product = siteData.products.find((p) => p.slug === prodSlug);
+  
+  if (!location) notFound();
 
-  if (!location || !product) notFound();
+  // If the product slug is a CATEGORY (like ecommerce-tapes), show the Ecommerce Category Page
+  const category = CATEGORIES.find(c => generateSlug(c) === prodSlug);
+  if (category) {
+    return <EcommerceCategory locationSlug={location.slug} categorySlug={generateSlug(category)} />;
+  }
+
+  // Fallback to the old Matrix Page if it's a specific product from siteData
+  const product = siteData.products.find((p) => p.slug === prodSlug);
+  if (!product) notFound();
 
   return (
     <main className="min-h-screen bg-[var(--color-bg)] pt-28 pb-16 selection:bg-[var(--color-cta)] selection:text-white">
