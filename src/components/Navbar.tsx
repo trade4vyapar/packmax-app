@@ -14,7 +14,7 @@ function generateSlug(name: string) {
 const MotionLink = motion.create(Link);
 
 const navLinks = [
-  { label: "PRODUCTS", href: "/#products" },
+  { label: "PRODUCTS", href: "/products" },
   { label: "ABOUT", href: "/about" },
   { label: "MARKET AREA", href: "/market-area" },
   { label: "CONTACT", href: "/contact" },

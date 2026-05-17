@@ -4,6 +4,7 @@ import { siteData } from "@/data/siteData";
 import EcommerceCategory, { CATEGORIES } from "@/components/EcommerceCategory";
 import { MapPin, CheckCircle2, ArrowRight, ShieldCheck, Truck } from "lucide-react";
 import Link from "next/link";
+import InquiryButton from "@/components/InquiryButton";
 
 function generateSlug(name: string) {
   return name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
@@ -115,12 +116,7 @@ export default async function LocationProductOrCategoryPage({ params }: Props) {
                 ))}
               </div>
               
-              <Link
-                href="/contact"
-                className="w-full group px-6 py-4 rounded-full bg-[var(--color-cta)] text-white font-black text-center text-xs shadow-xl hover:bg-[var(--color-cta-hover)] transition-all flex items-center justify-center gap-3 tracking-widest uppercase"
-              >
-                Inquiry for {location.name} <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
+              <InquiryButton locationName={location.name} productName={product.name} />
             </div>
 
             {/* Quick Benefits */}

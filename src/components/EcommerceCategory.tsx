@@ -1,6 +1,6 @@
 import { siteData } from "@/data/siteData";
 import Link from "next/link";
-import { ChevronDown, MessageSquare } from "lucide-react";
+import { ChevronRight, ArrowRight, PackageSearch } from "lucide-react";
 
 export const CATEGORIES = [
   "Ecommerce Tapes",
@@ -20,99 +20,136 @@ function generateSlug(name: string) {
 }
 
 export default function EcommerceCategory({ locationSlug, categorySlug }: { locationSlug?: string, categorySlug: string }) {
-  const location = locationSlug ? siteData.locations.find((l) => l.slug === locationSlug) : null;
+  const location = locationSlug 
+    ? siteData.locations.find((l) => l.slug === locationSlug) 
+    : siteData.locations.find((l) => l.slug === 'indore');
+    
   const currentCategoryName = CATEGORIES.find(c => generateSlug(c) === categorySlug) || categorySlug.replace(/-/g, ' ');
 
-  const title = location 
-    ? `${currentCategoryName} Manufacturer in ${location.name} - Buy Online`
-    : `${currentCategoryName} Manufacturer - Buy Online`;
+  const locationPrefix = locationSlug ? `/${locationSlug}` : '/indore';
 
-  const locationPrefix = locationSlug ? `/${locationSlug}` : '';
+  const realProducts = siteData.products.filter(p => p.categorySlug === categorySlug);
 
-  // Generate mock products based on the category
-  const mockProducts = Array.from({ length: 9 }).map((_, i) => ({
+  const displayProducts = realProducts.length > 0 ? realProducts.map(p => ({
+    id: p.id,
+    name: p.name,
+    slug: p.slug,
+    description: p.description,
+    price: "Request Quote",
+    image: p.image
+  })) : Array.from({ length: 9 }).map((_, i) => ({
     id: `prod-${i}`,
-    name: `${currentCategoryName} - Variant ${i + 1}`,
-    price: `₹${150 + (i * 45)} - ₹${3500 + (i * 200)}`,
-    rating: 4.5,
+    name: `${currentCategoryName} ${i + 1}`,
+    slug: categorySlug,
+    description: "High-performance industrial packaging material ensuring maximum durability and secure transit for your goods.",
+    price: `₹${150 + (i * 45)} / Roll`,
     image: i % 2 === 0 
       ? "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=2070&auto=format&fit=crop"
       : "https://images.unsplash.com/photo-1606206591513-adbf01ac2cee?q=80&w=2070&auto=format&fit=crop"
   }));
 
   return (
-    <div className="min-h-screen bg-[#F5F5F5] pt-28 pb-20 font-sans">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gray-50 pt-32 pb-24 font-sans selection:bg-[var(--color-cta)] selection:text-white">
+      <div className="max-w-[95rem] mx-auto px-4 sm:px-6 lg:px-10">
         
-        {/* Banner */}
-        <div className="w-full h-32 bg-[var(--color-heading)] rounded-t-lg flex items-center justify-center relative overflow-hidden mb-6">
-          <div className="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=2070')] bg-cover bg-center" />
-          <h1 className="text-3xl lg:text-4xl font-bold text-white relative z-10">{title}</h1>
+        {/* Professional Header Section */}
+        <div className="mb-10 pb-6 border-b border-gray-200">
+          <div className="max-w-4xl">
+            {location && (
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-orange-50 border border-orange-200 text-[11px] font-bold text-[var(--color-cta)] uppercase tracking-wider mb-4 shadow-sm">
+                <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-cta)] animate-pulse" />
+                Available in {location.name}
+              </div>
+            )}
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight mb-4">
+              {currentCategoryName}
+            </h1>
+            <p className="text-lg text-gray-600 font-medium">
+              Browse our premium catalog of high-grade industrial packaging solutions, manufactured for durability and brand excellence.
+            </p>
+          </div>
         </div>
 
         <div className="flex flex-col lg:flex-row gap-8 items-start">
           
-          {/* Sidebar */}
-          <aside className="w-full lg:w-64 bg-white shadow-sm border border-gray-200 shrink-0">
-            <div className="p-4 border-b border-gray-200">
-              <h3 className="text-sm font-bold text-gray-800 uppercase tracking-wide">Categories</h3>
-            </div>
-            <div className="flex flex-col">
-              {CATEGORIES.map(category => {
-                const slug = generateSlug(category);
-                const isActive = slug === categorySlug;
-                return (
-                  <Link 
-                    key={slug} 
-                    href={`${locationPrefix}/${slug}`}
-                    className={`px-4 py-3 text-sm flex items-center justify-between border-b border-gray-100 last:border-0 hover:bg-gray-50 transition-colors ${isActive ? 'bg-gray-50 font-bold text-[var(--color-cta)] border-l-4 border-l-[var(--color-cta)]' : 'text-gray-600'}`}
-                  >
-                    <span>{category} <span className="opacity-50 font-normal">({Math.floor(Math.random() * 50) + 10})</span></span>
-                    <ChevronDown className="w-4 h-4 opacity-50 -rotate-90" />
-                  </Link>
-                );
-              })}
+          {/* Clean Sticky Sidebar */}
+          <aside className="w-full lg:w-[22rem] shrink-0 lg:sticky lg:top-32 z-20">
+            <div className="bg-white rounded-xl border border-gray-200 pt-5 px-5 pb-10 shadow-sm max-h-[calc(100vh-10rem)] overflow-y-auto custom-scrollbar">
+              <h3 className="text-xs font-bold text-gray-900 uppercase tracking-widest mb-4 flex items-center gap-2 border-b border-gray-100 pb-3">
+                <PackageSearch className="w-4 h-4 text-[var(--color-cta)]" /> Categories
+              </h3>
+              
+              <div className="flex flex-col space-y-1 pb-8">
+                {CATEGORIES.map(category => {
+                  const slug = generateSlug(category);
+                  const isActive = slug === categorySlug;
+                  return (
+                    <Link 
+                      key={slug} 
+                      href={`${locationPrefix}/${slug}`}
+                      className={`group flex items-center justify-between px-3 py-2.5 rounded-lg transition-colors duration-200 ${isActive ? 'bg-orange-50 text-[var(--color-cta)]' : 'hover:bg-gray-50 text-gray-700'}`}
+                    >
+                      <span className={`text-sm font-semibold ${isActive ? 'text-[var(--color-cta)]' : 'text-gray-700'}`}>
+                        {category}
+                      </span>
+                      {isActive && <ChevronRight className="w-4 h-4 text-[var(--color-cta)]" />}
+                    </Link>
+                  );
+                })}
+                {/* Visual Scroll Buffer / Spacer to prevent corner clipping */}
+                <div className="h-6 w-full block shrink-0 pointer-events-none" />
+              </div>
             </div>
           </aside>
 
-          {/* Main Content */}
+          {/* Professional Product Grid */}
           <main className="flex-1 w-full">
-            <div className="bg-[#006A9C] text-white px-4 py-3 mb-6 flex items-center shadow-sm">
-              <span className="text-sm font-medium">Showing 1 to {mockProducts.length} of {mockProducts.length * 5}</span>
+            <div className="flex items-center justify-between mb-6 px-1">
+              <p className="text-xs font-semibold uppercase tracking-wider text-gray-500">
+                Showing {displayProducts.length} Products
+              </p>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
-              {mockProducts.map((prod) => (
-                <div key={prod.id} className="bg-white border border-gray-200 p-4 flex flex-col items-center text-center shadow-sm hover:shadow-md transition-shadow relative group">
-                  <div className="w-full aspect-square mb-4 p-4 border border-gray-100 rounded bg-white overflow-hidden">
-                    <img src={prod.image} alt={prod.name} className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500" />
-                  </div>
-                  <h4 className="text-sm font-bold text-gray-800 mb-2 leading-snug">{prod.name}</h4>
-                  <p className="text-[var(--color-cta)] font-bold mb-2">{prod.price}</p>
+              {displayProducts.map((prod) => (
+                <Link 
+                  key={prod.id} 
+                  href={`${locationPrefix}/${prod.slug}`}
+                  className="group bg-white border border-gray-200 rounded-2xl p-4 shadow-sm hover:shadow-lg hover:border-gray-300 transition-all duration-300 flex flex-col cursor-pointer"
+                >
                   
-                  <div className="flex items-center gap-1 mb-4">
-                    {[1, 2, 3, 4, 5].map((star) => (
-                      <svg key={star} className={`w-4 h-4 ${star <= prod.rating ? 'text-yellow-400' : 'text-gray-300'}`} fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                      </svg>
-                    ))}
-                    <span className="text-xs text-gray-500 ml-1">({prod.rating})</span>
+                  {/* Compact Image Container */}
+                  <div className="w-full h-44 mb-4 rounded-xl bg-gray-50 overflow-hidden relative border border-gray-100 flex items-center justify-center">
+                    <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-2.5 py-1 rounded-md shadow-sm text-[9px] font-bold uppercase tracking-wider text-gray-700 z-10 border border-gray-200">
+                      In Stock
+                    </div>
+                    <img 
+                      src={prod.image} 
+                      alt={prod.name} 
+                      className="w-full h-full object-cover rounded-xl group-hover:scale-105 transition-transform duration-500 ease-out" 
+                    />
                   </div>
-
-                  <button className="bg-[#245D99] hover:bg-[#1C4B7D] text-white text-sm font-medium py-2 px-6 rounded transition-colors mt-auto w-full max-w-[200px]">
-                    Select Options
-                  </button>
-                </div>
+                  
+                  {/* Details */}
+                  <div className="flex-1 flex flex-col">
+                    <h4 className="text-base font-bold text-gray-900 leading-tight mb-1.5 group-hover:text-[var(--color-cta)] transition-colors">{prod.name}</h4>
+                    <p className="text-xs text-gray-500 leading-relaxed mb-4 line-clamp-2">{prod.description}</p>
+                    
+                    <div className="mt-auto pt-3 border-t border-gray-100 flex items-center justify-between">
+                      <div className="flex flex-col">
+                        <span className="text-[9px] font-semibold text-gray-400 uppercase tracking-wider mb-0.5">Price</span>
+                        <span className="text-base font-black text-gray-900">{prod.price}</span>
+                      </div>
+                      
+                      <div className="bg-gray-900 text-white group-hover:bg-[var(--color-cta)] flex items-center justify-center gap-1.5 px-4 py-2 rounded-lg text-xs font-bold transition-colors duration-300 shadow-sm">
+                        Select Options <ArrowRight className="w-3.5 h-3.5" />
+                      </div>
+                    </div>
+                  </div>
+                </Link>
               ))}
             </div>
           </main>
-        </div>
-
-        {/* Floating Chat Button Overlay simulation (Optional based on image) */}
-        <div className="fixed bottom-6 right-6 z-50">
-           <button className="bg-[#1C4B7D] text-white p-4 rounded-full shadow-2xl hover:bg-[#153C65] transition-colors">
-              <MessageSquare className="w-6 h-6" />
-           </button>
         </div>
       </div>
     </div>

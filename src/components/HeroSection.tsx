@@ -125,8 +125,8 @@ export default function HeroSection({ locationName }: { locationName?: string })
                   <a href="/contact" className="group px-10 py-5 rounded-full bg-[var(--color-cta)] text-[#FDFBD4] font-black text-xs shadow-2xl shadow-[#C05800]/30 hover:bg-[var(--color-cta-hover)] hover:-translate-y-1 transition-all flex items-center gap-3 tracking-widest uppercase">
                     Get a Quote <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </a>
-                  
-                  <div 
+
+                  <div
                     className="relative group/dropdown"
                     onMouseEnter={() => setIsHovered(true)}
                     onMouseLeave={() => setIsHovered(false)}
@@ -134,7 +134,7 @@ export default function HeroSection({ locationName }: { locationName?: string })
                     <a href="/products" className="px-10 py-5 rounded-full bg-white border-2 border-[var(--color-border)] text-[var(--color-heading)] font-black text-xs hover:shadow-xl hover:-translate-y-1 transition-all tracking-widest uppercase inline-flex items-center gap-2">
                       Our Products <ChevronDown className="w-4 h-4 group-hover/dropdown:rotate-180 transition-transform" />
                     </a>
-                    
+
                     {/* Dropdown Menu */}
                     <div className="absolute top-full left-0 mt-4 w-72 bg-white rounded-2xl shadow-2xl border border-[var(--color-border)] opacity-0 invisible group-hover/dropdown:opacity-100 group-hover/dropdown:visible transition-all duration-300 z-50 overflow-hidden transform origin-top scale-95 group-hover/dropdown:scale-100">
                       <div className="py-2 max-h-[50vh] overflow-y-auto flex flex-col">
@@ -152,14 +152,15 @@ export default function HeroSection({ locationName }: { locationName?: string })
                         ].map((product, idx) => {
                           const slug = generateSlug(product);
                           return (
-                          <Link 
-                            key={idx} 
-                            href={`${locationPrefix}/${slug}`}
-                            className="px-5 py-3 text-[13px] font-bold text-[var(--color-heading)] hover:bg-[var(--color-bg)] hover:text-[var(--color-cta)] transition-colors border-b border-[var(--color-border)]/50 last:border-0"
-                          >
-                            {product}
-                          </Link>
-                        )})}
+                            <Link
+                              key={idx}
+                              href={`${locationPrefix}/${slug}`}
+                              className="px-5 py-3 text-[13px] font-bold text-[var(--color-heading)] hover:bg-[var(--color-bg)] hover:text-[var(--color-cta)] transition-colors border-b border-[var(--color-border)]/50 last:border-0"
+                            >
+                              {product}
+                            </Link>
+                          )
+                        })}
                       </div>
                     </div>
                   </div>
