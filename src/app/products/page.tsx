@@ -23,11 +23,6 @@ export default function ProductsDirectoryPage() {
     ["amazon-prime-tape", "flipkart-tape"].includes(p.slug)
   ).slice(0, 2);
 
-  // Other products for the standard grid
-  const standardProducts = siteData.products.filter(p => 
-    !["amazon-prime-tape", "amazon-tape", "flipkart-tape", "meesho-tape"].includes(p.slug)
-  );
-
   // Animation variants
   const scaleReveal = {
     hidden: { opacity: 0, scale: 0.96 },
@@ -286,76 +281,6 @@ export default function ProductsDirectoryPage() {
         </div>
       </section>
 
-      {/* 5. STANDARD STABLE PRODUCTS ROW */}
-      <section className="max-w-[95rem] mx-auto px-6 lg:px-20 mb-28">
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.98 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12"
-        >
-          <div>
-            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-[var(--color-cta)] block mb-2">Full Range</span>
-            <h2 className="text-3xl font-black text-[var(--color-heading)] uppercase tracking-tight">Bulk Warehouse Supplies</h2>
-          </div>
-          <p className="text-sm font-bold text-[var(--color-heading)] opacity-40 max-w-sm">
-            Tested box sealing tape and packaging film built to keep your boxes completely safe.
-          </p>
-        </motion.div>
-
-        <motion.div 
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={stagger}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
-        >
-          {standardProducts.map((prod) => (
-            <motion.div 
-              key={prod.id} 
-              variants={scaleReveal}
-              whileHover={{ y: -6, transition: { duration: 0.2 } }}
-              className="group bg-white border border-[var(--color-border)] rounded-[2.5rem] p-6 shadow-sm hover:shadow-2xl transition-all duration-300 flex flex-col justify-between"
-            >
-              <div>
-                <div className="w-full aspect-[4/3] rounded-3xl bg-[var(--color-bg)] overflow-hidden mb-6 border border-[var(--color-border)] flex items-center justify-center">
-                  <img 
-                    src={prod.image} 
-                    alt={prod.name} 
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                </div>
-                <span className="text-[8px] font-black uppercase tracking-[0.25em] text-[var(--color-cta)] block mb-2">
-                  {prod.categorySlug.replace(/-/g, ' ')}
-                </span>
-                <h3 className="text-lg font-black text-[var(--color-heading)] uppercase tracking-tight leading-snug mb-3 group-hover:text-[var(--color-cta)] transition-colors">
-                  {prod.name}
-                </h3>
-                <p className="text-xs text-[var(--color-heading)] opacity-50 font-bold leading-relaxed mb-6">
-                  {prod.description}
-                </p>
-              </div>
-
-              <div className="pt-4 border-t border-[var(--color-border)] flex flex-col gap-2">
-                <PremiumCTA 
-                  href={`/${defaultLocationSlug}/${prod.slug}`}
-                  label="Configure"
-                  variant="primary"
-                  icon={<ArrowRight className="w-3 h-3" />}
-                  className="w-full py-3 h-10 text-[9px]"
-                />
-                <InquiryButton 
-                  locationName={defaultLocationName} 
-                  productName={prod.name} 
-                  buttonText="Inquiry Details"
-                  className="w-full py-3 rounded-full bg-white hover:bg-[var(--color-bg)] border border-[var(--color-border)] text-[var(--color-heading)] font-black text-center text-[9px] transition-colors flex items-center justify-center gap-1.5 tracking-widest uppercase cursor-pointer"
-                />
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
-      </section>
 
       {/* 6. IMMERSIVE BRAND FOOTER CTA CARD */}
       <section className="max-w-[95rem] mx-auto px-6 lg:px-20">
