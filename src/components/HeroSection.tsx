@@ -19,7 +19,7 @@ const slides = [
     headingLine2: "Your Identity",
     tagline: "Precision-engineered B2B packaging solutions",
     description: "Elevate your brand presence with custom-printed tapes, rolls, and industrial-grade courier bags designed for modern businesses.",
-    color: "#1E3A8A",
+    color: "#C05800",
     icon: Package
   },
   {
