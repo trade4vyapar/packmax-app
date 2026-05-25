@@ -34,6 +34,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       ogImage: product.image,
       productName: product.name
     });
+  }
+
   const category = CATEGORIES.find(c => generateSlug(c) === slug);
   if (category) {
     return generateSEOMetadata({
