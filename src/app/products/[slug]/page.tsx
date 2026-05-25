@@ -2,6 +2,12 @@ import { Metadata } from "next";
 import { siteData } from "@/data/siteData";
 import { generateSEOMetadata } from "@/utils/seo";
 import ProductClientPage from "./product-client";
+import EcommerceCategory, { CATEGORIES } from "@/components/EcommerceCategory";
+import { notFound } from "next/navigation";
+
+function generateSlug(name: string) {
+  return name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+}
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -42,12 +48,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return { title: "Page Not Found | Packmax India" };
 }
 
-import EcommerceCategory, { CATEGORIES } from "@/components/EcommerceCategory";
-import { notFound } from "next/navigation";
-
-function generateSlug(name: string) {
-  return name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
-}
 
 export default async function ProductPage({ params }: Props) {
   const { slug } = await params;
