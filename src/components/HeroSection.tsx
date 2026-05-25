@@ -15,11 +15,11 @@ function generateSlug(name: string) {
 const slides = [
   {
     id: 1,
-    headingLine1: "Custom Printed",
-    headingLine2: "Packing Supplies",
-    tagline: "Strong Tapes & Shipping Bags For Your Business",
-    description: "Based in Indore, we make high-quality brown tape, courier bags, and custom logo tapes. We serve business owners across India and offer free testing samples.",
-    color: "#C05800",
+    headingLine1: "Your Packaging,",
+    headingLine2: "Your Identity",
+    tagline: "Precision-engineered B2B packaging solutions",
+    description: "Elevate your brand presence with custom-printed tapes, rolls, and industrial-grade courier bags designed for modern businesses.",
+    color: "#1E3A8A",
     icon: Package
   },
   {
@@ -106,11 +106,10 @@ export default function HeroSection({ locationName }: { locationName?: string })
                 className="w-full flex flex-col items-start"
               >
                 <h1
-                  className="text-[1.95rem] xs:text-3xl sm:text-6xl lg:text-7xl font-black tracking-tighter leading-[0.95] mb-8 text-[var(--color-heading)] uppercase"
-                  style={{ fontFamily: "Space Grotesk, sans-serif" }}
+                  className="text-[2.2rem] xs:text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.05] mb-6 text-[var(--color-heading)]"
                 >
                   {slides[currentSlide].headingLine1} <br />
-                  <span className="text-[var(--color-cta)]">{currentSlide === 0 && locationName ? `Supply in ${locationName}` : slides[currentSlide].headingLine2}</span>
+                  <span className="text-[var(--color-cta)]">{currentSlide === 0 && locationName ? `Delivered in ${locationName}` : slides[currentSlide].headingLine2}</span>
                 </h1>
 
                 <p className="text-xl sm:text-2xl font-bold text-[var(--color-heading)] mb-6 tracking-tight">

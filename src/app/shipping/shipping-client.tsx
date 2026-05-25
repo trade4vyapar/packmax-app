@@ -1,0 +1,55 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { Truck, MapPin, ShieldCheck } from "lucide-react";
+
+export default function ShippingClient() {
+  return (
+    <main className="min-h-screen bg-[var(--color-bg)] pt-32 pb-24 selection:bg-[var(--color-cta)] selection:text-white">
+      <div className="max-w-4xl mx-auto px-6 lg:px-10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="mb-12"
+        >
+          <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[var(--color-cta)] block mb-4">Packmax Logistics</span>
+          <h1 className="text-4xl md:text-5xl font-black text-[var(--color-heading)] tracking-tighter uppercase leading-none">
+            Shipping Policy
+          </h1>
+        </motion.div>
+
+        <div className="bg-white rounded-3xl p-8 md:p-12 border border-[var(--color-border)] shadow-sm">
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+            <div className="bg-gray-50 p-6 rounded-2xl border border-gray-100 flex flex-col items-center text-center">
+              <Truck className="w-8 h-8 text-[var(--color-cta)] mb-4" />
+              <h3 className="text-sm font-black uppercase tracking-wider text-gray-900 mb-2">Local Delivery</h3>
+              <p className="text-xs text-gray-500 font-medium">Free shipping in Indore & Bhopal for bulk orders over ₹25,000.</p>
+            </div>
+            <div className="bg-gray-50 p-6 rounded-2xl border border-gray-100 flex flex-col items-center text-center">
+              <MapPin className="w-8 h-8 text-[var(--color-cta)] mb-4" />
+              <h3 className="text-sm font-black uppercase tracking-wider text-gray-900 mb-2">Outstation</h3>
+              <p className="text-xs text-gray-500 font-medium">Pan-India dispatch via VRL, TCI, or client-preferred carriers within 48h.</p>
+            </div>
+            <div className="bg-gray-50 p-6 rounded-2xl border border-gray-100 flex flex-col items-center text-center">
+              <ShieldCheck className="w-8 h-8 text-[var(--color-cta)] mb-4" />
+              <h3 className="text-sm font-black uppercase tracking-wider text-gray-900 mb-2">POD Proof</h3>
+              <p className="text-xs text-gray-500 font-medium">100% insured transit. Proof of Delivery mandatory upon receipt.</p>
+            </div>
+          </div>
+
+          <div className="prose prose-sm md:prose-base max-w-none text-[var(--color-text)]">
+            <h2 className="text-xl font-black text-[var(--color-heading)] uppercase tracking-tight mb-4">Delivery Terms</h2>
+            <p>
+              As a B2B manufacturer, we deal in high-volume shipments. Freight charges are calculated ex-factory (Indore, MP) unless negotiated otherwise in the purchase order.
+            </p>
+            <p>
+              <strong>Inspection at Delivery:</strong> Clients must inspect all cartons before signing the Lorry Receipt (LR) or POD. Any transit damage must be remarked on the carrier's receipt to claim insurance. Packmax India is not liable for damages reported after a clean POD is signed.
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+  );
+}

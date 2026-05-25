@@ -96,7 +96,35 @@ export const siteData = {
         thickness: "42-50 Micron",
         length: "Customizable"
       },
-      image: "https://images.unsplash.com/photo-1606206591513-adbf01ac2cee?q=80&w=2070&auto=format&fit=crop"
+      image: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/BOPP%20Transparent%20Tape/BOOP%20TRANS%20TAPE%201.webp",
+      images: [
+        "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/BOPP%20Transparent%20Tape/BOOP%20TRANS%20TAPE%201.webp",
+        "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/BOPP%20Transparent%20Tape/BOOP%20TRANS%20TAPE%202.webp",
+        "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/BOPP%20Transparent%20Tape/BOOP%20TRANS%20TAPE%203.webp",
+        "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/BOPP%20Transparent%20Tape/BOOP%20TRANS%20TAPE%204.webp",
+        "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/BOPP%20Transparent%20Tape/BOOP%20TRANS%20TAPE%205.webp"
+      ]
+    },
+    {
+      id: "bopp-color-tape",
+      name: "BOPP Color Tape",
+      slug: "bopp-color-tape",
+      categorySlug: "bopp-color-tape",
+      tagline: "Vibrant Color Packaging Tapes",
+      description: "High-quality colored BOPP tapes ideal for inventory management, color-coding, and distinctive brand packaging.",
+      features: ["Vibrant Colors", "High Adhesion", "Durable", "Color Coding"],
+      specs: {
+        material: "BOPP Film",
+        adhesive: "Acrylic",
+        thickness: "40-50 Micron",
+        colors: "Red, Blue, Green, Yellow"
+      },
+      image: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/BOPP%20Color%20Tape/COLOR%20TAPE%201.webp",
+      images: [
+        "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/BOPP%20Color%20Tape/COLOR%20TAPE%201.webp",
+        "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/BOPP%20Color%20Tape/COLOR%20TAPE%202.webp",
+        "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/BOPP%20Color%20Tape/COLOR%20TAPE%203.webp"
+      ]
     },
     {
       id: "printed-logo-tape",
@@ -111,12 +139,17 @@ export const siteData = {
         base_colors: "Brown, Transparent, White",
         min_order: "72 Rolls"
       },
-      image: "https://images.unsplash.com/photo-1513519245088-0e12902e35ca?q=80&w=2070&auto=format&fit=crop"
+      image: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/Custom%20Brand%20Logo%20Name%20Printed%20tape/CUSTOM%20BRAND%202.webp",
+      images: [
+        "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/Custom%20Brand%20Logo%20Name%20Printed%20tape/CUSTOM%20BRAND%202.webp",
+        "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/Custom%20Brand%20Logo%20Name%20Printed%20tape/CUSTOM%20BRAND%20TAPE%201.webp",
+        "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/Custom%20Brand%20Logo%20Name%20Printed%20tape/CUSTOM%20BRAND%20TAPE%203.webp"
+      ]
     },
     {
-      id: "courier-bags",
-      name: "Tamper-Proof Courier Bags",
-      slug: "courier-bags",
+      id: "plain-courier-bags",
+      name: "Plain Tamper-Proof Bags",
+      slug: "plain-courier-bags",
       categorySlug: "printed-plain-ecommerce-polybags",
       tagline: "Secure E-commerce Shipping Bags",
       description: "High-strength polyethylene courier bags with permanent adhesive strip. Once sealed, they cannot be opened without visible damage, ensuring zero-pilferage delivery.",
@@ -126,7 +159,40 @@ export const siteData = {
         thickness: "50-75 Micron",
         closure: "Permanent Self-Adhesive"
       },
-      image: "https://images.unsplash.com/photo-1566576721346-d4a3b4eaad5b?q=80&w=1974&auto=format&fit=crop"
+      image: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/Ecommerce%20PolyBags/BAGS%202.webp",
+      images: ["https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/Ecommerce%20PolyBags/BAGS%202.webp"]
+    },
+    {
+      id: "amazon-courier-bags",
+      name: "Amazon Printed Courier Bags",
+      slug: "amazon-courier-bags",
+      categorySlug: "printed-plain-ecommerce-polybags",
+      tagline: "Official Amazon Seller Polybags",
+      description: "High-strength printed Amazon courier bags meeting official seller guidelines. Features permanent adhesive strip ensuring zero-pilferage delivery for FBA and seller-fulfilled orders.",
+      features: ["Official Branding", "POD Jacket Included", "Waterproof PE Film", "Tear-Resistant"],
+      specs: {
+        sizes: "6x8, 8x10, 10x12, 12x15, 14x18 (Inches)",
+        thickness: "50-75 Micron",
+        closure: "Permanent Self-Adhesive"
+      },
+      image: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/Ecommerce%20PolyBags/Courier_bags-removebg-preview.webp",
+      images: ["https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/Ecommerce%20PolyBags/Courier_bags-removebg-preview.webp"]
+    },
+    {
+      id: "flipkart-courier-bags",
+      name: "Flipkart Printed Courier Bags",
+      slug: "flipkart-courier-bags",
+      categorySlug: "printed-plain-ecommerce-polybags",
+      tagline: "Official Flipkart Seller Polybags",
+      description: "High-strength printed Flipkart courier bags meeting official seller guidelines. Features permanent adhesive strip ensuring zero-pilferage delivery for Flipkart fulfilled orders.",
+      features: ["Official Branding", "POD Jacket Included", "Waterproof PE Film", "Tear-Resistant"],
+      specs: {
+        sizes: "6x8, 8x10, 10x12, 12x15, 14x18 (Inches)",
+        thickness: "50-75 Micron",
+        closure: "Permanent Self-Adhesive"
+      },
+      image: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/Ecommerce%20PolyBags/FLIPKART%20BAG.webp",
+      images: ["https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/Ecommerce%20PolyBags/FLIPKART%20BAG.webp"]
     },
     {
       id: "stretch-filmroll",
@@ -145,7 +211,46 @@ export const siteData = {
       image: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/STRETCH%20FLIMROLL/SF%201.webp",
       images: [
         "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/STRETCH%20FLIMROLL/SF%201.webp",
-        "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/STRETCH%20FLIMROLL/SF%202.webp"
+        "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/STRETCH%20FLIMROLL/SF%202.webp",
+        "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/STRETCH%20FLIMROLL/SF%203.webp"
+      ]
+    },
+    {
+      id: "corrugated-roll",
+      name: "Corrugated Roll",
+      slug: "corrugated-roll",
+      categorySlug: "corrugated-roll",
+      tagline: "Protective Fluted Packaging",
+      description: "Shock-absorbing corrugated paper rolls ideal for wrapping delicate items, layering between products, and edge protection during transit.",
+      features: ["Shock Absorbing", "Eco-Friendly", "Flexible Wrapping", "High Crush Resistance"],
+      specs: {
+        material: "Kraft Paper",
+        flute_type: "C or B Flute",
+        width: "Various (Customizable)",
+        form: "Continuous Roll"
+      },
+      image: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/Corrugated%20Roll/CORUGGLATED%20ROLLL.webp",
+      images: [
+        "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/Corrugated%20Roll/CORUGGLATED%20ROLLL.webp"
+      ]
+    },
+    {
+      id: "air-bubble-roll",
+      name: "Air Bubble Roll",
+      slug: "air-bubble-roll",
+      categorySlug: "air-bubble-roll",
+      tagline: "Premium Shock Protection Wrap",
+      description: "High-quality air bubble rolls providing excellent cushioning and surface protection for fragile items during transit. Lightweight and highly durable.",
+      features: ["Impact Resistance", "Lightweight", "Waterproof", "Reusable"],
+      specs: {
+        material: "Polyethylene",
+        bubble_size: "10mm (Standard)",
+        width: "1m, 1.5m (Customizable)",
+        length: "100m"
+      },
+      image: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/Air%20bubble%20roll/AIR%20BUBBLE%20ROLL%20MAIN.webp",
+      images: [
+        "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/Air%20bubble%20roll/AIR%20BUBBLE%20ROLL%20MAIN.webp"
       ]
     }
   ],

@@ -18,26 +18,46 @@ interface Props {
   params: Promise<{ location: string }>;
 }
 
+import { generateSEOMetadata } from "@/utils/seo";
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { location: slug } = await params;
   
   const location = siteData.locations.find((l) => l.slug === slug);
   if (location) {
-    return {
-      title: `Premium Packaging Solutions in ${location.name}, ${location.state} | Packmax India`,
-      description: `Leading manufacturer and supplier of BOPP Tapes and Courier Bags in ${location.name}. Fast delivery and custom branding available.`,
-    };
+    const title = `BOPP Tape Manufacturer in ${location.name}, ${location.state} | Custom Printed & Brown Tapes`;
+    const description = `Leading B2B packaging manufacturer and wholesale supplier of BOPP brown tapes, transparent box sealing tapes, and custom printed logo tapes in ${location.name}, ${location.state}. Quick 48-hour delivery.`;
+    const keywords = `bopp tape manufacturer ${location.name}, packaging tapes ${location.name}, brown cello tape supplier ${location.name}, custom logo tape ${location.name}, packaging materials wholesale ${location.name}, carton sealing tape ${location.name}`;
+    
+    return generateSEOMetadata({
+      title,
+      description,
+      path: `/${location.slug}`,
+      keywords,
+      locationName: location.name
+    });
   }
 
   const category = CATEGORIES.find(c => generateSlug(c) === slug);
   if (category) {
-    return {
-      title: `${category} Manufacturer - Buy Online | Packmax India`,
-      description: `Browse our wide range of ${category}. Direct manufacturer prices.`,
-    };
+    const isTape = category.toLowerCase().includes("tape");
+    const title = isTape
+      ? `${category} Manufacturer & Wholesaler | Buy Online`
+      : `${category} Manufacturer - Direct Factory Prices`;
+      
+    const description = `Browse our range of heavy-duty, high-performance ${category}. Direct manufacturer rates with quick dispatch for B2B e-commerce sellers and warehouses.`;
+    const keywords = `${category} manufacturer, wholesale ${category}, buy ${category} bulk, industrial packaging materials`;
+
+    return generateSEOMetadata({
+      title,
+      description,
+      path: `/${generateSlug(category)}`,
+      keywords,
+      categoryName: category
+    });
   }
 
-  return { title: "Page Not Found" };
+  return { title: "Page Not Found | Packmax India" };
 }
 
 export default async function LocationOrCategoryPage({ params }: Props) {
@@ -89,4 +109,20 @@ export default async function LocationOrCategoryPage({ params }: Props) {
   }
 
   notFound();
+}
+
+export async function generateStaticParams() {
+  const params: { location: string }[] = [];
+  
+  // 1. Add all locations
+  siteData.locations.forEach((loc) => {
+    params.push({ location: loc.slug });
+  });
+
+  // 2. Add all categories
+  CATEGORIES.forEach((cat) => {
+    params.push({ location: generateSlug(cat) });
+  });
+
+  return params;
 }

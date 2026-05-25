@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { siteData } from "@/data/siteData";
 import EcommerceCategory, { CATEGORIES } from "@/components/EcommerceCategory";
-import { MapPin, CheckCircle2, ArrowRight, ShieldCheck, Truck } from "lucide-react";
+import { MapPin, CheckCircle2, ArrowRight, ShieldCheck, Truck, Star } from "lucide-react";
 import Link from "next/link";
 import InquiryButton from "@/components/InquiryButton";
 import ProductGallery from "@/components/ProductGallery";
@@ -15,6 +15,8 @@ interface Props {
   params: Promise<{ location: string; product: string }>;
 }
 
+import { generateSEOMetadata } from "@/utils/seo";
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { location: locSlug, product: prodSlug } = await params;
   const location = siteData.locations.find((l) => l.slug === locSlug);
@@ -23,21 +25,46 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const category = CATEGORIES.find(c => generateSlug(c) === prodSlug);
   if (category) {
-    return {
-      title: `${category} Manufacturer in ${location.name} - Buy Online | Packmax India`,
-      description: `Leading manufacturer of ${category} serving ${location.name}. Direct factory prices and fast delivery.`,
-    };
+    const isTape = category.toLowerCase().includes("tape");
+    const title = isTape
+      ? `${category} Manufacturer in ${location.name}, ${location.state} | Custom BOPP Tapes`
+      : `${category} Supplier in ${location.name}, ${location.state}`;
+      
+    const description = `Leading B2B manufacturer and wholesale distributor of ${category} serving ${location.name}, ${location.state}. Get cheap direct-from-factory rates and fast dispatch.`;
+    const keywords = `${category} manufacturer ${location.name}, buy ${category} ${location.name}, wholesale ${category} ${location.name}, packaging materials ${location.name}`;
+    
+    return generateSEOMetadata({
+      title,
+      description,
+      path: `/${location.slug}/${prodSlug}`,
+      keywords,
+      locationName: location.name,
+      categoryName: category
+    });
   }
 
   const product = siteData.products.find((p) => p.slug === prodSlug);
   if (product) {
-    return {
-      title: `${product.name} in ${location.name} | Packmax India`,
-      description: `Leading manufacturer of ${product.name} serving ${location.name}.`,
-    };
+    const isTape = product.categorySlug.includes("tape") || product.slug.includes("tape");
+    const title = isTape
+      ? `${product.name} Manufacturer in ${location.name}, ${location.state} | Wholesale BOPP Tapes`
+      : `${product.name} Supplier in ${location.name}, ${location.state} | Packaging Solutions`;
+      
+    const description = `Buy premium ${product.name} supplied in ${location.name}, ${location.state} directly from our factory. High-micron B2B packaging films and rolls with 72h delivery.`;
+    const keywords = `${product.name} manufacturer ${location.name}, buy ${product.name} ${location.name}, wholesale ${product.name} ${location.name}, adhesive tape supplier ${location.name}, packaging films ${location.name}`;
+
+    return generateSEOMetadata({
+      title,
+      description,
+      path: `/${location.slug}/${product.slug}`,
+      keywords,
+      ogImage: product.image,
+      locationName: location.name,
+      productName: product.name
+    });
   }
 
-  return { title: "Page Not Found" };
+  return { title: "Page Not Found | Packmax India" };
 }
 
 export default async function LocationProductOrCategoryPage({ params }: Props) {
@@ -46,15 +73,17 @@ export default async function LocationProductOrCategoryPage({ params }: Props) {
   
   if (!location) notFound();
 
-  // If the product slug is a CATEGORY (like ecommerce-tapes), show the Ecommerce Category Page
-  const category = CATEGORIES.find(c => generateSlug(c) === prodSlug);
-  if (category) {
-    return <EcommerceCategory locationSlug={location.slug} categorySlug={generateSlug(category)} />;
-  }
-
-  // Fallback to the old Matrix Page if it's a specific product from siteData
+  // Check if it's a specific product from siteData
   const product = siteData.products.find((p) => p.slug === prodSlug);
-  if (!product) notFound();
+  
+  if (!product) {
+    // If not a product, check if it's a CATEGORY (like ecommerce-tapes)
+    const category = CATEGORIES.find(c => generateSlug(c) === prodSlug);
+    if (category) {
+      return <EcommerceCategory locationSlug={location.slug} categorySlug={generateSlug(category)} />;
+    }
+    notFound();
+  }
 
   return (
     <main className="min-h-screen bg-[var(--color-bg)] pt-32 pb-16 selection:bg-[var(--color-cta)] selection:text-white">
@@ -66,11 +95,27 @@ export default async function LocationProductOrCategoryPage({ params }: Props) {
             <MapPin className="w-4 h-4" />
             Supplying {location.name}
           </div>
-          {/* Ensure title stays in single line via truncate or line-clamp-1 if it gets too long, but flex-wrap handles natural breaks. The user wants it single line, so we will use whitespace-nowrap or flex-row. */}
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-[var(--color-heading)] tracking-tighter leading-tight uppercase flex flex-wrap gap-x-3 items-center w-full">
-            <span className="truncate max-w-full">{product.name}</span>
-            <span className="text-[var(--color-cta)] whitespace-nowrap">In {location.name}</span>
+          {/* Title single line with truncation */}
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-[var(--color-heading)] tracking-tight leading-tight uppercase truncate w-full mb-3 flex items-center gap-3">
+            {product.name} <span className="text-[var(--color-cta)] whitespace-nowrap">In {location.name}</span>
           </h1>
+
+          {/* Rating */}
+          <div className="flex items-center gap-1.5 mb-2">
+            <div className="flex text-amber-500">
+              <Star className="w-5 h-5 fill-current" />
+              <Star className="w-5 h-5 fill-current" />
+              <Star className="w-5 h-5 fill-current" />
+              <Star className="w-5 h-5 fill-current" />
+              <Star className="w-5 h-5 fill-current" opacity={0.3} />
+            </div>
+            <span className="text-sm font-black text-[var(--color-heading)] opacity-60">(4.0)</span>
+          </div>
+
+          {/* Categories */}
+          <div className="text-[11px] font-black uppercase tracking-wider text-[var(--color-heading)] opacity-50">
+            CATEGORIES: {product.categorySlug.replace(/-/g, " ")}
+          </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
@@ -135,4 +180,28 @@ export default async function LocationProductOrCategoryPage({ params }: Props) {
       </div>
     </main>
   );
+}
+
+export async function generateStaticParams() {
+  const params: { location: string; product: string }[] = [];
+
+  siteData.locations.forEach((loc) => {
+    // 1. All products for this location
+    siteData.products.forEach((prod) => {
+      params.push({
+        location: loc.slug,
+        product: prod.slug
+      });
+    });
+
+    // 2. All categories for this location
+    CATEGORIES.forEach((cat) => {
+      params.push({
+        location: loc.slug,
+        product: generateSlug(cat)
+      });
+    });
+  });
+
+  return params;
 }
