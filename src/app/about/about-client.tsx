@@ -93,7 +93,7 @@ export default function AboutClient() {
   };
 
   return (
-    <main className="min-h-screen bg-[var(--color-bg)] text-[var(--color-text)] overflow-hidden relative selection:bg-[#C05800] selection:text-[#FDFBD4] pt-28 pb-20">
+    <main className="min-h-screen bg-[var(--color-bg)] text-[var(--color-text)] overflow-hidden relative selection:bg-[#E86A12] selection:text-[#F7F5F4] pt-28 pb-20">
       
       {/* Decorative Warm Background Spots */}
       <div className="absolute top-10 right-0 w-[40rem] h-[40rem] bg-orange-100/30 rounded-full blur-[140px] pointer-events-none" />

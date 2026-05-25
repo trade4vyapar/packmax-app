@@ -28,21 +28,21 @@ export default function PremiumCTA({
   const [isHovered, setIsHovered] = useState(false);
 
   // Setup variant styling parameters
-  let defaultBg = "bg-[var(--color-heading)]";
+  let defaultBg = "bg-[#121B5A]";
   let defaultTextColor = "text-white";
   let hoverTextColor = "text-white";
   let borderStyle = "border-none";
-  let gradientClasses = "from-[var(--color-cta)] to-orange-500";
-  let shadowStyle = "shadow-lg shadow-[var(--color-cta)]/10";
-  let hoverShadow = "rgba(192, 88, 0, 0.4)";
+  let gradientClasses = "from-[#1a2870] to-[#0d1340]";
+  let shadowStyle = "shadow-lg shadow-[#121B5A]/30";
+  let hoverShadow = "rgba(18, 27, 90, 0.45)";
 
   if (variant === "secondary") {
     defaultBg = "bg-white";
-    defaultTextColor = "text-[var(--color-heading)]";
+    defaultTextColor = "text-[#121B5A]";
     borderStyle = "border border-[var(--color-border)]";
-    gradientClasses = "from-[var(--color-cta)] to-orange-500";
+    gradientClasses = "from-[#121B5A] to-[#1a2870]";
     shadowStyle = "shadow-sm";
-    hoverShadow = "rgba(192, 88, 0, 0.35)";
+    hoverShadow = "rgba(18, 27, 90, 0.2)";
   } else if (variant === "dark") {
     defaultBg = "bg-white";
     defaultTextColor = "text-[var(--color-heading)]";

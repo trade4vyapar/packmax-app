@@ -91,7 +91,7 @@ export default function Preloader() {
               className="text-center"
             >
               <h1 
-                className="text-4xl md:text-6xl font-black text-[#FDFBD4] tracking-tighter uppercase"
+                className="text-4xl md:text-6xl font-black text-[#F7F5F4] tracking-tighter uppercase"
                 style={{ fontFamily: "Space Grotesk, sans-serif" }}
               >
                 Packmax India<span className="text-[var(--color-cta)]">.</span>
@@ -108,7 +108,7 @@ export default function Preloader() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 0.4 }}
                 transition={{ delay: 1.2 }}
-                className="mt-6 text-[10px] font-black text-[#FDFBD4] uppercase tracking-[0.6em]"
+                className="mt-6 text-[10px] font-black text-[#F7F5F4] uppercase tracking-[0.6em]"
               >
                 Premium Packaging Solutions
               </motion.p>

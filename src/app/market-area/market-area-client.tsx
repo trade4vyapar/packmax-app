@@ -50,7 +50,7 @@ const itemVariants = {
 
 export default function MarketAreaClient() {
   return (
-    <main className="min-h-screen bg-[var(--color-bg)] text-[var(--color-text)] selection:bg-[#C05800] selection:text-[#FDFBD4] pb-32">
+    <main className="min-h-screen bg-[var(--color-bg)] text-[var(--color-text)] selection:bg-[#E86A12] selection:text-[#F7F5F4] pb-32">
       <div className="pt-40 px-6 max-w-6xl mx-auto">
         {/* Header */}
         <motion.div
@@ -59,7 +59,7 @@ export default function MarketAreaClient() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <div className="inline-block bg-[var(--color-cta)] text-[#FDFBD4] px-6 py-2 rounded-full font-black text-sm sm:text-lg tracking-widest uppercase shadow-md mb-8">
+          <div className="inline-block bg-[var(--color-cta)] text-[#F7F5F4] px-6 py-2 rounded-full font-black text-sm sm:text-lg tracking-widest uppercase shadow-md mb-8">
             Market Area
           </div>
           <h1
@@ -84,7 +84,7 @@ export default function MarketAreaClient() {
             <Link key={city.slug} href={`/${city.slug}`}>
               <motion.div
                 variants={itemVariants}
-                whileHover={{ scale: 1.03, y: -4, borderColor: "#C05800" }}
+                whileHover={{ scale: 1.03, y: -4, borderColor: "#E86A12" }}
                 whileTap={{ scale: 0.97 }}
                 className="bg-white border border-[var(--color-border)] rounded-2xl py-5 px-3 text-center shadow-sm hover:shadow-lg transition-all cursor-pointer"
               >

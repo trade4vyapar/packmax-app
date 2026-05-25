@@ -23,7 +23,7 @@ export default function FeaturedProducts() {
       description: "Tear-resistant, triple-co-extruded LDPE courier bags with permanent hot-melt self-adhesive closure tape and standard high-security silver liners.",
       image: "https://images.unsplash.com/photo-1595079676339-1534801ad6cf?q=80&w=2070&auto=format&fit=crop",
       specs: ["50 - 75 Micron Standard", "Tear & Water Resistant LDPE", "Tamper-Evident Security Seal", "Optional Pod Jackets"],
-      accent: "#38240D"
+      accent: "#121B5A"
     }
   ];
 

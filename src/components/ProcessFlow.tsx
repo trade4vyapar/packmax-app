@@ -19,7 +19,7 @@ export default function ProcessFlow() {
       sub: "Perfect Roll Sizes",
       desc: "We coat the tape with strong, long-lasting glue and cut the rolls into the exact width and length you need for your boxes.",
       icon: Layers,
-      color: "from-amber-600 to-[#38240D]"
+      color: "from-orange-500 to-[#121B5A]"
     },
     {
       num: "03",
@@ -27,7 +27,7 @@ export default function ProcessFlow() {
       sub: "Waterproof & Tearproof",
       desc: "We pack your rolls in strong boxes and wrap them in waterproof stretch film to keep them safe from rain and damage during shipping.",
       icon: ShieldAlert,
-      color: "from-[#38240D] to-orange-900"
+      color: "from-[#121B5A] to-[#E86A12]"
     },
     {
       num: "04",
@@ -59,7 +59,7 @@ export default function ProcessFlow() {
     <section className="py-24 px-6 bg-white border-t border-[var(--color-border)] relative overflow-hidden">
       
       {/* Grid Pattern Background */}
-      <div className="absolute inset-0 pointer-events-none opacity-[0.02] bg-[radial-gradient(#C05800_1px,transparent_1px)] [background-size:24px_24px]" />
+      <div className="absolute inset-0 pointer-events-none opacity-[0.02] bg-[radial-gradient(#E86A12_1px,transparent_1px)] [background-size:24px_24px]" />
 
       <div className="max-w-7xl mx-auto relative z-10">
         

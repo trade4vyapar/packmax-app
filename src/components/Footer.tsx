@@ -27,7 +27,7 @@ export default function Footer() {
       whileInView={isHomepage ? { opacity: 1, y: 0 } : undefined}
       viewport={isHomepage ? { once: true, margin: "-100px" } : undefined}
       transition={isHomepage ? { duration: 1.2, ease: [0.16, 1, 0.3, 1] } : undefined}
-      className="bg-[var(--color-heading)] text-[#FDFBD4] pt-8 pb-6 px-6 sm:pt-16 sm:pb-8 sm:px-8 lg:px-20 overflow-hidden relative"
+      className="bg-gradient-to-b from-[#0A0F2C] to-[#040614] text-[#F7F5F4] pt-8 pb-6 px-6 sm:pt-16 sm:pb-8 sm:px-8 lg:px-20 overflow-hidden relative"
     >
       {/* Decorative Background */}
       <div className="absolute top-0 right-0 w-1/3 h-full bg-white opacity-[0.02] -skew-x-12 translate-x-1/2" />
@@ -53,7 +53,7 @@ export default function Footer() {
                   whileHover={{ 
                     scale: 1.15,
                     y: -3, 
-                    color: "#C05800",
+                    color: "#E86A12",
                     backgroundColor: "rgba(255, 255, 255, 0.1)"
                   }}
                   whileTap={{ scale: 0.9 }}

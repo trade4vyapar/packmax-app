@@ -5,13 +5,13 @@
 :root {
   --font-inter: 'Inter', sans-serif;
   --font-space: 'Space Grotesk', sans-serif;
-  --color-bg: #FDFBD4;
-  --color-text: #713600;
-  --color-heading: #38240D;
-  --color-cta: #C05800;
-  --color-cta-hover: #a34a00;
-  --color-border: rgba(113, 54, 0, 0.1);
-  --color-glass: rgba(253, 251, 212, 0.7);
+  --color-bg: #F7F5F4;
+  --color-text: #5F6675;
+  --color-heading: #121B5A;
+  --color-cta: #E86A12;
+  --color-cta-hover: #c95c0d;
+  --color-border: #E5E5E5;
+  --color-glass: rgba(247, 245, 244, 0.7);
 }
 
 

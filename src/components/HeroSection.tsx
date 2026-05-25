@@ -19,7 +19,7 @@ const slides = [
     headingLine2: "Your Identity",
     tagline: "Precision-engineered B2B packaging solutions",
     description: "Elevate your brand presence with custom-printed tapes, rolls, and industrial-grade courier bags designed for modern businesses.",
-    color: "#C05800",
+    color: "#E86A12",
     icon: Package
   },
   {
@@ -28,7 +28,7 @@ const slides = [
     headingLine2: "Packing Tapes",
     tagline: "Put your company logo on your shipping boxes",
     description: "Make your brand look premium. We print your company logo or name directly on high-quality adhesive tape with your exact brand colors and sizes.",
-    color: "#38240D",
+    color: "#121B5A",
     icon: ShieldCheck
   },
   {
@@ -37,7 +37,7 @@ const slides = [
     headingLine2: "Courier Bags",
     tagline: "Strong waterproof mailing bags for online stores",
     description: "Strong, tamper-proof courier bags exactly like Amazon and Flipkart use. Available in all standard sizes with strong glue peel-seals to keep packages safe.",
-    color: "#C05800",
+    color: "#E86A12",
     icon: Box
   }
 ];
@@ -106,7 +106,7 @@ export default function HeroSection({ locationName }: { locationName?: string })
                 className="w-full flex flex-col items-start"
               >
                 <h1
-                  className="text-[2.2rem] xs:text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.05] mb-6 text-[var(--color-heading)]"
+                  className="text-[2.2rem] xs:text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.05] mb-6 text-[#121B5A]"
                 >
                   {slides[currentSlide].headingLine1} <br />
                   <span className="text-[var(--color-cta)]">{currentSlide === 0 && locationName ? `Delivered in ${locationName}` : slides[currentSlide].headingLine2}</span>
