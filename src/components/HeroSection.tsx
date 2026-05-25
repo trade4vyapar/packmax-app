@@ -99,9 +99,9 @@ export default function HeroSection({ locationName }: { locationName?: string })
             <AnimatePresence custom={direction} mode="wait">
               <motion.div
                 key={currentSlide}
-                initial={{ opacity: 0, y: direction > 0 ? 40 : -40, scale: 0.97, filter: "blur(8px)" }}
-                animate={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
-                exit={{ opacity: 0, y: direction > 0 ? -40 : 40, scale: 0.97, filter: "blur(8px)" }}
+                initial={{ opacity: 0, x: direction > 0 ? 30 : -30 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: direction > 0 ? -30 : 30 }}
                 transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
                 className="w-full flex flex-col items-start"
               >
@@ -239,9 +239,9 @@ export default function HeroSection({ locationName }: { locationName?: string })
           <AnimatePresence custom={direction} mode="wait">
             <motion.div
               key={currentSlide}
-              initial={{ opacity: 0, scale: 0.8, rotate: direction > 0 ? -8 : 8, y: direction > 0 ? 40 : -40, filter: "blur(8px)" }}
-              animate={{ opacity: 1, scale: 1, rotate: 0, y: 0, filter: "blur(0px)" }}
-              exit={{ opacity: 0, scale: 0.8, rotate: direction > 0 ? 8 : -8, y: direction > 0 ? -40 : 40, filter: "blur(8px)" }}
+              initial={{ opacity: 0, x: direction > 0 ? 40 : -40, rotate: direction > 0 ? -4 : 4 }}
+              animate={{ opacity: 1, x: 0, rotate: 0 }}
+              exit={{ opacity: 0, x: direction > 0 ? -40 : 40, rotate: direction > 0 ? 4 : -4 }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               className="relative w-80 h-80 lg:w-96 lg:h-96"
             >

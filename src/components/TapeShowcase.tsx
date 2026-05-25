@@ -9,10 +9,13 @@ import PremiumCTA from "@/components/PremiumCTA";
 const MotionLink = motion.create(Link);
 
 export default function TapeShowcase() {
-  // Filter only the tapes category
-  const tapes = siteData.products.filter(
-    (p) => p.categorySlug === "ecommerce-tapes"
-  );
+  // Curated list of varied top sellers for the homepage to replace the old tape-only logic
+  const featuredProducts = [
+    siteData.products.find(p => p.slug === "bopp-brown-tape"),
+    siteData.products.find(p => p.slug === "stretch-filmroll"),
+    siteData.products.find(p => p.slug === "courier-bags"),
+    siteData.products.find(p => p.slug === "printed-logo-tape"),
+  ].filter(Boolean) as typeof siteData.products;
 
   // Animation variants
   const scaleReveal = {
@@ -48,11 +51,11 @@ export default function TapeShowcase() {
           <div>
             <span className="text-[9px] font-black uppercase tracking-[0.3em] text-[var(--color-cta)] block mb-2">Top Sellers</span>
             <h2 className="text-2xl sm:text-4xl font-black text-[var(--color-heading)] uppercase tracking-tight leading-none">
-              Printed Tapes & Bags
+              Featured Packaging
             </h2>
           </div>
           <p className="text-xs font-bold text-[var(--color-heading)] opacity-50 max-w-sm">
-            Strong packing tapes and waterproof shipping bags that keep your parcels safe during transport.
+            Our most requested industrial packaging solutions, directly supplied from our manufacturing hubs to your business.
           </p>
         </motion.div>
 
@@ -64,7 +67,7 @@ export default function TapeShowcase() {
           variants={stagger}
           className="flex overflow-x-auto gap-5 pb-6 px-1 -mx-6 md:mx-0 md:px-0 md:overflow-visible md:grid md:grid-cols-4 md:gap-6 scrollbar-hide snap-x"
         >
-          {tapes.map((prod) => (
+          {featuredProducts.map((prod) => (
             <motion.div 
               key={prod.id}
               variants={scaleReveal}

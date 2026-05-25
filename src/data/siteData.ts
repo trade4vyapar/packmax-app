@@ -74,7 +74,13 @@ export const siteData = {
         thickness: "40-55 Micron",
         length: "65m, 100m, 650m"
       },
-      image: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=2070&auto=format&fit=crop"
+      image: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/BOPP%20Brown%20Tape/48MM_50M_TS.webp",
+      images: [
+        "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/BOPP%20Brown%20Tape/48MM_50M_TS.webp",
+        "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/BOPP%20Brown%20Tape/48MM_65M_TS2.webp",
+        "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/BOPP%20Brown%20Tape/Perfect1.webp",
+        "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/BOPP%20Brown%20Tape/width%2055.webp"
+      ]
     },
     {
       id: "transparent-packaging-tape",
@@ -121,6 +127,26 @@ export const siteData = {
         closure: "Permanent Self-Adhesive"
       },
       image: "https://images.unsplash.com/photo-1566576721346-d4a3b4eaad5b?q=80&w=1974&auto=format&fit=crop"
+    },
+    {
+      id: "stretch-filmroll",
+      name: "Stretch Film Roll",
+      slug: "stretch-filmroll",
+      categorySlug: "stretch-filmroll",
+      tagline: "Industrial Pallet Wrapping Film",
+      description: "High stretchability and puncture-resistant stretch wrap film, designed for securing pallets and providing excellent load stability during transportation.",
+      features: ["High Clarity", "Puncture Resistant", "Tear Resistant", "Excellent Cling"],
+      specs: {
+        material: "LLDPE",
+        thickness: "23 Micron (Standard)",
+        width: "500mm",
+        weight: "1.5 kg, 2 kg, 2.5 kg, 3 kg rolls"
+      },
+      image: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/STRETCH%20FLIMROLL/SF%201.webp",
+      images: [
+        "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/STRETCH%20FLIMROLL/SF%201.webp",
+        "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/STRETCH%20FLIMROLL/SF%202.webp"
+      ]
     }
   ],
   locations: [
@@ -152,5 +178,5 @@ export const siteData = {
   ]
 };
 
-export type Product = typeof siteData.products[0];
+export type Product = typeof siteData.products[0] & { images?: string[] };
 export type Location = typeof siteData.locations[0];

@@ -5,6 +5,7 @@ import EcommerceCategory, { CATEGORIES } from "@/components/EcommerceCategory";
 import { MapPin, CheckCircle2, ArrowRight, ShieldCheck, Truck } from "lucide-react";
 import Link from "next/link";
 import InquiryButton from "@/components/InquiryButton";
+import ProductGallery from "@/components/ProductGallery";
 
 function generateSlug(name: string) {
   return name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
@@ -56,62 +57,61 @@ export default async function LocationProductOrCategoryPage({ params }: Props) {
   if (!product) notFound();
 
   return (
-    <main className="min-h-screen bg-[var(--color-bg)] pt-28 pb-16 selection:bg-[var(--color-cta)] selection:text-white">
+    <main className="min-h-screen bg-[var(--color-bg)] pt-32 pb-16 selection:bg-[var(--color-cta)] selection:text-white">
       <div className="max-w-7xl mx-auto px-6 lg:px-16">
         
         {/* Compact SEO Header */}
         <div className="mb-10 pb-8 border-b border-[var(--color-border)]">
-          <div className="inline-flex items-center gap-2 text-[var(--color-cta)] font-black text-[9px] uppercase tracking-[0.4em] mb-4">
-            <MapPin className="w-3 h-3" />
+          <div className="inline-flex items-center gap-2.5 text-[var(--color-cta)] font-black text-[11px] uppercase tracking-[0.4em] mb-4">
+            <MapPin className="w-4 h-4" />
             Supplying {location.name}
           </div>
-          <h1 className="text-4xl lg:text-5xl font-black text-[var(--color-heading)] tracking-tighter leading-tight uppercase">
-            {product.name} <br />
-            <span className="text-[var(--color-cta)]">In {location.name}</span>
+          {/* Ensure title stays in single line via truncate or line-clamp-1 if it gets too long, but flex-wrap handles natural breaks. The user wants it single line, so we will use whitespace-nowrap or flex-row. */}
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-[var(--color-heading)] tracking-tighter leading-tight uppercase flex flex-wrap gap-x-3 items-center w-full">
+            <span className="truncate max-w-full">{product.name}</span>
+            <span className="text-[var(--color-cta)] whitespace-nowrap">In {location.name}</span>
           </h1>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
           
           {/* Left: Compact Visual */}
-          <div className="lg:col-span-6">
-            <div className="relative aspect-[16/9] rounded-[2.5rem] overflow-hidden bg-white border border-[var(--color-border)] shadow-lg mb-8">
-              <img src={product.image} alt={product.name} className="w-full h-full object-cover" />
-              <div className="absolute bottom-6 left-6 bg-white/90 backdrop-blur-md px-4 py-2 rounded-xl border border-white/20">
-                <p className="text-[8px] font-black uppercase tracking-widest text-[var(--color-heading)] opacity-50 mb-1">Direct Delivery</p>
-                <p className="text-[10px] font-black uppercase text-[var(--color-cta)]">Manufacturing hub: Indore</p>
-              </div>
-            </div>
+          <div className="lg:col-span-5">
+            <ProductGallery 
+              images={product.images || [product.image]} 
+              name={product.name} 
+              locationName={location.name} 
+            />
 
-            <div className="prose prose-sm max-w-none text-[var(--color-text)] font-medium leading-relaxed">
-              <p className="mb-4">Looking for high-quality {product.name} in {location.name}? Packmax India provides industrial-grade packaging solutions delivered directly from our Indore manufacturing facility to your doorstep in {location.name}.</p>
+            <div className="prose prose-base max-w-none text-[var(--color-text)] font-medium leading-relaxed mt-8">
+              <p className="mb-4 text-base leading-relaxed">Looking for high-quality {product.name} in {location.name}? Packmax India provides industrial-grade packaging solutions delivered directly from our Indore manufacturing facility to your doorstep in {location.name}.</p>
               <div className="grid grid-cols-2 gap-4 mt-6">
-                <div className="flex items-center gap-3 bg-white p-4 rounded-2xl border border-[var(--color-border)]">
-                    <Truck className="w-5 h-5 text-[var(--color-cta)]" />
-                    <span className="text-[9px] font-black uppercase tracking-widest opacity-60">72h Delivery</span>
+                <div className="flex items-center justify-center gap-3 bg-white p-5 rounded-2xl border border-[var(--color-border)] shadow-sm">
+                    <Truck className="w-6 h-6 text-[var(--color-cta)]" />
+                    <span className="text-[11px] font-black uppercase tracking-widest opacity-70">72h Delivery</span>
                 </div>
-                <div className="flex items-center gap-3 bg-white p-4 rounded-2xl border border-[var(--color-border)]">
-                    <ShieldCheck className="w-5 h-5 text-[var(--color-cta)]" />
-                    <span className="text-[9px] font-black uppercase tracking-widest opacity-60">Tested Quality</span>
+                <div className="flex items-center justify-center gap-3 bg-white p-5 rounded-2xl border border-[var(--color-border)] shadow-sm">
+                    <ShieldCheck className="w-6 h-6 text-[var(--color-cta)]" />
+                    <span className="text-[11px] font-black uppercase tracking-widest opacity-70">Tested Quality</span>
                 </div>
               </div>
             </div>
           </div>
 
           {/* Right: Technical Specs & Inquiry */}
-          <div className="lg:col-span-6 space-y-6">
-            <div className="bg-[var(--color-heading)] text-white p-8 rounded-[2.5rem] shadow-xl">
-              <div className="flex justify-between items-center mb-6">
-                <h3 className="text-[10px] font-black text-[var(--color-cta)] uppercase tracking-[0.3em]">Technical Profile</h3>
-                <Link href={`/products/${product.slug}`} className="text-[9px] font-black uppercase tracking-widest text-white/30 hover:text-[var(--color-cta)] transition-colors">
+          <div className="lg:col-span-7 space-y-8">
+            <div className="bg-[var(--color-heading)] text-white p-10 rounded-[2.5rem] shadow-xl">
+              <div className="flex justify-between items-center mb-8">
+                <h3 className="text-xs font-black text-[var(--color-cta)] uppercase tracking-[0.3em]">Technical Profile</h3>
+                <Link href={`/products/${product.slug}`} className="text-[10px] font-black uppercase tracking-widest text-white/30 hover:text-[var(--color-cta)] transition-colors">
                   Product Details
                 </Link>
               </div>
-              <div className="grid grid-cols-2 gap-6 mb-8">
+              <div className="grid grid-cols-2 gap-8 mb-10">
                 {Object.entries(product.specs).map(([key, value]) => (
-                  <div key={key} className="border-b border-white/5 pb-3">
-                    <span className="block text-[8px] font-black uppercase tracking-widest text-white/30 mb-1">{key.replace("_", " ")}</span>
-                    <span className="text-xs font-bold">{value}</span>
+                  <div key={key} className="border-b border-white/10 pb-4">
+                    <span className="block text-[10px] sm:text-[11px] font-black uppercase tracking-widest text-white/40 mb-1.5">{key.replace("_", " ")}</span>
+                    <span className="text-sm sm:text-base font-bold">{value as React.ReactNode}</span>
                   </div>
                 ))}
               </div>
@@ -120,12 +120,12 @@ export default async function LocationProductOrCategoryPage({ params }: Props) {
             </div>
 
             {/* Quick Benefits */}
-            <div className="bg-white p-8 rounded-[2.5rem] border border-[var(--color-border)]">
-              <div className="flex flex-wrap gap-x-8 gap-y-4">
+            <div className="bg-white p-8 rounded-[2.5rem] border border-[var(--color-border)] shadow-sm">
+              <div className="flex flex-wrap gap-x-8 gap-y-5">
                 {product.features.slice(0, 3).map((f) => (
                   <div key={f} className="flex items-center gap-3">
-                    <CheckCircle2 className="w-4 h-4 text-[var(--color-cta)]" />
-                    <span className="text-[9px] font-black uppercase tracking-widest text-[var(--color-heading)] opacity-60">{f}</span>
+                    <CheckCircle2 className="w-5 h-5 text-[var(--color-cta)]" />
+                    <span className="text-[11px] sm:text-xs font-black uppercase tracking-widest text-[var(--color-heading)] opacity-70">{f}</span>
                   </div>
                 ))}
               </div>

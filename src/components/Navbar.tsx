@@ -195,11 +195,12 @@ export default function Navbar() {
             <motion.div
               layout
               className="flex items-center bg-white rounded-full p-1.5 shadow-sm overflow-hidden"
-              style={{ width: isSearchActive ? 320 : 180 }}
+              style={{ width: isSearchActive ? 320 : 52 }}
+              transition={{ type: "spring", stiffness: 300, damping: 25 }}
             >
               <button
                 onClick={() => setIsSearchActive(!isSearchActive)}
-                className="w-10 h-10 rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors text-[var(--color-heading)]"
+                className="w-10 h-10 shrink-0 rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors text-[var(--color-heading)]"
               >
                 <AnimatePresence mode="wait">
                   {isSearchActive ? (
@@ -226,18 +227,26 @@ export default function Navbar() {
                 </AnimatePresence>
               </button>
 
-              <motion.input
-                layout
-                type="text"
-                placeholder="What are you looking for?"
-                className="bg-transparent border-none outline-none px-3 text-sm font-medium text-[var(--color-text)] placeholder:text-gray-400 w-full"
-                onFocus={() => setIsSearchActive(true)}
-                onBlur={(e) => {
-                  if (e.target.value === "") {
-                    setIsSearchActive(false);
-                  }
-                }}
-              />
+              <AnimatePresence>
+                {isSearchActive && (
+                  <motion.input
+                    layout
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                    type="text"
+                    placeholder="What are you looking for?"
+                    className="bg-transparent border-none outline-none px-3 text-sm font-medium text-[var(--color-text)] placeholder:text-gray-400 w-full"
+                    onFocus={() => setIsSearchActive(true)}
+                    onBlur={(e) => {
+                      if (e.target.value === "") {
+                        setIsSearchActive(false);
+                      }
+                    }}
+                  />
+                )}
+              </AnimatePresence>
             </motion.div>
           </div>
         </div>

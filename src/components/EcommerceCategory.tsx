@@ -119,15 +119,15 @@ export default function EcommerceCategory({ locationSlug, categorySlug }: { loca
                   className="group bg-white border border-gray-200 rounded-2xl p-4 shadow-sm hover:shadow-lg hover:border-gray-300 transition-all duration-300 flex flex-col cursor-pointer"
                 >
                   
-                  {/* Compact Image Container */}
-                  <div className="w-full h-44 mb-4 rounded-xl bg-gray-50 overflow-hidden relative border border-gray-100 flex items-center justify-center">
+                  {/* Improved Image Container */}
+                  <div className="w-full h-56 mb-4 rounded-xl bg-gray-50 overflow-hidden relative border border-gray-100 flex items-center justify-center p-4">
                     <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-2.5 py-1 rounded-md shadow-sm text-[9px] font-bold uppercase tracking-wider text-gray-700 z-10 border border-gray-200">
                       In Stock
                     </div>
                     <img 
                       src={prod.image} 
                       alt={prod.name} 
-                      className="w-full h-full object-cover rounded-xl group-hover:scale-105 transition-transform duration-500 ease-out" 
+                      className="w-full h-full object-contain rounded-xl group-hover:scale-105 transition-transform duration-500 ease-out drop-shadow-sm" 
                     />
                   </div>
                   
