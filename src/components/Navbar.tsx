@@ -165,7 +165,7 @@ export default function Navbar() {
   const segments = pathname.split('/').filter(Boolean);
   const possibleLocation = segments[0] || '';
   const isLocation = siteData.locations.some(l => l.slug === possibleLocation);
-  const locationPrefix = isLocation ? `/${possibleLocation}` : '';
+  const locationPrefix = isLocation ? `/${possibleLocation}` : '/indore';
   const isHomepage = pathname === "/";
 
   return (

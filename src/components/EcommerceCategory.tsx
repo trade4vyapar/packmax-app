@@ -1,6 +1,6 @@
 import { siteData } from "@/data/siteData";
 import Link from "next/link";
-import { ChevronRight, ArrowRight, PackageSearch } from "lucide-react";
+import { ChevronRight, ArrowRight, PackageSearch, Star } from "lucide-react";
 
 export const CATEGORIES = [
   "Ecommerce Tapes",
@@ -111,39 +111,45 @@ export default function EcommerceCategory({ locationSlug, categorySlug }: { loca
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
               {displayProducts.map((prod) => (
                 <Link 
                   key={prod.id} 
                   href={`${locationPrefix}/${prod.slug}`}
-                  className="group bg-white border border-gray-200 rounded-2xl p-4 shadow-sm hover:shadow-lg hover:border-gray-300 transition-all duration-300 flex flex-col cursor-pointer"
+                  className="group bg-white rounded-[2rem] border border-gray-100 p-4 sm:p-5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] hover:-translate-y-1.5 transition-all duration-500 flex flex-col cursor-pointer text-center relative overflow-hidden"
                 >
-                  
-                  {/* Improved Image Container */}
-                  <div className="w-full h-56 mb-4 rounded-xl bg-gray-50 overflow-hidden relative border border-gray-100 flex items-center justify-center p-4">
-                    <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-2.5 py-1 rounded-md shadow-sm text-[9px] font-bold uppercase tracking-wider text-gray-700 z-10 border border-gray-200">
-                      In Stock
-                    </div>
+                  {/* Premium Image Container */}
+                  <div className="w-full aspect-[4/3] mb-6 relative flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100/50 rounded-[1.5rem] p-6 group-hover:shadow-inner transition-all duration-500">
                     <img 
                       src={prod.image} 
                       alt={prod.name} 
-                      className="w-full h-full object-contain rounded-xl group-hover:scale-105 transition-transform duration-500 ease-out drop-shadow-sm" 
+                      className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700 ease-out drop-shadow-sm" 
                     />
                   </div>
                   
                   {/* Details */}
-                  <div className="flex-1 flex flex-col">
-                    <h4 className="text-base font-bold text-gray-900 leading-tight mb-1.5 group-hover:text-[var(--color-cta)] transition-colors">{prod.name}</h4>
-                    <p className="text-xs text-gray-500 leading-relaxed mb-4 line-clamp-2">{prod.description}</p>
+                  <div className="flex-1 flex flex-col items-center px-2">
+                    <h4 className="text-[16px] sm:text-[18px] font-black text-[var(--color-heading)] leading-snug mb-3 group-hover:text-[var(--color-cta)] transition-colors line-clamp-2">{prod.name}</h4>
                     
-                    <div className="mt-auto pt-3 border-t border-gray-100 flex items-center justify-between">
-                      <div className="flex flex-col">
-                        <span className="text-[9px] font-semibold text-gray-400 uppercase tracking-wider mb-0.5">Price</span>
-                        <span className="text-base font-black text-gray-900">{prod.price}</span>
-                      </div>
-                      
-                      <div className="bg-gray-900 text-white group-hover:bg-[var(--color-cta)] flex items-center justify-center gap-1.5 px-4 py-2 rounded-lg text-xs font-bold transition-colors duration-300 shadow-sm">
-                        Select Options <ArrowRight className="w-3.5 h-3.5" />
+                    <div className="flex items-center justify-center text-amber-400 mb-4 gap-0.5">
+                      <Star className="w-4 h-4 fill-current" />
+                      <Star className="w-4 h-4 fill-current" />
+                      <Star className="w-4 h-4 fill-current" />
+                      <Star className="w-4 h-4 fill-current" />
+                      <Star className="w-4 h-4 fill-current" opacity={0.4} />
+                      <span className="text-[12px] text-gray-400 font-bold ml-2">(4.5)</span>
+                    </div>
+
+                    <div className="bg-orange-50/80 text-[var(--color-cta)] border border-orange-100/50 px-4 py-1.5 rounded-full font-black text-[14px] sm:text-[15px] mb-6">
+                      ₹150 - ₹2500
+                    </div>
+                    
+                    {/* Premium Animated Button */}
+                    <div className="w-full mt-auto relative overflow-hidden rounded-xl">
+                      <div className="absolute inset-0 bg-[#0B122A] transition-transform duration-500"></div>
+                      <div className="absolute inset-0 bg-gradient-to-r from-[var(--color-cta)] to-orange-500 translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
+                      <div className="relative flex items-center justify-center px-4 py-3.5 text-white text-[13px] font-black tracking-widest uppercase z-10 gap-2">
+                        Select Options
                       </div>
                     </div>
                   </div>
