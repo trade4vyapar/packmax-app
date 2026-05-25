@@ -137,7 +137,7 @@ export default function Footer() {
             © 2021 - {new Date().getFullYear()} Packmax India. All rights reserved.
           </p>
           <div className="hidden md:flex gap-10">
-            {["Terms", "Privacy", "Shipping", "Sitemap"].map((item) => (
+            {["Terms", "Shipping", "Sitemap"].map((item) => (
               <Link key={item} href={`/${item.toLowerCase()}`} className="text-[10px] font-black text-white/30 hover:text-white uppercase tracking-[0.3em] transition-colors">
                 {item}
               </Link>
