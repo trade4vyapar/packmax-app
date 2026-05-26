@@ -82,13 +82,7 @@ export default function ProductClientPage({ slug, locationSlug, locationName }: 
                 <span className="text-sm font-medium text-[var(--color-text)]">(4.5)</span>
               </div>
 
-              {/* Price */}
-              <div className="mb-6 flex items-center flex-wrap gap-4">
-                <span className="text-3xl font-black tracking-tight text-[var(--color-heading)]">₹150 - ₹2500</span>
-                <div className="text-[10px] sm:text-xs text-[var(--color-cta)] font-black uppercase tracking-widest bg-[var(--color-cta)]/10 px-3 py-1.5 rounded-full border border-[var(--color-cta)]/20">
-                  (MRP) Inclusive of taxes
-                </div>
-              </div>
+
 
               {/* Categories */}
               <div className="text-[11px] sm:text-xs text-[var(--color-text)] mb-8 flex items-center gap-2">
@@ -321,16 +315,12 @@ export default function ProductClientPage({ slug, locationSlug, locationName }: 
                   {rp.description || `High-quality ${rp.name.toLowerCase()} suitable for various packaging and industrial needs.`}
                 </p>
 
-                <div className="mt-auto flex items-end justify-between border-t border-gray-50 pt-4">
-                  <div>
-                    <span className="block text-[9px] font-black uppercase tracking-widest text-gray-400 mb-1">PRICE</span>
-                    <span className="text-sm sm:text-base font-black text-[var(--color-heading)]">Request Quote</span>
-                  </div>
+                <div className="mt-auto border-t border-gray-50 pt-4">
                   <Link 
                     href={`/products/${rp.slug}`} 
-                    className="bg-[#0B122A] text-white text-[11px] font-bold px-4 py-2.5 rounded-lg flex items-center gap-2 hover:bg-[var(--color-cta)] hover:shadow-lg hover:shadow-[var(--color-cta)]/20 transition-all border border-transparent"
+                    className="w-full bg-[#0B122A] text-white text-[12px] sm:text-[13px] font-black tracking-widest uppercase px-4 py-3 rounded-xl flex items-center justify-center gap-2 hover:bg-[var(--color-cta)] hover:shadow-lg hover:shadow-[var(--color-cta)]/20 transition-all border border-transparent"
                   >
-                    Select Options <ChevronRight className="w-3 h-3" />
+                    Select Options <ChevronRight className="w-4 h-4" />
                   </Link>
                 </div>
               </motion.div>

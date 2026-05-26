@@ -25,7 +25,7 @@ export default function ShippingClient() {
             <div className="bg-gray-50 p-6 rounded-2xl border border-gray-100 flex flex-col items-center text-center">
               <Truck className="w-8 h-8 text-[var(--color-cta)] mb-4" />
               <h3 className="text-sm font-black uppercase tracking-wider text-gray-900 mb-2">Local Delivery</h3>
-              <p className="text-xs text-gray-500 font-medium">Free shipping in Indore & Bhopal for bulk orders over ₹25,000.</p>
+              <p className="text-xs text-gray-500 font-medium">Free shipping in Indore & Bhopal for bulk orders.</p>
             </div>
             <div className="bg-gray-50 p-6 rounded-2xl border border-gray-100 flex flex-col items-center text-center">
               <MapPin className="w-8 h-8 text-[var(--color-cta)] mb-4" />

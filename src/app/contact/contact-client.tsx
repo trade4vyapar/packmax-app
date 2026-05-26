@@ -359,67 +359,7 @@ export default function ContactClient() {
 
         </div>
 
-        {/* 3. CORPORATE MANUFACTURING LOCATIONS GRID */}
-        <section className="mt-28">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8 }}
-            className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 border-b border-[var(--color-border)] pb-8"
-          >
-            <div>
-              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-[var(--color-cta)] block mb-2">Industrial Presence</span>
-              <h2 className="text-3xl sm:text-4xl font-black text-[var(--color-heading)] uppercase tracking-tight">Corporate Office Coordinates</h2>
-            </div>
-            <p className="text-sm font-bold text-[var(--color-heading)] opacity-40 max-w-sm">
-              Explore dynamic local marketplaces and dispatch hubs serving our national clientele.
-            </p>
-          </motion.div>
 
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={stagger}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
-          >
-            {siteData.locations.slice(0, 4).map((loc) => (
-              <motion.div
-                key={loc.slug}
-                variants={fadeInUp}
-                className="bg-white border border-[var(--color-border)] rounded-[2.5rem] p-6 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
-              >
-                <div>
-                  <div className="w-full aspect-[16/10] rounded-2xl bg-[var(--color-bg)] overflow-hidden mb-6 relative border border-[var(--color-border)]">
-                    <img
-                      src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop"
-                      alt={loc.name}
-                      className="w-full h-full object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-                    <span className="absolute bottom-4 left-4 text-xs font-black uppercase tracking-widest text-white">{loc.name}</span>
-                  </div>
-
-                  <span className="text-[8px] font-black uppercase tracking-widest text-[var(--color-cta)] block mb-2">Regional Address</span>
-
-                  <p className="text-[11px] font-black text-[var(--color-heading)] opacity-80 leading-relaxed mb-6">
-                    {loc.address}
-                  </p>
-                </div>
-
-                <PremiumCTA 
-                  href={`/${loc.slug}`}
-                  label="Browse Location Hub"
-                  variant="secondary"
-                  icon={<ArrowRight className="w-3.5 h-3.5" />}
-                  wFull={true}
-                  className="py-3.5 text-[9px] h-10"
-                />
-              </motion.div>
-            ))}
-          </motion.div>
-        </section>
 
       </div>
     </main>

@@ -176,13 +176,15 @@ export default function Navbar() {
   const isLocation = siteData.locations.some(l => l.slug === possibleLocation);
   const locationPrefix = isLocation ? `/${possibleLocation}` : '/indore';
   const isHomepage = pathname === "/";
+  const isLocationPage = segments.length === 1 && isLocation;
+  const hasHeroBanner = isHomepage || isLocationPage;
 
   return (
     <>
       <motion.header
-        initial={isHomepage ? { y: -100, opacity: 0 } : false}
-        animate={isHomepage ? { y: 0, opacity: 1 } : false}
-        transition={isHomepage ? { duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.3 } : undefined}
+        initial={hasHeroBanner ? { y: -100, opacity: 0 } : false}
+        animate={hasHeroBanner ? { y: 0, opacity: 1 } : false}
+        transition={hasHeroBanner ? { duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.3 } : undefined}
         className="fixed top-0 left-0 right-0 z-50 py-6 px-8 flex items-center justify-between pointer-events-none"
       >
         <div className="flex items-center gap-6 pointer-events-auto">
@@ -192,7 +194,7 @@ export default function Navbar() {
             className="group relative px-5 py-2.5 bg-transparent rounded-full flex items-center justify-center transition-all duration-300 pointer-events-auto"
           >
             <h1
-              className={`text-2xl sm:text-3xl font-black tracking-tight leading-none transition-colors duration-300 ${isScrolled ? 'text-[var(--color-heading)]' : 'text-white'}`}
+              className={`text-2xl sm:text-3xl font-black tracking-tight leading-none transition-colors duration-300 ${(!hasHeroBanner || isScrolled) ? 'text-[var(--color-heading)]' : 'text-white'}`}
               style={{ fontFamily: "Space Grotesk, sans-serif" }}
             >
               PackMax<span className="text-[10px] sm:text-[12px] align-top font-bold text-[var(--color-cta)]">®</span>

@@ -116,10 +116,10 @@ export default function EcommerceCategory({ locationSlug, categorySlug }: { loca
                 <Link 
                   key={prod.id} 
                   href={`${locationPrefix}/${prod.slug}`}
-                  className="group bg-white rounded-[2rem] border border-gray-100 p-4 sm:p-5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] hover:-translate-y-1.5 transition-all duration-500 flex flex-col cursor-pointer text-center relative overflow-hidden"
+                  className="group bg-white rounded-[1.5rem] sm:rounded-[2rem] border border-gray-100 p-3 sm:p-4 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] hover:-translate-y-1.5 transition-all duration-500 flex flex-col cursor-pointer text-center relative overflow-hidden"
                 >
                   {/* Premium Image Container */}
-                  <div className="w-full aspect-[4/3] mb-6 relative flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100/50 rounded-[1.5rem] p-6 group-hover:shadow-inner transition-all duration-500">
+                  <div className="w-full h-48 sm:h-52 mb-4 relative flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100/50 rounded-xl sm:rounded-[1.25rem] p-4 group-hover:shadow-inner transition-all duration-500">
                     <img 
                       src={prod.image} 
                       alt={prod.name} 
@@ -128,27 +128,25 @@ export default function EcommerceCategory({ locationSlug, categorySlug }: { loca
                   </div>
                   
                   {/* Details */}
-                  <div className="flex-1 flex flex-col items-center px-2">
-                    <h4 className="text-[16px] sm:text-[18px] font-black text-[var(--color-heading)] leading-snug mb-3 group-hover:text-[var(--color-cta)] transition-colors line-clamp-2">{prod.name}</h4>
+                  <div className="flex-1 flex flex-col items-center px-1 sm:px-2">
+                    <h4 className="text-[15px] sm:text-[17px] font-black text-[var(--color-heading)] leading-snug mb-2 group-hover:text-[var(--color-cta)] transition-colors line-clamp-2">{prod.name}</h4>
                     
-                    <div className="flex items-center justify-center text-amber-400 mb-4 gap-0.5">
-                      <Star className="w-4 h-4 fill-current" />
-                      <Star className="w-4 h-4 fill-current" />
-                      <Star className="w-4 h-4 fill-current" />
-                      <Star className="w-4 h-4 fill-current" />
-                      <Star className="w-4 h-4 fill-current" opacity={0.4} />
-                      <span className="text-[12px] text-gray-400 font-bold ml-2">(4.5)</span>
+                    <div className="flex items-center justify-center text-amber-400 mb-3 gap-0.5">
+                      <Star className="w-3.5 h-3.5 fill-current" />
+                      <Star className="w-3.5 h-3.5 fill-current" />
+                      <Star className="w-3.5 h-3.5 fill-current" />
+                      <Star className="w-3.5 h-3.5 fill-current" />
+                      <Star className="w-3.5 h-3.5 fill-current" opacity={0.4} />
+                      <span className="text-[11px] text-gray-400 font-bold ml-1.5">(4.5)</span>
                     </div>
 
-                    <div className="bg-orange-50/80 text-[var(--color-cta)] border border-orange-100/50 px-4 py-1.5 rounded-full font-black text-[14px] sm:text-[15px] mb-6">
-                      ₹150 - ₹2500
-                    </div>
+
                     
                     {/* Premium Animated Button */}
-                    <div className="w-full mt-auto relative overflow-hidden rounded-xl">
+                    <div className="w-full mt-auto relative overflow-hidden rounded-lg sm:rounded-xl">
                       <div className="absolute inset-0 bg-[#0B122A] transition-transform duration-500"></div>
                       <div className="absolute inset-0 bg-gradient-to-r from-[var(--color-cta)] to-orange-500 translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
-                      <div className="relative flex items-center justify-center px-4 py-3.5 text-white text-[13px] font-black tracking-widest uppercase z-10 gap-2">
+                      <div className="relative flex items-center justify-center px-3 py-2.5 sm:py-3 text-white text-[12px] font-black tracking-widest uppercase z-10 gap-2">
                         Select Options
                       </div>
                     </div>
