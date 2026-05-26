@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Star, ShieldCheck } from "lucide-react";
+import { Star, ShieldCheck, ChevronLeft, ChevronRight } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface ProductGalleryProps {
   images: string[];
@@ -10,12 +11,20 @@ interface ProductGalleryProps {
 }
 
 export default function ProductGallery({ images, name, locationName }: ProductGalleryProps) {
-  const [activeImage, setActiveImage] = useState(images[0]);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const nextImage = () => {
+    setActiveIndex((prev) => (prev + 1) % images.length);
+  };
+
+  const prevImage = () => {
+    setActiveIndex((prev) => (prev - 1 + images.length) % images.length);
+  };
 
   return (
     <div className="space-y-4">
       {/* Main Image Container */}
-      <div className="relative aspect-square sm:aspect-[4/3] rounded-[2.5rem] overflow-hidden bg-white border border-[var(--color-border)] shadow-sm flex items-center justify-center p-6">
+      <div className="relative aspect-square sm:aspect-[4/3] rounded-[2.5rem] overflow-hidden bg-white border border-[var(--color-border)] shadow-sm flex items-center justify-center p-6 group">
         
         {/* Rating Circular Badge */}
         <div className="absolute top-6 left-6 z-10 flex flex-col items-center justify-center w-16 h-16 bg-white rounded-full shadow-lg border border-gray-100">
@@ -33,12 +42,39 @@ export default function ProductGallery({ images, name, locationName }: ProductGa
           </p>
         </div>
 
-        <img 
-          src={activeImage} 
-          alt={name} 
-          className="w-full h-full object-contain rounded-xl drop-shadow-sm transition-opacity duration-300"
-          key={activeImage}
-        />
+        <div className="relative w-full h-full overflow-hidden rounded-xl">
+          <div 
+            className="flex w-full h-full transition-transform duration-500 ease-in-out"
+            style={{ transform: `translateX(-${activeIndex * 100}%)` }}
+          >
+            {images.map((img, idx) => (
+              <img 
+                key={idx}
+                src={img} 
+                alt={`${name} image ${idx + 1}`} 
+                className="w-full h-full object-contain shrink-0 drop-shadow-sm"
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* Carousel Navigation Arrows */}
+        {images.length > 1 && (
+          <>
+            <button 
+              onClick={prevImage}
+              className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 backdrop-blur-sm p-2 sm:p-3 rounded-full shadow-md text-gray-600 hover:text-[var(--color-cta)] hover:bg-white opacity-0 group-hover:opacity-100 transition-all border border-gray-100 z-10"
+            >
+              <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
+            </button>
+            <button 
+              onClick={nextImage}
+              className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 backdrop-blur-sm p-2 sm:p-3 rounded-full shadow-md text-gray-600 hover:text-[var(--color-cta)] hover:bg-white opacity-0 group-hover:opacity-100 transition-all border border-gray-100 z-10"
+            >
+              <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
+            </button>
+          </>
+        )}
       </div>
 
       {/* Sub Images (Thumbnails) */}
@@ -47,9 +83,9 @@ export default function ProductGallery({ images, name, locationName }: ProductGa
           {images.map((img, idx) => (
             <button
               key={idx}
-              onClick={() => setActiveImage(img)}
+              onClick={() => setActiveIndex(idx)}
               className={`relative w-20 h-20 shrink-0 rounded-2xl overflow-hidden bg-white border-2 transition-all ${
-                activeImage === img 
+                activeIndex === idx 
                   ? "border-[var(--color-cta)] shadow-md scale-105" 
                   : "border-[var(--color-border)] opacity-60 hover:opacity-100"
               }`}
