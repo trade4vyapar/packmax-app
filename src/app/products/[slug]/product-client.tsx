@@ -7,6 +7,7 @@ import { ChevronRight, Star, ShoppingCart, Mail, Plus, Minus, ChevronDown, Chevr
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import ProductGallery from "@/components/ProductGallery";
+import InquiryButton from "@/components/InquiryButton";
 
 export default function ProductClientPage({ slug, locationSlug, locationName }: { slug: string; locationSlug?: string; locationName?: string }) {
   const product = siteData.products.find((p) => p.slug === slug);
@@ -130,15 +131,15 @@ export default function ProductClientPage({ slug, locationSlug, locationName }: 
                   </motion.button>
                 </Link>
 
-                <Link href="/contact" className="flex-1 block">
-                  <motion.button 
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
+                <div className="flex-1 block">
+                  <InquiryButton 
+                    locationName={locationName || "India"}
+                    productName={product.name}
                     className="w-full h-full bg-gradient-to-r from-[var(--color-cta)] to-[#f97316] text-white py-4 px-6 rounded-xl font-black uppercase tracking-widest text-xs sm:text-sm shadow-xl shadow-[var(--color-cta)]/20 hover:shadow-2xl hover:shadow-[var(--color-cta)]/30 transition-all flex items-center justify-center gap-3 border border-white/10"
                   >
                     <Mail className="w-5 h-5" /> Bulk Enquiry
-                  </motion.button>
-                </Link>
+                  </InquiryButton>
+                </div>
               </div>
             </div>
           </div>
