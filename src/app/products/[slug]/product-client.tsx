@@ -108,8 +108,8 @@ export default function ProductClientPage({ slug, locationSlug, locationName }: 
                       whileTap={{ scale: 0.95 }}
                       onClick={() => setSelectedSize(size)}
                       className={`px-4 py-2 text-xs sm:text-sm font-bold uppercase tracking-wider rounded-xl transition-all duration-300 ${selectedSize === size
-                          ? "bg-[var(--color-cta)] text-white shadow-lg shadow-[var(--color-cta)]/20"
-                          : "bg-gray-100/80 text-[var(--color-heading)]/60 hover:bg-gray-200"
+                        ? "bg-[var(--color-cta)] text-white shadow-lg shadow-[var(--color-cta)]/20"
+                        : "bg-gray-100/80 text-[var(--color-heading)]/60 hover:bg-gray-200"
                         }`}
                     >
                       {size}
