@@ -61,75 +61,213 @@ export const siteData = {
       image: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/TAPES/MEESHO%20TAPE.webp"
     },
     {
-      id: "bopp-brown-tape",
-      name: "Brown BOPP Packaging Tape",
-      slug: "brown-bopp-packaging-tape",
+      id: "brown-bopp-48-50",
+      name: "48mm Brown Tape (50m)",
+      slug: "brown-bopp-48mm-50m",
       categorySlug: "bopp-brown-tape",
-      tagline: "High-Adhesion Industrial Packaging Tape",
-      description: "Our premium Brown BOPP tape is engineered for heavy-duty sealing. With superior tensile strength and long-lasting adhesive, it ensures your packages remain secure during long-distance transit.",
-      features: ["48mm & 72mm Widths", "High Micron Coating", "Temperature Resistant", "Easy Unwind"],
+      tagline: "Standard Industrial Sealing",
+      description: "Our premium 48mm Brown BOPP tape engineered for reliable box sealing. 50-meter length roll perfect for everyday fulfillment operations.",
+      features: ["48mm Width", "50m Length", "High Adhesion", "Easy Unwind"],
       specs: {
-        material: "Biaxially Oriented Polypropylene",
-        adhesive: "Acrylic / Hotmelt",
-        thickness: "40-55 Micron",
-        length: "65m, 100m, 650m"
+        material: "BOPP",
+        adhesive: "Acrylic",
+        thickness: "40 Micron",
+        length: "50m"
       },
       image: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/BOPP%20Brown%20Tape/48MM_50M_TS.webp",
-      images: [
-        "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/BOPP%20Brown%20Tape/48MM_50M_TS.webp",
-        "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/BOPP%20Brown%20Tape/48MM_65M_TS2.webp",
-        "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/BOPP%20Brown%20Tape/Perfect1.webp",
-        "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/BOPP%20Brown%20Tape/width%2055.webp"
-      ]
+      images: ["https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/BOPP%20Brown%20Tape/48MM_50M_TS.webp"]
     },
     {
-      id: "transparent-packaging-tape",
-      name: "Transparent Packaging Tape",
-      slug: "transparent-packaging-tape",
+      id: "brown-bopp-48-65",
+      name: "48mm Heavy Duty Brown Tape (65m)",
+      slug: "brown-bopp-48mm-65m",
+      categorySlug: "bopp-brown-tape",
+      tagline: "Extended Length Industrial Tape",
+      description: "Extended 65-meter length brown packaging tape for high-volume packing stations. Ensures fewer roll changes and consistent sealing.",
+      features: ["48mm Width", "65m Length", "Heavy Duty", "High Micron"],
+      specs: {
+        material: "BOPP",
+        adhesive: "Acrylic / Hotmelt",
+        thickness: "45 Micron",
+        length: "65m"
+      },
+      image: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/BOPP%20Brown%20Tape/48MM_65M_TS2.webp",
+      images: ["https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/BOPP%20Brown%20Tape/48MM_65M_TS2.webp"]
+    },
+    {
+      id: "brown-bopp-standard",
+      name: "Standard Brown Packaging Tape",
+      slug: "standard-brown-packaging-tape",
+      categorySlug: "bopp-brown-tape",
+      tagline: "Classic Box Sealing Tape",
+      description: "The industry standard brown carton sealing tape. Provides an opaque, tamper-evident seal for a variety of corrugated boxes.",
+      features: ["Opaque Brown", "Strong Grip", "Tear Resistant", "General Purpose"],
+      specs: {
+        material: "BOPP",
+        adhesive: "Pressure Sensitive",
+        thickness: "42 Micron",
+        length: "Various"
+      },
+      image: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/BOPP%20Brown%20Tape/Perfect1.webp",
+      images: ["https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/BOPP%20Brown%20Tape/Perfect1.webp"]
+    },
+    {
+      id: "brown-bopp-wide",
+      name: "Wide Brown Packaging Tape (55mm)",
+      slug: "wide-brown-packaging-tape",
+      categorySlug: "bopp-brown-tape",
+      tagline: "Extra Wide Security Seal",
+      description: "Extra-wide 55mm brown packaging tape designed for oversized cartons and heavy-duty shipping requirements.",
+      features: ["55mm Extra Wide", "Maximum Security", "Heavy Load Capable", "Thick Micron"],
+      specs: {
+        material: "BOPP",
+        adhesive: "Industrial Hotmelt",
+        thickness: "50 Micron",
+        width: "55mm"
+      },
+      image: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/BOPP%20Brown%20Tape/width%2055.webp",
+      images: ["https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/BOPP%20Brown%20Tape/width%2055.webp"]
+    },
+    {
+      id: "transparent-tape-standard",
+      name: "Standard Transparent Tape",
+      slug: "standard-transparent-tape",
       categorySlug: "bopp-transparent-tape",
-      tagline: "Crystal Clear Branding & Sealing",
-      description: "Perfect for secondary packaging and general purpose sealing. Our transparent tapes provide a clean, professional look while maintaining industrial-grade stickiness.",
+      tagline: "Crystal Clear Sealing",
+      description: "Perfect for secondary packaging and general purpose sealing. Provides a clean, professional look.",
       features: ["Ultra-Clear Finish", "Non-Yellowing Adhesive", "UV Resistant", "Strong Grip"],
       specs: {
         material: "BOPP Film",
-        adhesive: "Pressure Sensitive Acrylic",
-        thickness: "42-50 Micron",
-        length: "Customizable"
+        adhesive: "Acrylic",
+        thickness: "42 Micron",
+        width: "48mm"
       },
       image: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/BOPP%20Transparent%20Tape/BOOP%20TRANS%20TAPE%201.webp",
-      images: [
-        "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/BOPP%20Transparent%20Tape/BOOP%20TRANS%20TAPE%201.webp",
-        "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/BOPP%20Transparent%20Tape/BOOP%20TRANS%20TAPE%202.webp",
-        "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/BOPP%20Transparent%20Tape/BOOP%20TRANS%20TAPE%203.webp",
-        "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/BOPP%20Transparent%20Tape/BOOP%20TRANS%20TAPE%204.webp",
-        "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/BOPP%20Transparent%20Tape/BOOP%20TRANS%20TAPE%205.webp"
-      ]
+      images: ["https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/BOPP%20Transparent%20Tape/BOOP%20TRANS%20TAPE%201.webp"]
     },
     {
-      id: "bopp-color-tape",
-      name: "Colored BOPP Tape",
-      slug: "colored-bopp-tape",
+      id: "transparent-tape-industrial",
+      name: "Industrial Clear Tape",
+      slug: "industrial-clear-tape",
+      categorySlug: "bopp-transparent-tape",
+      tagline: "Heavy-Duty Transparent Seal",
+      description: "Industrial-grade stickiness for demanding packaging environments while maintaining perfect clarity.",
+      features: ["High Adhesion", "Heavy Duty", "Weather Resistant", "Clear Finish"],
+      specs: {
+        material: "BOPP Film",
+        adhesive: "Acrylic",
+        thickness: "50 Micron",
+        width: "72mm"
+      },
+      image: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/BOPP%20Transparent%20Tape/BOOP%20TRANS%20TAPE%202.webp",
+      images: ["https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/BOPP%20Transparent%20Tape/BOOP%20TRANS%20TAPE%202.webp"]
+    },
+    {
+      id: "transparent-tape-small-core",
+      name: "Small Core Transparent Tape",
+      slug: "small-core-transparent-tape",
+      categorySlug: "bopp-transparent-tape",
+      tagline: "Compact Clear Packaging",
+      description: "Compact rolls of high-quality transparent tape, perfect for office use and smaller packaging tasks.",
+      features: ["Compact Size", "Easy Tear", "Clear Finish", "Multi-purpose"],
+      specs: {
+        material: "BOPP Film",
+        adhesive: "Acrylic",
+        thickness: "40 Micron",
+        width: "24mm"
+      },
+      image: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/BOPP%20Transparent%20Tape/BOOP%20TRANS%20TAPE%203.webp",
+      images: ["https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/BOPP%20Transparent%20Tape/BOOP%20TRANS%20TAPE%203.webp"]
+    },
+    {
+      id: "transparent-tape-narrow",
+      name: "Narrow Transparent Tape",
+      slug: "narrow-transparent-tape",
+      categorySlug: "bopp-transparent-tape",
+      tagline: "Precision Clear Sealing",
+      description: "Narrow width transparent tape for precise sealing and bundling of smaller items.",
+      features: ["Precision Width", "Strong Hold", "Invisible Seal", "Flexible"],
+      specs: {
+        material: "BOPP Film",
+        adhesive: "Acrylic",
+        thickness: "45 Micron",
+        width: "12mm"
+      },
+      image: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/BOPP%20Transparent%20Tape/BOOP%20TRANS%20TAPE%204.webp",
+      images: ["https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/BOPP%20Transparent%20Tape/BOOP%20TRANS%20TAPE%204.webp"]
+    },
+    {
+      id: "transparent-tape-thin",
+      name: "Thin Clear Packaging Tape",
+      slug: "thin-clear-packaging-tape",
+      categorySlug: "bopp-transparent-tape",
+      tagline: "Economical Transparent Wrap",
+      description: "Cost-effective, thin transparent tape for lightweight packaging and everyday sealing needs.",
+      features: ["Economical", "Lightweight", "Good Adhesion", "Clear"],
+      specs: {
+        material: "BOPP Film",
+        adhesive: "Acrylic",
+        thickness: "38 Micron",
+        width: "18mm"
+      },
+      image: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/BOPP%20Transparent%20Tape/BOOP%20TRANS%20TAPE%205.webp",
+      images: ["https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/BOPP%20Transparent%20Tape/BOOP%20TRANS%20TAPE%205.webp"]
+    },
+    {
+      id: "bopp-color-assorted",
+      name: "Assorted Color BOPP Tapes",
+      slug: "assorted-color-bopp-tapes",
       categorySlug: "bopp-color-tape",
       tagline: "Vibrant Color Packaging Tapes",
-      description: "High-quality colored BOPP tapes ideal for inventory management, color-coding, and distinctive brand packaging.",
+      description: "High-quality assorted colored BOPP tapes ideal for inventory management and distinctive brand packaging.",
       features: ["Vibrant Colors", "High Adhesion", "Durable", "Color Coding"],
+      specs: {
+        material: "BOPP Film",
+        adhesive: "Acrylic",
+        thickness: "40-50 Micron",
+        colors: "Red, Blue, Green, Yellow, Brown, Black, White"
+      },
+      image: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/BOPP%20Color%20Tape/COLOR%20TAPE%201.webp",
+      images: ["https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/BOPP%20Color%20Tape/COLOR%20TAPE%201.webp"]
+    },
+    {
+      id: "bopp-color-coding",
+      name: "Color Coding BOPP Tapes",
+      slug: "color-coding-bopp-tapes",
+      categorySlug: "bopp-color-tape",
+      tagline: "Organize Your Inventory",
+      description: "Standard width colored BOPP tapes for efficient warehouse color-coding and product identification.",
+      features: ["Easy Identification", "High Adhesion", "Durable", "Multi-Color"],
       specs: {
         material: "BOPP Film",
         adhesive: "Acrylic",
         thickness: "40-50 Micron",
         colors: "Red, Blue, Green, Yellow"
       },
-      image: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/BOPP%20Color%20Tape/COLOR%20TAPE%201.webp",
-      images: [
-        "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/BOPP%20Color%20Tape/COLOR%20TAPE%201.webp",
-        "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/BOPP%20Color%20Tape/COLOR%20TAPE%202.webp",
-        "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/BOPP%20Color%20Tape/COLOR%20TAPE%203.webp"
-      ]
+      image: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/BOPP%20Color%20Tape/COLOR%20TAPE%202.webp",
+      images: ["https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/BOPP%20Color%20Tape/COLOR%20TAPE%202.webp"]
     },
     {
-      id: "printed-logo-tape",
-      name: "Printed Logo Tape",
-      slug: "printed-logo-tape",
+      id: "bopp-color-high-vis",
+      name: "High Visibility Color Tape",
+      slug: "high-visibility-color-tape",
+      categorySlug: "bopp-color-tape",
+      tagline: "Stand Out Packaging",
+      description: "Bright, high-visibility colored tapes ensuring your packages stand out and are handled appropriately.",
+      features: ["Bright Colors", "Strong Grip", "Durable", "Weather Resistant"],
+      specs: {
+        material: "BOPP Film",
+        adhesive: "Acrylic",
+        thickness: "45-50 Micron",
+        colors: "Various"
+      },
+      image: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/BOPP%20Color%20Tape/COLOR%20TAPE%203.webp",
+      images: ["https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/BOPP%20Color%20Tape/COLOR%20TAPE%203.webp"]
+    },
+    {
+      id: "printed-logo-tape-1",
+      name: "Custom Brand Printed Tape",
+      slug: "custom-brand-printed-tape",
       categorySlug: "custom-brand-logo-name-printed-tape",
       tagline: "Turn Your Tape into a Marketing Tool",
       description: "Boost your brand visibility with custom printed tapes. We print your company logo and brand colors directly on the tape, doubling as a tamper-evident seal.",
@@ -140,11 +278,39 @@ export const siteData = {
         min_order: "72 Rolls"
       },
       image: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/Custom%20Brand%20Logo%20Name%20Printed%20tape/CUSTOM%20BRAND%202.webp",
-      images: [
-        "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/Custom%20Brand%20Logo%20Name%20Printed%20tape/CUSTOM%20BRAND%202.webp",
-        "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/Custom%20Brand%20Logo%20Name%20Printed%20tape/CUSTOM%20BRAND%20TAPE%201.webp",
-        "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/Custom%20Brand%20Logo%20Name%20Printed%20tape/CUSTOM%20BRAND%20TAPE%203.webp"
-      ]
+      images: ["https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/Custom%20Brand%20Logo%20Name%20Printed%20tape/CUSTOM%20BRAND%202.webp"]
+    },
+    {
+      id: "printed-logo-tape-2",
+      name: "Multi-Color Printed Tape",
+      slug: "multi-color-printed-tape",
+      categorySlug: "custom-brand-logo-name-printed-tape",
+      tagline: "Vibrant Brand Display",
+      description: "Eye-catching multi-color printed tapes for maximum brand impact during unboxing.",
+      features: ["Vibrant Inks", "High Adhesion", "Custom Widths", "Scratch Resistant"],
+      specs: {
+        printing: "Multi-Color Rotogravure",
+        base_colors: "Various",
+        min_order: "144 Rolls"
+      },
+      image: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/Custom%20Brand%20Logo%20Name%20Printed%20tape/CUSTOM%20BRAND%20TAPE%201.webp",
+      images: ["https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/Custom%20Brand%20Logo%20Name%20Printed%20tape/CUSTOM%20BRAND%20TAPE%201.webp"]
+    },
+    {
+      id: "printed-logo-tape-3",
+      name: "Branded Kraft & White Tape",
+      slug: "branded-kraft-white-tape",
+      categorySlug: "custom-brand-logo-name-printed-tape",
+      tagline: "Classic Corporate Branding",
+      description: "Professional printed tapes on classic brown (kraft) or solid white base for an elegant corporate look.",
+      features: ["High Contrast Print", "Industrial Grade", "Tamper Evident", "Standard Pricing"],
+      specs: {
+        printing: "1 or 2 Colors",
+        base_colors: "Brown, White",
+        min_order: "72 Rolls"
+      },
+      image: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/Custom%20Brand%20Logo%20Name%20Printed%20tape/CUSTOM%20BRAND%20TAPE%203.webp",
+      images: ["https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/Custom%20Brand%20Logo%20Name%20Printed%20tape/CUSTOM%20BRAND%20TAPE%203.webp"]
     },
     {
       id: "plain-courier-bags",
@@ -195,25 +361,55 @@ export const siteData = {
       images: ["https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/Ecommerce%20PolyBags/FLIPKART%20BAG.webp"]
     },
     {
-      id: "stretch-filmroll",
-      name: "Stretch Film Roll Wrap",
-      slug: "stretch-film-wrap",
+      id: "stretch-film-hand",
+      name: "Hand Grade Stretch Film",
+      slug: "hand-grade-stretch-film",
       categorySlug: "stretch-filmroll",
-      tagline: "Industrial Pallet Wrapping Film",
-      description: "High stretchability and puncture-resistant stretch wrap film, designed for securing pallets and providing excellent load stability during transportation.",
+      tagline: "Industrial Manual Pallet Wrap",
+      description: "High stretchability and puncture-resistant stretch wrap film, designed for manual wrapping of pallets and providing excellent load stability.",
       features: ["High Clarity", "Puncture Resistant", "Tear Resistant", "Excellent Cling"],
       specs: {
         material: "LLDPE",
         thickness: "23 Micron (Standard)",
         width: "500mm",
-        weight: "1.5 kg, 2 kg, 2.5 kg, 3 kg rolls"
+        weight: "1.5 kg, 2 kg, 2.5 kg rolls"
       },
       image: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/STRETCH%20FLIMROLL/SF%201.webp",
-      images: [
-        "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/STRETCH%20FLIMROLL/SF%201.webp",
-        "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/STRETCH%20FLIMROLL/SF%202.webp",
-        "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/STRETCH%20FLIMROLL/SF%203.webp"
-      ]
+      images: ["https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/STRETCH%20FLIMROLL/SF%201.webp"]
+    },
+    {
+      id: "stretch-film-machine",
+      name: "Machine Grade Stretch Film",
+      slug: "machine-grade-stretch-film",
+      categorySlug: "stretch-filmroll",
+      tagline: "Heavy-Duty Automated Wrapping",
+      description: "Premium heavy-duty stretch film formulated for high-speed automated wrapping machines, ensuring maximum tension and load security.",
+      features: ["High Stretch Yield", "Heavy Load Capable", "Consistent Thickness", "No Breakage"],
+      specs: {
+        material: "LLDPE",
+        thickness: "25-30 Micron",
+        width: "500mm",
+        weight: "3 kg, 5 kg rolls"
+      },
+      image: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/STRETCH%20FLIMROLL/SF%202.webp",
+      images: ["https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/STRETCH%20FLIMROLL/SF%202.webp"]
+    },
+    {
+      id: "stretch-film-mini",
+      name: "Mini Stretch Film Roll",
+      slug: "mini-stretch-film-roll",
+      categorySlug: "stretch-filmroll",
+      tagline: "Compact Bundling Wrap",
+      description: "Small, easy-to-handle stretch rolls ideal for bundling small items, tubes, wires, or wrapping individual boxes before shipping.",
+      features: ["Easy Application", "Core Handle", "Leaves No Residue", "Flexible"],
+      specs: {
+        material: "LLDPE",
+        thickness: "23 Micron",
+        width: "100mm, 150mm",
+        weight: "Various"
+      },
+      image: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/STRETCH%20FLIMROLL/SF%203.webp",
+      images: ["https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/STRETCH%20FLIMROLL/SF%203.webp"]
     },
     {
       id: "corrugated-roll",
@@ -252,6 +448,38 @@ export const siteData = {
       images: [
         "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/Air%20bubble%20roll/AIR%20BUBBLE%20ROLL%20MAIN.webp"
       ]
+    },
+    {
+      id: "box-strapping-clip",
+      name: "Box Strapping Clips",
+      slug: "box-strapping-clips",
+      categorySlug: "box-strapping-roll-clip",
+      tagline: "Secure Metal Fasteners",
+      description: "Heavy-duty metal clips designed to tightly secure box strapping rolls, ensuring your heavy shipments stay completely intact during transit.",
+      features: ["Rust Resistant", "High Tension Grip", "Heavy Duty", "Easy to Crimp"],
+      specs: {
+        material: "Galvanized Steel",
+        size: "Standard",
+        compatibility: "PP & PET Strapping"
+      },
+      image: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/Box%20Strapping%20roll%20%26%20clip/STRAPPING%20CLIP.webp",
+      images: ["https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/Box%20Strapping%20roll%20%26%20clip/STRAPPING%20CLIP.webp"]
+    },
+    {
+      id: "box-strapping-roll",
+      name: "Box Strapping Roll",
+      slug: "box-strapping-roll",
+      categorySlug: "box-strapping-roll-clip",
+      tagline: "High Tensile Packaging Strap",
+      description: "Durable and flexible plastic strapping rolls. Perfect for securing heavy pallets, reinforcing cartons, and bundling industrial materials.",
+      features: ["High Tensile Strength", "Flexible", "Weather Resistant", "Non-Corrosive"],
+      specs: {
+        material: "Polypropylene (PP)",
+        width: "12mm, 15mm, 19mm",
+        thickness: "0.5mm - 1.0mm"
+      },
+      image: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/Box%20Strapping%20roll%20%26%20clip/STRAPPING%20ROLLL.webp",
+      images: ["https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/Box%20Strapping%20roll%20%26%20clip/STRAPPING%20ROLLL.webp"]
     }
   ],
   locations: [

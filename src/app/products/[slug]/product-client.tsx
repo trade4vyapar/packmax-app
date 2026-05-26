@@ -141,6 +141,38 @@ export default function ProductClientPage({ slug, locationSlug, locationName }: 
                   </InquiryButton>
                 </div>
               </div>
+
+              {/* Additional Information Section (matching reference layout) */}
+              <div className="mt-8 pt-8 border-t border-black/5">
+                <h3 className="text-sm font-black tracking-widest text-[var(--color-heading)] uppercase mb-6 flex items-center justify-between">
+                  Additional Information <ChevronDown className="w-4 h-4 opacity-50" />
+                </h3>
+                
+                <div className="space-y-3 mb-6">
+                  <div className="font-bold text-[var(--color-heading)] text-sm mb-4">{product.categorySlug.replace(/-/g, " ")}</div>
+                  {Object.entries(product.specs).map(([key, value]) => (
+                    <div key={key} className="text-sm">
+                      <span className="font-bold text-[var(--color-heading)] capitalize">{key.replace(/_/g, " ")}:</span>
+                      <span className="text-[var(--color-text)] ml-2">{value}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="text-sm text-[var(--color-text)] leading-relaxed mb-6 font-medium">
+                  {product.description}
+                </div>
+
+                <div>
+                  <h4 className="text-sm font-bold text-[var(--color-heading)] mb-3">Key benefits:</h4>
+                  <ul className="list-decimal pl-4 space-y-2 text-sm text-[var(--color-text)]">
+                    {product.features.map((feature, i) => (
+                      <li key={i} className="pl-1">
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -148,89 +180,6 @@ export default function ProductClientPage({ slug, locationSlug, locationName }: 
         {/* Accordions Section */}
         <div className="mt-12 bg-white/80 backdrop-blur-xl rounded-[2rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-white/40 overflow-hidden relative z-10">
           <div className="p-2 sm:p-4 space-y-2">
-          {/* Description */}
-          <div className="rounded-xl overflow-hidden transition-colors">
-            <button 
-              onClick={() => toggleTab("desc")}
-              className={`w-full flex items-center justify-between p-5 sm:p-6 text-left font-black tracking-widest uppercase text-sm sm:text-base transition-colors ${activeTab === 'desc' ? 'text-[var(--color-heading)] bg-gray-50/80' : 'text-[var(--color-heading)]/70 hover:bg-gray-50/50'}`}
-            >
-              <span>DESCRIPTION</span>
-              <motion.div animate={{ rotate: activeTab === "desc" ? 180 : 0 }} transition={{ duration: 0.2 }}>
-                <ChevronDown className="w-5 h-5" />
-              </motion.div>
-            </button>
-            <AnimatePresence>
-              {activeTab === "desc" && (
-                <motion.div 
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: "auto", opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: 0.3, ease: "easeInOut" }}
-                  className="overflow-hidden bg-gray-50/80"
-                >
-                  <div className="p-5 sm:p-8 pt-0 text-[var(--color-text)]">
-                    <h3 className="text-xl sm:text-2xl font-black text-[var(--color-heading)] mb-6 tracking-tight">{product.name} Manufacturer in {locationName || "India"} - Shop Now</h3>
-                    <div className="mb-6 bg-white p-6 rounded-2xl shadow-sm border border-black/5">
-                      <span className="font-black text-[var(--color-heading)] uppercase tracking-widest text-xs opacity-60 mb-3 block">Features</span>
-                      <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        {product.features.map((f, i) => (
-                          <li key={i} className="flex items-center gap-2 font-semibold">
-                            <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-cta)]" /> {f}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                    <div className="bg-white p-6 rounded-2xl shadow-sm border border-black/5">
-                      <span className="font-black text-[var(--color-heading)] uppercase tracking-widest text-xs opacity-60 mb-3 block">Benefits</span>
-                      <p className="leading-relaxed font-medium text-gray-600">{product.description}</p>
-                    </div>
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-
-          <div className="h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent mx-6 my-1" />
-
-          {/* Additional Information */}
-          <div className="rounded-xl overflow-hidden transition-colors">
-            <button 
-              onClick={() => toggleTab("info")}
-              className={`w-full flex items-center justify-between p-5 sm:p-6 text-left font-black tracking-widest uppercase text-sm sm:text-base transition-colors ${activeTab === 'info' ? 'text-[var(--color-heading)] bg-gray-50/80' : 'text-[var(--color-heading)]/70 hover:bg-gray-50/50'}`}
-            >
-              <span>ADDITIONAL INFORMATION</span>
-              <motion.div animate={{ rotate: activeTab === "info" ? 180 : 0 }} transition={{ duration: 0.2 }}>
-                <ChevronDown className="w-5 h-5" />
-              </motion.div>
-            </button>
-            <AnimatePresence>
-              {activeTab === "info" && (
-                <motion.div 
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: "auto", opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: 0.3, ease: "easeInOut" }}
-                  className="overflow-hidden bg-gray-50/80"
-                >
-                  <div className="p-5 sm:p-8 pt-0 text-[var(--color-text)]">
-                    <div className="bg-white rounded-2xl shadow-sm border border-black/5 overflow-hidden">
-                      <table className="w-full text-sm sm:text-base text-left">
-                        <tbody>
-                          {Object.entries(product.specs).map(([key, value], i) => (
-                            <tr key={key} className={`group ${i !== Object.keys(product.specs).length - 1 ? 'border-b border-gray-100' : ''}`}>
-                              <td className="py-4 px-6 font-black tracking-widest text-[var(--color-heading)]/60 uppercase w-1/3 bg-gray-50/50 group-hover:bg-gray-50 transition-colors">{key.replace("_", " ")}</td>
-                              <td className="py-4 px-6 font-bold text-[var(--color-heading)] group-hover:bg-gray-50/30 transition-colors">{value}</td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-
           <div className="h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent mx-6 my-1" />
 
           {/* Reviews */}

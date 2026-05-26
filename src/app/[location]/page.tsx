@@ -4,7 +4,6 @@ import { siteData } from "@/data/siteData";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import HeroSection from "@/components/HeroSection";
-import ServicesSection from "@/components/ServicesSection";
 import FeaturesSection from "@/components/FeaturesSection";
 import EcommerceCategory, { CATEGORIES } from "@/components/EcommerceCategory";
 import TapeShowcase from "@/components/TapeShowcase";
@@ -70,7 +69,6 @@ export default async function LocationOrCategoryPage({ params }: Props) {
     return (
       <main className="min-h-screen bg-[var(--color-bg)] text-[var(--color-text)] overflow-hidden relative selection:bg-[#E86A12] selection:text-[#F7F5F4]">
         <HeroSection locationName={location.name} />
-        <ServicesSection />
         <TapeShowcase />
         <FeaturesSection locationName={location.name} locationSlug={location.slug} />
         
