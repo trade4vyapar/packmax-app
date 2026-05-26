@@ -11,10 +11,10 @@ const MotionLink = motion.create(Link);
 export default function TapeShowcase() {
   // Curated list of varied top sellers for the homepage to replace the old tape-only logic
   const featuredProducts = [
-    siteData.products.find(p => p.slug === "bopp-brown-tape"),
-    siteData.products.find(p => p.slug === "stretch-filmroll"),
-    siteData.products.find(p => p.slug === "courier-bags"),
     siteData.products.find(p => p.slug === "printed-logo-tape"),
+    siteData.products.find(p => p.slug === "brown-bopp-packaging-tape"),
+    siteData.products.find(p => p.slug === "stretch-film-wrap"),
+    siteData.products.find(p => p.slug === "plain-courier-bags"),
   ].filter(Boolean) as typeof siteData.products;
 
   // Animation variants

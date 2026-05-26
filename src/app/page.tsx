@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
+import ServicesSection from "@/components/ServicesSection";
 import TapeShowcase from "@/components/TapeShowcase";
 import FeaturesSection from "@/components/FeaturesSection";
 import ProcessFlow from "@/components/ProcessFlow";
@@ -16,6 +17,7 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-[var(--color-bg)] text-[var(--color-text)] overflow-hidden relative selection:bg-[#E86A12] selection:text-[#F7F5F4]">
       <HeroSection />
+      <ServicesSection />
       <TapeShowcase />
       <FeaturesSection />
       <ProcessFlow />

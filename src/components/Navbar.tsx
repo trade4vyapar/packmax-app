@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Search, X, ChevronDown, Menu, Globe } from "lucide-react";
 import Link from "next/link";
@@ -160,6 +160,15 @@ export default function Navbar() {
   const [isSearchActive, setIsSearchActive] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileProductsOpen, setMobileProductsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
   
   const pathname = usePathname() || "";
   const segments = pathname.split('/').filter(Boolean);
@@ -180,10 +189,10 @@ export default function Navbar() {
           {/* Logo */}
           <Link 
             href="/" 
-            className="group relative px-5 py-2.5 bg-white lg:bg-transparent rounded-full shadow-sm lg:shadow-none flex items-center justify-center transition-all duration-300 pointer-events-auto"
+            className="group relative px-5 py-2.5 bg-transparent rounded-full flex items-center justify-center transition-all duration-300 pointer-events-auto"
           >
             <h1
-              className="text-2xl sm:text-3xl font-black tracking-tight text-[var(--color-heading)] leading-none"
+              className={`text-2xl sm:text-3xl font-black tracking-tight leading-none transition-colors duration-300 ${isScrolled ? 'text-[var(--color-heading)]' : 'text-white'}`}
               style={{ fontFamily: "Space Grotesk, sans-serif" }}
             >
               PackMax<span className="text-[10px] sm:text-[12px] align-top font-bold text-[var(--color-cta)]">®</span>
