@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { notFound } from "next/navigation";
 import { siteData } from "@/data/siteData";
-import { ChevronRight, Star, ShoppingCart, Mail, Plus, Minus, ChevronDown, ChevronUp } from "lucide-react";
+import { ChevronRight, Star, ShoppingCart, Mail, Plus, Minus, ChevronDown, ChevronUp, Package } from "lucide-react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import ProductGallery from "@/components/ProductGallery";
@@ -11,6 +11,10 @@ import ProductGallery from "@/components/ProductGallery";
 export default function ProductClientPage({ slug, locationSlug, locationName }: { slug: string; locationSlug?: string; locationName?: string }) {
   const product = siteData.products.find((p) => p.slug === slug);
   if (!product) notFound();
+
+  let hash = 0;
+  for (let i = 0; i < product.id.length; i++) hash = product.id.charCodeAt(i) + ((hash << 5) - hash);
+  const rating = (4.1 + ((Math.abs(hash) % 9) * 0.1)).toFixed(1);
 
   const [quantity, setQuantity] = useState(1);
   const [activeTab, setActiveTab] = useState<"desc" | "info" | "reviews" | null>("desc");
@@ -73,13 +77,15 @@ export default function ProductClientPage({ slug, locationSlug, locationName }: 
               {/* Rating */}
               <div className="flex items-center gap-2 mb-4">
                 <div className="flex text-amber-400">
-                  <Star className="w-4 h-4 fill-current" />
-                  <Star className="w-4 h-4 fill-current" />
-                  <Star className="w-4 h-4 fill-current" />
-                  <Star className="w-4 h-4 fill-current" />
-                  <Star className="w-4 h-4 fill-current" opacity={0.5} />
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <Star 
+                      key={star} 
+                      className="w-4 h-4 fill-current" 
+                      opacity={star <= Math.floor(parseFloat(rating)) ? 1 : (star === Math.ceil(parseFloat(rating)) && parseFloat(rating) % 1 >= 0.5 ? 0.5 : 0.2)} 
+                    />
+                  ))}
                 </div>
-                <span className="text-sm font-medium text-[var(--color-text)]">(4.5)</span>
+                <span className="text-sm font-medium text-[var(--color-text)]">({rating})</span>
               </div>
 
 
@@ -112,45 +118,28 @@ export default function ProductClientPage({ slug, locationSlug, locationName }: 
                 </div>
               </div>
 
-              {/* Quantity and Add to Cart */}
-              <div className="flex items-center gap-4 mb-5">
-                <div className="flex items-center bg-gray-100/80 rounded-xl border border-transparent hover:border-gray-300 transition-colors">
-                  <button 
-                    onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                    className="p-3.5 text-[var(--color-heading)]/60 hover:text-[var(--color-heading)] transition-colors"
+              {/* Action Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4 mb-5">
+                <Link href="/contact" className="flex-1 block">
+                  <motion.button 
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="w-full h-full bg-gradient-to-r from-[#121B5A] to-[#1a267a] text-white py-4 px-6 rounded-xl font-black uppercase tracking-widest text-xs sm:text-sm shadow-xl shadow-[#121B5A]/20 hover:shadow-2xl hover:shadow-[#121B5A]/30 transition-all flex items-center justify-center gap-3 border border-white/10"
                   >
-                    <Minus className="w-4 h-4" />
-                  </button>
-                  <input 
-                    type="number" 
-                    value={quantity}
-                    onChange={(e) => setQuantity(Math.max(1, parseInt(e.target.value) || 1))}
-                    className="w-10 sm:w-12 text-center bg-transparent border-none focus:ring-0 text-[var(--color-heading)] font-bold text-lg"
-                  />
-                  <button 
-                    onClick={() => setQuantity(quantity + 1)}
-                    className="p-3.5 text-[var(--color-heading)]/60 hover:text-[var(--color-heading)] transition-colors"
-                  >
-                    <Plus className="w-4 h-4" />
-                  </button>
-                </div>
-                <motion.button 
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="flex-1 bg-gradient-to-r from-[#121B5A] to-[#1a267a] text-white py-4 px-6 rounded-xl font-black uppercase tracking-widest text-xs sm:text-sm shadow-xl shadow-[#121B5A]/20 hover:shadow-2xl hover:shadow-[#121B5A]/30 transition-all flex items-center justify-center gap-3 border border-white/10"
-                >
-                  <ShoppingCart className="w-5 h-5" /> ADD TO CART
-                </motion.button>
-              </div>
+                    <Package className="w-5 h-5" /> Request Sample
+                  </motion.button>
+                </Link>
 
-              {/* Bulk Enquiry */}
-              <motion.button 
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="w-full bg-gradient-to-r from-[var(--color-cta)] to-[#f97316] text-white py-4 px-6 rounded-xl font-black uppercase tracking-widest text-xs sm:text-sm shadow-xl shadow-[var(--color-cta)]/20 hover:shadow-2xl hover:shadow-[var(--color-cta)]/30 transition-all flex items-center justify-center gap-3 border border-white/10"
-              >
-                <Mail className="w-5 h-5" /> Bulk Enquiry
-              </motion.button>
+                <Link href="/contact" className="flex-1 block">
+                  <motion.button 
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="w-full h-full bg-gradient-to-r from-[var(--color-cta)] to-[#f97316] text-white py-4 px-6 rounded-xl font-black uppercase tracking-widest text-xs sm:text-sm shadow-xl shadow-[var(--color-cta)]/20 hover:shadow-2xl hover:shadow-[var(--color-cta)]/30 transition-all flex items-center justify-center gap-3 border border-white/10"
+                  >
+                    <Mail className="w-5 h-5" /> Bulk Enquiry
+                  </motion.button>
+                </Link>
+              </div>
             </div>
           </div>
         </div>

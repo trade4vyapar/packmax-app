@@ -10,9 +10,10 @@ interface Props {
   productName: string;
   buttonText?: string;
   className?: string;
+  children?: React.ReactNode;
 }
 
-export default function InquiryButton({ locationName, productName, buttonText, className }: Props) {
+export default function InquiryButton({ locationName, productName, buttonText, className, children }: Props) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -20,15 +21,17 @@ export default function InquiryButton({ locationName, productName, buttonText, c
       <motion.button
         onClick={() => setIsOpen(true)}
         whileHover={{ 
-          scale: 1.04,
+          scale: 1.02,
           boxShadow: "0 20px 35px -10px rgba(192, 88, 0, 0.35)",
           y: -2
         }}
-        whileTap={{ scale: 0.97 }}
+        whileTap={{ scale: 0.98 }}
         transition={{ type: "spring", stiffness: 500, damping: 15 }}
         className={className || "w-full group px-6 py-4 rounded-full bg-[var(--color-cta)] text-white font-black text-center text-xs shadow-xl hover:bg-[var(--color-cta-hover)] transition-all flex items-center justify-center gap-3 tracking-widest uppercase"}
       >
-        {buttonText || `Inquiry for ${locationName}`} <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
+        {children || (
+          <>{buttonText || `Inquiry for ${locationName}`} <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" /></>
+        )}
       </motion.button>
 
       <AnimatePresence>
