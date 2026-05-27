@@ -193,7 +193,7 @@ export default function TapeShowcase() {
                 </div>
 
                 <PremiumCTA
-                  href={`/products/${prod.slug}`}
+                  href={`/indore/${prod.slug}`}
                   label="Inquire Specs"
                   variant="secondary"
                   icon={<ArrowRight className="w-3 h-3" />}

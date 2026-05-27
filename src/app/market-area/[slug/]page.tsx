@@ -91,7 +91,7 @@ export default async function LocationPage({ params }: Props) {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {siteData.products.map((product) => (
-              <Link key={product.id} href={`/products/${product.slug}`} className="group bg-white rounded-[2.5rem] p-6 border border-[var(--color-border)] hover:shadow-2xl hover:-translate-y-2 transition-all">
+              <Link key={product.id} href={`/${location.slug}/${product.slug}`} className="group bg-white rounded-[2.5rem] p-6 border border-[var(--color-border)] hover:shadow-2xl hover:-translate-y-2 transition-all">
                 <div className="aspect-square rounded-2xl overflow-hidden mb-6 bg-[var(--color-bg)]">
                   <img src={product.image} alt={product.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                 </div>

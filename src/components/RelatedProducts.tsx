@@ -29,7 +29,7 @@ export default function RelatedProducts({ productSlug, locationSlug }: RelatedPr
   if (!items.length) return null;
 
   const hrefFor = (slug: string) =>
-    locationSlug ? `/${locationSlug}/${slug}` : `/products/${slug}`;
+    `/${locationSlug || "indore"}/${slug}`;
 
   return (
     <section className="bg-[var(--color-bg)] border-t border-[var(--color-border)]">
