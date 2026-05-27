@@ -123,11 +123,19 @@ export default function EcommerceCategory({ locationSlug, categorySlug }: { loca
                     className="group bg-white rounded-[1.5rem] sm:rounded-[2rem] border border-gray-100 p-3 sm:p-4 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] hover:-translate-y-1.5 transition-all duration-500 flex flex-col cursor-pointer text-center relative overflow-hidden"
                   >
                     {/* Premium Image Container */}
-                    <div className="w-full h-48 sm:h-52 mb-4 relative flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100/50 rounded-xl sm:rounded-[1.25rem] p-4 group-hover:shadow-inner transition-all duration-500">
+                    <div className="w-full h-48 sm:h-52 mb-4 relative flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100/50 rounded-xl sm:rounded-[1.25rem] p-4 group-hover:shadow-inner transition-all duration-500 overflow-hidden">
                       <img
                         src={prod.image}
                         alt={prod.name}
                         className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700 ease-out drop-shadow-sm"
+                      />
+                      {/* PackMax watermark */}
+                      <img
+                        src="https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/watermark.webp"
+                        alt=""
+                        aria-hidden
+                        draggable={false}
+                        className="pointer-events-none select-none absolute bottom-2 right-2 h-7 sm:h-8 w-auto opacity-75 drop-shadow"
                       />
                     </div>
 
