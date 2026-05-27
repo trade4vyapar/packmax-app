@@ -10,18 +10,32 @@ const iconSequence = [Package, Box, ShieldCheck, Truck];
 export default function Preloader() {
   const pathname = usePathname();
   const [index, setIndex] = useState(0);
-  const [showPreloader, setShowPreloader] = useState(false);
+  // Start the preloader visible on the home route — this state is set during
+  // SSR/initial render so the overlay is already in the markup on first paint,
+  // killing the brief flash of the home page that used to appear before the
+  // useEffect kicked in.
+  const [showPreloader, setShowPreloader] = useState(() => pathname === "/");
   const [isFinished, setIsFinished] = useState(false);
 
   useEffect(() => {
-    // 1. Only on home page
-    if (pathname !== "/") return;
-    
-    // 2. Only once per session
+    // 1. Only on home page — on any other route, dismiss instantly.
+    if (pathname !== "/") {
+      setShowPreloader(false);
+      setIsFinished(true);
+      return;
+    }
+
+    // 2. Only once per session — if the visitor already saw it, dismiss now.
     const hasSeen = sessionStorage.getItem("packmax_preloader_seen");
-    if (hasSeen) return;
+    if (hasSeen) {
+      setShowPreloader(false);
+      setIsFinished(true);
+      return;
+    }
 
     setShowPreloader(true);
+    setIsFinished(false);
+    setIndex(0);
     document.body.style.overflow = "hidden";
 
     // 3. Cycle through icons every 500ms

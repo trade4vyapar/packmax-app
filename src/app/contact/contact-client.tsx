@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   Phone,
   Mail,
@@ -13,7 +13,10 @@ import {
   ShieldCheck,
   ArrowRight,
   MessageSquare,
-  Globe
+  Globe,
+  ChevronDown,
+  Check,
+  X,
 } from "lucide-react";
 import { siteData } from "@/data/siteData";
 import PremiumCTA from "@/components/PremiumCTA";
@@ -43,6 +46,24 @@ export default function ContactClient() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement | null>(null);
+
+  // Close the dropdown when clicking outside of it.
+  useEffect(() => {
+    if (!dropdownOpen) return;
+    const onPointerDown = (e: MouseEvent | TouchEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setDropdownOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", onPointerDown);
+    document.addEventListener("touchstart", onPointerDown);
+    return () => {
+      document.removeEventListener("mousedown", onPointerDown);
+      document.removeEventListener("touchstart", onPointerDown);
+    };
+  }, [dropdownOpen]);
 
   const toggleSubject = (value: string) => {
     setFormData((prev) => {
@@ -326,8 +347,9 @@ export default function ContactClient() {
                   </div>
                 </div>
 
-                {/* Inquiry Target — multi-select chips (every product the user
-                    may want to inquire about, plus a general catch-all). */}
+                {/* Inquiry Target — multi-select dropdown. Trigger shows the
+                    count of selected products; clicking it opens a panel where
+                    the user can toggle multiple items on/off. */}
                 <div className="flex flex-col gap-2">
                   <div className="flex items-center justify-between">
                     <label className="text-[9px] font-black text-[var(--color-heading)] uppercase tracking-widest opacity-50">
@@ -337,29 +359,108 @@ export default function ContactClient() {
                       {formData.subjects.length} selected
                     </span>
                   </div>
-                  <div className="bg-[var(--color-bg)] border border-[var(--color-border)] rounded-2xl p-3 max-h-60 overflow-y-auto">
-                    <div className="flex flex-wrap gap-2">
-                      {PRODUCT_OPTIONS.map((opt) => {
-                        const isActive = formData.subjects.includes(opt);
-                        return (
-                          <button
-                            key={opt}
-                            type="button"
-                            onClick={() => toggleSubject(opt)}
-                            className={`px-3 py-1.5 rounded-full text-[11px] font-bold border transition-all ${
-                              isActive
-                                ? "bg-[var(--color-cta)] border-[var(--color-cta)] text-white shadow-sm"
-                                : "bg-white border-[var(--color-border)] text-[var(--color-heading)] hover:border-[var(--color-cta)] hover:text-[var(--color-cta)]"
-                            }`}
+
+                  <div ref={dropdownRef} className="relative">
+                    {/* Trigger */}
+                    <button
+                      type="button"
+                      onClick={() => setDropdownOpen((o) => !o)}
+                      aria-haspopup="listbox"
+                      aria-expanded={dropdownOpen}
+                      className="w-full bg-[var(--color-bg)] border border-[var(--color-border)] hover:border-[var(--color-cta)] focus:border-[var(--color-cta)] px-5 py-4 rounded-2xl text-left text-xs font-black text-[var(--color-heading)] uppercase tracking-wider outline-none transition-colors flex items-center justify-between gap-3 cursor-pointer"
+                    >
+                      <span className="truncate">
+                        {formData.subjects.length === 1
+                          ? formData.subjects[0]
+                          : `${formData.subjects.length} products selected`}
+                      </span>
+                      <ChevronDown
+                        className={`w-4 h-4 shrink-0 transition-transform duration-200 ${dropdownOpen ? "rotate-180" : ""}`}
+                      />
+                    </button>
+
+                    {/* Selected chips preview (visible when closed too, so the
+                        user can see/remove choices without re-opening). */}
+                    {formData.subjects.length > 0 && (
+                      <div className="flex flex-wrap gap-1.5 mt-2">
+                        {formData.subjects.map((s) => (
+                          <span
+                            key={s}
+                            className="inline-flex items-center gap-1 bg-[var(--color-cta)]/10 border border-[var(--color-cta)]/30 text-[var(--color-cta)] px-2.5 py-1 rounded-full text-[10px] font-bold"
                           >
-                            {opt}
-                          </button>
-                        );
-                      })}
-                    </div>
+                            {s}
+                            <button
+                              type="button"
+                              onClick={() => toggleSubject(s)}
+                              aria-label={`Remove ${s}`}
+                              className="hover:opacity-70"
+                            >
+                              <X className="w-3 h-3" />
+                            </button>
+                          </span>
+                        ))}
+                      </div>
+                    )}
+
+                    {/* Dropdown panel */}
+                    <AnimatePresence>
+                      {dropdownOpen && (
+                        <motion.div
+                          initial={{ opacity: 0, y: -8 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -8 }}
+                          transition={{ duration: 0.18, ease: "easeOut" }}
+                          className="absolute left-0 right-0 mt-2 z-30 bg-white border border-[var(--color-border)] rounded-2xl shadow-xl overflow-hidden"
+                        >
+                          <div className="max-h-72 overflow-y-auto p-2">
+                            {PRODUCT_OPTIONS.map((opt) => {
+                              const isActive = formData.subjects.includes(opt);
+                              return (
+                                <button
+                                  key={opt}
+                                  type="button"
+                                  role="option"
+                                  aria-selected={isActive}
+                                  onClick={() => toggleSubject(opt)}
+                                  className={`w-full flex items-center justify-between gap-3 px-3 py-2.5 rounded-xl text-left text-[12px] font-bold transition-colors ${
+                                    isActive
+                                      ? "bg-[var(--color-cta)]/10 text-[var(--color-cta)]"
+                                      : "text-[var(--color-heading)] hover:bg-gray-50"
+                                  }`}
+                                >
+                                  <span className="truncate">{opt}</span>
+                                  <span
+                                    className={`flex items-center justify-center w-5 h-5 rounded-md border shrink-0 transition-colors ${
+                                      isActive
+                                        ? "bg-[var(--color-cta)] border-[var(--color-cta)] text-white"
+                                        : "bg-white border-gray-300"
+                                    }`}
+                                  >
+                                    {isActive && <Check className="w-3 h-3" strokeWidth={3} />}
+                                  </span>
+                                </button>
+                              );
+                            })}
+                          </div>
+                          <div className="border-t border-gray-100 px-3 py-2 flex items-center justify-between bg-gray-50">
+                            <span className="text-[10px] font-bold text-gray-500 uppercase tracking-wider">
+                              {formData.subjects.length} selected
+                            </span>
+                            <button
+                              type="button"
+                              onClick={() => setDropdownOpen(false)}
+                              className="text-[10px] font-black text-[var(--color-cta)] uppercase tracking-widest hover:underline"
+                            >
+                              Done
+                            </button>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
+
                   <p className="text-[10px] font-medium text-gray-400">
-                    Tap any product to add/remove it. Select multiple to inquire about a bundle.
+                    Tap the field to open the list and pick one or more products to inquire about.
                   </p>
                 </div>
 
