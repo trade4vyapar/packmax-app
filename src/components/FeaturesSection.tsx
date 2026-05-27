@@ -20,42 +20,42 @@ const products = [
     title: "Brown Tape",
     slug: "bopp-brown-tape",
     description:
-      "Strong brown tape designed to seal heavy cartons and shipping boxes safely.",
+      "Direct from the manufacturer — wholesale brown BOPP tape supplied in bulk to dealers, distributors and warehouses for heavy carton sealing.",
   },
   {
     icon: Layers,
     title: "Transparent Tape",
     slug: "transparent-tape",
     description:
-      "Clear packing tape that sticks strongly and looks clean on any package.",
+      "Factory-manufactured clear packing tape supplied to retailers and distributed nationwide for clean, professional packaging.",
   },
   {
     icon: ShoppingBag,
     title: "Packaging Bags",
     slug: "packaging-bags",
     description:
-      "Strong, tear-resistant shipping bags available in all standard sizes.",
+      "Tear-resistant shipping bags from the manufacturer, available through our B2B supplier network in every standard size.",
   },
   {
     icon: Truck,
     title: "Courier Bags",
     slug: "tamper-proof-courier-bags",
     description:
-      "Tamper-proof courier bags exactly like Amazon and Flipkart use for e-commerce deliveries.",
+      "Tamper-proof courier bags built to Amazon and Flipkart seller spec — manufactured in-house and distributed to e-commerce suppliers across India.",
   },
   {
     icon: Stamp,
     title: "Printed Logo Tapes",
     slug: "custom-printed-tape",
     description:
-      "Print your own company logo or name directly on high-quality adhesive tape.",
+      "Custom-printed adhesive tape from a trusted manufacturer and wholesale supplier — your logo, your brand colours, bulk B2B distribution.",
   },
   {
     icon: Box,
     title: "Branded Packaging",
     slug: "branded-packaging",
     description:
-      "Fully customized boxes and packing materials designed exactly how you want.",
+      "End-to-end branded packaging — designed, manufactured and supplied direct from our factory to distributors, retailers and online sellers.",
   },
 ];
 
@@ -91,16 +91,16 @@ export default function FeaturesSection({ locationName, locationSlug }: { locati
           className="text-center mb-20"
         >
           <span className="text-sm font-bold text-[var(--color-cta)] uppercase tracking-widest mb-4 block">
-            Our Products
+            Manufacturer • Supplier • Distributor
           </span>
           <h2
             className="text-4xl sm:text-5xl font-black mb-6 tracking-tight text-[var(--color-heading)] uppercase"
             style={{ fontFamily: "Space Grotesk, sans-serif" }}
           >
-            High-Quality Packing Supplies
+            Packaging Manufacturer & Wholesale Supplier
           </h2>
           <p className="text-[var(--color-text)] text-lg max-w-2xl mx-auto font-medium">
-            We make and supply a full range of packing materials for online shops, factories, and businesses {locationName ? `in ${locationName}` : 'Pan India'}.
+            Packmax is a full-stack packaging manufacturer, bulk supplier and authorised distributor — serving e-commerce sellers, dealers, factories and B2B clients {locationName ? `in ${locationName}` : 'across Pan India'} with factory-direct rates.
           </p>
         </motion.div>
 
@@ -151,21 +151,6 @@ export default function FeaturesSection({ locationName, locationSlug }: { locati
           })}
         </motion.div>
 
-        {/* View All CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="mt-16 flex justify-center"
-        >
-          <PremiumCTA 
-            href="/products"
-            label="View All Products"
-            variant="primary"
-            icon={<ArrowRight className="w-4 h-4" />}
-          />
-        </motion.div>
       </div>
     </section>
   );

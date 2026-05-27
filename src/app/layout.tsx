@@ -1,16 +1,37 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { SITE_URL, organizationSchema, websiteSchema, getMasterKeywords } from "@/utils/seo";
+import JsonLd from "@/components/JsonLd";
 
 export const metadata: Metadata = {
-  title: "Packmax India | Premium Packaging Solutions",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: "Packmax India | BOPP Tape, Courier Bags & Custom Printed Packaging",
+    template: "%s | Packmax India",
+  },
   description:
-    "All Customized Packing Solutions. Your Trusted Partner in Premium Packaging based in Indore.",
-  keywords: "packaging, sustainable packaging, brand packaging, PackMax",
+    "Packmax India — direct-from-factory BOPP brown tape, transparent tape, custom-printed Amazon/Flipkart/Meesho seller tapes, tamper-proof courier bags, and packaging films. Wholesale rates, 48-72h delivery across India.",
+  keywords: getMasterKeywords().join(", "),
+  alternates: { canonical: SITE_URL },
   openGraph: {
-    title: "Packmax India | Premium Packaging Solutions",
+    title: "Packmax India | BOPP Tape, Courier Bags & Custom Printed Packaging",
     description:
-      "All Customized Packing Solutions. Your Trusted Partner in Premium Packaging based in Indore.",
+      "Direct-from-factory packaging tapes and courier bags. Wholesale rates, 48-72h delivery across India.",
     type: "website",
+    url: SITE_URL,
+    siteName: "Packmax India",
+    locale: "en_IN",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
   },
 };
 
@@ -32,6 +53,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+        <JsonLd data={[organizationSchema(), websiteSchema()]} />
       </head>
       <body className="antialiased pb-[68px] md:pb-0">
         <Preloader />

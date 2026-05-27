@@ -50,7 +50,7 @@ export default function ProductClientPage({ slug, locationSlug, locationName }: 
             </>
           ) : (
             <>
-              <Link href="/products" className="hover:text-[var(--color-cta)] transition-colors">Products</Link>
+              <span>Products</span>
               <span className="text-gray-400">/</span>
             </>
           )}

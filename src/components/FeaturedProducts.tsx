@@ -10,8 +10,8 @@ export default function FeaturedProducts() {
     {
       id: "printed-tapes",
       name: "PackMax Elite Print Tapes",
-      tagline: "Custom Brand Logo BOPP Tapes",
-      description: "High-grade adhesive tape customized with your corporate logo name, custom background colors, and exact dimensional matching for automatic seal lines.",
+      tagline: "Custom Logo BOPP Tape Manufacturer & Supplier",
+      description: "Manufactured in our own factory and supplied direct to dealers, distributors and B2B buyers — high-grade adhesive tape printed with your corporate logo, exact brand colours and machine-line dimensions.",
       image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=2070&auto=format&fit=crop",
       specs: ["45 - 55 Micron Thickness", "Water-Based Acrylic Adhesive", "Rotogravure 4-Color Printing", "Length: 50m - 650m rolls"],
       accent: "[var(--color-cta)]"
@@ -19,8 +19,8 @@ export default function FeaturedProducts() {
     {
       id: "courier-bags",
       name: "ArmorSeal Poly Courier Bags",
-      tagline: "Tamper-Proof E-Commerce Mailers",
-      description: "Tear-resistant, triple-co-extruded LDPE courier bags with permanent hot-melt self-adhesive closure tape and standard high-security silver liners.",
+      tagline: "Courier Bag Manufacturer & Wholesale Distributor",
+      description: "Tear-resistant, triple-co-extruded LDPE courier bags manufactured in-house and distributed through our authorised supplier network to e-commerce sellers, 3PL operators and bulk B2B clients.",
       image: "https://images.unsplash.com/photo-1595079676339-1534801ad6cf?q=80&w=2070&auto=format&fit=crop",
       specs: ["50 - 75 Micron Standard", "Tear & Water Resistant LDPE", "Tamper-Evident Security Seal", "Optional Pod Jackets"],
       accent: "#121B5A"
@@ -38,13 +38,13 @@ export default function FeaturedProducts() {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row justify-between md:items-end gap-6 mb-16 pb-8 border-b border-[var(--color-border)]">
           <div>
-            <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[var(--color-cta)] block mb-3">Flagship Supply</span>
+            <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[var(--color-cta)] block mb-3">Flagship Manufacturer Supply</span>
             <h2 className="text-3xl sm:text-5xl font-black text-[var(--color-heading)] tracking-tighter uppercase leading-[0.95]">
-              Featured Packaging <br /> Portfolios
+              Manufacturer-Direct <br /> Packaging Portfolios
             </h2>
           </div>
           <p className="text-sm font-bold text-[var(--color-heading)] opacity-50 max-w-sm leading-relaxed">
-            Engineered inside our Indore facility to guarantee high-speed line sealing, severe transit protection, and high-impact branding.
+            Manufactured inside our Indore facility and distributed pan-India through our wholesale supplier and authorised distributor network — high-speed line sealing, transit protection and brand-grade printing in every roll.
           </p>
         </div>
 
@@ -104,12 +104,6 @@ export default function FeaturedProducts() {
                     className="group px-8 py-4 rounded-full bg-[var(--color-heading)] hover:bg-[var(--color-cta)] text-white font-black text-xs transition-colors tracking-widest uppercase flex items-center gap-2 shadow-sm"
                   >
                     Quick Spec Inquiry <MessageSquare className="w-3.5 h-3.5" />
-                  </Link>
-                  <Link 
-                    href="/products" 
-                    className="px-8 py-4 rounded-full bg-white hover:bg-[var(--color-bg)] border border-[var(--color-border)] text-[var(--color-heading)] font-black text-xs transition-colors tracking-widest uppercase inline-flex items-center gap-1.5"
-                  >
-                    Explore Catalog <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
                 </div>
 

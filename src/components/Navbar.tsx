@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Search, X, ChevronDown, Menu, Globe } from "lucide-react";
+import { Search, X, ChevronDown, Menu, Map } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { siteData } from "@/data/siteData";
@@ -29,16 +29,21 @@ interface NavbarLinkProps {
 
 function NavbarLink({ href, label, hasDropdown, locationPrefix }: NavbarLinkProps) {
   const [isHovered, setIsHovered] = useState(false);
+  // PRODUCTS opens the category dropdown only — it does NOT navigate.
+  const Wrapper = (hasDropdown ? "div" : Link) as React.ElementType;
+  const wrapperProps: Record<string, unknown> = hasDropdown
+    ? { role: "button", "aria-haspopup": "menu" as const }
+    : { href };
 
   return (
-    <div 
+    <div
       className="relative group/navdrop"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <Link
-        href={href}
-        className="relative bg-white px-6 py-3.5 rounded-full text-[13px] font-bold text-[var(--color-heading)] shadow-sm hover:shadow-xl transition-all duration-300 uppercase tracking-wide flex items-center gap-2 overflow-hidden select-none"
+      <Wrapper
+        {...wrapperProps}
+        className={`relative bg-white px-6 py-3.5 rounded-full text-[13px] font-bold text-[var(--color-heading)] shadow-sm hover:shadow-xl transition-all duration-300 uppercase tracking-wide flex items-center gap-2 overflow-hidden select-none ${hasDropdown ? 'cursor-default' : ''}`}
       >
         {/* Dynamic Liquid Bubble Backdrop */}
         <motion.span
@@ -65,13 +70,13 @@ function NavbarLink({ href, label, hasDropdown, locationPrefix }: NavbarLinkProp
         </span>
 
         {hasDropdown && (
-          <ChevronDown 
+          <ChevronDown
             className={`w-4 h-4 relative z-10 transition-all duration-300 ${
               isHovered ? 'rotate-180 text-white' : 'text-[var(--color-heading)]'
-            }`} 
+            }`}
           />
         )}
-      </Link>
+      </Wrapper>
 
       {hasDropdown && (
         /* Dropdown Menu */
@@ -107,14 +112,16 @@ function NavbarLink({ href, label, hasDropdown, locationPrefix }: NavbarLinkProp
   );
 }
 
-function LanguageBadge() {
+function SitemapBadge() {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <motion.div
+    <MotionLink
+      href="/sitemap"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       whileTap={{ scale: 0.98 }}
+      aria-label="Sitemap"
       className="flex items-center gap-2 bg-white border border-[var(--color-border)] px-4 py-3.5 rounded-full shadow-sm ml-4 cursor-pointer select-none relative overflow-hidden group"
     >
       {/* Background slide */}
@@ -125,12 +132,12 @@ function LanguageBadge() {
         transition={{ type: "spring", stiffness: 350, damping: 18 }}
       />
 
-      <Globe 
+      <Map
         className={`w-4 h-4 relative z-10 transition-all duration-500 ${
-          isHovered ? 'rotate-45 text-white' : 'text-[var(--color-cta)]'
-        }`} 
+          isHovered ? 'rotate-12 text-white' : 'text-[var(--color-cta)]'
+        }`}
       />
-      
+
       {/* Dual Text Vertical Slide-Wipe */}
       <span className="relative z-10 h-4 overflow-hidden block">
         <motion.span
@@ -138,21 +145,15 @@ function LanguageBadge() {
           transition={{ type: "spring", stiffness: 400, damping: 22 }}
           className="flex flex-col"
         >
-          <span className="text-[var(--color-heading)] font-bold tracking-wider block h-4 flex items-center leading-none text-[12px]">
-            EN
+          <span className="text-[var(--color-heading)] font-bold tracking-wider block h-4 flex items-center leading-none text-[11px] uppercase">
+            Sitemap
           </span>
-          <span className="text-white font-bold tracking-wider block h-4 flex items-center leading-none text-[12px]">
-            EN
+          <span className="text-white font-bold tracking-wider block h-4 flex items-center leading-none text-[11px] uppercase">
+            Sitemap
           </span>
         </motion.span>
       </span>
-
-      <ChevronDown 
-        className={`w-3.5 h-3.5 relative z-10 transition-all duration-300 ${
-          isHovered ? 'rotate-180 text-white' : 'text-[var(--color-heading)] opacity-40'
-        }`} 
-      />
-    </motion.div>
+    </MotionLink>
   );
 }
 
@@ -274,8 +275,8 @@ export default function Navbar() {
             />
           ))}
 
-          {/* Premium Language Badge */}
-          <LanguageBadge />
+          {/* Sitemap Quick Link */}
+          <SitemapBadge />
         </div>
 
         {/* Mobile Toggle */}
@@ -367,16 +368,6 @@ export default function Navbar() {
                           </Link>
                         )
                       })}
-                      <Link
-                        href="/products"
-                        onClick={() => {
-                          setMobileOpen(false);
-                          setMobileProductsOpen(false);
-                        }}
-                        className="block px-4 py-2.5 text-center text-xs font-black text-[var(--color-cta)] bg-orange-50/50 hover:bg-orange-100 rounded-lg transition-colors uppercase tracking-wider mt-1"
-                      >
-                        Browse All Products
-                      </Link>
                     </motion.div>
                   )}
                 </div>

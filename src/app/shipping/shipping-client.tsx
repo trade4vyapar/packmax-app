@@ -13,10 +13,13 @@ export default function ShippingClient() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="mb-12"
         >
-          <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[var(--color-cta)] block mb-4">Packmax Logistics</span>
+          <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[var(--color-cta)] block mb-4">Manufacturer • Supplier • Distributor Logistics</span>
           <h1 className="text-4xl md:text-5xl font-black text-[var(--color-heading)] tracking-tighter uppercase leading-none">
             Shipping Policy
           </h1>
+          <p className="text-sm sm:text-base font-bold text-[var(--color-heading)] opacity-60 mt-4 leading-relaxed">
+            Logistics terms for our manufacturer-to-distributor consignments — covering freight, supplier inspection and pan-India dispatch for dealers and bulk B2B clients.
+          </p>
         </motion.div>
 
         <div className="bg-white rounded-3xl p-8 md:p-12 border border-[var(--color-border)] shadow-sm">
@@ -24,13 +27,13 @@ export default function ShippingClient() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
             <div className="bg-gray-50 p-6 rounded-2xl border border-gray-100 flex flex-col items-center text-center">
               <Truck className="w-8 h-8 text-[var(--color-cta)] mb-4" />
-              <h3 className="text-sm font-black uppercase tracking-wider text-gray-900 mb-2">Local Delivery</h3>
-              <p className="text-xs text-gray-500 font-medium">Free shipping in Indore & Bhopal for bulk orders.</p>
+              <h3 className="text-sm font-black uppercase tracking-wider text-gray-900 mb-2">Local Distributor Delivery</h3>
+              <p className="text-xs text-gray-500 font-medium">Free supplier delivery in Indore & Bhopal for bulk manufacturer-direct orders.</p>
             </div>
             <div className="bg-gray-50 p-6 rounded-2xl border border-gray-100 flex flex-col items-center text-center">
               <MapPin className="w-8 h-8 text-[var(--color-cta)] mb-4" />
-              <h3 className="text-sm font-black uppercase tracking-wider text-gray-900 mb-2">Outstation</h3>
-              <p className="text-xs text-gray-500 font-medium">Pan-India dispatch via VRL, TCI, or client-preferred carriers within 48h.</p>
+              <h3 className="text-sm font-black uppercase tracking-wider text-gray-900 mb-2">Pan-India Distributor Network</h3>
+              <p className="text-xs text-gray-500 font-medium">Manufacturer-direct dispatch via VRL, TCI or our distributor partners within 48h to any city in India.</p>
             </div>
             <div className="bg-gray-50 p-6 rounded-2xl border border-gray-100 flex flex-col items-center text-center">
               <ShieldCheck className="w-8 h-8 text-[var(--color-cta)] mb-4" />
@@ -40,12 +43,12 @@ export default function ShippingClient() {
           </div>
 
           <div className="prose prose-sm md:prose-base max-w-none text-[var(--color-text)]">
-            <h2 className="text-xl font-black text-[var(--color-heading)] uppercase tracking-tight mb-4">Delivery Terms</h2>
+            <h2 className="text-xl font-black text-[var(--color-heading)] uppercase tracking-tight mb-4">Manufacturer & Distributor Delivery Terms</h2>
             <p>
-              As a B2B manufacturer, we deal in high-volume shipments. Freight charges are calculated ex-factory (Indore, MP) unless negotiated otherwise in the purchase order.
+              As a B2B manufacturer, wholesale supplier and authorised distributor, Packmax handles high-volume consignments daily. Freight is calculated ex-factory (Indore, MP) unless your dealer or distributor purchase order negotiates otherwise.
             </p>
             <p>
-              <strong>Inspection at Delivery:</strong> Clients must inspect all cartons before signing the Lorry Receipt (LR) or POD. Any transit damage must be remarked on the carrier's receipt to claim insurance. Packmax India is not liable for damages reported after a clean POD is signed.
+              <strong>Supplier Inspection at Delivery:</strong> Dealers, distributors and end-clients must inspect all cartons before signing the Lorry Receipt (LR) or POD. Transit damage must be noted on the carrier's receipt to claim insurance. Packmax (as the manufacturer-supplier) is not liable for damages reported after a clean POD is signed.
             </p>
           </div>
         </div>

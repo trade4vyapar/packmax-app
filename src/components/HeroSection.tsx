@@ -18,8 +18,8 @@ const slides = [
     id: 1,
     headingLine1: "Your Packaging,",
     headingLine2: "Your Identity",
-    tagline: "Precision-engineered B2B packaging solutions",
-    description: "Elevate your brand presence with custom-printed tapes, rolls, and industrial-grade courier bags designed for modern businesses.",
+    tagline: "Trusted B2B packaging manufacturer, supplier & distributor",
+    description: "Packmax is a direct-factory manufacturer, wholesale supplier and pan-India distributor of custom-printed tapes, rolls and industrial-grade courier bags for modern businesses, e-commerce sellers and warehouses.",
     color: "#E86A12",
     icon: Package,
     image: "/images/packaging_solutions.png"
@@ -28,8 +28,8 @@ const slides = [
     id: 2,
     headingLine1: "Custom Brand Logo",
     headingLine2: "Packing Tapes",
-    tagline: "Put your company logo on your shipping boxes",
-    description: "Make your brand look premium. We print your company logo or name directly on high-quality adhesive tape with your exact brand colors and sizes.",
+    tagline: "Custom printed tape manufacturer & wholesale supplier",
+    description: "As a leading manufacturer and bulk distributor of custom-printed adhesive tape, we print your company logo or brand name directly on high-tack BOPP — supplied to retailers, dealers and B2B clients across India.",
     color: "#121B5A",
     icon: ShieldCheck,
     image: "/images/custom_tape.png"
@@ -38,8 +38,8 @@ const slides = [
     id: 3,
     headingLine1: "Tear-Resistant",
     headingLine2: "Courier Bags",
-    tagline: "Strong waterproof mailing bags for online stores",
-    description: "Strong, tamper-proof courier bags exactly like Amazon and Flipkart use. Available in all standard sizes with strong glue peel-seals to keep packages safe.",
+    tagline: "Courier bag manufacturer, supplier & B2B distributor",
+    description: "Tamper-proof courier bags built to Amazon and Flipkart seller spec. Manufactured in-house and distributed through our wholesale supplier network to e-commerce sellers, fulfilment centres and 3PL operators nationwide.",
     color: "#E86A12",
     icon: Box,
     image: "/images/courier_bag.png"
@@ -137,7 +137,7 @@ export default function HeroSection({ locationName }: { locationName?: string })
                 </p>
 
                 <p className="text-lg text-white/90 max-w-xl leading-relaxed font-medium mb-10 drop-shadow-sm">
-                  {currentSlide === 0 && locationName ? `We supply top-quality packing tapes and courier bags directly to businesses in ${locationName} at cheap factory wholesale prices.` : slides[currentSlide].description}
+                  {currentSlide === 0 && locationName ? `Packmax is the trusted manufacturer, wholesale supplier and authorised distributor of packing tapes and courier bags in ${locationName} — direct-factory rates, B2B bulk supply and dependable delivery to dealers, retailers and e-commerce sellers.` : slides[currentSlide].description}
                 </p>
 
                 {/* CTA Buttons */}
@@ -154,8 +154,7 @@ export default function HeroSection({ locationName }: { locationName?: string })
                     onMouseEnter={() => setIsHovered(true)}
                     onMouseLeave={() => setIsHovered(false)}
                   >
-                    <PremiumCTA 
-                      href="/products"
+                    <PremiumCTA
                       label="Our Products"
                       variant="secondary"
                       icon={<ChevronDown className="w-4 h-4 transition-transform group-hover/dropdown:rotate-180" />}

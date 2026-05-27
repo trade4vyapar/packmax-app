@@ -81,13 +81,13 @@ export default function ContactClient() {
           className="mb-16 max-w-3xl pb-8 border-b border-[var(--color-border)]"
         >
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-[var(--color-border)] shadow-sm text-[10px] font-black text-[var(--color-cta)] uppercase tracking-widest mb-6">
-            <Globe className="w-3.5 h-3.5" /> Corporate Communication Hub
+            <Globe className="w-3.5 h-3.5" /> Manufacturer • Supplier • Distributor Desk
           </div>
           <h1 className="text-4xl sm:text-6xl font-black text-[var(--color-heading)] tracking-tighter uppercase leading-[0.95] mb-6">
-            Let's Build Your <br /><span className="text-[var(--color-cta)]">Supply Pipeline</span>
+            Talk to the <br /><span className="text-[var(--color-cta)]">Manufacturer Direct</span>
           </h1>
           <p className="text-base sm:text-lg text-[var(--color-heading)] opacity-60 font-bold leading-relaxed">
-            Get direct manufacturer pricing, custom dimensional calibrations, and dedicated supply schedules. Contact our engineering office today.
+            Get manufacturer-direct pricing, dedicated wholesale supplier schedules and authorised distributor terms. Our B2B desk handles dealer, distributor and bulk supply enquiries the same day.
           </p>
         </motion.div>
 

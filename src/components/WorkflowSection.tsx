@@ -8,29 +8,29 @@ export default function WorkflowSection() {
     {
       num: "01",
       icon: Send,
-      title: "Send Your Details",
-      desc: "Fill out our quick 60-second form with your required tape size, thickness, or courier bag details.",
+      title: "Send Your Requirement",
+      desc: "Share your spec with our supplier team — tape size, thickness, courier bag dimensions and bulk order quantity for dealers, distributors or end-clients.",
       side: "left"
     },
     {
       num: "02",
       icon: TestTube,
-      title: "Free Testing Samples",
-      desc: "We make and ship free physical samples directly to your office so you can test the quality and stickiness yourself.",
+      title: "Free Manufacturer Samples",
+      desc: "As the direct manufacturer we ship free physical samples to your office, dealership or distribution hub for quality and adhesion testing.",
       side: "right"
     },
     {
       num: "03",
       icon: Printer,
       title: "Custom Manufacturing",
-      desc: "Once you approve the samples, we print your logo and coat the tape rolls using our advanced factory machines.",
+      desc: "On approval, the manufacturer line prints your logo, coats the BOPP and packs each carton ready for our supplier and distributor network.",
       side: "left"
     },
     {
       num: "04",
       icon: Truck,
-      title: "Safe Delivery",
-      desc: "We pack your bulk order safely on trucks and deliver them directly to your warehouse or office anywhere in India.",
+      title: "Distributor Delivery",
+      desc: "Bulk consignments are dispatched through our distributor network direct to your warehouse, retail outlet or sub-supplier across India.",
       side: "right"
     }
   ];
@@ -80,12 +80,12 @@ export default function WorkflowSection() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="text-center max-w-2xl mx-auto mb-28"
         >
-          <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[var(--color-cta)] block mb-3">Easy 4-Step Process</span>
+          <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[var(--color-cta)] block mb-3">Manufacturer-to-Distributor Workflow</span>
           <h2 className="text-3xl sm:text-5xl font-black text-[var(--color-heading)] uppercase tracking-tight leading-none mb-6">
-            How To Order Bulk Packaging
+            How To Order From the Manufacturer
           </h2>
           <p className="text-xs sm:text-sm font-bold text-[var(--color-heading)] opacity-50 leading-relaxed">
-            Get custom-made packaging for your business in 4 simple, stress-free steps.
+            Order custom packaging directly from the manufacturer — our wholesale supplier team and authorised distributor network handle the rest, in four simple steps.
           </p>
         </motion.div>
 

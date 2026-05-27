@@ -1,9 +1,18 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Home, PhoneCall, MessageSquareText, Package } from "lucide-react";
+import { siteData } from "@/data/siteData";
 
 export default function MobileDock() {
+  const pathname = usePathname() || "";
+  const possibleLocation = pathname.split('/').filter(Boolean)[0] || '';
+  const isLocation = siteData.locations.some(l => l.slug === possibleLocation);
+  // "Products" navigates to the current location hub (which lists categories),
+  // not the dedicated /products page.
+  const productsHref = isLocation ? `/${possibleLocation}` : `/indore`;
+
   return (
     <div className="fixed bottom-4 left-4 right-4 z-[100] md:hidden pb-[env(safe-area-inset-bottom)]">
       <div className="bg-[var(--color-bg)]/80 backdrop-blur-xl border border-[var(--color-border)] shadow-[0_8px_32px_rgba(15,23,42,0.12)] rounded-3xl">
@@ -42,10 +51,10 @@ export default function MobileDock() {
             <span className="text-[10px] font-medium tracking-wide">Messenger</span>
           </Link>
           
-          {/* Products (Replacing Account) */}
-          <Link href="/products" className="flex flex-col items-center justify-center w-16 h-full text-[var(--color-heading)] opacity-70 hover:opacity-100 hover:text-[var(--color-cta)] transition-all">
+          {/* Categories (was Products — products page is removed) */}
+          <Link href={productsHref} className="flex flex-col items-center justify-center w-16 h-full text-[var(--color-heading)] opacity-70 hover:opacity-100 hover:text-[var(--color-cta)] transition-all">
             <Package className="w-[22px] h-[22px] mb-1" strokeWidth={1.5} />
-            <span className="text-[10px] font-medium tracking-wide">Products</span>
+            <span className="text-[10px] font-medium tracking-wide">Categories</span>
           </Link>
           
         </div>

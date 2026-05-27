@@ -16,17 +16,12 @@ export default function Footer() {
   const pathname = usePathname() || "";
   const currentSlug = pathname.split('/')[1] || '';
   const location = siteData.locations.find(l => l.slug === currentSlug);
-  const isHomepage = pathname === "/";
 
   const officeTitle = location ? `${location.name} Office` : "Corporate Office";
   const officeAddress = location ? location.address : "A-14/15, Sector - 59, Noida, Uttar Pradesh, India 201309";
 
   return (
-    <motion.footer
-      initial={isHomepage ? { opacity: 0, y: 70 } : false}
-      whileInView={isHomepage ? { opacity: 1, y: 0 } : undefined}
-      viewport={isHomepage ? { once: true, margin: "-100px" } : undefined}
-      transition={isHomepage ? { duration: 1.2, ease: [0.16, 1, 0.3, 1] } : undefined}
+    <footer
       className="bg-gradient-to-b from-[#0A0F2C] to-[#040614] text-[#F7F5F4] pt-8 pb-6 px-6 sm:pt-16 sm:pb-8 sm:px-8 lg:px-20 overflow-hidden relative"
     >
       {/* Decorative Background */}
@@ -43,7 +38,7 @@ export default function Footer() {
               </h2>
             </Link>
             <p className="text-xs sm:text-sm font-medium text-white/60 leading-relaxed mb-4 sm:mb-6 max-w-sm">
-              Your trusted partner in premium, customized industrial packaging solutions. Since 2021, we've been helping brands seal their success with quality.
+              India's trusted packaging <strong className="text-white/80">manufacturer, wholesale supplier and authorised distributor</strong>. Since 2021, Packmax has been the factory-direct manufacturer-supplier-distributor partner for brands, dealers and B2B clients across India.
             </p>
             <div className="flex gap-3">
               {[FaInstagram, FaFacebookF, FaLinkedinIn, FaXTwitter].map((Icon, i) => (
@@ -144,10 +139,10 @@ export default function Footer() {
             ))}
           </div>
           <p className="hidden md:block text-[9px] sm:text-[10px] font-black text-white/20 uppercase tracking-[0.3em]">
-            Quality Guaranteed
+            Manufacturer • Supplier • Distributor
           </p>
         </div>
       </div>
-    </motion.footer>
+    </footer>
   );
 }

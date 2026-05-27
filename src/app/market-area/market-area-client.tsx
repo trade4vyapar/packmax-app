@@ -60,16 +60,16 @@ export default function MarketAreaClient() {
           className="text-center mb-16"
         >
           <div className="inline-block bg-[var(--color-cta)] text-[#F7F5F4] px-6 py-2 rounded-full font-black text-sm sm:text-lg tracking-widest uppercase shadow-md mb-8">
-            Market Area
+            Supplier & Distributor Network
           </div>
           <h1
             className="text-3xl sm:text-5xl font-black text-[var(--color-heading)] tracking-tight uppercase"
             style={{ fontFamily: "Space Grotesk, sans-serif" }}
           >
-            Pan India Delivery
+            Pan-India Manufacturer & Distributor
           </h1>
           <p className="mt-4 text-base sm:text-lg font-medium max-w-2xl mx-auto opacity-70">
-            We proudly supply our premium packaging solutions across all major cities and states in India. From our manufacturing plant in Indore to your doorstep.
+            Packmax is the manufacturer, wholesale supplier and authorised distributor of premium packaging across India. From our Indore manufacturing plant, our supplier and distributor network ships direct to dealers, retailers and B2B clients in every major city.
           </p>
         </motion.div>
 

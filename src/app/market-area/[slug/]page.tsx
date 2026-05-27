@@ -81,9 +81,6 @@ export default async function LocationPage({ params }: Props) {
               <h2 className="text-4xl font-black text-[var(--color-heading)] uppercase tracking-tighter">Available in {location.name}</h2>
               <p className="text-lg font-bold text-[var(--color-heading)] opacity-40">Complete industrial catalog ready for shipping</p>
             </div>
-            <Link href="/products" className="text-sm font-black text-[var(--color-cta)] uppercase tracking-widest flex items-center gap-2 hover:underline">
-              View All Products <ArrowRight className="w-4 h-4" />
-            </Link>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">

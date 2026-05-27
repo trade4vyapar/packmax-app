@@ -49,13 +49,13 @@ export default function TapeShowcase() {
           className="flex flex-col md:flex-row justify-between md:items-end gap-6 mb-12"
         >
           <div>
-            <span className="text-[9px] font-black uppercase tracking-[0.3em] text-[var(--color-cta)] block mb-2">Top Sellers</span>
+            <span className="text-[9px] font-black uppercase tracking-[0.3em] text-[var(--color-cta)] block mb-2">Top Sellers from Our Manufacturing Hub</span>
             <h2 className="text-2xl sm:text-4xl font-black text-[var(--color-heading)] uppercase tracking-tight leading-none">
-              Featured Packaging
+              Featured Packaging — Manufacturer & Supplier
             </h2>
           </div>
           <p className="text-xs font-bold text-[var(--color-heading)] opacity-50 max-w-sm">
-            Our most requested industrial packaging solutions, directly supplied from our manufacturing hubs to your business.
+            Our top-selling industrial packaging — manufactured in-house and distributed through our authorised supplier network to dealers and B2B buyers across India.
           </p>
         </motion.div>
 

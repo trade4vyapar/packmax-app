@@ -7,33 +7,33 @@ export default function ProcessFlow() {
   const steps = [
     {
       num: "01",
-      title: "Making & Printing",
-      sub: "Your Brand Logo",
-      desc: "We use high-quality raw materials to make tape and print your company logo clearly in our factory.",
+      title: "Manufacturer Stage",
+      sub: "In-House Production",
+      desc: "As the direct manufacturer, we cast BOPP film and rotogravure-print your brand logo on the line — no middleman, no markup.",
       icon: Factory,
       color: "from-orange-500 to-amber-600"
     },
     {
       num: "02",
       title: "Glue & Cutting",
-      sub: "Perfect Roll Sizes",
-      desc: "We coat the tape with strong, long-lasting glue and cut the rolls into the exact width and length you need for your boxes.",
+      sub: "Custom Roll Sizes",
+      desc: "Our factory coats each roll with high-tack acrylic adhesive and slits to the exact width supplied to dealers, distributors and bulk B2B clients.",
       icon: Layers,
       color: "from-orange-500 to-[#121B5A]"
     },
     {
       num: "03",
-      title: "Safe Packaging",
-      sub: "Waterproof & Tearproof",
-      desc: "We pack your rolls in strong boxes and wrap them in waterproof stretch film to keep them safe from rain and damage during shipping.",
+      title: "Supplier QC",
+      sub: "Waterproof & Tear-Proof",
+      desc: "Every shipment is QC-checked by our supplier team and wrapped in stretch film for safe transit to distributors and warehouses nationwide.",
       icon: ShieldAlert,
       color: "from-[#121B5A] to-[#E86A12]"
     },
     {
       num: "04",
-      title: "Fast Shipping",
+      title: "Distributor Dispatch",
       sub: "Direct To Your Door",
-      desc: "We load your bulk order onto trucks and ship them directly to your warehouse, store, or office anywhere in India.",
+      desc: "Loaded direct from our factory and dispatched through our distributor network to retailers, e-commerce sellers and B2B buyers anywhere in India.",
       icon: Truck,
       color: "from-orange-900 to-[var(--color-cta)]"
     }
@@ -71,12 +71,12 @@ export default function ProcessFlow() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="text-center max-w-3xl mx-auto mb-20"
         >
-          <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[var(--color-cta)] block mb-3">How It Works</span>
+          <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[var(--color-cta)] block mb-3">Manufacturer → Supplier → Distributor</span>
           <h2 className="text-3xl sm:text-5xl font-black text-[var(--color-heading)] tracking-tighter uppercase leading-[0.95] mb-6">
-            How We Make & Deliver <br />Your Order
+            From Manufacturer to <br />Distributor — One Roof
           </h2>
           <p className="text-sm font-bold text-[var(--color-heading)] opacity-50 leading-relaxed">
-            See how we manufacture your custom tapes and shipping bags, package them safely, and deliver them directly to your business.
+            Packmax is the in-house manufacturer, the wholesale supplier and the pan-India distributor — every roll is made, QC-checked and dispatched from a single facility to your dealer or warehouse.
           </p>
         </motion.div>
 
