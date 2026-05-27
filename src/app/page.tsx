@@ -1,7 +1,8 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import TapeShowcase from "@/components/TapeShowcase";
-import FeaturesSection from "@/components/FeaturesSection";
+import CustomerReviews from "@/components/CustomerReviews";
+import CategoryCircles from "@/components/CategoryCircles";
 import ProcessFlow from "@/components/ProcessFlow";
 import WorkflowSection from "@/components/WorkflowSection";
 import { generateSEOMetadata } from "@/utils/seo";
@@ -17,7 +18,8 @@ export default function Home() {
     <main className="min-h-screen bg-[var(--color-bg)] text-[var(--color-text)] overflow-hidden relative selection:bg-[#E86A12] selection:text-[#F7F5F4]">
       <HeroSection />
       <TapeShowcase />
-      <FeaturesSection />
+      <CustomerReviews />
+      <CategoryCircles />
       <ProcessFlow />
       <WorkflowSection />
     </main>

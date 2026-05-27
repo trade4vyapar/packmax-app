@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "Bash(rm -rf \"e:/PACKMAX/packmax-app/src/app/sitemap-page\")"
+      "Bash(rm -rf \"e:/PACKMAX/packmax-app/src/app/sitemap-page\")",
+      "Bash(npx tsc *)"
     ],
     "additionalDirectories": [
       "e:\\PACKMAX\\packmax-app\\src\\app\\sitemap-page"
