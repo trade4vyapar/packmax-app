@@ -81,7 +81,7 @@ function NavbarLink({ href, label, hasDropdown, locationPrefix }: NavbarLinkProp
       {hasDropdown && (
         /* Dropdown Menu */
         <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-72 bg-white rounded-2xl shadow-2xl border border-[var(--color-border)] opacity-0 invisible group-hover/navdrop:opacity-100 group-hover/navdrop:visible transition-all duration-300 z-50 overflow-hidden transform origin-top scale-95 group-hover/navdrop:scale-100">
-          <div className="py-2 max-h-[60vh] overflow-y-auto flex flex-col">
+          <div className="py-2 max-h-[520px] overflow-y-auto flex flex-col">
             {[
               "Ecommerce Tapes",
               "Printed & plain Ecommerce Polybags",

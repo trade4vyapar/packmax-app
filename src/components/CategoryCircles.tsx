@@ -2,7 +2,8 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { useState } from "react";
+import { useRef, useState, useEffect } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { siteData } from "@/data/siteData";
 
 const MotionLink = motion.create(Link);
@@ -36,9 +37,8 @@ function Circle({ item }: { item: CategoryItem }) {
       href={item.href}
       whileHover={{ y: -6 }}
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
-      className="group shrink-0 flex flex-col items-center text-center w-[120px] sm:w-[150px]"
+      className="group shrink-0 flex flex-col items-center text-center w-[140px] sm:w-[160px]"
     >
-      {/* Circle frame */}
       <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-white shadow-md border border-[var(--color-border)] overflow-hidden mb-3 transition-all duration-300 group-hover:shadow-xl group-hover:border-[var(--color-cta)] group-hover:scale-105">
         <img
           src={item.image}
@@ -68,13 +68,39 @@ export default function CategoryCircles() {
     };
   });
 
-  // Duplicate the list so the marquee can loop seamlessly.
-  const looped = [...items, ...items];
-  const [paused, setPaused] = useState(false);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [canPrev, setCanPrev] = useState(false);
+  const [canNext, setCanNext] = useState(true);
+
+  const updateButtons = () => {
+    const el = trackRef.current;
+    if (!el) return;
+    setCanPrev(el.scrollLeft > 4);
+    setCanNext(el.scrollLeft + el.clientWidth < el.scrollWidth - 4);
+  };
+
+  useEffect(() => {
+    updateButtons();
+    const el = trackRef.current;
+    if (!el) return;
+    el.addEventListener("scroll", updateButtons, { passive: true });
+    window.addEventListener("resize", updateButtons);
+    return () => {
+      el.removeEventListener("scroll", updateButtons);
+      window.removeEventListener("resize", updateButtons);
+    };
+  }, []);
+
+  const scrollByCards = (dir: 1 | -1) => {
+    const el = trackRef.current;
+    if (!el) return;
+    // ~3 cards per click on desktop, ~1.5 on mobile
+    const step = Math.max(el.clientWidth * 0.6, 200);
+    el.scrollBy({ left: dir * step, behavior: "smooth" });
+  };
 
   return (
     <section className="py-20 bg-gradient-to-b from-[var(--color-bg)] via-white to-[var(--color-bg)] border-t border-[var(--color-border)] relative overflow-hidden">
-      {/* Decorative soft background blobs */}
       <div className="absolute top-10 -left-20 w-80 h-80 bg-emerald-100/30 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-10 -right-20 w-80 h-80 bg-orange-100/40 rounded-full blur-[120px] pointer-events-none" />
 
@@ -99,31 +125,50 @@ export default function CategoryCircles() {
           <div className="w-20 h-1 bg-[var(--color-cta)] mx-auto rounded-full mt-4" />
         </motion.div>
 
-        {/* Marquee Slider */}
-        <div
-          className="relative w-full overflow-hidden"
-          onMouseEnter={() => setPaused(true)}
-          onMouseLeave={() => setPaused(false)}
-          onTouchStart={() => setPaused(true)}
-          onTouchEnd={() => setPaused(false)}
-        >
-          {/* Edge fade masks */}
-          <div className="pointer-events-none absolute inset-y-0 left-0 w-16 sm:w-24 bg-gradient-to-r from-[var(--color-bg)] to-transparent z-10" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 w-16 sm:w-24 bg-gradient-to-l from-[var(--color-bg)] to-transparent z-10" />
-
-          <motion.div
-            className="flex gap-6 sm:gap-10 w-max py-4"
-            animate={{ x: paused ? undefined : ["0%", "-50%"] }}
-            transition={{
-              duration: 35,
-              ease: "linear",
-              repeat: Infinity,
-            }}
+        {/* Carousel */}
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-12">
+          {/* Prev button */}
+          <button
+            type="button"
+            onClick={() => scrollByCards(-1)}
+            disabled={!canPrev}
+            aria-label="Previous categories"
+            className={`hidden sm:flex absolute left-0 top-1/2 -translate-y-1/2 z-20 items-center justify-center w-11 h-11 rounded-full bg-white border border-[var(--color-border)] shadow-md transition-all ${
+              canPrev
+                ? "text-[var(--color-heading)] hover:bg-[var(--color-cta)] hover:text-white hover:border-[var(--color-cta)] cursor-pointer"
+                : "text-gray-300 cursor-not-allowed"
+            }`}
           >
-            {looped.map((item, idx) => (
-              <Circle key={`${item.href}-${idx}`} item={item} />
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+
+          {/* Next button */}
+          <button
+            type="button"
+            onClick={() => scrollByCards(1)}
+            disabled={!canNext}
+            aria-label="Next categories"
+            className={`hidden sm:flex absolute right-0 top-1/2 -translate-y-1/2 z-20 items-center justify-center w-11 h-11 rounded-full bg-white border border-[var(--color-border)] shadow-md transition-all ${
+              canNext
+                ? "text-[var(--color-heading)] hover:bg-[var(--color-cta)] hover:text-white hover:border-[var(--color-cta)] cursor-pointer"
+                : "text-gray-300 cursor-not-allowed"
+            }`}
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
+
+          {/* Scroll track */}
+          <div
+            ref={trackRef}
+            className="flex gap-6 sm:gap-8 overflow-x-auto scroll-smooth snap-x snap-mandatory py-4 scrollbar-hide"
+            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+          >
+            {items.map((item) => (
+              <div key={item.href} className="snap-start">
+                <Circle item={item} />
+              </div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>
