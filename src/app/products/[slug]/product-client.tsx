@@ -18,13 +18,13 @@ export default function ProductClientPage({ slug, locationSlug, locationName }: 
   const rating = (4.1 + ((Math.abs(hash) % 9) * 0.1)).toFixed(1);
 
   const [quantity, setQuantity] = useState(1);
-  const [activeTab, setActiveTab] = useState<"desc" | "info" | "reviews" | null>("desc");
+  const [activeTab, setActiveTab] = useState<"desc" | "info" | null>("desc");
   const [selectedSize, setSelectedSize] = useState("2 Inch");
 
   // Mock sizes for packaging tapes
   const sizes = ["1 Inch", "2 Inch", "3 Inch"];
 
-  const toggleTab = (tab: "desc" | "info" | "reviews") => {
+  const toggleTab = (tab: "desc" | "info") => {
     setActiveTab(activeTab === tab ? null : tab);
   };
 
@@ -223,38 +223,6 @@ export default function ProductClientPage({ slug, locationSlug, locationName }: 
               </AnimatePresence>
             </div>
 
-            <div className="h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent mx-6 my-1" />
-
-            {/* Reviews */}
-            <div className="rounded-xl overflow-hidden transition-colors">
-              <button
-                onClick={() => toggleTab("reviews")}
-                className={`w-full flex items-center justify-between p-5 sm:p-6 text-left font-black tracking-widest uppercase text-sm sm:text-base transition-colors ${activeTab === 'reviews' ? 'text-[var(--color-heading)] bg-gray-50/80' : 'text-[var(--color-heading)]/70 hover:bg-gray-50/50'}`}
-              >
-                <span>REVIEWS (0)</span>
-                <motion.div animate={{ rotate: activeTab === "reviews" ? 180 : 0 }} transition={{ duration: 0.2 }}>
-                  <ChevronDown className="w-5 h-5" />
-                </motion.div>
-              </button>
-              <AnimatePresence>
-                {activeTab === "reviews" && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.3, ease: "easeInOut" }}
-                    className="overflow-hidden bg-gray-50/80"
-                  >
-                    <div className="p-5 sm:p-8 pt-0 text-[var(--color-text)]">
-                      <div className="bg-white p-8 rounded-2xl shadow-sm border border-black/5 text-center flex flex-col items-center justify-center min-h-[150px]">
-                        <Star className="w-8 h-8 text-gray-300 mb-3" />
-                        <p className="font-medium text-gray-500">There are no reviews yet. Be the first to review "{product.name}".</p>
-                      </div>
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
           </div>
         </div>
 

@@ -186,13 +186,13 @@ export default function Navbar() {
         initial={hasHeroBanner ? { y: -100, opacity: 0 } : false}
         animate={hasHeroBanner ? { y: 0, opacity: 1 } : false}
         transition={hasHeroBanner ? { duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.3 } : undefined}
-        className="fixed top-0 left-0 right-0 z-50 py-6 px-8 flex items-center justify-between pointer-events-none"
+        className="fixed top-0 left-0 right-0 z-50 py-2 px-4 sm:px-6 flex items-center justify-between pointer-events-none"
       >
         <div className="flex items-center gap-6 pointer-events-auto">
           {/* Logo */}
-          <Link 
-            href="/" 
-            className="group relative px-5 py-2.5 bg-transparent rounded-full flex items-center justify-center transition-all duration-300 pointer-events-auto"
+          <Link
+            href="/"
+            className="group relative px-2 py-1 bg-transparent rounded-full flex items-center justify-center transition-all duration-300 pointer-events-auto"
           >
             <img
               src="https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/Client%20Customers%20LOGOS/FINAL%20LOGO%20PACKMAX.webp"

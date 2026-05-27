@@ -36,7 +36,7 @@ export default function Footer() {
               <img
                 src="https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/Client%20Customers%20LOGOS/FINAL%20LOGO%20PACKMAX.webp"
                 alt="PackMax"
-                className="h-12 sm:h-14 w-auto object-contain brightness-0 invert"
+                className="h-20 sm:h-24 w-auto object-contain"
               />
             </Link>
             <p className="text-xs sm:text-sm font-medium text-white/60 leading-relaxed mb-4 sm:mb-6 max-w-sm">
@@ -121,7 +121,7 @@ export default function Footer() {
                   <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-[var(--color-cta)]" />
                 </div>
                 <p className="text-xs sm:text-sm font-black text-white lowercase tracking-widest">
-                  admin@packmax.in
+                  info@packmaxindia.in
                 </p>
               </div>
             </div>
