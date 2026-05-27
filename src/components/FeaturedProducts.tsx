@@ -11,7 +11,7 @@ export default function FeaturedProducts() {
       id: "printed-tapes",
       name: "PackMax Elite Print Tapes",
       tagline: "Custom Logo BOPP Tape Manufacturer & Supplier",
-      description: "Manufactured in our own factory and supplied direct to dealers, distributors and B2B buyers — high-grade adhesive tape printed with your corporate logo, exact brand colours and machine-line dimensions.",
+      description: "Manufactured in our own factory and supplied direct to dealers, wholesalers and B2B buyers — high-grade adhesive tape printed with your corporate logo, exact brand colours and machine-line dimensions.",
       image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=2070&auto=format&fit=crop",
       specs: ["45 - 55 Micron Thickness", "Water-Based Acrylic Adhesive", "Rotogravure 4-Color Printing", "Length: 50m - 650m rolls"],
       accent: "[var(--color-cta)]"
@@ -19,7 +19,7 @@ export default function FeaturedProducts() {
     {
       id: "courier-bags",
       name: "ArmorSeal Poly Courier Bags",
-      tagline: "Courier Bag Manufacturer & Wholesale Distributor",
+      tagline: "Courier Bag Manufacturer & Wholesale Wholesaler",
       description: "Tear-resistant, triple-co-extruded LDPE courier bags manufactured in-house and distributed through our authorised supplier network to e-commerce sellers, 3PL operators and bulk B2B clients.",
       image: "https://images.unsplash.com/photo-1595079676339-1534801ad6cf?q=80&w=2070&auto=format&fit=crop",
       specs: ["50 - 75 Micron Standard", "Tear & Water Resistant LDPE", "Tamper-Evident Security Seal", "Optional Pod Jackets"],
@@ -44,7 +44,7 @@ export default function FeaturedProducts() {
             </h2>
           </div>
           <p className="text-sm font-bold text-[var(--color-heading)] opacity-50 max-w-sm leading-relaxed">
-            Manufactured inside our Indore facility and distributed pan-India through our wholesale supplier and authorised distributor network — high-speed line sealing, transit protection and brand-grade printing in every roll.
+            Manufactured inside our Indore facility and distributed pan-India through our wholesale supplier and authorised wholesaler network — high-speed line sealing, transit protection and brand-grade printing in every roll.
           </p>
         </div>
 

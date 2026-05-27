@@ -58,14 +58,14 @@ export default function EcommerceCategory({ locationSlug, categorySlug }: { loca
             {location && (
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-orange-50 border border-orange-200 text-[11px] font-bold text-[var(--color-cta)] uppercase tracking-wider mb-4 shadow-sm">
                 <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-cta)] animate-pulse" />
-                Manufacturer • Supplier • Distributor in {location.name}
+                Manufacturer • Supplier • Wholesaler in {location.name}
               </div>
             )}
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight mb-4">
-              {currentCategoryName} {location ? `Manufacturer & Supplier in ${location.name}` : `Manufacturer, Supplier & Distributor`}
+              {currentCategoryName} {location ? `Manufacturer & Supplier in ${location.name}` : `Manufacturer, Supplier & Wholesaler`}
             </h1>
             <p className="text-lg text-gray-600 font-medium">
-              Packmax is a direct-factory manufacturer, wholesale supplier and authorised distributor of {currentCategoryName.toLowerCase()}{location ? ` in ${location.name}, ${location.state}` : ' across India'}. Bulk B2B rates for dealers, distributors and corporate buyers — manufactured in-house, dispatched in 48-72 hours.
+              Packmax is a direct-factory manufacturer, wholesale supplier and authorised wholesaler of {currentCategoryName.toLowerCase()}{location ? ` in ${location.name}, ${location.state}` : ' across India'}. Bulk B2B rates for dealers, wholesalers and corporate buyers — manufactured in-house, dispatched in 48-72 hours.
             </p>
           </div>
         </div>

@@ -52,7 +52,7 @@ const MASTER_PRODUCTS = [
 
 const MASTER_MODIFIERS = [
   "manufacturer", "wholesale supplier", "factory", "bulk dealer",
-  "distributor", "B2B supplier", "exporter", "trader", "stockist",
+  "wholesaler", "B2B supplier", "exporter", "trader", "stockist",
   "price", "online", "near me", "best quality", "cheap rates", "low price",
   "company", "industries", "shop", "store", "vendor"
 ];
@@ -169,7 +169,7 @@ export function generateDynamicKeywords(
 
   const modifiers = [
     "manufacturer in", "wholesale supplier in", "factory in", "bulk dealers in",
-    "distributor in", "cheap prices in", "B2B seller in", "best quality in"
+    "wholesaler in", "cheap prices in", "B2B seller in", "best quality in"
   ];
 
   const keywordsSet = new Set<string>(baseKeywords);
@@ -235,7 +235,7 @@ export function generateDynamicKeywords(
         keywordsSet.add(`${p} supplier in ${loc}`);
         keywordsSet.add(`${p} manufacturer ${loc}`);
         keywordsSet.add(`buy ${p} bulk ${loc}`);
-        keywordsSet.add(`${p} wholesale distributor ${loc}`);
+        keywordsSet.add(`${p} wholesale wholesaler ${loc}`);
       });
     });
   }

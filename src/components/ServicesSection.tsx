@@ -49,10 +49,10 @@ export default function ServicesSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center mb-16 gap-3">
           <h2 className="text-3xl md:text-4xl font-black text-[var(--color-heading)] tracking-tight text-center">
-            MANUFACTURER, <span className="text-[var(--color-cta)]">SUPPLIER</span> & DISTRIBUTOR
+            MANUFACTURER, <span className="text-[var(--color-cta)]">SUPPLIER</span> & WHOLESALER
           </h2>
           <p className="text-sm md:text-base font-bold text-[var(--color-heading)] opacity-60 text-center max-w-2xl">
-            Packmax is your one-stop packaging manufacturer, wholesale supplier and authorised distributor — covering custom tapes, polybags, corrugated boxes and protective wraps for B2B clients across India.
+            Packmax is your one-stop packaging manufacturer, wholesale supplier and authorised wholesaler — covering custom tapes, polybags, corrugated boxes and protective wraps for B2B clients across India.
           </p>
         </div>
 

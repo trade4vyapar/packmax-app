@@ -93,15 +93,15 @@ export default function AboutClient() {
               variants={fadeInUp}
               className="lg:col-span-7 space-y-6"
             >
-              <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[var(--color-cta)] block">Established 2021 • Manufacturer • Supplier • Distributor</span>
+              <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[var(--color-cta)] block">Established 2021 • Manufacturer • Supplier • Wholesaler</span>
               <h1 className="text-4xl sm:text-6xl font-black text-[var(--color-heading)] uppercase tracking-tight leading-none">
-                Packaging Manufacturer, <br /> Supplier & Distributor
+                Packaging Manufacturer, <br /> Supplier & Wholesaler
               </h1>
               <p className="text-sm sm:text-base font-bold text-[var(--color-text)] opacity-70 leading-relaxed pr-6">
-                Packmax India is a direct-factory manufacturer, wholesale supplier and authorised distributor of BOPP tapes, custom-printed logo tapes and courier bags. We started because businesses in Bhopal and Indore needed a reliable manufacturer-cum-supplier they could trust day after day.
+                Packmax India is a direct-factory manufacturer, wholesale supplier and authorised wholesaler of BOPP tapes, custom-printed logo tapes and courier bags. We started because businesses in Bhopal and Indore needed a reliable manufacturer-cum-supplier they could trust day after day.
               </p>
               <p className="text-sm font-bold text-[var(--color-text)] opacity-60 leading-relaxed pr-6">
-                Today we are the supplier and distributor of choice for e-commerce sellers, factories and warehouses across Madhya Pradesh — helping dealers, distributors and retail clients pack their goods safely, brand them professionally, and source bulk packaging at manufacturer-direct rates.
+                Today we are the supplier and wholesaler of choice for e-commerce sellers, factories and warehouses across Madhya Pradesh — helping dealers, wholesalers and retail clients pack their goods safely, brand them professionally, and source bulk packaging at manufacturer-direct rates.
               </p>
             </motion.div>
 
@@ -147,7 +147,7 @@ export default function AboutClient() {
           <div className="absolute top-0 right-0 w-80 h-80 bg-orange-50/50 rounded-full blur-[80px] pointer-events-none" />
           
           <div className="text-center max-w-xl mx-auto mb-16">
-            <span className="text-[9px] font-black uppercase tracking-[0.3em] text-[var(--color-cta)] block mb-2">Manufacturer • Supplier • Distributor Standards</span>
+            <span className="text-[9px] font-black uppercase tracking-[0.3em] text-[var(--color-cta)] block mb-2">Manufacturer • Supplier • Wholesaler Standards</span>
             <h2 className="text-2xl sm:text-4xl font-black text-[var(--color-heading)] uppercase tracking-tight">
               Why Choose the Packmax Manufacturer & Supplier Network?
             </h2>
@@ -163,7 +163,7 @@ export default function AboutClient() {
               </div>
               <h3 className="text-lg font-black text-[var(--color-heading)] uppercase tracking-tight">Wholesale Supplier Pricing</h3>
               <p className="text-xs font-bold text-[var(--color-heading)] opacity-50 leading-relaxed">
-                As the direct manufacturer and bulk supplier, we offer distributor-grade wholesale rates on bulk orders. The bigger the order, the deeper the supplier discount.
+                As the direct manufacturer and bulk supplier, we offer wholesaler-grade wholesale rates on bulk orders. The bigger the order, the deeper the supplier discount.
               </p>
             </motion.div>
             
@@ -173,7 +173,7 @@ export default function AboutClient() {
               </div>
               <h3 className="text-lg font-black text-[var(--color-heading)] uppercase tracking-tight">Manufacturer-Grade Quality</h3>
               <p className="text-xs font-bold text-[var(--color-heading)] opacity-50 leading-relaxed">
-                Manufactured in-house using high-grade BOPP film and acrylic adhesive — every roll our supplier and distributor team ships is QC-passed for industrial stickiness.
+                Manufactured in-house using high-grade BOPP film and acrylic adhesive — every roll our supplier and wholesaler team ships is QC-passed for industrial stickiness.
               </p>
             </motion.div>
 
@@ -181,9 +181,9 @@ export default function AboutClient() {
               <div className="w-12 h-12 rounded-2xl bg-orange-50 flex items-center justify-center text-[var(--color-cta)]">
                 <Truck className="w-5.5 h-5.5" />
               </div>
-              <h3 className="text-lg font-black text-[var(--color-heading)] uppercase tracking-tight">Distributor Delivery</h3>
+              <h3 className="text-lg font-black text-[var(--color-heading)] uppercase tracking-tight">Wholesaler Delivery</h3>
               <p className="text-xs font-bold text-[var(--color-heading)] opacity-50 leading-relaxed">
-                Our Indore manufacturing facility and Bhopal distributor hub run a tight supplier chain — orders are prepared, loaded and delivered to dealers, retailers and end-clients within 48 hours.
+                Our Indore manufacturing facility and Bhopal wholesaler hub run a tight supplier chain — orders are prepared, loaded and delivered to dealers, retailers and end-clients within 48 hours.
               </p>
             </motion.div>
           </motion.div>
@@ -205,7 +205,7 @@ export default function AboutClient() {
                 Manufacturer & Supplier <br /> Factsheet
               </h2>
               <p className="text-xs sm:text-sm font-bold text-[var(--color-text)] opacity-60 leading-relaxed pr-4">
-                Verified manufacturer-cum-supplier profile — GST, UDYAM, banker and registered office details so dealers, distributors and corporate buyers can vet us with confidence.
+                Verified manufacturer-cum-supplier profile — GST, UDYAM, banker and registered office details so dealers, wholesalers and corporate buyers can vet us with confidence.
               </p>
               <div className="pt-4">
                 <PremiumCTA 
@@ -253,7 +253,7 @@ export default function AboutClient() {
             <div className="absolute top-0 left-0 w-72 h-72 bg-orange-50/50 rounded-full blur-[80px] pointer-events-none" />
             
             <div className="max-w-2xl mb-12">
-              <span className="text-[9px] font-black uppercase tracking-[0.3em] text-[var(--color-cta)] block mb-2">Supplier & Distributor Catalog</span>
+              <span className="text-[9px] font-black uppercase tracking-[0.3em] text-[var(--color-cta)] block mb-2">Supplier & Wholesaler Catalog</span>
               <h2 className="text-2xl sm:text-4xl font-black text-[var(--color-heading)] uppercase tracking-tight">
                 Manufacturer Catalog & Supplier Range
               </h2>

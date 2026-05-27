@@ -9,7 +9,7 @@ export default function WorkflowSection() {
       num: "01",
       icon: Send,
       title: "Send Your Requirement",
-      desc: "Share your spec with our supplier team — tape size, thickness, courier bag dimensions and bulk order quantity for dealers, distributors or end-clients.",
+      desc: "Share your spec with our supplier team — tape size, thickness, courier bag dimensions and bulk order quantity for dealers, wholesalers or end-clients.",
       side: "left"
     },
     {
@@ -23,14 +23,14 @@ export default function WorkflowSection() {
       num: "03",
       icon: Printer,
       title: "Custom Manufacturing",
-      desc: "On approval, the manufacturer line prints your logo, coats the BOPP and packs each carton ready for our supplier and distributor network.",
+      desc: "On approval, the manufacturer line prints your logo, coats the BOPP and packs each carton ready for our supplier and wholesaler network.",
       side: "left"
     },
     {
       num: "04",
       icon: Truck,
-      title: "Distributor Delivery",
-      desc: "Bulk consignments are dispatched through our distributor network direct to your warehouse, retail outlet or sub-supplier across India.",
+      title: "Wholesaler Delivery",
+      desc: "Bulk consignments are dispatched through our wholesaler network direct to your warehouse, retail outlet or sub-supplier across India.",
       side: "right"
     }
   ];
@@ -80,12 +80,12 @@ export default function WorkflowSection() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="text-center max-w-2xl mx-auto mb-28"
         >
-          <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[var(--color-cta)] block mb-3">Manufacturer-to-Distributor Workflow</span>
+          <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[var(--color-cta)] block mb-3">Manufacturer-to-Wholesaler Workflow</span>
           <h2 className="text-3xl sm:text-5xl font-black text-[var(--color-heading)] uppercase tracking-tight leading-none mb-6">
             How To Order From the Manufacturer
           </h2>
           <p className="text-xs sm:text-sm font-bold text-[var(--color-heading)] opacity-50 leading-relaxed">
-            Order custom packaging directly from the manufacturer — our wholesale supplier team and authorised distributor network handle the rest, in four simple steps.
+            Order custom packaging directly from the manufacturer — our wholesale supplier team and authorised wholesaler network handle the rest, in four simple steps.
           </p>
         </motion.div>
 

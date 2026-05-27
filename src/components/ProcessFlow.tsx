@@ -17,7 +17,7 @@ export default function ProcessFlow() {
       num: "02",
       title: "Glue & Cutting",
       sub: "Custom Roll Sizes",
-      desc: "Our factory coats each roll with high-tack acrylic adhesive and slits to the exact width supplied to dealers, distributors and bulk B2B clients.",
+      desc: "Our factory coats each roll with high-tack acrylic adhesive and slits to the exact width supplied to dealers, wholesalers and bulk B2B clients.",
       icon: Layers,
       color: "from-orange-500 to-[#121B5A]"
     },
@@ -25,15 +25,15 @@ export default function ProcessFlow() {
       num: "03",
       title: "Supplier QC",
       sub: "Waterproof & Tear-Proof",
-      desc: "Every shipment is QC-checked by our supplier team and wrapped in stretch film for safe transit to distributors and warehouses nationwide.",
+      desc: "Every shipment is QC-checked by our supplier team and wrapped in stretch film for safe transit to wholesalers and warehouses nationwide.",
       icon: ShieldAlert,
       color: "from-[#121B5A] to-[#E86A12]"
     },
     {
       num: "04",
-      title: "Distributor Dispatch",
+      title: "Wholesaler Dispatch",
       sub: "Direct To Your Door",
-      desc: "Loaded direct from our factory and dispatched through our distributor network to retailers, e-commerce sellers and B2B buyers anywhere in India.",
+      desc: "Loaded direct from our factory and dispatched through our wholesaler network to retailers, e-commerce sellers and B2B buyers anywhere in India.",
       icon: Truck,
       color: "from-orange-900 to-[var(--color-cta)]"
     }
@@ -71,12 +71,12 @@ export default function ProcessFlow() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="text-center max-w-3xl mx-auto mb-20"
         >
-          <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[var(--color-cta)] block mb-3">Manufacturer → Supplier → Distributor</span>
+          <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[var(--color-cta)] block mb-3">Manufacturer → Supplier → Wholesaler</span>
           <h2 className="text-3xl sm:text-5xl font-black text-[var(--color-heading)] tracking-tighter uppercase leading-[0.95] mb-6">
-            From Manufacturer to <br />Distributor — One Roof
+            From Manufacturer to <br />Wholesaler — One Roof
           </h2>
           <p className="text-sm font-bold text-[var(--color-heading)] opacity-50 leading-relaxed">
-            Packmax is the in-house manufacturer, the wholesale supplier and the pan-India distributor — every roll is made, QC-checked and dispatched from a single facility to your dealer or warehouse.
+            Packmax is the in-house manufacturer, the wholesale supplier and the pan-India wholesaler — every roll is made, QC-checked and dispatched from a single facility to your dealer or warehouse.
           </p>
         </motion.div>
 
