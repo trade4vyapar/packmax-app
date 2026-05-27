@@ -55,14 +55,23 @@ export default function ProductGallery({ images, name }: ProductGalleryProps) {
           </p>
         </div>
 
-        {/* Zoom hint (desktop only, hidden while actively zooming) */}
+        {/* Zoom hint (desktop only, hidden while actively zooming) — bottom-left to leave space for watermark */}
         <div
-          className={`hidden sm:flex absolute bottom-6 right-6 z-20 items-center gap-1.5 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full border border-gray-100 shadow-sm text-[10px] font-black uppercase tracking-widest text-[var(--color-heading)] transition-opacity duration-200 ${
+          className={`hidden sm:flex absolute bottom-6 left-6 z-20 items-center gap-1.5 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full border border-gray-100 shadow-sm text-[10px] font-black uppercase tracking-widest text-[var(--color-heading)] transition-opacity duration-200 ${
             isZooming ? "opacity-0" : "opacity-80"
           }`}
         >
           <ZoomIn className="w-3 h-3 text-[var(--color-cta)]" /> Hover to Zoom
         </div>
+
+        {/* PackMax watermark — bottom-right of the visible image area */}
+        <img
+          src="https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/watermark.webp"
+          alt=""
+          aria-hidden
+          draggable={false}
+          className="pointer-events-none select-none absolute bottom-4 right-4 sm:bottom-6 sm:right-6 z-20 h-10 sm:h-12 w-auto opacity-80 drop-shadow-md"
+        />
 
         <div
           ref={containerRef}

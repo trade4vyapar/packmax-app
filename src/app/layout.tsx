@@ -13,6 +13,11 @@ export const metadata: Metadata = {
     "Packmax India — direct-from-factory BOPP brown tape, transparent tape, custom-printed Amazon/Flipkart/Meesho seller tapes, tamper-proof courier bags, and packaging films. Wholesale rates, 48-72h delivery across India.",
   keywords: getMasterKeywords().join(", "),
   alternates: { canonical: SITE_URL },
+  icons: {
+    icon: [{ url: "/favicon.ico?v=2", sizes: "any", type: "image/x-icon" }],
+    shortcut: ["/favicon.ico?v=2"],
+    apple: [{ url: "/favicon.ico?v=2" }],
+  },
   openGraph: {
     title: "Packmax India | BOPP Tape, Courier Bags & Custom Printed Packaging",
     description:
