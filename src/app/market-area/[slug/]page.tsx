@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { siteData } from "@/data/siteData";
 import { MapPin, CheckCircle2, ArrowRight, Truck, Factory, ShieldCheck } from "lucide-react";
 import Link from "next/link";
+import CustomerReviews from "@/components/CustomerReviews";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -72,6 +73,11 @@ export default async function LocationPage({ params }: Props) {
                 <h3 className="text-xl font-black text-[var(--color-heading)] uppercase mb-4 tracking-tight">Sample First</h3>
                 <p className="text-sm text-[var(--color-text)] font-medium leading-relaxed">We provide free samples to companies in {location.name} before starting bulk manufacturing.</p>
             </div>
+        </div>
+
+        {/* Customer Reviews */}
+        <div className="mb-20 -mx-8 lg:-mx-20">
+          <CustomerReviews />
         </div>
 
         {/* Featured Products in this area */}

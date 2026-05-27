@@ -4,9 +4,9 @@ import { siteData } from "@/data/siteData";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import HeroSection from "@/components/HeroSection";
-import FeaturesSection from "@/components/FeaturesSection";
 import EcommerceCategory, { CATEGORIES } from "@/components/EcommerceCategory";
 import TapeShowcase from "@/components/TapeShowcase";
+import CustomerReviews from "@/components/CustomerReviews";
 import ProcessFlow from "@/components/ProcessFlow";
 import WorkflowSection from "@/components/WorkflowSection";
 
@@ -70,8 +70,8 @@ export default async function LocationOrCategoryPage({ params }: Props) {
       <main className="min-h-screen bg-[var(--color-bg)] text-[var(--color-text)] overflow-hidden relative selection:bg-[#E86A12] selection:text-[#F7F5F4]">
         <HeroSection locationName={location.name} />
         <TapeShowcase />
-        <FeaturesSection locationName={location.name} locationSlug={location.slug} />
-        
+        <CustomerReviews />
+
         {/* Product Link Overrides specific to this area */}
         <div className="bg-white py-20 px-6">
           <div className="max-w-7xl mx-auto">
@@ -82,18 +82,35 @@ export default async function LocationOrCategoryPage({ params }: Props) {
               </div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {siteData.products.map((product) => (
-                <Link key={product.id} href={`/${location.slug}/${product.slug}`} className="group bg-white rounded-[2.5rem] p-6 border border-[var(--color-border)] hover:shadow-2xl hover:-translate-y-2 transition-all">
-                  <div className="aspect-square rounded-2xl overflow-hidden mb-6 bg-[var(--color-bg)]">
-                    <img src={product.image} alt={product.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
-                  </div>
-                  <h4 className="text-lg font-black text-[var(--color-heading)] uppercase mb-2 leading-tight">{product.name}</h4>
-                  <p className="text-xs font-bold text-[var(--color-text)] opacity-60 leading-relaxed line-clamp-2 mb-4">{product.tagline}</p>
-                  <div className="text-[10px] font-black uppercase text-[var(--color-cta)] tracking-widest flex items-center gap-2">
-                    View Specs <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
-                  </div>
-                </Link>
-              ))}
+              {CATEGORIES.slice(0, 8).map((category) => {
+                const categorySlug = generateSlug(category);
+                const representative = siteData.products.find((p) => p.categorySlug === categorySlug);
+                if (!representative) return null;
+                return (
+                  <Link
+                    key={categorySlug}
+                    href={`/${location.slug}/${categorySlug}`}
+                    className="group bg-white rounded-[2.5rem] p-6 border border-[var(--color-border)] hover:shadow-2xl hover:-translate-y-2 transition-all"
+                  >
+                    <div className="aspect-square rounded-2xl overflow-hidden mb-6 bg-[var(--color-bg)]">
+                      <img
+                        src={representative.image}
+                        alt={category}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      />
+                    </div>
+                    <h4 className="text-lg font-black text-[var(--color-heading)] uppercase mb-2 leading-tight">
+                      {category}
+                    </h4>
+                    <p className="text-xs font-bold text-[var(--color-text)] opacity-60 leading-relaxed line-clamp-2 mb-4">
+                      Explore the full {category.toLowerCase()} range
+                    </p>
+                    <div className="text-[10px] font-black uppercase text-[var(--color-cta)] tracking-widest flex items-center gap-2">
+                      Browse Category <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  </Link>
+                );
+              })}
             </div>
           </div>
         </div>

@@ -14,14 +14,14 @@ const DEFAULT_LOCATION = "indore";
 const CATEGORY_CIRCLES = [
   { label: "Ecommerce Tapes", categorySlug: "ecommerce-tapes", productSlug: "amazon-prime-tape" },
   { label: "Courier Polybags", categorySlug: "printed-plain-ecommerce-polybags", productSlug: "amazon-courier-bags" },
-  { label: "Stretch Film", categorySlug: "stretch-filmroll", productSlug: "hand-grade-stretch-film" },
-  { label: "BOPP Color Tape", categorySlug: "bopp-color-tape", productSlug: "assorted-color-bopp-tapes" },
-  { label: "Transparent Tape", categorySlug: "bopp-transparent-tape", productSlug: "standard-transparent-tape" },
+  { label: "Stretch Film", categorySlug: "stretch-filmroll", productSlug: "stretch-film-roll" },
+  { label: "BOPP Color Tape", categorySlug: "bopp-color-tape", productSlug: "bopp-color-tape-roll" },
+  { label: "Transparent Tape", categorySlug: "bopp-transparent-tape", productSlug: "bopp-transparent-tape-roll" },
   { label: "Box Strapping", categorySlug: "box-strapping-roll-clip", productSlug: "box-strapping-roll" },
   { label: "Corrugated Roll", categorySlug: "corrugated-roll", productSlug: "corrugated-paper-roll" },
   { label: "Custom Logo Tape", categorySlug: "custom-brand-logo-name-printed-tape", productSlug: "custom-brand-printed-tape" },
   { label: "Air Bubble Roll", categorySlug: "air-bubble-roll", productSlug: "air-bubble-wrap" },
-  { label: "BOPP Brown Tape", categorySlug: "bopp-brown-tape", productSlug: "standard-brown-packaging-tape" },
+  { label: "BOPP Brown Tape", categorySlug: "bopp-brown-tape", productSlug: "bopp-brown-tape-roll" },
 ];
 
 interface CategoryItem {

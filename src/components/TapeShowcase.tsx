@@ -12,8 +12,8 @@ export default function TapeShowcase() {
   // Curated list of varied top sellers for the homepage to replace the old tape-only logic
   const featuredProducts = [
     siteData.products.find(p => p.slug === "custom-brand-printed-tape"),
-    siteData.products.find(p => p.slug === "standard-brown-packaging-tape"),
-    siteData.products.find(p => p.slug === "hand-grade-stretch-film"),
+    siteData.products.find(p => p.slug === "bopp-brown-tape-roll"),
+    siteData.products.find(p => p.slug === "stretch-film-roll"),
     siteData.products.find(p => p.slug === "plain-courier-bags"),
   ].filter(Boolean) as typeof siteData.products;
 
