@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import { siteData } from "@/data/siteData";
 import PremiumCTA from "@/components/PremiumCTA";
+import { sendInquiry } from "@/utils/formSubmit";
 
 const MotionLink = motion.create(Link);
 
@@ -31,16 +32,32 @@ export default function ContactClient() {
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitError(null);
 
-    // Simulate API Submission
-    setTimeout(() => {
-      setIsSubmitting(false);
+    const result = await sendInquiry({
+      _subject: `New B2B Inquiry — ${formData.subject} — ${formData.company}`,
+      _replyto: formData.email,
+      "Inquiry Type": "Contact Page — Corporate Request",
+      "Full Name": formData.name,
+      "Corporate Email": formData.email,
+      "Phone": formData.phone,
+      "Company": formData.company,
+      "Target Category": formData.subject,
+      "Message": formData.message,
+      "Submitted From": typeof window !== "undefined" ? window.location.href : "",
+    });
+
+    setIsSubmitting(false);
+    if (result.success) {
       setIsSubmitted(true);
-    }, 1200);
+    } else {
+      setSubmitError(result.message);
+    }
   };
 
   const handleWhatsAppClick = () => {
@@ -315,8 +332,14 @@ export default function ContactClient() {
                   />
                 </div>
 
+                {submitError && (
+                  <div className="rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-[11px] font-bold text-red-700">
+                    {submitError}
+                  </div>
+                )}
+
                 {/* Submit Action */}
-                <PremiumCTA 
+                <PremiumCTA
                   type="submit"
                   label="Submit Inquiry Specification"
                   variant="primary"
