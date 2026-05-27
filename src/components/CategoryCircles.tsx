@@ -13,7 +13,7 @@ const DEFAULT_LOCATION = "india";
 // Each entry pairs a display label with an actual category slug + a
 // representative product slug whose image we surface in the circle.
 const CATEGORY_CIRCLES = [
-  { label: "Ecommerce Tapes", categorySlug: "ecommerce-tapes", productSlug: "amazon-prime-tape" },
+  { label: "Ecommerce Tapes", categorySlug: "ecommerce-tapes", productSlug: "meesho-tape" },
   { label: "Courier Polybags", categorySlug: "printed-plain-ecommerce-polybags", productSlug: "amazon-courier-bags" },
   { label: "Stretch Film", categorySlug: "stretch-filmroll", productSlug: "stretch-film-roll" },
   { label: "BOPP Color Tape", categorySlug: "bopp-color-tape", productSlug: "bopp-color-tape-roll" },
