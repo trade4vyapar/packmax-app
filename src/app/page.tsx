@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import TapeShowcase from "@/components/TapeShowcase";
 import CustomerReviews from "@/components/CustomerReviews";
+import ClientLogosMarquee from "@/components/ClientLogosMarquee";
 import CategoryCircles from "@/components/CategoryCircles";
 import ProcessFlow from "@/components/ProcessFlow";
 import WorkflowSection from "@/components/WorkflowSection";
@@ -19,6 +20,7 @@ export default function Home() {
       <HeroSection />
       <CategoryCircles />
       <TapeShowcase />
+      <ClientLogosMarquee />
       <CustomerReviews />
       <ProcessFlow />
       <WorkflowSection />
