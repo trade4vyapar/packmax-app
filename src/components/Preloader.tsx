@@ -90,12 +90,11 @@ export default function Preloader() {
               transition={{ delay: 0.2, duration: 0.8 }}
               className="text-center"
             >
-              <h1 
-                className="text-4xl md:text-6xl font-black text-[#F7F5F4] tracking-tighter uppercase"
-                style={{ fontFamily: "Space Grotesk, sans-serif" }}
-              >
-                Packmax India<span className="text-[var(--color-cta)]">.</span>
-              </h1>
+              <img
+                src="https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/Client%20Customers%20LOGOS/FINAL%20LOGO%20PACKMAX.webp"
+                alt="PackMax India"
+                className="h-16 md:h-24 w-auto object-contain mx-auto brightness-0 invert"
+              />
               
               <motion.div 
                 initial={{ scaleX: 0 }}

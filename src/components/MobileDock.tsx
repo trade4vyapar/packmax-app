@@ -25,7 +25,7 @@ export default function MobileDock() {
           </Link>
           
           {/* Call Now */}
-          <a href="tel:+911234567890" className="flex flex-col items-center justify-center w-16 h-full text-[var(--color-heading)] opacity-70 hover:opacity-100 hover:text-[var(--color-cta)] transition-all">
+          <a href="tel:+919893115645" className="flex flex-col items-center justify-center w-16 h-full text-[var(--color-heading)] opacity-70 hover:opacity-100 hover:text-[var(--color-cta)] transition-all">
             <PhoneCall className="w-[22px] h-[22px] mb-1" strokeWidth={1.5} />
             <span className="text-[10px] font-medium tracking-wide">Call Now</span>
           </a>
@@ -33,7 +33,7 @@ export default function MobileDock() {
           {/* Whatsapp Center Floating */}
           <div className="w-[72px] flex flex-col justify-end items-center h-full relative">
             <a 
-              href="https://wa.me/911234567890" 
+              href="https://wa.me/919893115645"
               target="_blank" 
               rel="noopener noreferrer"
               className="absolute -top-7 bg-[#25D366] text-white p-3.5 rounded-full shadow-[0_8px_16px_rgba(37,211,102,0.4)] border-4 border-[var(--color-bg)] flex flex-col items-center justify-center transition-transform active:scale-95 z-10"

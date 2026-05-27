@@ -33,9 +33,11 @@ export default function Footer() {
           {/* Brand & Bio */}
           <div className="lg:col-span-4">
             <Link href="/" className="inline-block mb-3 sm:mb-8">
-              <h2 className="text-3xl sm:text-4xl font-black tracking-tighter uppercase" style={{ fontFamily: "Space Grotesk, sans-serif" }}>
-                Packmax<span className="text-[var(--color-cta)]">®</span>
-              </h2>
+              <img
+                src="https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/Client%20Customers%20LOGOS/FINAL%20LOGO%20PACKMAX.webp"
+                alt="PackMax"
+                className="h-12 sm:h-14 w-auto object-contain brightness-0 invert"
+              />
             </Link>
             <p className="text-xs sm:text-sm font-medium text-white/60 leading-relaxed mb-4 sm:mb-6 max-w-sm">
               India's trusted packaging <strong className="text-white/80">manufacturer, wholesale supplier and authorised wholesaler</strong>. Since 2021, Packmax has been the factory-direct manufacturer-supplier-wholesaler partner for brands, dealers and B2B clients across India.
@@ -111,7 +113,7 @@ export default function Footer() {
                   <Phone className="w-4 h-4 sm:w-5 sm:h-5 text-[var(--color-cta)]" />
                 </div>
                 <p className="text-xs sm:text-sm font-black text-white uppercase tracking-widest">
-                  +91 97917 63025
+                  +91 98931 15645
                 </p>
               </div>
               <div className="flex items-center gap-3 sm:gap-5">

@@ -21,33 +21,56 @@ import { sendInquiry } from "@/utils/formSubmit";
 
 const MotionLink = motion.create(Link);
 
+// Catalog: a "General" catch-all option, followed by every product name from
+// our data. Sorted alphabetically so it's easy for the buyer to scan.
+const GENERAL_OPTION = "General B2B Inquiry";
+const PRODUCT_OPTIONS: string[] = [
+  GENERAL_OPTION,
+  ...Array.from(new Set(siteData.products.map((p) => p.name))).sort((a, b) =>
+    a.localeCompare(b),
+  ),
+];
+
 export default function ContactClient() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
     company: "",
-    subject: "General B2B Inquiry",
-    message: ""
+    subjects: [GENERAL_OPTION] as string[],
+    message: "",
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
+
+  const toggleSubject = (value: string) => {
+    setFormData((prev) => {
+      const isSelected = prev.subjects.includes(value);
+      const next = isSelected
+        ? prev.subjects.filter((s) => s !== value)
+        : [...prev.subjects, value];
+      // Always keep at least one selection so the submission has a target.
+      return { ...prev, subjects: next.length ? next : [GENERAL_OPTION] };
+    });
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitError(null);
 
+    const targetCategory = formData.subjects.join(", ");
+
     const result = await sendInquiry({
-      _subject: `New B2B Inquiry — ${formData.subject} — ${formData.company}`,
+      _subject: `New B2B Inquiry — ${targetCategory} — ${formData.company}`,
       _replyto: formData.email,
       "Inquiry Type": "Contact Page — Corporate Request",
       "Full Name": formData.name,
       "Corporate Email": formData.email,
       "Phone": formData.phone,
       "Company": formData.company,
-      "Target Category": formData.subject,
+      "Target Category": targetCategory,
       "Message": formData.message,
       "Submitted From": typeof window !== "undefined" ? window.location.href : "",
     });
@@ -303,20 +326,41 @@ export default function ContactClient() {
                   </div>
                 </div>
 
-                {/* Inquiry Type */}
-                <div className="flex flex-col gap-1.5">
-                  <label className="text-[9px] font-black text-[var(--color-heading)] uppercase tracking-widest opacity-50">Inquiry Target Category</label>
-                  <select
-                    value={formData.subject}
-                    onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                    className="w-full bg-[var(--color-bg)] border border-[var(--color-border)] focus:border-[var(--color-cta)] px-5 py-4 rounded-2xl text-xs font-black text-[var(--color-heading)] uppercase tracking-wider outline-none transition-colors appearance-none cursor-pointer"
-                  >
-                    <option value="General Inquiry">General B2B Inquiry</option>
-                    <option value="Printed Brand Tapes">Custom Printed Brand Tapes</option>
-                    <option value="Ecommerce Shipping Bags">Ecommerce Polybags & Mailers</option>
-                    <option value="Pallet Stretch Roll">Pallet Stretch Wrap Films</option>
-                    <option value="Bulk Supply Contract">Annual Supply & Procurement Contract</option>
-                  </select>
+                {/* Inquiry Target — multi-select chips (every product the user
+                    may want to inquire about, plus a general catch-all). */}
+                <div className="flex flex-col gap-2">
+                  <div className="flex items-center justify-between">
+                    <label className="text-[9px] font-black text-[var(--color-heading)] uppercase tracking-widest opacity-50">
+                      Inquiry Target Products
+                    </label>
+                    <span className="text-[9px] font-black text-[var(--color-cta)] uppercase tracking-widest">
+                      {formData.subjects.length} selected
+                    </span>
+                  </div>
+                  <div className="bg-[var(--color-bg)] border border-[var(--color-border)] rounded-2xl p-3 max-h-60 overflow-y-auto">
+                    <div className="flex flex-wrap gap-2">
+                      {PRODUCT_OPTIONS.map((opt) => {
+                        const isActive = formData.subjects.includes(opt);
+                        return (
+                          <button
+                            key={opt}
+                            type="button"
+                            onClick={() => toggleSubject(opt)}
+                            className={`px-3 py-1.5 rounded-full text-[11px] font-bold border transition-all ${
+                              isActive
+                                ? "bg-[var(--color-cta)] border-[var(--color-cta)] text-white shadow-sm"
+                                : "bg-white border-[var(--color-border)] text-[var(--color-heading)] hover:border-[var(--color-cta)] hover:text-[var(--color-cta)]"
+                            }`}
+                          >
+                            {opt}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+                  <p className="text-[10px] font-medium text-gray-400">
+                    Tap any product to add/remove it. Select multiple to inquire about a bundle.
+                  </p>
                 </div>
 
                 {/* Message */}
@@ -367,7 +411,7 @@ export default function ContactClient() {
                 </h3>
 
                 <p className="text-sm text-[var(--color-heading)] opacity-60 font-bold max-w-md leading-relaxed mb-8">
-                  Your bulk inquiry specification for <span className="text-[var(--color-cta)]">{formData.subject}</span> has been logged under Packmax India routing systems. Our representative will contact you shortly.
+                  Your bulk inquiry specification for <span className="text-[var(--color-cta)]">{formData.subjects.join(", ")}</span> has been logged under Packmax India routing systems. Our representative will contact you shortly.
                 </p>
 
                 <PremiumCTA 

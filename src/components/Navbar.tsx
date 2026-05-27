@@ -194,12 +194,13 @@ export default function Navbar() {
             href="/" 
             className="group relative px-5 py-2.5 bg-transparent rounded-full flex items-center justify-center transition-all duration-300 pointer-events-auto"
           >
-            <h1
-              className={`text-2xl sm:text-3xl font-black tracking-tight leading-none transition-colors duration-300 ${(!hasHeroBanner || isScrolled) ? 'text-[var(--color-heading)]' : 'text-white'}`}
-              style={{ fontFamily: "Space Grotesk, sans-serif" }}
-            >
-              PackMax<span className="text-[10px] sm:text-[12px] align-top font-bold text-[var(--color-cta)]">®</span>
-            </h1>
+            <img
+              src="https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/Client%20Customers%20LOGOS/FINAL%20LOGO%20PACKMAX.webp"
+              alt="PackMax"
+              className={`h-9 sm:h-11 w-auto object-contain transition-[filter] duration-300 ${
+                hasHeroBanner && !isScrolled ? "brightness-0 invert" : ""
+              }`}
+            />
           </Link>
 
           {/* Search Bar (Desktop) */}
