@@ -7,11 +7,11 @@ interface HeroSectionProps {
 
 export default function HeroSection({ locationName }: HeroSectionProps) {
   return (
-    <section className="relative w-full overflow-hidden bg-black">
+    <section className="relative w-full h-screen overflow-hidden bg-white">
       <img
         src={HERO_IMAGE_URL}
         alt={locationName ? `PackMax packaging in ${locationName}` : "PackMax packaging hero"}
-        className="block w-full h-auto object-contain"
+        className="absolute inset-0 w-full h-full object-cover object-center"
         fetchPriority="high"
       />
     </section>

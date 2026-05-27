@@ -197,9 +197,7 @@ export default function Navbar() {
             <img
               src="https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/Client%20Customers%20LOGOS/FINAL%20LOGO%20PACKMAX.webp"
               alt="PackMax"
-              className={`h-9 sm:h-11 w-auto object-contain transition-[filter] duration-300 ${
-                hasHeroBanner && !isScrolled ? "brightness-0 invert" : ""
-              }`}
+              className="h-14 sm:h-16 lg:h-20 w-auto object-contain"
             />
           </Link>
 
