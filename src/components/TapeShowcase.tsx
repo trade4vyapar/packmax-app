@@ -14,7 +14,7 @@ export default function TapeShowcase() {
     "bopp-brown-tape-roll",
     "stretch-film-roll",
     "plain-courier-bags",
-    "amazon-prime-tape",
+    "flipkart-tape",
     "bopp-color-tape-roll",
     "bopp-transparent-tape-roll",
     "corrugated-paper-roll",
@@ -116,7 +116,7 @@ export default function TapeShowcase() {
               Top Sellers from Our Manufacturing Hub
             </span>
             <h2 className="text-2xl sm:text-4xl font-black text-[var(--color-heading)] uppercase tracking-tight leading-none">
-              Featured Packaging — Manufacturer & Supplier
+              Featured Products
             </h2>
           </div>
           <p className="text-xs font-bold text-[var(--color-heading)] opacity-50 max-w-sm">
