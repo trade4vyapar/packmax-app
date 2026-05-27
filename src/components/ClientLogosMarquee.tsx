@@ -54,7 +54,7 @@ export default function ClientLogosMarquee() {
                 src={logo.src}
                 alt={logo.alt}
                 loading="lazy"
-                className="max-h-full max-w-full object-contain grayscale hover:grayscale-0 opacity-80 hover:opacity-100 transition-all duration-300"
+                className="max-h-full max-w-full object-contain transition-transform duration-300 hover:scale-105"
               />
             </div>
           ))}
