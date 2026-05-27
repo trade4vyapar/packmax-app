@@ -8,7 +8,7 @@ import { siteData } from "@/data/siteData";
 
 const MotionLink = motion.create(Link);
 
-const DEFAULT_LOCATION = "indore";
+const DEFAULT_LOCATION = "india";
 
 // Each entry pairs a display label with an actual category slug + a
 // representative product slug whose image we surface in the circle.

@@ -15,7 +15,7 @@ function slugify(name: string) {
 
 // Default location used to root products + categories under a real route.
 // The site routes products at /[location]/[product] and categories at /[location]/[category-slug].
-const DEFAULT_LOCATION = "indore";
+const DEFAULT_LOCATION = "india";
 
 const PAGES: { label: string; href: string }[] = [
   { label: "Home", href: "/" },

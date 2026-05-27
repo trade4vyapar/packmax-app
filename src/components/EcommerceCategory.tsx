@@ -22,11 +22,11 @@ function generateSlug(name: string) {
 export default function EcommerceCategory({ locationSlug, categorySlug }: { locationSlug?: string, categorySlug: string }) {
   const location = locationSlug
     ? siteData.locations.find((l) => l.slug === locationSlug)
-    : siteData.locations.find((l) => l.slug === 'indore');
+    : siteData.locations.find((l) => l.slug === 'india');
 
   const currentCategoryName = CATEGORIES.find(c => generateSlug(c) === categorySlug) || categorySlug.replace(/-/g, ' ');
 
-  const locationPrefix = locationSlug ? `/${locationSlug}` : '/indore';
+  const locationPrefix = locationSlug ? `/${locationSlug}` : '/india';
 
   const realProducts = siteData.products.filter(p => p.categorySlug === categorySlug);
 

@@ -175,7 +175,7 @@ export default function Navbar() {
   const segments = pathname.split('/').filter(Boolean);
   const possibleLocation = segments[0] || '';
   const isLocation = siteData.locations.some(l => l.slug === possibleLocation);
-  const locationPrefix = isLocation ? `/${possibleLocation}` : '/indore';
+  const locationPrefix = isLocation ? `/${possibleLocation}` : '/india';
   const isHomepage = pathname === "/";
   const isLocationPage = segments.length === 1 && isLocation;
   const hasHeroBanner = isHomepage || isLocationPage;
@@ -373,6 +373,15 @@ export default function Navbar() {
                 </div>
               );
             })}
+
+            <Link
+              href="/sitemap"
+              onClick={() => setMobileOpen(false)}
+              className="flex items-center justify-center gap-2 px-4 py-3 text-sm font-bold text-[var(--color-heading)] bg-[var(--color-bg)] hover:bg-gray-100 border border-[var(--color-border)] rounded-xl transition-all uppercase tracking-wide"
+            >
+              <Map className="w-4 h-4 text-[var(--color-cta)]" />
+              Sitemap
+            </Link>
           </motion.div>
         )}
       </AnimatePresence>

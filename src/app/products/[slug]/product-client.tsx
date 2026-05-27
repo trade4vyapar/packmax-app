@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { notFound } from "next/navigation";
 import { siteData } from "@/data/siteData";
-import { ChevronRight, Star, ShoppingCart, Mail, Plus, Minus, ChevronDown, ChevronUp, Package } from "lucide-react";
+import { Star, Mail, ChevronDown, Package } from "lucide-react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import ProductGallery from "@/components/ProductGallery";
@@ -23,13 +23,6 @@ export default function ProductClientPage({ slug, locationSlug, locationName }: 
 
   // Mock sizes for packaging tapes
   const sizes = ["1 Inch", "2 Inch", "3 Inch"];
-
-  const relatedProducts = siteData.products.filter(p => p.categorySlug === product.categorySlug && p.id !== product.id).slice(0, 5);
-  // If not enough related products in same category, get random ones
-  if (relatedProducts.length < 4) {
-    const extra = siteData.products.filter(p => p.id !== product.id && !relatedProducts.find(r => r.id === p.id)).slice(0, 5 - relatedProducts.length);
-    relatedProducts.push(...extra);
-  }
 
   const toggleTab = (tab: "desc" | "info" | "reviews") => {
     setActiveTab(activeTab === tab ? null : tab);
@@ -262,58 +255,6 @@ export default function ProductClientPage({ slug, locationSlug, locationName }: 
                 )}
               </AnimatePresence>
             </div>
-          </div>
-        </div>
-
-        {/* Related Products Section */}
-        <div className="mt-20">
-          <div className="text-center mb-12 relative flex items-center justify-center">
-            <div className="absolute w-full h-px bg-gradient-to-r from-transparent via-[var(--color-border)] to-transparent" />
-            <h2 className="text-xl sm:text-2xl font-black text-[var(--color-heading)] uppercase tracking-widest inline-block bg-[var(--color-bg)] px-8 relative z-10">
-              RELATED PRODUCTS
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {relatedProducts.slice(0, 4).map((rp) => (
-              <motion.div
-                key={rp.id}
-                whileHover={{ y: -4 }}
-                className="bg-white rounded-[1.5rem] border border-gray-100 shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:shadow-xl hover:shadow-[var(--color-heading)]/5 p-5 transition-all group flex flex-col relative text-left"
-              >
-                {/* Badge */}
-                <div className="absolute top-7 right-7 bg-white border border-gray-100 text-[9px] font-black tracking-widest text-gray-600 px-3 py-1.5 rounded-lg z-10 shadow-sm uppercase">
-                  IN STOCK
-                </div>
-
-                <Link href={`/products/${rp.slug}`} className="block relative aspect-square w-full mb-6 overflow-hidden rounded-xl bg-gray-50/50 p-6 border border-black/[0.02]">
-                  <img
-                    src={rp.image}
-                    alt={rp.name}
-                    className="object-contain w-full h-full group-hover:scale-110 transition-transform duration-500 ease-out"
-                  />
-                </Link>
-
-                <Link href={`/products/${rp.slug}`} className="w-full">
-                  <h3 className="text-lg font-black text-[var(--color-heading)] mb-2 line-clamp-1 group-hover:text-[var(--color-cta)] transition-colors">
-                    {rp.name}
-                  </h3>
-                </Link>
-
-                <p className="text-xs text-gray-500 line-clamp-2 mb-6 font-medium leading-relaxed">
-                  {rp.description || `High-quality ${rp.name.toLowerCase()} suitable for various packaging and industrial needs.`}
-                </p>
-
-                <div className="mt-auto border-t border-gray-50 pt-4">
-                  <Link
-                    href={`/products/${rp.slug}`}
-                    className="w-full bg-[#0B122A] text-white text-[12px] sm:text-[13px] font-black tracking-widest uppercase px-4 py-3 rounded-xl flex items-center justify-center gap-2 hover:bg-[var(--color-cta)] hover:shadow-lg hover:shadow-[var(--color-cta)]/20 transition-all border border-transparent"
-                  >
-                    Select Options <ChevronRight className="w-4 h-4" />
-                  </Link>
-                </div>
-              </motion.div>
-            ))}
           </div>
         </div>
 

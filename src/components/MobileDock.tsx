@@ -11,7 +11,7 @@ export default function MobileDock() {
   const isLocation = siteData.locations.some(l => l.slug === possibleLocation);
   // "Products" navigates to the current location hub (which lists categories),
   // not the dedicated /products page.
-  const productsHref = isLocation ? `/${possibleLocation}` : `/indore`;
+  const productsHref = isLocation ? `/${possibleLocation}` : `/india`;
 
   return (
     <div className="fixed bottom-4 left-4 right-4 z-[100] md:hidden pb-[env(safe-area-inset-bottom)]">

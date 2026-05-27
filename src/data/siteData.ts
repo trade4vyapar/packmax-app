@@ -316,6 +316,7 @@ export const siteData = {
     }
   ],
   locations: [
+    { name: "India", slug: "india", state: "Pan India", description: "Packmax India is a direct-factory manufacturer and pan-India wholesale supplier of BOPP tapes, custom printed logo tapes, courier bags and stretch films — serving 40+ cities with quick 48-hour dispatch.", address: "Sector-3, Pithampur Industrial Area, Indore, Madhya Pradesh 454775" },
     { name: "Indore", slug: "indore", state: "Madhya Pradesh", description: "Leading packaging manufacturer in Indore. Fast BOPP tape and polybag delivery to all Pithampur, Sanwer Road, and Dewas Naka industrial hubs.", address: "Sector-3, Pithampur Industrial Area, Indore, Madhya Pradesh 454775" },
     { name: "Bhopal", slug: "bhopal", state: "Madhya Pradesh", description: "Top-tier B2B custom logo tapes and tamper-evident courier bags supplier in Bhopal, serving Govindpura and Mandideep industrial zones.", address: "Sector-A, Mandideep Industrial Area, Bhopal, Madhya Pradesh 462046" },
     { name: "Jabalpur", slug: "jabalpur", state: "Madhya Pradesh", description: "Heavy-duty packaging materials and high-micron stretch films in Jabalpur, supporting regional B2B logistics networks.", address: "Richhai Industrial Area, Jabalpur, Madhya Pradesh 482010" },

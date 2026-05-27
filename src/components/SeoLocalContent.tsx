@@ -5,7 +5,6 @@ export interface SeoLocalContentProps {
   locationName: string;
   state: string;
   marketplace?: string | null;
-  faq: { question: string; answer: string }[];
   relatedLinks?: { label: string; href: string }[];
 }
 
@@ -14,7 +13,6 @@ export default function SeoLocalContent({
   locationName,
   state,
   marketplace,
-  faq,
   relatedLinks = [],
 }: SeoLocalContentProps) {
   const heading = marketplace
@@ -39,10 +37,10 @@ export default function SeoLocalContent({
           <strong>
             {marketplace ? `${marketplace.toLowerCase()} tape manufacturer / supplier / wholesaler in ${locationName.toLowerCase()}` : `${productName.toLowerCase()} manufacturer, supplier and wholesaler in ${locationName.toLowerCase()}`}
           </strong>
-          ? You're on the right page — this is the official Packmax manufacturer & supplier listing for {locationName}.
+          ? You&apos;re on the right page — this is the official Packmax manufacturer &amp; supplier listing for {locationName}.
         </p>
         <p className="text-base text-[var(--color-text)] opacity-80 leading-relaxed max-w-4xl">
-          Packmax serves the full B2B chain: <strong>manufacturer</strong> (in-house BOPP casting & rotogravure printing), <strong>supplier</strong> (wholesale dispatch to retailers and dealers), and <strong>wholesaler</strong> (authorised channel partner network across {state} and pan-India). Whether you need a single bulk shipment or a long-term wholesaler contract for {productName.toLowerCase()} in {locationName}, our team handles it end-to-end.
+          Packmax serves the full B2B chain: <strong>manufacturer</strong> (in-house BOPP casting &amp; rotogravure printing), <strong>supplier</strong> (wholesale dispatch to retailers and dealers), and <strong>wholesaler</strong> (authorised channel partner network across {state} and pan-India). Whether you need a single bulk shipment or a long-term wholesaler contract for {productName.toLowerCase()} in {locationName}, our team handles it end-to-end.
         </p>
 
         {relatedLinks.length > 0 && (
@@ -63,28 +61,6 @@ export default function SeoLocalContent({
             </div>
           </div>
         )}
-
-        <div className="mt-12">
-          <h3 className="text-xl sm:text-2xl font-black text-[var(--color-heading)] uppercase tracking-tight mb-6">
-            Frequently asked questions — {productName} in {locationName}
-          </h3>
-          <div className="space-y-4 max-w-4xl">
-            {faq.map((f) => (
-              <details
-                key={f.question}
-                className="group border border-gray-200 rounded-2xl p-5 bg-gray-50 hover:bg-white transition-colors"
-              >
-                <summary className="cursor-pointer font-bold text-[var(--color-heading)] text-base list-none flex justify-between items-start gap-4">
-                  <span>{f.question}</span>
-                  <span className="text-[var(--color-cta)] text-xl leading-none group-open:rotate-45 transition-transform">+</span>
-                </summary>
-                <p className="mt-3 text-sm text-[var(--color-text)] opacity-80 leading-relaxed">
-                  {f.answer}
-                </p>
-              </details>
-            ))}
-          </div>
-        </div>
       </div>
     </section>
   );

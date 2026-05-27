@@ -5,6 +5,8 @@ import EcommerceCategory, { CATEGORIES } from "@/components/EcommerceCategory";
 import ProductClientPage from "@/app/products/[slug]/product-client";
 import JsonLd from "@/components/JsonLd";
 import SeoLocalContent from "@/components/SeoLocalContent";
+import RelatedProducts from "@/components/RelatedProducts";
+import ProductFaq from "@/components/ProductFaq";
 import {
   generateSEOMetadata,
   breadcrumbSchema,
@@ -225,9 +227,10 @@ export default async function LocationProductOrCategoryPage({ params }: Props) {
         locationName={location.name}
         state={location.state}
         marketplace={marketplace}
-        faq={faqItems}
         relatedLinks={relatedLinks}
       />
+      <RelatedProducts productSlug={product.slug} locationSlug={location.slug} />
+      <ProductFaq productName={product.name} locationName={location.name} faq={faqItems} />
     </>
   );
 }
