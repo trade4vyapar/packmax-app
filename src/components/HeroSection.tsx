@@ -45,7 +45,7 @@ export default function HeroSection({ locationName }: HeroSectionProps) {
 
   return (
     <section
-      className="relative w-full h-screen overflow-hidden bg-white"
+      className="relative w-full h-[58vh] sm:h-[70vh] lg:h-screen overflow-hidden bg-white"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onTouchStart={() => setPaused(true)}
@@ -56,7 +56,7 @@ export default function HeroSection({ locationName }: HeroSectionProps) {
         type="button"
         onClick={() => setIndex((i) => (i - 1 + HERO_IMAGES.length) % HERO_IMAGES.length)}
         aria-label="Previous slide"
-        className="absolute left-4 sm:left-6 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-white/70 backdrop-blur-md border border-white/40 shadow-md text-[var(--color-heading)] hover:bg-[var(--color-cta)] hover:text-white hover:border-[var(--color-cta)] cursor-pointer transition-all"
+        className="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-9 h-9 sm:w-12 sm:h-12 rounded-full bg-white/70 backdrop-blur-md border border-white/40 shadow-md text-[var(--color-heading)] hover:bg-[var(--color-cta)] hover:text-white hover:border-[var(--color-cta)] cursor-pointer transition-all"
       >
         <ChevronLeft className="w-6 h-6" />
       </button>
@@ -64,7 +64,7 @@ export default function HeroSection({ locationName }: HeroSectionProps) {
         type="button"
         onClick={() => setIndex((i) => (i + 1) % HERO_IMAGES.length)}
         aria-label="Next slide"
-        className="absolute right-4 sm:right-6 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-white/70 backdrop-blur-md border border-white/40 shadow-md text-[var(--color-heading)] hover:bg-[var(--color-cta)] hover:text-white hover:border-[var(--color-cta)] cursor-pointer transition-all"
+        className="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-9 h-9 sm:w-12 sm:h-12 rounded-full bg-white/70 backdrop-blur-md border border-white/40 shadow-md text-[var(--color-heading)] hover:bg-[var(--color-cta)] hover:text-white hover:border-[var(--color-cta)] cursor-pointer transition-all"
       >
         <ChevronRight className="w-6 h-6" />
       </button>
@@ -78,7 +78,7 @@ export default function HeroSection({ locationName }: HeroSectionProps) {
           animate={{ x: 0 }}
           exit={{ x: "-100%" }}
           transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-          className="absolute inset-0 w-full h-full object-cover object-center"
+          className="absolute inset-0 w-full h-full object-contain object-center lg:object-cover"
           fetchPriority={index === 0 ? "high" : "auto"}
         />
       </AnimatePresence>
@@ -86,7 +86,7 @@ export default function HeroSection({ locationName }: HeroSectionProps) {
       {/* Slide indicators — animated progress on active dot doubles as a
           visual cue that the carousel is auto-advancing. Click any dot to
           jump straight to that slide. */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2 px-4 py-2 rounded-full bg-white/70 backdrop-blur-md border border-white/40 shadow-md">
+      <div className="absolute bottom-3 sm:bottom-6 lg:bottom-8 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-white/70 backdrop-blur-md border border-white/40 shadow-md">
         {HERO_IMAGES.map((_, i) => {
           const isActive = i === index;
           return (

@@ -43,7 +43,7 @@ function NavbarLink({ href, label, hasDropdown, locationPrefix }: NavbarLinkProp
     >
       <Wrapper
         {...wrapperProps}
-        className={`relative bg-white px-6 py-3.5 rounded-full text-[13px] font-bold text-[var(--color-heading)] shadow-sm hover:shadow-xl transition-all duration-300 uppercase tracking-wide flex items-center gap-2 overflow-hidden select-none ${hasDropdown ? 'cursor-default' : ''}`}
+        className={`relative bg-white/60 backdrop-blur-md border border-white/70 px-5 py-2.5 rounded-full text-[12px] font-bold text-[var(--color-heading)] shadow-[0_4px_16px_rgba(18,27,90,0.08)] hover:shadow-[0_8px_24px_rgba(232,106,18,0.25)] transition-all duration-300 uppercase tracking-wide flex items-center gap-2 overflow-hidden select-none ${hasDropdown ? 'cursor-default' : ''}`}
       >
         {/* Dynamic Liquid Bubble Backdrop */}
         <motion.span
@@ -122,7 +122,7 @@ function SitemapBadge() {
       onMouseLeave={() => setIsHovered(false)}
       whileTap={{ scale: 0.98 }}
       aria-label="Sitemap"
-      className="flex items-center gap-2 bg-white border border-[var(--color-border)] px-4 py-3.5 rounded-full shadow-sm ml-4 cursor-pointer select-none relative overflow-hidden group"
+      className="flex items-center gap-2 bg-white/70 backdrop-blur-md border border-white/70 px-4 py-2.5 rounded-full shadow-[0_4px_16px_rgba(18,27,90,0.08)] cursor-pointer select-none relative overflow-hidden group"
     >
       {/* Background slide */}
       <motion.span
@@ -186,18 +186,20 @@ export default function Navbar() {
         initial={hasHeroBanner ? { y: -100, opacity: 0 } : false}
         animate={hasHeroBanner ? { y: 0, opacity: 1 } : false}
         transition={hasHeroBanner ? { duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.3 } : undefined}
-        className="fixed top-0 left-0 right-0 z-50 py-2 px-4 sm:px-6 flex items-center justify-between pointer-events-none"
+        className={`sticky top-0 left-0 right-0 z-50 h-14 lg:h-16 px-3 sm:px-5 flex items-center justify-between gap-4 transition-colors duration-500 ${
+          isScrolled ? 'bg-white/80 backdrop-blur-md shadow-[0_4px_20px_rgba(18,27,90,0.06)]' : 'bg-transparent'
+        }`}
       >
-        <div className="flex items-center gap-6 pointer-events-auto">
-          {/* Logo */}
+        <div className="flex items-center gap-4 h-full">
+          {/* Logo — oversized, allowed to bleed past the navbar's visual height */}
           <Link
             href="/"
-            className="group relative px-2 py-1 bg-transparent rounded-full flex items-center justify-center transition-all duration-300 pointer-events-auto"
+            className="group relative flex items-center justify-center transition-transform duration-300 hover:scale-105"
           >
             <img
               src="https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/Client%20Customers%20LOGOS/FINAL%20LOGO%20PACKMAX.webp"
               alt="PackMax"
-              className="h-14 sm:h-16 lg:h-20 w-auto object-contain"
+              className="h-20 sm:h-24 lg:h-28 w-auto object-contain drop-shadow-[0_2px_6px_rgba(0,0,0,0.15)]"
             />
           </Link>
 
@@ -205,13 +207,13 @@ export default function Navbar() {
           <div className="hidden lg:flex items-center">
             <motion.div
               layout
-              className="flex items-center bg-white rounded-full p-1.5 shadow-sm overflow-hidden"
-              style={{ width: isSearchActive ? 320 : 52 }}
+              className="flex items-center bg-white/60 backdrop-blur-md border border-white/70 rounded-full p-1 shadow-[0_4px_16px_rgba(18,27,90,0.08)] overflow-hidden"
+              style={{ width: isSearchActive ? 320 : 42 }}
               transition={{ type: "spring", stiffness: 300, damping: 25 }}
             >
               <button
                 onClick={() => setIsSearchActive(!isSearchActive)}
-                className="w-10 h-10 shrink-0 rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors text-[var(--color-heading)]"
+                className="w-9 h-9 shrink-0 rounded-full flex items-center justify-center hover:bg-white/70 transition-colors text-[var(--color-heading)]"
               >
                 <AnimatePresence mode="wait">
                   {isSearchActive ? (
@@ -262,8 +264,14 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Right Nav (Desktop) */}
-        <div className="hidden lg:flex items-center gap-3 pointer-events-auto">
+        {/* Right Nav (Desktop) — glass pill wraps only the buttons */}
+        <div
+          className="hidden lg:flex items-center gap-2 rounded-full px-2 py-1.5 bg-white/35 backdrop-blur-xl border border-white/60 ring-1 ring-black/5 shadow-[0_8px_32px_rgba(18,27,90,0.12)]"
+          style={{
+            backgroundImage:
+              'linear-gradient(135deg, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0.25) 100%)',
+          }}
+        >
           {navLinks.map((link) => (
             <NavbarLink
               key={link.label}
@@ -280,7 +288,7 @@ export default function Navbar() {
 
         {/* Mobile Toggle */}
         <button
-          className="lg:hidden p-3 bg-white rounded-full shadow-sm pointer-events-auto text-[var(--color-heading)]"
+          className="lg:hidden p-2.5 bg-white/60 backdrop-blur-md border border-white/70 rounded-full shadow-[0_4px_16px_rgba(18,27,90,0.08)] text-[var(--color-heading)]"
           onClick={() => setMobileOpen(!mobileOpen)}
         >
           {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -295,7 +303,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-x-4 top-24 z-40 bg-white rounded-3xl p-6 shadow-2xl lg:hidden flex flex-col gap-4"
+            className="fixed inset-x-4 top-16 z-40 bg-white/70 backdrop-blur-2xl border border-white/60 rounded-3xl p-6 shadow-[0_20px_60px_rgba(18,27,90,0.25)] lg:hidden flex flex-col gap-4"
           >
             <div className="flex items-center bg-gray-50 rounded-full p-2 mb-4">
               <div className="w-10 h-10 rounded-full flex items-center justify-center bg-white shadow-sm text-[var(--color-heading)]">

@@ -3,7 +3,8 @@
     "allow": [
       "Bash(rm -rf \"e:/PACKMAX/packmax-app/src/app/sitemap-page\")",
       "Bash(npx tsc *)",
-      "Bash(curl -sI \"https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/Hero%20Video%281%29%281%29.mp4\")"
+      "Bash(curl -sI \"https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/Hero%20Video%281%29%281%29.mp4\")",
+      "Bash(git checkout *)"
     ],
     "additionalDirectories": [
       "e:\\PACKMAX\\packmax-app\\src\\app\\sitemap-page"

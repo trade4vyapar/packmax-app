@@ -32,11 +32,14 @@ export default function Footer() {
 
           {/* Brand & Bio */}
           <div className="lg:col-span-4">
-            <Link href="/" className="inline-block mb-3 sm:mb-8">
+            <Link
+              href="/"
+              className="inline-flex items-center justify-center bg-white rounded-2xl px-4 py-3 sm:px-5 sm:py-4 shadow-[0_4px_20px_rgba(0,0,0,0.15)] mb-3 sm:mb-8"
+            >
               <img
                 src="https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/Client%20Customers%20LOGOS/FINAL%20LOGO%20PACKMAX.webp"
                 alt="PackMax"
-                className="h-20 sm:h-24 w-auto object-contain"
+                className="h-14 sm:h-16 w-auto object-contain"
               />
             </Link>
             <p className="text-xs sm:text-sm font-medium text-white/60 leading-relaxed mb-4 sm:mb-6 max-w-sm">
