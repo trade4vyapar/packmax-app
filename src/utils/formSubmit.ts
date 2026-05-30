@@ -24,8 +24,11 @@ export interface FormSubmitResponse {
   message: string;
 }
 
-export async function sendInquiry(payload: FormSubmitPayload): Promise<FormSubmitResponse> {
-  const body: Record<string, string> = {
+export async function sendInquiry(
+  payload: FormSubmitPayload,
+  file?: File | null
+): Promise<FormSubmitResponse> {
+  const fields: Record<string, string> = {
     _template: "table",
     _captcha: "false",
     ...Object.fromEntries(
@@ -34,14 +37,31 @@ export async function sendInquiry(payload: FormSubmitPayload): Promise<FormSubmi
   };
 
   try {
-    const res = await fetch(ENDPOINT, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify(body),
-    });
+    let res: Response;
+
+    if (file) {
+      // A file can only be delivered as an email attachment through a
+      // multipart/form-data request — the JSON endpoint cannot carry binary
+      // data. We let the browser set the multipart boundary itself.
+      const form = new FormData();
+      Object.entries(fields).forEach(([key, value]) => form.append(key, value));
+      form.append("attachment", file, file.name);
+
+      res = await fetch(ENDPOINT, {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: form,
+      });
+    } else {
+      res = await fetch(ENDPOINT, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(fields),
+      });
+    }
 
     const data = (await res.json().catch(() => ({}))) as { success?: string; message?: string };
     const success = res.ok && String(data.success).toLowerCase() === "true";

@@ -26,6 +26,22 @@ export const metadata: Metadata = {
     url: SITE_URL,
     siteName: "Packmax India",
     locale: "en_IN",
+    images: [
+      {
+        url: `${SITE_URL}/og-image.png`,
+        width: 1200,
+        height: 630,
+        alt: "Packmax India — Your Trusted Packaging Partner",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Packmax India | BOPP Tape, Courier Bags & Custom Printed Packaging",
+    description:
+      "Direct-from-factory packaging tapes and courier bags. Wholesale rates, 48-72h delivery across India.",
+    images: [`${SITE_URL}/og-image.png`],
+    creator: "@PackmaxIndia",
   },
   robots: {
     index: true,

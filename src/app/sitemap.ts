@@ -4,22 +4,16 @@ import { CATEGORIES } from "@/components/EcommerceCategory";
 import { SITE_URL } from "@/utils/seo";
 
 /**
- * Split the sitemap into typed sections so Google Search Console reports
- * indexation per content bucket. Next 16 auto-emits a sitemap index at
- * /sitemap.xml that links to each chunk at /sitemap/[id].xml.
+ * Single combined sitemap served at /sitemap.xml — the URL referenced by
+ * robots.txt and submitted to Google Search Console.
  *
- * Submit this URL to Google Search Console:
- *   https://packmaxindia.in/sitemap.xml
+ * It maps every page: static pages, each city hub, every product across every
+ * city (e.g. /indore/amazon-tape, /mumbai/amazon-tape), and every category
+ * across every city. Total is ~1,100 URLs, well within Google's 50,000-per-
+ * sitemap limit, so no chunking/index is needed.
+ *
+ *   Submit to Google Search Console: https://packmaxindia.in/sitemap.xml
  */
-export async function generateSitemaps() {
-  return [
-    { id: "static" },
-    { id: "locations" },
-    { id: "location-products" },
-    { id: "location-categories" },
-  ];
-}
-
 const NOW = new Date();
 
 function slugify(name: string) {
@@ -28,23 +22,13 @@ function slugify(name: string) {
 
 const CATEGORY_SLUGS = CATEGORIES.map(slugify);
 
-export default async function sitemap(props: {
-  id: Promise<string>;
-}): Promise<MetadataRoute.Sitemap> {
-  const id = await props.id;
-
-  switch (id) {
-    case "static":
-      return buildStatic();
-    case "locations":
-      return buildLocations();
-    case "location-products":
-      return buildLocationProducts();
-    case "location-categories":
-      return buildLocationCategories();
-    default:
-      return [];
-  }
+export default function sitemap(): MetadataRoute.Sitemap {
+  return [
+    ...buildStatic(),
+    ...buildLocations(),
+    ...buildLocationProducts(),
+    ...buildLocationCategories(),
+  ];
 }
 
 function buildStatic(): MetadataRoute.Sitemap {
@@ -53,6 +37,7 @@ function buildStatic(): MetadataRoute.Sitemap {
     { path: "/about", priority: 0.6, changeFrequency: "monthly" },
     { path: "/contact", priority: 0.7, changeFrequency: "monthly" },
     { path: "/market-area", priority: 0.7, changeFrequency: "weekly" },
+    { path: "/sitemap", priority: 0.3, changeFrequency: "monthly" },
     { path: "/terms", priority: 0.3, changeFrequency: "yearly" },
     { path: "/shipping", priority: 0.4, changeFrequency: "yearly" },
   ];

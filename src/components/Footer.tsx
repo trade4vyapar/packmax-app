@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, ArrowRight } from "lucide-react";
-import { FaInstagram, FaFacebookF, FaLinkedinIn, FaXTwitter } from "react-icons/fa6";
+import { FaInstagram, FaFacebookF } from "react-icons/fa6";
 import Link from "next/link";
 import { siteData } from "@/data/siteData";
 import { CATEGORIES } from "@/components/EcommerceCategory";
@@ -37,16 +37,16 @@ export default function Footer() {
               className="inline-flex items-center justify-center bg-white rounded-2xl px-4 py-3 sm:px-5 sm:py-4 shadow-[0_4px_20px_rgba(0,0,0,0.15)] mb-3 sm:mb-8"
             >
               <img
-                src="https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/Client%20Customers%20LOGOS/FINAL%20LOGO%20PACKMAX.webp"
+                src="/packmax-logo.webp"
                 alt="PackMax"
-                className="h-14 sm:h-16 w-auto object-contain"
+                className="h-16 sm:h-20 w-auto object-contain"
               />
             </Link>
             <p className="text-xs sm:text-sm font-medium text-white/60 leading-relaxed mb-4 sm:mb-6 max-w-sm">
               India's trusted packaging <strong className="text-white/80">manufacturer, wholesale supplier and authorised wholesaler</strong>. Since 2021, Packmax has been the factory-direct manufacturer-supplier-wholesaler partner for brands, dealers and B2B clients across India.
             </p>
             <div className="flex gap-3">
-              {[FaInstagram, FaFacebookF, FaLinkedinIn, FaXTwitter].map((Icon, i) => (
+              {[FaInstagram, FaFacebookF].map((Icon, i) => (
                 <motion.a
                   key={i}
                   href="#"
@@ -145,6 +145,26 @@ export default function Footer() {
           </div>
           <p className="hidden md:block text-[9px] sm:text-[10px] font-black text-white/20 uppercase tracking-[0.3em]">
             Manufacturer • Supplier • Wholesaler
+          </p>
+        </div>
+
+        {/* Developer credit */}
+        <div className="pt-4 sm:pt-6 mt-4 sm:mt-6 border-t border-white/5 text-center">
+          <p className="text-[9px] sm:text-[10px] font-black text-white/30 uppercase tracking-[0.3em]">
+            Developed and Marketed by{" "}
+            <motion.span
+              animate={{
+                textShadow: [
+                  "0 0 4px rgba(232,106,18,0.55)",
+                  "0 0 14px rgba(232,106,18,0.95)",
+                  "0 0 4px rgba(232,106,18,0.55)",
+                ],
+              }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+              className="text-[var(--color-cta)]"
+            >
+              Trade4Vyapar
+            </motion.span>
           </p>
         </div>
       </div>

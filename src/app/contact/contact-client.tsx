@@ -17,6 +17,8 @@ import {
   ChevronDown,
   Check,
   X,
+  UploadCloud,
+  Image as ImageIcon,
 } from "lucide-react";
 import { siteData } from "@/data/siteData";
 import PremiumCTA from "@/components/PremiumCTA";
@@ -48,6 +50,36 @@ export default function ContactClient() {
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement | null>(null);
+  const [logoFile, setLogoFile] = useState<File | null>(null);
+  const [fileError, setFileError] = useState<string | null>(null);
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
+
+  const MAX_LOGO_BYTES = 5 * 1024 * 1024; // FormSubmit attachment ceiling
+
+  const handleLogoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFileError(null);
+    const file = e.target.files?.[0];
+    if (!file) {
+      setLogoFile(null);
+      return;
+    }
+    if (!file.type.startsWith("image/")) {
+      setFileError("Please upload an image file (PNG, JPG, SVG or WEBP).");
+      removeLogo();
+      return;
+    }
+    if (file.size > MAX_LOGO_BYTES) {
+      setFileError("Logo is too large — please keep it under 5 MB.");
+      removeLogo();
+      return;
+    }
+    setLogoFile(file);
+  };
+
+  const removeLogo = () => {
+    setLogoFile(null);
+    if (fileInputRef.current) fileInputRef.current.value = "";
+  };
 
   // Close the dropdown when clicking outside of it.
   useEffect(() => {
@@ -83,22 +115,27 @@ export default function ContactClient() {
 
     const targetCategory = formData.subjects.join(", ");
 
-    const result = await sendInquiry({
-      _subject: `New B2B Inquiry — ${targetCategory} — ${formData.company}`,
-      _replyto: formData.email,
-      "Inquiry Type": "Contact Page — Corporate Request",
-      "Full Name": formData.name,
-      "Corporate Email": formData.email,
-      "Phone": formData.phone,
-      "Company": formData.company,
-      "Target Category": targetCategory,
-      "Message": formData.message,
-      "Submitted From": typeof window !== "undefined" ? window.location.href : "",
-    });
+    const result = await sendInquiry(
+      {
+        _subject: `New B2B Inquiry — ${targetCategory} — ${formData.company}`,
+        _replyto: formData.email,
+        "Inquiry Type": "Contact Page — Corporate Request",
+        "Full Name": formData.name,
+        "Corporate Email": formData.email,
+        "Phone": formData.phone,
+        "Company": formData.company,
+        "Target Category": targetCategory,
+        "Message": formData.message,
+        "Logo Attached": logoFile ? logoFile.name : "No",
+        "Submitted From": typeof window !== "undefined" ? window.location.href : "",
+      },
+      logoFile
+    );
 
     setIsSubmitting(false);
     if (result.success) {
       setIsSubmitted(true);
+      removeLogo();
     } else {
       setSubmitError(result.message);
     }
@@ -203,6 +240,7 @@ export default function ContactClient() {
                     Start WhatsApp Chat
                   </button>
                   <span className="text-[10px] font-bold text-gray-400 block mt-0.5">Tap to chat with a B2B Specialist</span>
+                  <span className="text-[10px] font-bold text-gray-400 block mt-0.5">Mon - Sat: 9:00 AM to 8:00 PM</span>
                 </div>
               </div>
 
@@ -475,6 +513,56 @@ export default function ContactClient() {
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     className="w-full bg-[var(--color-bg)] border border-[var(--color-border)] focus:border-[var(--color-cta)] px-5 py-4 rounded-2xl text-xs font-bold text-[var(--color-heading)] outline-none transition-colors resize-none"
                   />
+                </div>
+
+                {/* Logo Upload */}
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-[9px] font-black text-[var(--color-heading)] uppercase tracking-widest opacity-50">
+                    Upload Your Logo (Optional)
+                  </label>
+                  <input
+                    ref={fileInputRef}
+                    id="logo-upload"
+                    type="file"
+                    accept="image/png,image/jpeg,image/jpg,image/webp,image/svg+xml"
+                    onChange={handleLogoChange}
+                    className="hidden"
+                  />
+                  {logoFile ? (
+                    <div className="flex items-center justify-between gap-3 bg-[var(--color-bg)] border border-[var(--color-border)] px-5 py-4 rounded-2xl">
+                      <div className="flex items-center gap-3 min-w-0">
+                        <div className="w-10 h-10 rounded-xl bg-[var(--color-cta)]/10 border border-[var(--color-cta)]/20 flex items-center justify-center text-[var(--color-cta)] shrink-0">
+                          <ImageIcon className="w-5 h-5" />
+                        </div>
+                        <div className="min-w-0">
+                          <p className="text-xs font-black text-[var(--color-heading)] truncate">{logoFile.name}</p>
+                          <p className="text-[10px] font-bold text-gray-400">{(logoFile.size / 1024).toFixed(0)} KB</p>
+                        </div>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={removeLogo}
+                        aria-label="Remove logo"
+                        className="w-8 h-8 rounded-full flex items-center justify-center text-gray-400 hover:text-red-500 hover:bg-red-50 transition-colors shrink-0"
+                      >
+                        <X className="w-4 h-4" />
+                      </button>
+                    </div>
+                  ) : (
+                    <label
+                      htmlFor="logo-upload"
+                      className="flex items-center gap-3 bg-[var(--color-bg)] border border-dashed border-[var(--color-border)] hover:border-[var(--color-cta)] px-5 py-4 rounded-2xl cursor-pointer transition-colors"
+                    >
+                      <div className="w-10 h-10 rounded-xl bg-white border border-[var(--color-border)] flex items-center justify-center text-[var(--color-cta)] shrink-0">
+                        <UploadCloud className="w-5 h-5" />
+                      </div>
+                      <div>
+                        <p className="text-xs font-black text-[var(--color-heading)]">Click to upload your brand logo</p>
+                        <p className="text-[10px] font-bold text-gray-400">PNG, JPG, SVG or WEBP — up to 5 MB. Attached to your inquiry email.</p>
+                      </div>
+                    </label>
+                  )}
+                  {fileError && <p className="text-[10px] font-bold text-red-600">{fileError}</p>}
                 </div>
 
                 {submitError && (

@@ -248,7 +248,7 @@ export function generateSEOMetadata({
   description,
   path,
   keywords,
-  ogImage = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=1200&auto=format&fit=crop",
+  ogImage = `${SITE_URL}/og-image.png`,
   locationName,
   productName,
   categoryName

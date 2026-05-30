@@ -3,12 +3,21 @@
 import { useRef, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Shield, ChevronLeft, ChevronRight } from "lucide-react";
+import { usePathname } from "next/navigation";
 import { siteData } from "@/data/siteData";
 import PremiumCTA from "@/components/PremiumCTA";
 
 const AUTO_ADVANCE_MS = 3000;
 
 export default function TapeShowcase() {
+  // Keep product links inside the marketplace the visitor is currently viewing
+  // (e.g. /mumbai/...). Falls back to the national /india hub on the generic
+  // homepage and any non-location page.
+  const pathname = usePathname() || "";
+  const possibleLocation = pathname.split("/").filter(Boolean)[0] || "";
+  const isLocation = siteData.locations.some((l) => l.slug === possibleLocation);
+  const locationSlug = isLocation ? possibleLocation : "india";
+
   const featuredSlugs = [
     "custom-brand-printed-tape",
     "bopp-brown-tape-roll",
@@ -193,7 +202,7 @@ export default function TapeShowcase() {
                 </div>
 
                 <PremiumCTA
-                  href={`/indore/${prod.slug}`}
+                  href={`/${locationSlug}/${prod.slug}`}
                   label="Inquire Specs"
                   variant="secondary"
                   icon={<ArrowRight className="w-3 h-3" />}

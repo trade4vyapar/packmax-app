@@ -68,7 +68,7 @@ export default async function LocationOrCategoryPage({ params }: Props) {
   if (location) {
     return (
       <main className="min-h-screen bg-[var(--color-bg)] text-[var(--color-text)] overflow-hidden relative selection:bg-[#E86A12] selection:text-[#F7F5F4]">
-        <HeroSection locationName={location.name} />
+        <HeroSection locationName={location.name} locationSlug={location.slug} />
         <TapeShowcase />
         <CustomerReviews />
 

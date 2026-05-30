@@ -1,14 +1,65 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Search, X, ChevronDown, Menu, Map } from "lucide-react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { siteData } from "@/data/siteData";
 
 function generateSlug(name: string) {
   return name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+}
+
+const CATEGORIES = [
+  "Ecommerce Tapes",
+  "Printed & plain Ecommerce Polybags",
+  "Stretch filmroll",
+  "BOPP Color Tape",
+  "BOPP Transparent Tape",
+  "Box Strapping roll & clip",
+  "Corrugated Roll",
+  "Custom Brand Logo Name Printed tape",
+  "Air bubble roll",
+  "BOPP Brown Tape",
+];
+
+interface SearchResult {
+  type: "Category" | "Product";
+  name: string;
+  href: string;
+}
+
+// Search across categories and products. Matches are scoped to the current
+// location prefix so a result keeps the visitor inside their city's catalog.
+function getSearchResults(query: string, locationPrefix: string): SearchResult[] {
+  const q = query.trim().toLowerCase();
+  if (!q) return [];
+
+  const results: SearchResult[] = [];
+
+  CATEGORIES.forEach((category) => {
+    if (category.toLowerCase().includes(q)) {
+      results.push({
+        type: "Category",
+        name: category,
+        href: `${locationPrefix}/${generateSlug(category)}`,
+      });
+    }
+  });
+
+  siteData.products.forEach((product) => {
+    const haystack = `${product.name} ${product.tagline} ${product.categorySlug}`.toLowerCase();
+    if (haystack.includes(q)) {
+      results.push({
+        type: "Product",
+        name: product.name,
+        href: `${locationPrefix}/${product.slug}`,
+      });
+    }
+  });
+
+  return results.slice(0, 8);
 }
 
 const MotionLink = motion.create(Link);
@@ -82,18 +133,7 @@ function NavbarLink({ href, label, hasDropdown, locationPrefix }: NavbarLinkProp
         /* Dropdown Menu */
         <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-72 bg-white rounded-2xl shadow-2xl border border-[var(--color-border)] opacity-0 invisible group-hover/navdrop:opacity-100 group-hover/navdrop:visible transition-all duration-300 z-50 overflow-hidden transform origin-top scale-95 group-hover/navdrop:scale-100">
           <div className="py-2 max-h-[520px] overflow-y-auto flex flex-col">
-            {[
-              "Ecommerce Tapes",
-              "Printed & plain Ecommerce Polybags",
-              "Stretch filmroll",
-              "BOPP Color Tape",
-              "BOPP Transparent Tape",
-              "Box Strapping roll & clip",
-              "Corrugated Roll",
-              "Custom Brand Logo Name Printed tape",
-              "Air bubble roll",
-              "BOPP Brown Tape"
-            ].map((product, idx) => {
+            {CATEGORIES.map((product, idx) => {
               const slug = generateSlug(product);
               return (
                 <Link 
@@ -157,8 +197,168 @@ function SitemapBadge() {
   );
 }
 
+interface SearchBoxProps {
+  variant: "desktop" | "mobile";
+  locationPrefix: string;
+  onNavigate?: () => void;
+}
+
+function SearchBox({ variant, locationPrefix, onNavigate }: SearchBoxProps) {
+  const router = useRouter();
+  const inputRef = useRef<HTMLInputElement>(null);
+  const [active, setActive] = useState(variant === "mobile");
+  const [query, setQuery] = useState("");
+
+  const results = getSearchResults(query, locationPrefix);
+  const showResults = active && query.trim().length > 0;
+
+  const go = (href: string) => {
+    setQuery("");
+    if (variant === "desktop") setActive(false);
+    onNavigate?.();
+    router.push(href);
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (results.length > 0) go(results[0].href);
+  };
+
+  // Desktop: focus the input as soon as the bar expands.
+  useEffect(() => {
+    if (variant === "desktop" && active) inputRef.current?.focus();
+  }, [active, variant]);
+
+  const resultsDropdown = showResults ? (
+    <div className="absolute left-0 right-0 top-full mt-2 bg-white rounded-2xl shadow-2xl border border-[var(--color-border)] overflow-hidden z-50">
+      {results.length > 0 ? (
+        <div className="max-h-80 overflow-y-auto py-1">
+          {results.map((r) => (
+            <button
+              key={`${r.type}-${r.href}`}
+              type="button"
+              // onMouseDown fires before the input's onBlur, so the click is
+              // never swallowed by the bar collapsing.
+              onMouseDown={(e) => {
+                e.preventDefault();
+                go(r.href);
+              }}
+              className="w-full flex items-center justify-between gap-3 px-4 py-2.5 text-left hover:bg-[var(--color-bg)] transition-colors"
+            >
+              <span className="text-[13px] font-bold text-[var(--color-heading)] truncate">
+                {r.name}
+              </span>
+              <span className="text-[9px] font-black uppercase tracking-wider text-[var(--color-cta)] shrink-0">
+                {r.type}
+              </span>
+            </button>
+          ))}
+        </div>
+      ) : (
+        <div className="px-4 py-3 text-[13px] font-semibold text-gray-400">
+          No matches for &ldquo;{query.trim()}&rdquo;
+        </div>
+      )}
+    </div>
+  ) : null;
+
+  if (variant === "mobile") {
+    return (
+      <form onSubmit={handleSubmit} className="relative mb-4">
+        <div className="flex items-center bg-gray-50 rounded-full p-2">
+          <button
+            type="submit"
+            aria-label="Search"
+            className="w-10 h-10 rounded-full flex items-center justify-center bg-white shadow-sm text-[var(--color-heading)] shrink-0"
+          >
+            <Search className="w-5 h-5" />
+          </button>
+          <input
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            type="text"
+            placeholder="What are you looking for?"
+            className="bg-transparent border-none outline-none px-4 text-sm font-medium text-[var(--color-text)] placeholder:text-gray-400 w-full"
+          />
+        </div>
+        {resultsDropdown}
+      </form>
+    );
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className="relative">
+      <motion.div
+        layout
+        className="flex items-center bg-white/60 backdrop-blur-md border border-white/70 rounded-full p-1 shadow-[0_4px_16px_rgba(18,27,90,0.08)] overflow-hidden"
+        style={{ width: active ? 320 : 42 }}
+        transition={{ type: "spring", stiffness: 300, damping: 25 }}
+      >
+        <button
+          type="button"
+          onClick={() =>
+            setActive((a) => {
+              if (a) setQuery("");
+              return !a;
+            })
+          }
+          aria-label={active ? "Close search" : "Open search"}
+          className="w-9 h-9 shrink-0 rounded-full flex items-center justify-center hover:bg-white/70 transition-colors text-[var(--color-heading)]"
+        >
+          <AnimatePresence mode="wait">
+            {active ? (
+              <motion.div
+                key="close"
+                initial={{ scale: 0, rotate: -90 }}
+                animate={{ scale: 1, rotate: 0 }}
+                exit={{ scale: 0, rotate: 90 }}
+                transition={{ duration: 0.2 }}
+              >
+                <X className="w-5 h-5" />
+              </motion.div>
+            ) : (
+              <motion.div
+                key="search"
+                initial={{ scale: 0, rotate: 90 }}
+                animate={{ scale: 1, rotate: 0 }}
+                exit={{ scale: 0, rotate: -90 }}
+                transition={{ duration: 0.2 }}
+              >
+                <Search className="w-5 h-5" />
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </button>
+
+        <AnimatePresence>
+          {active && (
+            <motion.input
+              ref={inputRef}
+              layout
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              type="text"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder="What are you looking for?"
+              className="bg-transparent border-none outline-none px-3 text-sm font-medium text-[var(--color-text)] placeholder:text-gray-400 w-full"
+              onBlur={(e) => {
+                // Collapse only when empty; result clicks use onMouseDown so
+                // they fire before this blur.
+                if (e.target.value === "") setActive(false);
+              }}
+            />
+          )}
+        </AnimatePresence>
+      </motion.div>
+      {resultsDropdown}
+    </form>
+  );
+}
+
 export default function Navbar() {
-  const [isSearchActive, setIsSearchActive] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileProductsOpen, setMobileProductsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -197,70 +397,15 @@ export default function Navbar() {
             className="group relative flex items-center justify-center transition-transform duration-300 hover:scale-105"
           >
             <img
-              src="https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/Client%20Customers%20LOGOS/FINAL%20LOGO%20PACKMAX.webp"
+              src="/packmax-logo.webp"
               alt="PackMax"
-              className="h-20 sm:h-24 lg:h-28 w-auto object-contain drop-shadow-[0_2px_6px_rgba(0,0,0,0.15)]"
+              className="h-11 sm:h-12 lg:h-14 w-auto object-contain drop-shadow-[0_2px_6px_rgba(0,0,0,0.15)]"
             />
           </Link>
 
           {/* Search Bar (Desktop) */}
           <div className="hidden lg:flex items-center">
-            <motion.div
-              layout
-              className="flex items-center bg-white/60 backdrop-blur-md border border-white/70 rounded-full p-1 shadow-[0_4px_16px_rgba(18,27,90,0.08)] overflow-hidden"
-              style={{ width: isSearchActive ? 320 : 42 }}
-              transition={{ type: "spring", stiffness: 300, damping: 25 }}
-            >
-              <button
-                onClick={() => setIsSearchActive(!isSearchActive)}
-                className="w-9 h-9 shrink-0 rounded-full flex items-center justify-center hover:bg-white/70 transition-colors text-[var(--color-heading)]"
-              >
-                <AnimatePresence mode="wait">
-                  {isSearchActive ? (
-                    <motion.div
-                      key="close"
-                      initial={{ scale: 0, rotate: -90 }}
-                      animate={{ scale: 1, rotate: 0 }}
-                      exit={{ scale: 0, rotate: 90 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      <X className="w-5 h-5" />
-                    </motion.div>
-                  ) : (
-                    <motion.div
-                      key="search"
-                      initial={{ scale: 0, rotate: 90 }}
-                      animate={{ scale: 1, rotate: 0 }}
-                      exit={{ scale: 0, rotate: -90 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      <Search className="w-5 h-5" />
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </button>
-
-              <AnimatePresence>
-                {isSearchActive && (
-                  <motion.input
-                    layout
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.2 }}
-                    type="text"
-                    placeholder="What are you looking for?"
-                    className="bg-transparent border-none outline-none px-3 text-sm font-medium text-[var(--color-text)] placeholder:text-gray-400 w-full"
-                    onFocus={() => setIsSearchActive(true)}
-                    onBlur={(e) => {
-                      if (e.target.value === "") {
-                        setIsSearchActive(false);
-                      }
-                    }}
-                  />
-                )}
-              </AnimatePresence>
-            </motion.div>
+            <SearchBox variant="desktop" locationPrefix={locationPrefix} />
           </div>
         </div>
 
@@ -305,16 +450,11 @@ export default function Navbar() {
             transition={{ duration: 0.3 }}
             className="fixed inset-x-4 top-16 z-40 bg-white/70 backdrop-blur-2xl border border-white/60 rounded-3xl p-6 shadow-[0_20px_60px_rgba(18,27,90,0.25)] lg:hidden flex flex-col gap-4"
           >
-            <div className="flex items-center bg-gray-50 rounded-full p-2 mb-4">
-              <div className="w-10 h-10 rounded-full flex items-center justify-center bg-white shadow-sm text-[var(--color-heading)]">
-                <Search className="w-5 h-5" />
-              </div>
-              <input
-                type="text"
-                placeholder="What are you looking for?"
-                className="bg-transparent border-none outline-none px-4 text-sm font-medium text-[var(--color-text)] placeholder:text-gray-400 w-full"
-              />
-            </div>
+            <SearchBox
+              variant="mobile"
+              locationPrefix={locationPrefix}
+              onNavigate={() => setMobileOpen(false)}
+            />
 
             {navLinks.map((link) => {
               const isProducts = link.label === "PRODUCTS";
@@ -348,18 +488,7 @@ export default function Navbar() {
                       exit={{ opacity: 0, height: 0 }}
                       className="flex flex-col gap-1 px-2 max-h-48 overflow-y-auto"
                     >
-                      {[
-                        "Ecommerce Tapes",
-                        "Printed & plain Ecommerce Polybags",
-                        "Stretch filmroll",
-                        "BOPP Color Tape",
-                        "BOPP Transparent Tape",
-                        "Box Strapping roll & clip",
-                        "Corrugated Roll",
-                        "Custom Brand Logo Name Printed tape",
-                        "Air bubble roll",
-                        "BOPP Brown Tape"
-                      ].map((product, idx) => {
+                      {CATEGORIES.map((product, idx) => {
                         const slug = generateSlug(product);
                         return (
                           <Link 
