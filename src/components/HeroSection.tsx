@@ -11,18 +11,18 @@ import Link from "next/link";
 const HERO_SLIDES = [
   {
     src: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/HOME%20PAGE%20COURSEL%20IMAGES/1.webp",
-    label: "Custom Printed Tape",
-    category: "custom-brand-logo-name-printed-tape",
+    label: "E-Commerce Tapes",
+    category: "ecommerce-tapes",
   },
   {
     src: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/HOME%20PAGE%20COURSEL%20IMAGES/2.webp",
-    label: "Air Bubble Roll",
-    category: "air-bubble-roll",
+    label: "BOPP Brown Tape",
+    category: "bopp-brown-tape",
   },
   {
     src: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/HOME%20PAGE%20COURSEL%20IMAGES/3.webp",
-    label: "BOPP Brown Tape",
-    category: "bopp-brown-tape",
+    label: "BOPP Transparent Tape",
+    category: "bopp-transparent-tape",
   },
   {
     src: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/HOME%20PAGE%20COURSEL%20IMAGES/4.webp",
@@ -31,28 +31,28 @@ const HERO_SLIDES = [
   },
   {
     src: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/HOME%20PAGE%20COURSEL%20IMAGES/5.webp",
-    label: "Box Strapping Roll & Clip",
-    category: "box-strapping-roll-clip",
+    label: "Custom Printed Tape",
+    category: "custom-brand-logo-name-printed-tape",
   },
   {
     src: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/HOME%20PAGE%20COURSEL%20IMAGES/6.webp",
-    label: "BOPP Transparent Tape",
-    category: "bopp-transparent-tape",
-  },
-  {
-    src: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/HOME%20PAGE%20COURSEL%20IMAGES/7.webp",
-    label: "E-Commerce Tapes",
-    category: "ecommerce-tapes",
-  },
-  {
-    src: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/HOME%20PAGE%20COURSEL%20IMAGES/8.webp",
-    label: "Printed & Plain E-Commerce Bags",
+    label: "Courier Polybags",
     category: "printed-plain-ecommerce-polybags",
   },
   {
+    src: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/HOME%20PAGE%20COURSEL%20IMAGES/7.webp",
+    label: "Stretch Film Roll",
+    category: "stretch-filmroll",
+  },
+  {
+    src: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/HOME%20PAGE%20COURSEL%20IMAGES/8.webp",
+    label: "Air Bubble Roll",
+    category: "air-bubble-roll",
+  },
+  {
     src: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/HOME%20PAGE%20COURSEL%20IMAGES/9.webp",
-    label: "Packaging Solutions",
-    category: "bopp-brown-tape",
+    label: "Box Strapping Roll",
+    category: "box-strapping-roll-clip",
   },
 ];
 
