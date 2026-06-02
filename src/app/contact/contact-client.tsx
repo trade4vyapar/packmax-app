@@ -288,7 +288,7 @@ export default function ContactClient() {
                 Corporate Social Handles
               </h4>
               <div className="flex flex-wrap gap-3">
-                {["LinkedIn", "Instagram", "Facebook"].map((handle) => (
+                {["WhatsApp", "Instagram", "Facebook"].map((handle) => (
                   <span
                     key={handle}
                     className="px-4 py-2.5 rounded-xl bg-[var(--color-bg)] border border-[var(--color-border)] text-[10px] font-black uppercase tracking-wider text-[var(--color-heading)] opacity-50 cursor-not-allowed hover:opacity-100 transition-opacity"

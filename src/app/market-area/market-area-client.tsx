@@ -3,8 +3,8 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 
-// Showcase-only marketplaces. These are intentionally NOT links — they exist
-// purely to display Packmax's network reach.
+// Primary marketplaces — these ARE clickable and route to each city page
+// (/{slug}). Each name lower-cased matches a location slug in siteData.
 const cities = [
   "Indore",
   "Bhopal",
@@ -151,16 +151,30 @@ export default function MarketAreaClient() {
           </p>
         </motion.div>
 
-        {/* Primary marketplace grid (showcase only) */}
+        {/* Primary marketplace grid — clickable, routes to each city page */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate="visible"
           className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4"
         >
-          {cities.map((city) => (
-            <CityTile key={city} name={city} />
-          ))}
+          {cities.map((city) => {
+            const slug = city.toLowerCase();
+            return (
+              <Link key={slug} href={`/${slug}`}>
+                <motion.div
+                  variants={itemVariants}
+                  whileHover={{ scale: 1.03, y: -4, borderColor: "#E86A12" }}
+                  whileTap={{ scale: 0.97 }}
+                  className="bg-white border border-[var(--color-border)] rounded-2xl py-5 px-3 text-center shadow-sm hover:shadow-lg transition-all cursor-pointer"
+                >
+                  <span className="font-bold text-[var(--color-heading)] text-xs sm:text-sm tracking-wide uppercase">
+                    {city}
+                  </span>
+                </motion.div>
+              </Link>
+            );
+          })}
         </motion.div>
 
         {/* Important Cities We Serve */}

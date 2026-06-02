@@ -10,44 +10,49 @@ import Link from "next/link";
 // a slide drops the user straight onto that category's listing page.
 const HERO_SLIDES = [
   {
-    src: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/HERO%20COUROSEL/ChatGPT%20Image%20May%2027%2C%202026%2C%2006_17_31%20PM.webp",
+    src: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/HOME%20PAGE%20COURSEL%20IMAGES/1.webp",
     label: "Custom Printed Tape",
     category: "custom-brand-logo-name-printed-tape",
   },
   {
-    src: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/HERO%20COUROSEL/ChatGPT%20Image%20May%2027%2C%202026%2C%2006_55_33%20PM.webp",
+    src: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/HOME%20PAGE%20COURSEL%20IMAGES/2.webp",
     label: "Air Bubble Roll",
     category: "air-bubble-roll",
   },
   {
-    src: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/HERO%20COUROSEL/ChatGPT%20Image%20May%2027%2C%202026%2C%2007_11_29%20PM.webp",
+    src: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/HOME%20PAGE%20COURSEL%20IMAGES/3.webp",
     label: "BOPP Brown Tape",
     category: "bopp-brown-tape",
   },
   {
-    src: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/HERO%20COUROSEL/ChatGPT%20Image%20May%2027%2C%202026%2C%2007_21_55%20PM.webp",
+    src: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/HOME%20PAGE%20COURSEL%20IMAGES/4.webp",
     label: "BOPP Colour Tape",
     category: "bopp-color-tape",
   },
   {
-    src: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/HERO%20COUROSEL/ChatGPT%20Image%20May%2027%2C%202026%2C%2007_44_00%20PM.webp",
+    src: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/HOME%20PAGE%20COURSEL%20IMAGES/5.webp",
     label: "Box Strapping Roll & Clip",
     category: "box-strapping-roll-clip",
   },
   {
-    src: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/HERO%20COUROSEL/ChatGPT%20Image%20May%2027%2C%202026%2C%2007_45_55%20PM.webp",
+    src: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/HOME%20PAGE%20COURSEL%20IMAGES/6.webp",
     label: "BOPP Transparent Tape",
     category: "bopp-transparent-tape",
   },
   {
-    src: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/HERO%20COUROSEL/ChatGPT%20Image%20May%2027%2C%202026%2C%2007_55_40%20PM.webp",
+    src: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/HOME%20PAGE%20COURSEL%20IMAGES/7.webp",
     label: "E-Commerce Tapes",
     category: "ecommerce-tapes",
   },
   {
-    src: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/HERO%20COUROSEL/ChatGPT%20Image%20May%2027%2C%202026%2C%2007_59_00%20PM.webp",
+    src: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/HOME%20PAGE%20COURSEL%20IMAGES/8.webp",
     label: "Printed & Plain E-Commerce Bags",
     category: "printed-plain-ecommerce-polybags",
+  },
+  {
+    src: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/HOME%20PAGE%20COURSEL%20IMAGES/9.webp",
+    label: "Packaging Solutions",
+    category: "bopp-brown-tape",
   },
 ];
 

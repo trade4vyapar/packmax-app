@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Plus } from "lucide-react";
 import { FaFacebookF, FaInstagram, FaWhatsapp } from "react-icons/fa6";
+import { MdSupportAgent } from "react-icons/md";
 import { AnimatePresence, motion } from "framer-motion";
 
 const WHATSAPP_MESSAGE = encodeURIComponent(
@@ -88,13 +88,11 @@ export default function FloatingChat() {
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         onClick={() => setOpen((o) => !o)}
-        aria-label={open ? "Close social links" : "Open social links"}
+        aria-label={open ? "Close contact options" : "Open contact options"}
         aria-expanded={open}
         className="bg-[var(--color-heading)] text-white p-4 rounded-full shadow-2xl transition-colors"
       >
-        <motion.span animate={{ rotate: open ? 45 : 0 }} className="block">
-          <Plus className="w-8 h-8" />
-        </motion.span>
+        <MdSupportAgent className="w-8 h-8" />
       </motion.button>
     </div>
   );
