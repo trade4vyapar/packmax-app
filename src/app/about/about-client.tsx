@@ -36,7 +36,7 @@ export default function AboutClient() {
     { label: "GST Number", value: "23**********1ZM (Verified)", category: "Statutory" },
     { label: "UDYAM Registration No.", value: "UDYAM-MP-23-****928", category: "Statutory" },
     { label: "Number of Workers", value: "Upto 10 Staff Members", category: "Basic Info" },
-    { label: "Registered Office", value: "Indore - 452010, Madhya Pradesh, India", category: "Location" }
+    { label: "Registered Office", value: "Survey no. 126/2/4, S. R. Compound, AB Road, Indore, Madhya Pradesh, 452010", category: "Location" }
   ];
 
   const categories = [

@@ -9,6 +9,43 @@ import { motion, AnimatePresence } from "framer-motion";
 import ProductGallery from "@/components/ProductGallery";
 import InquiryButton from "@/components/InquiryButton";
 
+// Display-only size specifications per product (keyed by slug). These are for
+// show — not selectable and not submitted with any inquiry.
+interface SizeSpec {
+  widths?: string[];
+  length?: string;
+  colors?: string;
+  note?: string;
+}
+
+const SIZE_SPECS: Record<string, SizeSpec> = {
+  // BOPP printed / custom tapes
+  "custom-brand-printed-tape": { widths: ["12mm", "18mm", "24mm", "36mm", "48mm", "60mm", "72mm"], length: "Various options available" },
+  "multi-color-printed-tape": { widths: ["12mm", "18mm", "24mm", "36mm", "48mm", "60mm", "72mm"], length: "Various options available" },
+  "branded-kraft-white-tape": { widths: ["12mm", "18mm", "24mm", "36mm", "48mm", "60mm", "72mm"], length: "Various options available" },
+  "amazon-prime-tape": { widths: ["48mm", "72mm"], length: "Various options available" },
+  "amazon-tape": { widths: ["48mm"], length: "Various options available", note: "Transparent & Milky White base" },
+  "meesho-tape": { widths: ["48mm"], length: "Various options available" },
+  "flipkart-tape": { widths: ["48mm"], length: "Various options available" },
+  // BOPP base tapes
+  "bopp-transparent-tape-roll": { widths: ["12mm", "18mm", "24mm", "36mm", "48mm", "60mm", "72mm"], length: "Various options available" },
+  "bopp-brown-tape-roll": { widths: ["12mm", "18mm", "24mm", "36mm", "48mm", "60mm", "72mm"], length: "Various options available" },
+  "bopp-color-tape-roll": { widths: ["12mm", "18mm", "24mm", "36mm", "48mm", "60mm", "72mm"], length: "Various options available", colors: "Black / Yellow / Red / Green / White / Blue" },
+  // Stretch film
+  "stretch-film-roll": { widths: ["48mm", "72mm", "100mm", "150mm", "200mm", "250mm", "300mm", "450mm", "600mm"] },
+  // Corrugated roll
+  "corrugated-paper-roll": { note: "40 inches / 1000mm, 60 inches / 1500mm, or customized size available" },
+  // Polybags
+  "plain-courier-bags": { note: "All standard sizes available" },
+  "amazon-courier-bags": { note: "All standard sizes available" },
+  "flipkart-courier-bags": { note: "All standard sizes available" },
+  // Box strapping
+  "box-strapping-roll": { note: "Machine and manual grade" },
+  "box-strapping-clips": { note: "Machine and manual grade" },
+  // Air bubble
+  "air-bubble-wrap": { note: "1m × 100m and 1.5m × 100m" },
+};
+
 export default function ProductClientPage({ slug, locationSlug, locationName }: { slug: string; locationSlug?: string; locationName?: string }) {
   const product = siteData.products.find((p) => p.slug === slug);
   if (!product) notFound();
@@ -19,10 +56,9 @@ export default function ProductClientPage({ slug, locationSlug, locationName }: 
 
   const [quantity, setQuantity] = useState(1);
   const [activeTab, setActiveTab] = useState<"desc" | "info" | null>("desc");
-  const [selectedSize, setSelectedSize] = useState("2 Inch");
 
-  // Mock sizes for packaging tapes
-  const sizes = ["1 Inch", "2 Inch", "3 Inch"];
+  // Display-only size specification for this product (not selectable).
+  const spec = SIZE_SPECS[product.slug];
 
   const toggleTab = (tab: "desc" | "info") => {
     setActiveTab(activeTab === tab ? null : tab);
@@ -90,26 +126,46 @@ export default function ProductClientPage({ slug, locationSlug, locationName }: 
                 <span className="uppercase font-bold tracking-wider text-[var(--color-heading)] bg-gray-100 px-2.5 py-1 rounded-md">{product.categorySlug.replace(/-/g, " ")}</span>
               </div>
 
-              {/* Variants Selector */}
-              <div className="mb-8 flex items-center gap-4">
-                <span className="text-[11px] sm:text-xs font-black tracking-widest text-[var(--color-heading)] uppercase opacity-50">SIZE :</span>
-                <div className="flex flex-wrap gap-2.5">
-                  {sizes.map((size) => (
-                    <motion.button
-                      key={size}
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      onClick={() => setSelectedSize(size)}
-                      className={`px-4 py-2 text-xs sm:text-sm font-bold uppercase tracking-wider rounded-xl transition-all duration-300 ${selectedSize === size
-                        ? "bg-[var(--color-cta)] text-white shadow-lg shadow-[var(--color-cta)]/20"
-                        : "bg-gray-100/80 text-[var(--color-heading)]/60 hover:bg-gray-200"
-                        }`}
-                    >
-                      {size}
-                    </motion.button>
-                  ))}
+              {/* Size Specification — display only (not selectable) */}
+              {spec && (
+                <div className="mb-8">
+                  <span className="text-[11px] sm:text-xs font-black tracking-widest text-[var(--color-heading)] uppercase opacity-50 block mb-3">
+                    Size Specification
+                  </span>
+
+                  {spec.widths && spec.widths.length > 0 && (
+                    <div className="mb-3">
+                      <span className="text-[10px] font-black uppercase tracking-wider text-[var(--color-heading)]/40 block mb-1.5">Width</span>
+                      <div className="flex flex-wrap gap-2">
+                        {spec.widths.map((w) => (
+                          <span
+                            key={w}
+                            className="px-3 py-1.5 text-xs font-bold tracking-wide rounded-lg bg-gray-100 text-[var(--color-heading)] border border-black/5"
+                          >
+                            {w}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {spec.length && (
+                    <p className="text-xs sm:text-sm font-semibold text-[var(--color-heading)]/70 mb-1">
+                      <span className="font-black uppercase tracking-wider opacity-50">Length:</span> {spec.length}
+                    </p>
+                  )}
+
+                  {spec.colors && (
+                    <p className="text-xs sm:text-sm font-semibold text-[var(--color-heading)]/70 mb-1">
+                      <span className="font-black uppercase tracking-wider opacity-50">Colours:</span> {spec.colors}
+                    </p>
+                  )}
+
+                  {spec.note && (
+                    <p className="text-xs sm:text-sm font-semibold text-[var(--color-heading)]/70">{spec.note}</p>
+                  )}
                 </div>
-              </div>
+              )}
 
               {/* Action Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 mb-5">

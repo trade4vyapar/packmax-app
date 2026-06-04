@@ -18,7 +18,7 @@ export default function Footer() {
   const location = siteData.locations.find(l => l.slug === currentSlug);
 
   const officeTitle = location ? `${location.name} Office` : "Corporate Office";
-  const officeAddress = location ? location.address : "A-14/15, Sector - 59, Noida, Uttar Pradesh, India 201309";
+  const officeAddress = location ? location.address : "Survey no. 126/2/4, S. R. Compound, AB Road, Indore, Madhya Pradesh, 452010";
 
   return (
     <footer
