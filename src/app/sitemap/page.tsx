@@ -1,6 +1,9 @@
 import { generateSEOMetadata } from "@/utils/seo";
 import SitemapClient from "./sitemap-client";
 
+export const dynamic = "force-static";
+export const revalidate = 86400; // Cache for 24 hours
+
 export const metadata = generateSEOMetadata({
   title: "Sitemap | All Pages, Categories & Products",
   description:

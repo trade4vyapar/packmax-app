@@ -8,6 +8,9 @@ import ProcessFlow from "@/components/ProcessFlow";
 import WorkflowSection from "@/components/WorkflowSection";
 import { generateSEOMetadata } from "@/utils/seo";
 
+export const dynamic = "force-static";
+export const revalidate = 86400; // Cache homepage for 24 hours
+
 export const metadata = generateSEOMetadata({
   title: "PackMax — Packaging Supplier & Manufacturer",
   description: "Packmax India is a leading B2B manufacturer and wholesale supplier of BOPP brown tapes, transparent tapes, custom printed logo tapes, stretch films, and courier bags. Serving 40+ cities Pan-India with cheap direct-from-factory prices.",

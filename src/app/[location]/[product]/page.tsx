@@ -16,6 +16,9 @@ import {
   SITE_URL,
 } from "@/utils/seo";
 
+export const dynamicParams = false;
+export const revalidate = 86400; // Cache pages for 24 hours to prevent frequent ISR writes
+
 function generateSlug(name: string) {
   return name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
 }

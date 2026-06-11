@@ -1,5 +1,7 @@
 import type { MetadataRoute } from "next";
 import { siteData } from "@/data/siteData";
+
+export const revalidate = 86400; // Cache sitemap for 24 hours
 import { CATEGORIES } from "@/components/EcommerceCategory";
 import { SITE_URL } from "@/utils/seo";
 
