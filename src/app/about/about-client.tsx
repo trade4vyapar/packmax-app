@@ -26,19 +26,6 @@ export default function AboutClient() {
     { value: "99%", label: "Perfect Quality", desc: "Orders that pass our quality check without any issues." }
   ];
 
-  const factsheet = [
-    { label: "Type of Business", value: "Manufacturer (Factory Owner)", category: "Basic Info" },
-    { label: "Company Head (CEO)", value: "A Soni", category: "Basic Info" },
-    { label: "GST Status", value: "Registered (Since Nov'21)", category: "Basic Info" },
-    { label: "Firm Type", value: "Proprietorship", category: "Basic Info" },
-    { label: "Annual Turnover", value: "0 - 40 Lakhs", category: "Basic Info" },
-    { label: "Our Banker", value: "State Bank of India (SBI)", category: "Statutory" },
-    { label: "GST Number", value: "23**********1ZM (Verified)", category: "Statutory" },
-    { label: "UDYAM Registration No.", value: "UDYAM-MP-23-****928", category: "Statutory" },
-    { label: "Number of Workers", value: "Upto 10 Staff Members", category: "Basic Info" },
-    { label: "Registered Office", value: "Survey no. 126/2/4, S. R. Compound, AB Road, Indore, Madhya Pradesh, 452010", category: "Location" }
-  ];
-
   const categories = [
     { name: "BOPP Tape", count: 16 },
     { name: "Packaging Tape", count: 12 },
@@ -48,6 +35,7 @@ export default function AboutClient() {
     { name: "Printed BOPP Tape", count: 1 },
     { name: "Stretch Film", count: 1 }
   ];
+
 
   // Animation variants
   const fadeInUp = {
@@ -189,57 +177,6 @@ export default function AboutClient() {
           </motion.div>
         </motion.section>
 
-        {/* ================= FACTSHEET PROFILE ================= */}
-        <section className="mb-24">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-            
-            <motion.div 
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
-              variants={fadeInUp}
-              className="lg:col-span-5 space-y-6 lg:sticky lg:top-28"
-            >
-              <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[var(--color-cta)] block">Manufacturer Profile</span>
-              <h2 className="text-3xl sm:text-5xl font-black text-[var(--color-heading)] uppercase tracking-tight leading-none">
-                Manufacturer & Supplier <br /> Factsheet
-              </h2>
-              <p className="text-xs sm:text-sm font-bold text-[var(--color-text)] opacity-60 leading-relaxed pr-4">
-                Verified manufacturer-cum-supplier profile — GST, UDYAM, banker and registered office details so dealers, wholesalers and corporate buyers can vet us with confidence.
-              </p>
-              <div className="pt-4">
-                <PremiumCTA 
-                  href="/contact"
-                  label="Contact Our Sales Office"
-                  variant="primary"
-                />
-              </div>
-            </motion.div>
-
-            {/* Factsheet Rows with staggered entrance from right */}
-            <motion.div 
-              initial={{ opacity: 0, x: 40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="lg:col-span-7 bg-white border border-[var(--color-border)] rounded-[2.5rem] p-6 sm:p-8 shadow-sm"
-            >
-              <div className="divide-y divide-gray-100">
-                {factsheet.map((fact, idx) => (
-                  <div key={idx} className="py-4.5 sm:py-5 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-                    <span className="text-[11px] font-black uppercase tracking-wider text-[var(--color-heading)] opacity-50">
-                      {fact.label}
-                    </span>
-                    <span className="text-xs sm:text-sm font-black text-[var(--color-heading)]">
-                      {fact.value}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-
-          </div>
-        </section>
 
         {/* ================= PRODUCTS & CAPACITY ================= */}
         <motion.section 

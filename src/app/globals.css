@@ -173,3 +173,29 @@ html.lenis body {
 .marquee-track:hover {
   animation-play-state: paused;
 }
+
+/* WhatsApp glow button */
+@keyframes whatsapp-glow {
+  0%, 100% { box-shadow: 0 0 6px #25D366, 0 0 12px #25D366; }
+  50% { box-shadow: 0 0 16px #25D366, 0 0 32px #25D366; }
+}
+
+.whatsapp-nav-btn {
+  animation: whatsapp-glow 2s ease-in-out infinite;
+}
+
+/* Reviews marquee (separate, horizontal) */
+@keyframes reviews-marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.reviews-marquee-track {
+  animation: reviews-marquee 40s linear infinite;
+  display: flex;
+  width: max-content;
+}
+
+.reviews-marquee-track:hover {
+  animation-play-state: paused;
+}

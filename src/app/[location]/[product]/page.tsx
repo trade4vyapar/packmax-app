@@ -20,6 +20,14 @@ function generateSlug(name: string) {
   return name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
 }
 
+const CATEGORY_SLUG_OVERRIDES: Record<string, string> = {
+  "Corrugated Box Plain Printed": "corrugated-box-plain-printed",
+};
+
+function categoryToSlug(name: string) {
+  return CATEGORY_SLUG_OVERRIDES[name] || generateSlug(name);
+}
+
 const MARKETPLACES = ["Amazon", "Flipkart", "Meesho", "Myntra", "Ajio", "Snapdeal", "JioMart", "Nykaa"];
 
 function matchMarketplace(name: string): string | null {
@@ -37,7 +45,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (!location) return { title: "Location Not Found" };
 
-  const category = CATEGORIES.find(c => generateSlug(c) === prodSlug);
+  const category = CATEGORIES.find(c => categoryToSlug(c) === prodSlug);
   if (category) {
     const isTape = category.toLowerCase().includes("tape");
     const title = isTape
@@ -118,7 +126,7 @@ export default async function LocationProductOrCategoryPage({ params }: Props) {
   const product = siteData.products.find((p) => p.slug === prodSlug);
 
   if (!product) {
-    const category = CATEGORIES.find(c => generateSlug(c) === prodSlug);
+    const category = CATEGORIES.find(c => categoryToSlug(c) === prodSlug);
     if (category) {
       const catBreadcrumb = breadcrumbSchema([
         { name: "Home", url: "/" },
@@ -146,7 +154,7 @@ export default async function LocationProductOrCategoryPage({ params }: Props) {
       return (
         <>
           <JsonLd data={[catBreadcrumb, catBiz, catFaq]} />
-          <EcommerceCategory locationSlug={location.slug} categorySlug={generateSlug(category)} />
+          <EcommerceCategory locationSlug={location.slug} categorySlug={categoryToSlug(category)} />
         </>
       );
     }
@@ -249,7 +257,7 @@ export async function generateStaticParams() {
     CATEGORIES.forEach((cat) => {
       params.push({
         location: loc.slug,
-        product: generateSlug(cat),
+        product: categoryToSlug(cat),
       });
     });
   });

@@ -3,11 +3,40 @@
 import { useState } from "react";
 import { notFound } from "next/navigation";
 import { siteData } from "@/data/siteData";
-import { Star, Mail, ChevronDown, Package } from "lucide-react";
+import { Star, Mail, ChevronDown, Package, MessageCircle, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import ProductGallery from "@/components/ProductGallery";
 import InquiryButton from "@/components/InquiryButton";
+
+// WhatsApp number (with country code, no + sign)
+const WA_NUMBER = "919893973939";
+
+// Pre-filled WhatsApp messages per product slug
+const WA_MESSAGES: Record<string, string> = {
+  "custom-brand-printed-tape": "Hi Packmax! I'm interested in Custom Printed Tape (Brand/Logo/Name Printing) and would like to know more details, pricing, and minimum order quantity.",
+  "multi-color-printed-tape": "Hi Packmax! I'm interested in Custom Printed Tape (Brand/Logo/Name Printing) and would like to know more details, pricing, and minimum order quantity.",
+  "branded-kraft-white-tape": "Hi Packmax! I'm interested in Custom Printed Tape (Brand/Logo/Name Printing) and would like to know more details, pricing, and minimum order quantity.",
+  "amazon-prime-tape": "Hi Packmax! I'm interested in Ecommerce Tapes and would like to know more details, pricing, and minimum order quantity.",
+  "amazon-tape": "Hi Packmax! I'm interested in Ecommerce Tapes and would like to know more details, pricing, and minimum order quantity.",
+  "flipkart-tape": "Hi Packmax! I'm interested in Ecommerce Tapes and would like to know more details, pricing, and minimum order quantity.",
+  "meesho-tape": "Hi Packmax! I'm interested in Ecommerce Tapes and would like to know more details, pricing, and minimum order quantity.",
+  "bopp-brown-tape-roll": "Hi Packmax! I'm interested in BOPP Brown Tape and would like to know more details, pricing, and minimum order quantity.",
+  "bopp-transparent-tape-roll": "Hi Packmax! I'm interested in BOPP Transparent Tape and would like to know more details, pricing, and minimum order quantity.",
+  "bopp-color-tape-roll": "Hi Packmax! I'm interested in BOPP Color Tape and would like to know more details, pricing, and minimum order quantity.",
+  "stretch-film-roll": "Hi Packmax! I'm interested in Stretch Film and would like to know more details, pricing, and minimum order quantity.",
+  "corrugated-paper-roll": "Hi Packmax! I'm interested in Corrugated Roll and would like to know more details, pricing, and minimum order quantity.",
+  "air-bubble-wrap": "Hi Packmax! I'm interested in Air Bubble Roll and would like to know more details, pricing, and minimum order quantity.",
+  "box-strapping-roll": "Hi Packmax! I'm interested in Box Strapping Roll & Clip and would like to know more details, pricing, and minimum order quantity.",
+  "box-strapping-clip": "Hi Packmax! I'm interested in Box Strapping Roll & Clip and would like to know more details, pricing, and minimum order quantity.",
+  "plain-courier-bags": "Hi Packmax! I'm interested in Ecommerce Tapes and would like to know more details, pricing, and minimum order quantity.",
+  "amazon-courier-bags": "Hi Packmax! I'm interested in Ecommerce Tapes and would like to know more details, pricing, and minimum order quantity.",
+  "flipkart-courier-bags": "Hi Packmax! I'm interested in Ecommerce Tapes and would like to know more details, pricing, and minimum order quantity.",
+};
+
+function getWaMessage(slug: string, productName: string) {
+  return WA_MESSAGES[slug] || `Hi Packmax! I'm interested in ${productName} and would like to know more details, pricing, and minimum order quantity.`;
+}
 
 // Display-only size specifications per product (keyed by slug). These are for
 // show — not selectable and not submitted with any inquiry.
@@ -67,6 +96,16 @@ export default function ProductClientPage({ slug, locationSlug, locationName }: 
   return (
     <main className="min-h-screen bg-[var(--color-bg)] pt-32 pb-16 selection:bg-[var(--color-cta)] selection:text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-16">
+
+        {/* Back Button */}
+        <button
+          type="button"
+          onClick={() => history.back()}
+          className="inline-flex items-center gap-1.5 mb-6 text-sm font-bold text-[var(--color-heading)] hover:text-[var(--color-cta)] transition-colors group"
+        >
+          <ArrowLeft className="w-4 h-4 group-hover:-translate-x-0.5 transition-transform" />
+          Back
+        </button>
 
         {/* Breadcrumbs */}
         <nav className="flex items-center gap-2 mb-8 text-sm font-medium text-[var(--color-text)] opacity-70">
@@ -169,15 +208,21 @@ export default function ProductClientPage({ slug, locationSlug, locationName }: 
 
               {/* Action Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 mb-5">
-                <Link href="/contact" className="flex-1 block">
+                {/* WhatsApp Button */}
+                <a
+                  href={`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(getWaMessage(product.slug, product.name))}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 block"
+                >
                   <motion.button
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className="w-full h-full bg-gradient-to-r from-[#121B5A] to-[#1a267a] text-white py-4 px-6 rounded-xl font-black uppercase tracking-widest text-xs sm:text-sm shadow-xl shadow-[#121B5A]/20 hover:shadow-2xl hover:shadow-[#121B5A]/30 transition-all flex items-center justify-center gap-3 border border-white/10"
+                    className="w-full h-full bg-[#25D366] hover:bg-[#1ebe5a] text-white py-4 px-6 rounded-xl font-black uppercase tracking-widest text-xs sm:text-sm shadow-xl shadow-[#25D366]/30 hover:shadow-2xl hover:shadow-[#25D366]/40 transition-all flex items-center justify-center gap-3 border border-white/10"
                   >
-                    <Package className="w-5 h-5" /> Request Sample
+                    <MessageCircle className="w-5 h-5" /> WhatsApp Us
                   </motion.button>
-                </Link>
+                </a>
 
                 <div className="flex-1 block">
                   <InquiryButton

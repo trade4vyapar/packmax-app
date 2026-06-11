@@ -2,10 +2,9 @@
 
 import { useRef, useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Shield, ChevronLeft, ChevronRight } from "lucide-react";
+import { Shield, ChevronLeft, ChevronRight, MessageCircle } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { siteData } from "@/data/siteData";
-import PremiumCTA from "@/components/PremiumCTA";
 
 const AUTO_ADVANCE_MS = 3000;
 
@@ -20,16 +19,27 @@ export default function TapeShowcase() {
 
   const featuredSlugs = [
     "custom-brand-printed-tape",
+    "amazon-prime-tape",
     "bopp-brown-tape-roll",
-    "stretch-film-roll",
-    "plain-courier-bags",
-    "flipkart-tape",
-    "bopp-color-tape-roll",
     "bopp-transparent-tape-roll",
+    "bopp-color-tape-roll",
+    "stretch-film-roll",
     "corrugated-paper-roll",
     "air-bubble-wrap",
     "box-strapping-roll",
   ];
+
+  const WA_MESSAGES: Record<string, string> = {
+    "custom-brand-printed-tape": "Hi Packmax! I'm interested in Custom Printed Tape (Brand/Logo/Name Printing) and would like to know more details, pricing, and minimum order quantity.",
+    "amazon-prime-tape": "Hi Packmax! I'm interested in Ecommerce Tapes and would like to know more details, pricing, and minimum order quantity.",
+    "bopp-brown-tape-roll": "Hi Packmax! I'm interested in BOPP Brown Tape and would like to know more details, pricing, and minimum order quantity.",
+    "bopp-transparent-tape-roll": "Hi Packmax! I'm interested in BOPP Transparent Tape and would like to know more details, pricing, and minimum order quantity.",
+    "bopp-color-tape-roll": "Hi Packmax! I'm interested in BOPP Color Tape and would like to know more details, pricing, and minimum order quantity.",
+    "stretch-film-roll": "Hi Packmax! I'm interested in Stretch Film and would like to know more details, pricing, and minimum order quantity.",
+    "corrugated-paper-roll": "Hi Packmax! I'm interested in Corrugated Roll and would like to know more details, pricing, and minimum order quantity.",
+    "air-bubble-wrap": "Hi Packmax! I'm interested in Air Bubble Roll and would like to know more details, pricing, and minimum order quantity.",
+    "box-strapping-roll": "Hi Packmax! I'm interested in Box Strapping Roll & Clip and would like to know more details, pricing, and minimum order quantity.",
+  };
   const featuredProducts = featuredSlugs
     .map((slug) => siteData.products.find((p) => p.slug === slug))
     .filter(Boolean) as typeof siteData.products;
@@ -201,13 +211,14 @@ export default function TapeShowcase() {
                   </div>
                 </div>
 
-                <PremiumCTA
-                  href={`/${locationSlug}/${prod.slug}`}
-                  label="Inquire Specs"
-                  variant="secondary"
-                  icon={<ArrowRight className="w-3 h-3" />}
-                  className="w-full py-3 h-10 text-[9px] rounded-xl"
-                />
+                <a
+                  href={`https://wa.me/919893973939?text=${encodeURIComponent(WA_MESSAGES[prod.slug] || `Hi Packmax! I'm interested in ${prod.name} and would like to know more details, pricing, and minimum order quantity.`)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full py-3 h-10 rounded-xl bg-[#25D366] hover:bg-[#1ebe5a] text-white flex items-center justify-center gap-2 text-[9px] font-black uppercase tracking-widest transition-colors"
+                >
+                  <MessageCircle className="w-3.5 h-3.5" /> WhatsApp
+                </a>
               </motion.div>
             ))}
           </div>

@@ -3,17 +3,22 @@ import Link from "next/link";
 import { ChevronRight, ArrowRight, PackageSearch, Star } from "lucide-react";
 
 export const CATEGORIES = [
-  "Ecommerce Tapes",
-  "Printed & plain Ecommerce Polybags",
-  "Stretch filmroll",
-  "BOPP Color Tape",
-  "BOPP Transparent Tape",
-  "Box Strapping roll & clip",
-  "Corrugated Roll",
   "Custom Brand Logo Name Printed tape",
+  "Ecommerce Tapes",
+  "BOPP Brown Tape",
+  "BOPP Transparent Tape",
+  "BOPP Color Tape",
+  "Stretch filmroll",
+  "Corrugated Box Plain Printed",
+  "Corrugated Roll",
   "Air bubble roll",
-  "BOPP Brown Tape"
+  "Box Strapping roll & clip",
 ];
+
+const CATEGORY_SLUG_OVERRIDES: Record<string, string> = {
+  "Corrugated Box Plain Printed": "corrugated-box-plain-printed",
+};
+
 
 function generateSlug(name: string) {
   return name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
@@ -82,7 +87,7 @@ export default function EcommerceCategory({ locationSlug, categorySlug }: { loca
 
               <div className="flex flex-row lg:flex-col gap-2 lg:gap-0 lg:space-y-1 shrink-0">
                 {CATEGORIES.map(category => {
-                  const slug = generateSlug(category);
+                  const slug = CATEGORY_SLUG_OVERRIDES[category] || generateSlug(category);
                   const isActive = slug === categorySlug;
                   return (
                     <Link

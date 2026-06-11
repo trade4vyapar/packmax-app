@@ -15,8 +15,8 @@ export default function WorkflowSection() {
     {
       num: "02",
       icon: TestTube,
-      title: "Free Manufacturer Samples",
-      desc: "As the direct manufacturer we ship free physical samples to your office, dealership or distribution hub for quality and adhesion testing.",
+      title: "Quick WhatsApp Enquiry",
+      desc: "Chat directly with our team on WhatsApp — share your requirements, get instant pricing, and confirm specifications with zero delays.",
       side: "right"
     },
     {

@@ -160,22 +160,6 @@ export const siteData = {
       images: ["https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/Custom%20Brand%20Logo%20Name%20Printed%20tape/CUSTOM%20BRAND%20TAPE%201.webp"]
     },
     {
-      id: "printed-logo-tape-3",
-      name: "Branded Kraft & White Tape",
-      slug: "branded-kraft-white-tape",
-      categorySlug: "custom-brand-logo-name-printed-tape",
-      tagline: "Classic Corporate Branding",
-      description: "Professional printed tapes on classic brown (kraft) or solid white base for an elegant corporate look.",
-      features: ["High Contrast Print", "Industrial Grade", "Tamper Evident", "Standard Pricing"],
-      specs: {
-        printing: "1 or 2 Colors",
-        base_colors: "Brown, White",
-        min_order: "72 Rolls"
-      },
-      image: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/Custom%20Brand%20Logo%20Name%20Printed%20tape/CUSTOM%20BRAND%20TAPE%203.webp",
-      images: ["https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/Custom%20Brand%20Logo%20Name%20Printed%20tape/CUSTOM%20BRAND%20TAPE%203.webp"]
-    },
-    {
       id: "plain-courier-bags",
       name: "Plain Tamper-Proof Bags",
       slug: "plain-courier-bags",
