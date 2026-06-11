@@ -200,9 +200,9 @@ export default async function LocationProductOrCategoryPage({ params }: Props) {
     },
     ...(marketplace
       ? [{
-          question: `Is this ${product.name} compliant with ${marketplace} seller guidelines?`,
-          answer: `Yes — our ${product.name} is engineered to ${marketplace}'s packaging spec (45-50 micron BOPP, high-tack adhesive, tamper-evident finish) and is used by ${marketplace} sellers across ${location.name}.`,
-        }]
+        question: `Is this ${product.name} compliant with ${marketplace} seller guidelines?`,
+        answer: `Yes — our ${product.name} is engineered to ${marketplace}'s packaging spec (45-50 micron BOPP, high-tack adhesive, tamper-evident finish) and is used by ${marketplace} sellers across ${location.name}.`,
+      }]
       : []),
     {
       question: `Do you ship ${product.name} to ${location.name} industrial zones?`,
