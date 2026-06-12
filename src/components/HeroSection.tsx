@@ -7,24 +7,24 @@ import Link from "next/link";
 
 /* ─── Slide data ─────────────────────────────────────────────────────────── */
 const BASE_SLIDES = [
-  { src: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/HOME%20PAGE%20COURSEL%20IMAGES/3.webp", label: "Custom Printed Tape",   category: "custom-brand-logo-name-printed-tape" },
-  { src: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/HOME%20PAGE%20COURSEL%20IMAGES/8.webp", label: "E-Commerce Tapes",       category: "ecommerce-tapes" },
-  { src: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/HOME%20PAGE%20COURSEL%20IMAGES/5.webp", label: "BOPP Brown Tape",        category: "bopp-brown-tape" },
-  { src: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/HOME%20PAGE%20COURSEL%20IMAGES/2.webp", label: "BOPP Transparent Tape",  category: "bopp-transparent-tape" },
-  { src: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/HOME%20PAGE%20COURSEL%20IMAGES/4.webp", label: "BOPP Colour Tape",       category: "bopp-color-tape" },
-  { src: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/HOME%20PAGE%20COURSEL%20IMAGES/7.webp", label: "Stretch Film Roll",      category: "stretch-filmroll" },
-  { src: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/HOME%20PAGE%20COURSEL%20IMAGES/6.webp", label: "Corrugated Box",         category: "corrugated-box-plain-printed" },
-  { src: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/HOME%20PAGE%20COURSEL%20IMAGES/9.webp", label: "Corrugated Roll",        category: "corrugated-roll" },
-  { src: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/HOME%20PAGE%20COURSEL%20IMAGES/1.webp", label: "Air Bubble Roll",        category: "air-bubble-roll" },
+  { src: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/HOME%20PAGE%20COURSEL%20IMAGES/3.webp", label: "Custom Printed Tape", category: "custom-brand-logo-name-printed-tape" },
+  { src: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/HOME%20PAGE%20COURSEL%20IMAGES/8.webp", label: "E-Commerce Tapes", category: "ecommerce-tapes" },
+  { src: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/HOME%20PAGE%20COURSEL%20IMAGES/5.webp", label: "BOPP Brown Tape", category: "bopp-brown-tape" },
+  { src: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/HOME%20PAGE%20COURSEL%20IMAGES/2.webp", label: "BOPP Transparent Tape", category: "bopp-transparent-tape" },
+  { src: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/HOME%20PAGE%20COURSEL%20IMAGES/4.webp", label: "BOPP Colour Tape", category: "bopp-color-tape" },
+  { src: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/HOME%20PAGE%20COURSEL%20IMAGES/7.webp", label: "Stretch Film Roll", category: "stretch-filmroll" },
+  { src: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/HOME%20PAGE%20COURSEL%20IMAGES/6.webp", label: "Corrugated Box", category: "corrugated-box-plain-printed" },
+  { src: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/HOME%20PAGE%20COURSEL%20IMAGES/9.webp", label: "Corrugated Roll", category: "corrugated-roll" },
+  { src: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/HOME%20PAGE%20COURSEL%20IMAGES/1.webp", label: "Air Bubble Roll", category: "air-bubble-roll" },
 ];
 
 /* Triple-clone for seamless infinite loop */
-const SLIDES      = [...BASE_SLIDES, ...BASE_SLIDES, ...BASE_SLIDES];
-const N           = BASE_SLIDES.length;
-const INIT_IDX    = N; // start in the middle set
+const SLIDES = [...BASE_SLIDES, ...BASE_SLIDES, ...BASE_SLIDES];
+const N = BASE_SLIDES.length;
+const INIT_IDX = N; // start in the middle set
 
-const GAP_PX      = 12;  // px gap between slides
-const AUTO_MS     = 4500;
+const GAP_PX = 12;  // px gap between slides
+const AUTO_MS = 4500;
 
 /* px translateX for track so slide[idx] is centred */
 function trackX(containerW: number, idx: number, peekPx: number) {
@@ -40,18 +40,18 @@ interface HeroSectionProps {
 
 /* ─── Component ──────────────────────────────────────────────────────────── */
 export default function HeroSection({ locationName, locationSlug }: HeroSectionProps) {
-  const containerRef  = useRef<HTMLDivElement>(null);
-  const trackRef      = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
 
-  const [idx, setIdx]         = useState(INIT_IDX);
-  const [animated, setAnim]   = useState(true);
-  const [paused, setPaused]   = useState(false);
-  const [contW, setContW]     = useState(0);
+  const [idx, setIdx] = useState(INIT_IDX);
+  const [animated, setAnim] = useState(true);
+  const [paused, setPaused] = useState(false);
+  const [contW, setContW] = useState(0);
 
   /* Real 0-based index into BASE_SLIDES */
   const realIdx = ((idx - INIT_IDX) % N + N) % N;
-  const slide   = BASE_SLIDES[realIdx];
-  const href    = locationSlug
+  const slide = BASE_SLIDES[realIdx];
+  const href = locationSlug
     ? `/${locationSlug}/${slide.category}`
     : `/${slide.category}`;
 
@@ -74,7 +74,7 @@ export default function HeroSection({ locationName, locationSlug }: HeroSectionP
     const peekPx = contW < 768 ? 0 : contW < 1024 ? 80 : 150;
     const x = trackX(contW, idx, peekPx);
     el.style.transition = animated ? "transform 0.5s cubic-bezier(0.4,0,0.2,1)" : "none";
-    el.style.transform  = `translateX(${x}px)`;
+    el.style.transform = `translateX(${x}px)`;
   }, [idx, contW, animated]);
 
   /* ── Infinite-loop snap: after transition ends, jump to middle clone ── */
@@ -113,8 +113,8 @@ export default function HeroSection({ locationName, locationSlug }: HeroSectionP
   const go = (dir: 1 | -1) => { setAnim(true); setIdx(i => i + dir); };
 
   /* ── Slide dimensions for track ── */
-  const peekPx    = contW < 768 ? 0 : contW < 1024 ? 80 : 150;
-  const slideW    = contW > 0 ? contW - peekPx * 2 : undefined;
+  const peekPx = contW < 768 ? 0 : contW < 1024 ? 80 : 150;
+  const slideW = contW > 0 ? contW - peekPx * 2 : undefined;
 
   return (
     <>
@@ -131,7 +131,16 @@ export default function HeroSection({ locationName, locationSlug }: HeroSectionP
         {/* Clipping window */}
         <div
           ref={containerRef}
-          className="relative w-full overflow-hidden h-[200px] sm:h-[300px] md:h-[min(550px,65vh)]"
+          className="relative w-full overflow-hidden"
+          style={{
+            height: contW === 0
+              ? "400px"
+              : contW < 640
+                ? "200px"
+                : contW < 768
+                  ? "300px"
+                  : "min(550px, 65vh)"
+          }}
         >
           {/* ── Track ── */}
           <div
