@@ -23,14 +23,13 @@ const SLIDES      = [...BASE_SLIDES, ...BASE_SLIDES, ...BASE_SLIDES];
 const N           = BASE_SLIDES.length;
 const INIT_IDX    = N; // start in the middle set
 
-const PEEK_PX     = 150; // px of adjacent slide visible on each side
 const GAP_PX      = 12;  // px gap between slides
 const AUTO_MS     = 4500;
 
 /* px translateX for track so slide[idx] is centred */
-function trackX(containerW: number, idx: number) {
-  const slideW = containerW - PEEK_PX * 2;
-  return PEEK_PX - idx * (slideW + GAP_PX);
+function trackX(containerW: number, idx: number, peekPx: number) {
+  const slideW = containerW - peekPx * 2;
+  return peekPx - idx * (slideW + GAP_PX);
 }
 
 /* ─── Props ──────────────────────────────────────────────────────────────── */
@@ -72,7 +71,8 @@ export default function HeroSection({ locationName, locationSlug }: HeroSectionP
   useEffect(() => {
     const el = trackRef.current;
     if (!el || contW === 0) return;
-    const x = trackX(contW, idx);
+    const peekPx = contW < 768 ? 0 : contW < 1024 ? 80 : 150;
+    const x = trackX(contW, idx, peekPx);
     el.style.transition = animated ? "transform 0.5s cubic-bezier(0.4,0,0.2,1)" : "none";
     el.style.transform  = `translateX(${x}px)`;
   }, [idx, contW, animated]);
@@ -113,7 +113,8 @@ export default function HeroSection({ locationName, locationSlug }: HeroSectionP
   const go = (dir: 1 | -1) => { setAnim(true); setIdx(i => i + dir); };
 
   /* ── Slide dimensions for track ── */
-  const slideW    = contW > 0 ? contW - PEEK_PX * 2 : undefined;
+  const peekPx    = contW < 768 ? 0 : contW < 1024 ? 80 : 150;
+  const slideW    = contW > 0 ? contW - peekPx * 2 : undefined;
 
   return (
     <>
@@ -130,8 +131,7 @@ export default function HeroSection({ locationName, locationSlug }: HeroSectionP
         {/* Clipping window */}
         <div
           ref={containerRef}
-          className="relative w-full overflow-hidden"
-          style={{ height: "min(550px, 65vh)" }}
+          className="relative w-full overflow-hidden h-[200px] sm:h-[300px] md:h-[min(550px,65vh)]"
         >
           {/* ── Track ── */}
           <div

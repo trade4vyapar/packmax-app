@@ -206,21 +206,7 @@ function ShopNowButton() {
   );
 }
 
-function WhatsAppButton() {
-  return (
-    <a
-      href="https://wa.me/919893973939"
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label="Chat on WhatsApp"
-      className="whatsapp-nav-btn relative flex items-center gap-2 px-4 py-2.5 rounded-full text-white font-bold text-[12px] uppercase tracking-wide select-none overflow-hidden"
-      style={{ background: '#25D366' }}
-    >
-      <MessageCircle className="w-4 h-4 shrink-0" />
-      WhatsApp
-    </a>
-  );
-}
+
 
 function SitemapBadge() {
   const [isHovered, setIsHovered] = useState(false);
@@ -511,8 +497,7 @@ export default function Navbar() {
             Catalogue
           </a>
 
-          {/* WhatsApp Button */}
-          <WhatsAppButton />
+
 
           {/* Sitemap Quick Link */}
           <SitemapBadge />

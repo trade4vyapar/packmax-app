@@ -35,22 +35,13 @@ export default function EcommerceCategory({ locationSlug, categorySlug }: { loca
 
   const realProducts = siteData.products.filter(p => p.categorySlug === categorySlug);
 
-  const displayProducts = realProducts.length > 0 ? realProducts.map(p => ({
+  const displayProducts = realProducts.map(p => ({
     id: p.id,
     name: p.name,
     slug: p.slug,
     description: p.description,
     price: "Request Quote",
     image: p.image
-  })) : Array.from({ length: 9 }).map((_, i) => ({
-    id: `prod-${i}`,
-    name: `${currentCategoryName} ${i + 1}`,
-    slug: categorySlug,
-    description: "High-performance industrial packaging material ensuring maximum durability and secure transit for your goods.",
-    price: `₹${150 + (i * 45)} / Roll`,
-    image: i % 2 === 0
-      ? "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=2070&auto=format&fit=crop"
-      : "https://images.unsplash.com/photo-1606206591513-adbf01ac2cee?q=80&w=2070&auto=format&fit=crop"
   }));
 
   return (

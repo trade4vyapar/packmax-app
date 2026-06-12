@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { notFound } from "next/navigation";
+import { notFound, useRouter } from "next/navigation";
 import { siteData } from "@/data/siteData";
 import { Star, Mail, ChevronDown, Package, MessageCircle, ArrowLeft } from "lucide-react";
 import Link from "next/link";
@@ -76,6 +76,7 @@ const SIZE_SPECS: Record<string, SizeSpec> = {
 };
 
 export default function ProductClientPage({ slug, locationSlug, locationName }: { slug: string; locationSlug?: string; locationName?: string }) {
+  const router = useRouter();
   const product = siteData.products.find((p) => p.slug === slug);
   if (!product) notFound();
 
@@ -100,7 +101,7 @@ export default function ProductClientPage({ slug, locationSlug, locationName }: 
         {/* Back Button */}
         <button
           type="button"
-          onClick={() => history.back()}
+          onClick={() => router.back()}
           className="inline-flex items-center gap-1.5 mb-6 text-sm font-bold text-[var(--color-heading)] hover:text-[var(--color-cta)] transition-colors group"
         >
           <ArrowLeft className="w-4 h-4 group-hover:-translate-x-0.5 transition-transform" />
