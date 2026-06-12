@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 import Link from "next/link";
@@ -18,66 +18,28 @@ const BASE_SLIDES = [
   { src: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/HOME%20PAGE%20COURSEL%20IMAGES/1.webp", label: "Air Bubble Roll", category: "air-bubble-roll" },
 ];
 
-/* Triple-clone for seamless infinite loop */
 const SLIDES = [...BASE_SLIDES, ...BASE_SLIDES, ...BASE_SLIDES];
 const N = BASE_SLIDES.length;
 const INIT_IDX = N; // start in the middle set
-
 const GAP_PX = 12;  // px gap between slides
 const AUTO_MS = 4500;
 
-/* px translateX for track so slide[idx] is centred */
-function trackX(containerW: number, idx: number, peekPx: number) {
-  const slideW = containerW - peekPx * 2;
-  return peekPx - idx * (slideW + GAP_PX);
-}
-
-/* ─── Props ──────────────────────────────────────────────────────────────── */
 interface HeroSectionProps {
   locationName?: string;
   locationSlug?: string;
 }
 
-/* ─── Component ──────────────────────────────────────────────────────────── */
 export default function HeroSection({ locationName, locationSlug }: HeroSectionProps) {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const trackRef = useRef<HTMLDivElement>(null);
-
   const [idx, setIdx] = useState(INIT_IDX);
   const [animated, setAnim] = useState(true);
   const [paused, setPaused] = useState(false);
-  const [contW, setContW] = useState(0);
 
-  /* Real 0-based index into BASE_SLIDES */
   const realIdx = ((idx - INIT_IDX) % N + N) % N;
   const slide = BASE_SLIDES[realIdx];
   const href = locationSlug
     ? `/${locationSlug}/${slide.category}`
     : `/${slide.category}`;
 
-  /* ── Measure container → recalculate translate ── */
-  const measure = useCallback(() => {
-    if (containerRef.current) setContW(containerRef.current.offsetWidth);
-  }, []);
-
-  useEffect(() => {
-    measure();
-    const ro = new ResizeObserver(measure);
-    if (containerRef.current) ro.observe(containerRef.current);
-    return () => ro.disconnect();
-  }, [measure]);
-
-  /* ── Apply translate directly to track DOM node (avoids React re-render lag) ── */
-  useEffect(() => {
-    const el = trackRef.current;
-    if (!el || contW === 0) return;
-    const peekPx = contW < 768 ? 0 : contW < 1024 ? 80 : 150;
-    const x = trackX(contW, idx, peekPx);
-    el.style.transition = animated ? "transform 0.5s cubic-bezier(0.4,0,0.2,1)" : "none";
-    el.style.transform = `translateX(${x}px)`;
-  }, [idx, contW, animated]);
-
-  /* ── Infinite-loop snap: after transition ends, jump to middle clone ── */
   const onTransitionEnd = useCallback(() => {
     if (idx < N || idx >= N * 2) {
       const newIdx = INIT_IDX + realIdx;
@@ -86,7 +48,6 @@ export default function HeroSection({ locationName, locationSlug }: HeroSectionP
     }
   }, [idx, realIdx]);
 
-  /* Re-enable animation one frame after instant snap */
   useEffect(() => {
     if (!animated) {
       const id = requestAnimationFrame(() => setAnim(true));
@@ -94,7 +55,6 @@ export default function HeroSection({ locationName, locationSlug }: HeroSectionP
     }
   }, [animated]);
 
-  /* ── Auto-advance ── */
   useEffect(() => {
     if (paused) return;
     const id = setTimeout(() => {
@@ -104,25 +64,54 @@ export default function HeroSection({ locationName, locationSlug }: HeroSectionP
     return () => clearTimeout(id);
   }, [idx, paused]);
 
-  /* ── Preload ── */
   useEffect(() => {
     BASE_SLIDES.forEach(s => { const i = new Image(); i.src = s.src; });
   }, []);
 
-  /* ── Navigate ── */
-  const go = (dir: 1 | -1) => { setAnim(true); setIdx(i => i + dir); };
-
-  /* ── Slide dimensions for track ── */
-  const peekPx = contW < 768 ? 0 : contW < 1024 ? 80 : 150;
-  const slideW = contW > 0 ? contW - peekPx * 2 : undefined;
+  const go = (dir: 1 | -1) => {
+    setAnim(true);
+    setIdx(i => i + dir);
+  };
 
   return (
     <>
-      {/* ═══════════════════════════════════════════════════════
-          PEEK CAROUSEL
-          ═══════════════════════════════════════════════════════ */}
+      <style>{`
+        .hero-carousel-container {
+          --peek-px: 0px;
+          --height: 220px;
+        }
+        @media (min-width: 480px) {
+          .hero-carousel-container {
+            --height: 250px;
+          }
+        }
+        @media (min-width: 640px) {
+          .hero-carousel-container {
+            --peek-px: 40px;
+            --height: 300px;
+          }
+        }
+        @media (min-width: 768px) {
+          .hero-carousel-container {
+            --peek-px: 80px;
+            --height: 400px;
+          }
+        }
+        @media (min-width: 1024px) {
+          .hero-carousel-container {
+            --peek-px: 150px;
+            --height: min(550px, 65vh);
+          }
+        }
+        
+        .hero-carousel-slide {
+          width: calc(100vw - var(--peek-px) * 2);
+          flex-shrink: 0;
+        }
+      `}</style>
+
       <div
-        className="w-full bg-white select-none"
+        className="hero-carousel-container w-full bg-white select-none"
         onMouseEnter={() => setPaused(true)}
         onMouseLeave={() => setPaused(false)}
         onTouchStart={() => setPaused(true)}
@@ -130,24 +119,19 @@ export default function HeroSection({ locationName, locationSlug }: HeroSectionP
       >
         {/* Clipping window */}
         <div
-          ref={containerRef}
           className="relative w-full overflow-hidden"
-          style={{
-            height: contW === 0
-              ? "400px"
-              : contW < 640
-                ? "200px"
-                : contW < 768
-                  ? "300px"
-                  : "min(550px, 65vh)"
-          }}
+          style={{ height: "var(--height)" }}
         >
           {/* ── Track ── */}
           <div
-            ref={trackRef}
             onTransitionEnd={onTransitionEnd}
             className="absolute top-0 left-0 flex items-stretch h-full"
-            style={{ gap: GAP_PX, willChange: "transform" }}
+            style={{
+              gap: `${GAP_PX}px`,
+              willChange: "transform",
+              transform: `translateX(calc(var(--peek-px) - ${idx} * (100vw - var(--peek-px) * 2 + ${GAP_PX}px)))`,
+              transition: animated ? "transform 0.5s cubic-bezier(0.4,0,0.2,1)" : "none"
+            }}
           >
             {SLIDES.map((s, i) => {
               const isActive = i === idx;
@@ -158,8 +142,7 @@ export default function HeroSection({ locationName, locationSlug }: HeroSectionP
               return (
                 <div
                   key={i}
-                  style={{ width: slideW ?? "80vw", flexShrink: 0 }}
-                  className="relative overflow-hidden"
+                  className="hero-carousel-slide relative overflow-hidden"
                 >
                   {isActive ? (
                     <Link
@@ -175,7 +158,6 @@ export default function HeroSection({ locationName, locationSlug }: HeroSectionP
                       />
                     </Link>
                   ) : (
-                    /* Inactive slides: click moves carousel to that slide */
                     <button
                       type="button"
                       onClick={() => { setAnim(true); setIdx(i); }}
@@ -196,7 +178,7 @@ export default function HeroSection({ locationName, locationSlug }: HeroSectionP
             })}
           </div>
 
-          {/* ── Left arrow — overlaid on the left peek area ── */}
+          {/* ── Left arrow ── */}
           <button
             type="button"
             onClick={() => go(-1)}
@@ -227,11 +209,8 @@ export default function HeroSection({ locationName, locationSlug }: HeroSectionP
           </button>
         </div>
 
-        {/* ═══════════════════════════════════════════════════════
-            CONTROLS — fully OUTSIDE the image, centred below
-            ═══════════════════════════════════════════════════════ */}
+        {/* ── CONTROLS ── */}
         <div className="flex flex-col items-center gap-3 py-4">
-
           {/* CTA button */}
           <Link
             href={href}
