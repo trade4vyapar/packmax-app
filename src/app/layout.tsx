@@ -62,6 +62,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FloatingChat from "@/components/FloatingChat";
 import MobileDock from "@/components/MobileDock";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export default function RootLayout({
   children,
@@ -85,6 +86,7 @@ export default function RootLayout({
           <MobileDock />
           <Footer />
         </SmoothScrollProvider>
+        <SpeedInsights />
       </body>
     </html>
   );
