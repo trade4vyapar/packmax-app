@@ -7,15 +7,15 @@ import Link from "next/link";
 
 /* ─── Slide data ─────────────────────────────────────────────────────────── */
 const BASE_SLIDES = [
-  { src: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/HOME%20PAGE%20COURSEL%20IMAGES/3.webp", label: "Custom Printed Tape", category: "custom-brand-logo-name-printed-tape" },
-  { src: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/HOME%20PAGE%20COURSEL%20IMAGES/8.webp", label: "E-Commerce Tapes", category: "ecommerce-tapes" },
-  { src: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/HOME%20PAGE%20COURSEL%20IMAGES/5.webp", label: "BOPP Brown Tape", category: "bopp-brown-tape" },
-  { src: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/HOME%20PAGE%20COURSEL%20IMAGES/2.webp", label: "BOPP Transparent Tape", category: "bopp-transparent-tape" },
-  { src: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/HOME%20PAGE%20COURSEL%20IMAGES/4.webp", label: "BOPP Colour Tape", category: "bopp-color-tape" },
-  { src: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/HOME%20PAGE%20COURSEL%20IMAGES/7.webp", label: "Stretch Film Roll", category: "stretch-filmroll" },
+  { src: "/images/custom_brand_tape/CUSTOM BRAND TAPE 3.webp", label: "Custom Printed Tape", category: "custom-brand-logo-name-printed-tape" },
+  { src: "/images/TAPES/AMAZON PRIME TAPE.webp", label: "E-Commerce Tapes", category: "ecommerce-tapes" },
+  { src: "/images/bopp_brown_tape/Perfect1.webp", label: "BOPP Brown Tape", category: "bopp-brown-tape" },
+  { src: "/images/bopp_transparent/BOOP TRANS TAPE 1.webp", label: "BOPP Transparent Tape", category: "bopp-transparent-tape" },
+  { src: "/images/bopp_color_tapes/COLOR TAPE 1.webp", label: "BOPP Colour Tape", category: "bopp-color-tape" },
+  { src: "/images/STRETCH FLIMROLL/SF 1.webp", label: "Stretch Film Roll", category: "stretch-filmroll" },
   { src: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/HOME%20PAGE%20COURSEL%20IMAGES/6.webp", label: "Corrugated Box", category: "corrugated-box-plain-printed" },
-  { src: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/HOME%20PAGE%20COURSEL%20IMAGES/9.webp", label: "Corrugated Roll", category: "corrugated-roll" },
-  { src: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/HOME%20PAGE%20COURSEL%20IMAGES/1.webp", label: "Air Bubble Roll", category: "air-bubble-roll" },
+  { src: "/images/COGROLL/CORUGGLATED ROLLL.webp", label: "Corrugated Roll", category: "corrugated-roll" },
+  { src: "/images/AIR BUBBLE ROLL MAIN.webp", label: "Air Bubble Roll", category: "air-bubble-roll" },
 ];
 
 const SLIDES = [...BASE_SLIDES, ...BASE_SLIDES, ...BASE_SLIDES];

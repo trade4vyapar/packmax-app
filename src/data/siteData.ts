@@ -13,7 +13,7 @@ export const siteData = {
         adhesive: "Acrylic / Hotmelt",
         thickness: "45-50 Micron"
       },
-      image: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/TAPES/AMAZON%20PRIME%20TAPE.webp"
+      image: "/images/TAPES/AMAZON PRIME TAPE.webp"
     },
     {
       id: "amazon-tape",
@@ -28,7 +28,7 @@ export const siteData = {
         adhesive: "Acrylic",
         thickness: "45-50 Micron"
       },
-      image: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/TAPES/AMAZON%20TAPE.webp"
+      image: "/images/TAPES/AMAZON TAPE.webp"
     },
     {
       id: "flipkart-tape",
@@ -43,7 +43,7 @@ export const siteData = {
         adhesive: "Acrylic",
         thickness: "45-50 Micron"
       },
-      image: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/TAPES/FLIPKART%20TAPE.webp"
+      image: "/images/TAPES/FLIPKART TAPE.webp"
     },
     {
       id: "meesho-tape",
@@ -58,7 +58,7 @@ export const siteData = {
         adhesive: "Acrylic",
         thickness: "45-50 Micron"
       },
-      image: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/TAPES/MEESHO%20TAPE.webp"
+      image: "/images/TAPES/MEESHO TAPE.webp"
     },
     {
       id: "bopp-brown-tape-roll",
@@ -75,12 +75,12 @@ export const siteData = {
         width: "48mm / 55mm",
         length: "50m / 65m / Various"
       },
-      image: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/BOPP%20Brown%20Tape/Perfect1.webp",
+      image: "/images/bopp_brown_tape/Perfect1.webp",
       images: [
-        "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/BOPP%20Brown%20Tape/Perfect1.webp",
-        "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/BOPP%20Brown%20Tape/48MM_50M_TS.webp",
-        "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/BOPP%20Brown%20Tape/48MM_65M_TS2.webp",
-        "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/BOPP%20Brown%20Tape/width%2055.webp"
+        "/images/bopp_brown_tape/Perfect1.webp",
+        "/images/bopp_brown_tape/48MM_50M_TS.webp",
+        "/images/bopp_brown_tape/48MM_65M_TS2.webp",
+        "/images/bopp_brown_tape/width 55.webp"
       ]
     },
     {
@@ -97,13 +97,13 @@ export const siteData = {
         thickness: "38-50 Micron",
         width: "12mm / 18mm / 24mm / 48mm / 72mm"
       },
-      image: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/BOPP%20Transparent%20Tape/BOOP%20TRANS%20TAPE%201.webp",
+      image: "/images/bopp_transparent/BOOP TRANS TAPE 1.webp",
       images: [
-        "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/BOPP%20Transparent%20Tape/BOOP%20TRANS%20TAPE%201.webp",
-        "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/BOPP%20Transparent%20Tape/BOOP%20TRANS%20TAPE%202.webp",
-        "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/BOPP%20Transparent%20Tape/BOOP%20TRANS%20TAPE%203.webp",
-        "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/BOPP%20Transparent%20Tape/BOOP%20TRANS%20TAPE%204.webp",
-        "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/BOPP%20Transparent%20Tape/BOOP%20TRANS%20TAPE%205.webp"
+        "/images/bopp_transparent/BOOP TRANS TAPE 1.webp",
+        "/images/bopp_transparent/BOOP TRANS TAPE 2.webp",
+        "/images/bopp_transparent/BOOP TRANS TAPE 3.webp",
+        "/images/bopp_transparent/BOOP TRANS TAPE 4.webp",
+        "/images/bopp_transparent/BOOP TRANS TAPE 5.webp"
       ]
     },
     {
@@ -120,11 +120,11 @@ export const siteData = {
         thickness: "40-50 Micron",
         colors: "Red, Blue, Green, Yellow, Brown, Black, White"
       },
-      image: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/BOPP%20Color%20Tape/COLOR%20TAPE%201.webp",
+      image: "/images/bopp_color_tapes/COLOR TAPE 1.webp",
       images: [
-        "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/BOPP%20Color%20Tape/COLOR%20TAPE%201.webp",
-        "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/BOPP%20Color%20Tape/COLOR%20TAPE%202.webp",
-        "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/BOPP%20Color%20Tape/COLOR%20TAPE%203.webp"
+        "/images/bopp_color_tapes/COLOR TAPE 1.webp",
+        "/images/bopp_color_tapes/COLOR TAPE 2.webp",
+        "/images/bopp_color_tapes/COLOR TAPE 3.webp"
       ]
     },
     {
@@ -140,8 +140,8 @@ export const siteData = {
         base_colors: "Brown, Transparent, White",
         min_order: "72 Rolls"
       },
-      image: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/Custom%20Brand%20Logo%20Name%20Printed%20tape/CUSTOM%20BRAND%202.webp",
-      images: ["https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/Custom%20Brand%20Logo%20Name%20Printed%20tape/CUSTOM%20BRAND%202.webp"]
+      image: "/images/custom_brand_tape/CUSTOM BRAND 2.webp",
+      images: ["/images/custom_brand_tape/CUSTOM BRAND 2.webp"]
     },
     {
       id: "printed-logo-tape-2",
@@ -156,8 +156,8 @@ export const siteData = {
         base_colors: "Various",
         min_order: "144 Rolls"
       },
-      image: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/Custom%20Brand%20Logo%20Name%20Printed%20tape/CUSTOM%20BRAND%20TAPE%201.webp",
-      images: ["https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/Custom%20Brand%20Logo%20Name%20Printed%20tape/CUSTOM%20BRAND%20TAPE%201.webp"]
+      image: "/images/custom_brand_tape/CUSTOM BRAND TAPE 1.webp",
+      images: ["/images/custom_brand_tape/CUSTOM BRAND TAPE 1.webp"]
     },
     {
       id: "plain-courier-bags",
@@ -172,8 +172,8 @@ export const siteData = {
         thickness: "50-75 Micron",
         closure: "Permanent Self-Adhesive"
       },
-      image: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/Ecommerce%20PolyBags/BAGS%202.webp",
-      images: ["https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/Ecommerce%20PolyBags/BAGS%202.webp"]
+      image: "/images/BAGS_ECOMMERCE/BAGS 2.webp",
+      images: ["/images/BAGS_ECOMMERCE/BAGS 2.webp"]
     },
     {
       id: "amazon-courier-bags",
@@ -188,8 +188,8 @@ export const siteData = {
         thickness: "50-75 Micron",
         closure: "Permanent Self-Adhesive"
       },
-      image: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/Ecommerce%20PolyBags/Courier_bags-removebg-preview.webp",
-      images: ["https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/Ecommerce%20PolyBags/Courier_bags-removebg-preview.webp"]
+      image: "/images/BAGS_ECOMMERCE/Courier_bags-removebg-preview.webp",
+      images: ["/images/BAGS_ECOMMERCE/Courier_bags-removebg-preview.webp"]
     },
     {
       id: "flipkart-courier-bags",
@@ -204,8 +204,8 @@ export const siteData = {
         thickness: "50-75 Micron",
         closure: "Permanent Self-Adhesive"
       },
-      image: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/Ecommerce%20PolyBags/FLIPKART%20BAG.webp",
-      images: ["https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/Ecommerce%20PolyBags/FLIPKART%20BAG.webp"]
+      image: "/images/BAGS_ECOMMERCE/FLIPKART BAG.webp",
+      images: ["/images/BAGS_ECOMMERCE/FLIPKART BAG.webp"]
     },
     {
       id: "stretch-film-roll",
@@ -221,11 +221,11 @@ export const siteData = {
         width: "100mm / 150mm / 500mm",
         weight: "1.5 kg to 5 kg rolls"
       },
-      image: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/STRETCH%20FLIMROLL/SF%201.webp",
+      image: "/images/STRETCH FLIMROLL/SF 1.webp",
       images: [
-        "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/STRETCH%20FLIMROLL/SF%201.webp",
-        "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/STRETCH%20FLIMROLL/SF%202.webp",
-        "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/STRETCH%20FLIMROLL/SF%203.webp"
+        "/images/STRETCH FLIMROLL/SF 1.webp",
+        "/images/STRETCH FLIMROLL/SF 2.webp",
+        "/images/STRETCH FLIMROLL/SF 3.webp"
       ]
     },
     {
@@ -242,9 +242,9 @@ export const siteData = {
         width: "Various (Customizable)",
         form: "Continuous Roll"
       },
-      image: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/Corrugated%20Roll/CORUGGLATED%20ROLLL.webp",
+      image: "/images/COGROLL/CORUGGLATED ROLLL.webp",
       images: [
-        "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/Corrugated%20Roll/CORUGGLATED%20ROLLL.webp"
+        "/images/COGROLL/CORUGGLATED ROLLL.webp"
       ]
     },
     {
@@ -261,9 +261,9 @@ export const siteData = {
         width: "1m, 1.5m (Customizable)",
         length: "100m"
       },
-      image: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/Air%20bubble%20roll/AIR%20BUBBLE%20ROLL%20MAIN.webp",
+      image: "/images/AIR BUBBLE ROLL MAIN.webp",
       images: [
-        "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/Air%20bubble%20roll/AIR%20BUBBLE%20ROLL%20MAIN.webp"
+        "/images/AIR BUBBLE ROLL MAIN.webp"
       ]
     },
     {
@@ -279,8 +279,8 @@ export const siteData = {
         size: "Standard",
         compatibility: "PP & PET Strapping"
       },
-      image: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/Box%20Strapping%20roll%20%26%20clip/STRAPPING%20CLIP.webp",
-      images: ["https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/Box%20Strapping%20roll%20%26%20clip/STRAPPING%20CLIP.webp"]
+      image: "/images/strapping/STRAPPING CLIP.webp",
+      images: ["/images/strapping/STRAPPING CLIP.webp"]
     },
     {
       id: "box-strapping-roll",
@@ -295,8 +295,8 @@ export const siteData = {
         width: "12mm, 15mm, 19mm",
         thickness: "0.5mm - 1.0mm"
       },
-      image: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/Box%20Strapping%20roll%20%26%20clip/STRAPPING%20ROLLL.webp",
-      images: ["https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/Box%20Strapping%20roll%20%26%20clip/STRAPPING%20ROLLL.webp"]
+      image: "/images/strapping/STRAPPING ROLLL.webp",
+      images: ["/images/strapping/STRAPPING ROLLL.webp"]
     }
   ],
   locations: [
