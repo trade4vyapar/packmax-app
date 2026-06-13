@@ -95,7 +95,7 @@ export default function ProductClientPage({ slug, locationSlug, locationName }: 
   };
 
   return (
-    <main className="min-h-screen bg-[var(--color-bg)] pt-32 pb-16 selection:bg-[var(--color-cta)] selection:text-white">
+    <main className="min-h-screen bg-[var(--color-bg)] pt-20 lg:pt-32 pb-16 selection:bg-[var(--color-cta)] selection:text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-16">
 
         {/* Back Button */}

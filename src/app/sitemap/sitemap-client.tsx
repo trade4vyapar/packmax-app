@@ -99,7 +99,7 @@ export default function SitemapClient() {
   }));
 
   return (
-    <main className="min-h-screen bg-[var(--color-bg)] pt-32 pb-24 px-4 sm:px-6 lg:px-12">
+    <main className="min-h-screen bg-[var(--color-bg)] pt-20 lg:pt-32 pb-24 px-4 sm:px-6 lg:px-12">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <motion.div

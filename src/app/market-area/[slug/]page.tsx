@@ -28,7 +28,7 @@ export default async function LocationPage({ params }: Props) {
   if (!location) notFound();
 
   return (
-    <main className="min-h-screen bg-[var(--color-bg)] pt-32 pb-20">
+    <main className="min-h-screen bg-[var(--color-bg)] pt-20 lg:pt-32 pb-20">
       <div className="max-w-7xl mx-auto px-8 lg:px-20">
         
         {/* Hero Section for Location */}

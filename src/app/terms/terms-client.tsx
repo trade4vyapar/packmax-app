@@ -5,7 +5,7 @@ import { CheckCircle2 } from "lucide-react";
 
 export default function TermsClient() {
   return (
-    <main className="min-h-screen bg-[var(--color-bg)] pt-32 pb-24 selection:bg-[var(--color-cta)] selection:text-white">
+    <main className="min-h-screen bg-[var(--color-bg)] pt-20 lg:pt-32 pb-24 selection:bg-[var(--color-cta)] selection:text-white">
       <div className="max-w-4xl mx-auto px-6 lg:px-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
