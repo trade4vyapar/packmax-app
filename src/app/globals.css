@@ -176,8 +176,15 @@ html.lenis body {
 
 /* WhatsApp glow button */
 @keyframes whatsapp-glow {
-  0%, 100% { box-shadow: 0 0 6px #25D366, 0 0 12px #25D366; }
-  50% { box-shadow: 0 0 16px #25D366, 0 0 32px #25D366; }
+
+  0%,
+  100% {
+    box-shadow: 0 0 6px #25D366, 0 0 12px #25D366;
+  }
+
+  50% {
+    box-shadow: 0 0 16px #25D366, 0 0 32px #25D366;
+  }
 }
 
 .whatsapp-nav-btn {
@@ -186,8 +193,13 @@ html.lenis body {
 
 /* Reviews marquee (separate, horizontal) */
 @keyframes reviews-marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 .reviews-marquee-track {
@@ -198,4 +210,42 @@ html.lenis body {
 
 .reviews-marquee-track:hover {
   animation-play-state: paused;
-}
+}
+
+/* Hero Carousel Styles */
+.hero-carousel-container {
+  --peek-px: 0px;
+  --height: 150px;
+}
+
+@media (min-width: 480px) {
+  .hero-carousel-container {
+    --height: 200px;
+  }
+}
+
+@media (min-width: 640px) {
+  .hero-carousel-container {
+    --peek-px: 40px;
+    --height: 420px;
+  }
+}
+
+@media (min-width: 768px) {
+  .hero-carousel-container {
+    --peek-px: 80px;
+    --height: 540px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-carousel-container {
+    --peek-px: 150px;
+    --height: min(700px, 80vh);
+  }
+}
+
+.hero-carousel-slide {
+  width: calc(100vw - var(--peek-px) * 2);
+  flex-shrink: 0;
+}

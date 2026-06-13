@@ -75,40 +75,6 @@ export default function HeroSection({ locationName, locationSlug }: HeroSectionP
 
   return (
     <>
-      <style>{`
-        .hero-carousel-container {
-          --peek-px: 0px;
-          --height: 300px;
-        }
-        @media (min-width: 480px) {
-          .hero-carousel-container {
-            --height: 340px;
-          }
-        }
-        @media (min-width: 640px) {
-          .hero-carousel-container {
-            --peek-px: 40px;
-            --height: 420px;
-          }
-        }
-        @media (min-width: 768px) {
-          .hero-carousel-container {
-            --peek-px: 80px;
-            --height: 540px;
-          }
-        }
-        @media (min-width: 1024px) {
-          .hero-carousel-container {
-            --peek-px: 150px;
-            --height: min(700px, 80vh);
-          }
-        }
-        
-        .hero-carousel-slide {
-          width: calc(100vw - var(--peek-px) * 2);
-          flex-shrink: 0;
-        }
-      `}</style>
 
       <div
         className="hero-carousel-container w-full bg-white select-none"
