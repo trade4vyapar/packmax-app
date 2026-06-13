@@ -45,7 +45,7 @@ export default function EcommerceCategory({ locationSlug, categorySlug }: { loca
   }));
 
   return (
-    <div className="min-h-screen bg-gray-50 pt-20 lg:pt-32 pb-24 font-sans selection:bg-[var(--color-cta)] selection:text-white">
+    <div className="min-h-screen bg-gray-50 pt-6 lg:pt-10 pb-24 font-sans selection:bg-[var(--color-cta)] selection:text-white">
       <div className="max-w-[95rem] mx-auto px-4 sm:px-6 lg:px-10">
 
         {/* Professional Header Section */}

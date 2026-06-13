@@ -163,7 +163,7 @@ export default function ContactClient() {
   };
 
   return (
-    <main className="min-h-screen bg-[var(--color-bg)] pt-20 lg:pt-32 pb-24 font-sans selection:bg-[var(--color-cta)] selection:text-white overflow-x-hidden relative">
+    <main className="min-h-screen bg-[var(--color-bg)] pt-6 lg:pt-10 pb-24 font-sans selection:bg-[var(--color-cta)] selection:text-white overflow-x-hidden relative">
 
       {/* 1. CINEMATIC BACKGROUND BLURS */}
       <div className="absolute top-0 right-10 w-96 h-96 bg-[var(--color-cta)] opacity-5 rounded-full blur-[120px] pointer-events-none" />
