@@ -78,29 +78,29 @@ export default function HeroSection({ locationName, locationSlug }: HeroSectionP
       <style>{`
         .hero-carousel-container {
           --peek-px: 0px;
-          --height: 220px;
+          --height: 300px;
         }
         @media (min-width: 480px) {
           .hero-carousel-container {
-            --height: 250px;
+            --height: 340px;
           }
         }
         @media (min-width: 640px) {
           .hero-carousel-container {
             --peek-px: 40px;
-            --height: 300px;
+            --height: 420px;
           }
         }
         @media (min-width: 768px) {
           .hero-carousel-container {
             --peek-px: 80px;
-            --height: 400px;
+            --height: 540px;
           }
         }
         @media (min-width: 1024px) {
           .hero-carousel-container {
             --peek-px: 150px;
-            --height: min(550px, 65vh);
+            --height: min(700px, 80vh);
           }
         }
         
