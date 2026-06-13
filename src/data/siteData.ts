@@ -13,7 +13,7 @@ export const siteData = {
         adhesive: "Acrylic / Hotmelt",
         thickness: "45-50 Micron"
       },
-      image: "/images/TAPES/AMAZON PRIME TAPE.webp"
+      image: "/images/tapes/amazon-prime-tape.webp"
     },
     {
       id: "amazon-tape",
@@ -28,7 +28,7 @@ export const siteData = {
         adhesive: "Acrylic",
         thickness: "45-50 Micron"
       },
-      image: "/images/TAPES/AMAZON TAPE.webp"
+      image: "/images/tapes/amazon-tape.webp"
     },
     {
       id: "flipkart-tape",
@@ -43,7 +43,7 @@ export const siteData = {
         adhesive: "Acrylic",
         thickness: "45-50 Micron"
       },
-      image: "/images/TAPES/FLIPKART TAPE.webp"
+      image: "/images/tapes/flipkart-tape.webp"
     },
     {
       id: "meesho-tape",
@@ -58,7 +58,7 @@ export const siteData = {
         adhesive: "Acrylic",
         thickness: "45-50 Micron"
       },
-      image: "/images/TAPES/MEESHO TAPE.webp"
+      image: "/images/tapes/meesho-tape.webp"
     },
     {
       id: "bopp-brown-tape-roll",
@@ -75,12 +75,12 @@ export const siteData = {
         width: "48mm / 55mm",
         length: "50m / 65m / Various"
       },
-      image: "/images/bopp_brown_tape/Perfect1.webp",
+      image: "/images/bopp-brown-tape/perfect1.webp",
       images: [
-        "/images/bopp_brown_tape/Perfect1.webp",
-        "/images/bopp_brown_tape/48MM_50M_TS.webp",
-        "/images/bopp_brown_tape/48MM_65M_TS2.webp",
-        "/images/bopp_brown_tape/width 55.webp"
+        "/images/bopp-brown-tape/perfect1.webp",
+        "/images/bopp-brown-tape/48mm-50m-ts.webp",
+        "/images/bopp-brown-tape/48mm-65m-ts2.webp",
+        "/images/bopp-brown-tape/width-55.webp"
       ]
     },
     {
@@ -97,13 +97,13 @@ export const siteData = {
         thickness: "38-50 Micron",
         width: "12mm / 18mm / 24mm / 48mm / 72mm"
       },
-      image: "/images/bopp_transparent/BOOP TRANS TAPE 1.webp",
+      image: "/images/bopp-transparent/boop-trans-tape-1.webp",
       images: [
-        "/images/bopp_transparent/BOOP TRANS TAPE 1.webp",
-        "/images/bopp_transparent/BOOP TRANS TAPE 2.webp",
-        "/images/bopp_transparent/BOOP TRANS TAPE 3.webp",
-        "/images/bopp_transparent/BOOP TRANS TAPE 4.webp",
-        "/images/bopp_transparent/BOOP TRANS TAPE 5.webp"
+        "/images/bopp-transparent/boop-trans-tape-1.webp",
+        "/images/bopp-transparent/boop-trans-tape-2.webp",
+        "/images/bopp-transparent/boop-trans-tape-3.webp",
+        "/images/bopp-transparent/boop-trans-tape-4.webp",
+        "/images/bopp-transparent/boop-trans-tape-5.webp"
       ]
     },
     {
@@ -120,11 +120,11 @@ export const siteData = {
         thickness: "40-50 Micron",
         colors: "Red, Blue, Green, Yellow, Brown, Black, White"
       },
-      image: "/images/bopp_color_tapes/COLOR TAPE 1.webp",
+      image: "/images/bopp-color-tapes/color-tape-1.webp",
       images: [
-        "/images/bopp_color_tapes/COLOR TAPE 1.webp",
-        "/images/bopp_color_tapes/COLOR TAPE 2.webp",
-        "/images/bopp_color_tapes/COLOR TAPE 3.webp"
+        "/images/bopp-color-tapes/color-tape-1.webp",
+        "/images/bopp-color-tapes/color-tape-2.webp",
+        "/images/bopp-color-tapes/color-tape-3.webp"
       ]
     },
     {
@@ -140,8 +140,8 @@ export const siteData = {
         base_colors: "Brown, Transparent, White",
         min_order: "72 Rolls"
       },
-      image: "/images/custom_brand_tape/CUSTOM BRAND 2.webp",
-      images: ["/images/custom_brand_tape/CUSTOM BRAND 2.webp"]
+      image: "/images/custom-brand-tape/custom-brand-2.webp",
+      images: ["/images/custom-brand-tape/custom-brand-2.webp"]
     },
     {
       id: "printed-logo-tape-2",
@@ -156,8 +156,8 @@ export const siteData = {
         base_colors: "Various",
         min_order: "144 Rolls"
       },
-      image: "/images/custom_brand_tape/CUSTOM BRAND TAPE 1.webp",
-      images: ["/images/custom_brand_tape/CUSTOM BRAND TAPE 1.webp"]
+      image: "/images/custom-brand-tape/custom-brand-tape-1.webp",
+      images: ["/images/custom-brand-tape/custom-brand-tape-1.webp"]
     },
     {
       id: "plain-courier-bags",
@@ -172,8 +172,8 @@ export const siteData = {
         thickness: "50-75 Micron",
         closure: "Permanent Self-Adhesive"
       },
-      image: "/images/BAGS_ECOMMERCE/BAGS 2.webp",
-      images: ["/images/BAGS_ECOMMERCE/BAGS 2.webp"]
+      image: "/images/printed_and_plain_bags/bags-2.webp",
+      images: ["/images/printed_and_plain_bags/bags-2.webp"]
     },
     {
       id: "amazon-courier-bags",
@@ -188,8 +188,8 @@ export const siteData = {
         thickness: "50-75 Micron",
         closure: "Permanent Self-Adhesive"
       },
-      image: "/images/BAGS_ECOMMERCE/Courier_bags-removebg-preview.webp",
-      images: ["/images/BAGS_ECOMMERCE/Courier_bags-removebg-preview.webp"]
+      image: "/images/printed_and_plain_bags/courier-bags-removebg-preview.webp",
+      images: ["/images/printed_and_plain_bags/courier-bags-removebg-preview.webp"]
     },
     {
       id: "flipkart-courier-bags",
@@ -204,8 +204,8 @@ export const siteData = {
         thickness: "50-75 Micron",
         closure: "Permanent Self-Adhesive"
       },
-      image: "/images/BAGS_ECOMMERCE/FLIPKART BAG.webp",
-      images: ["/images/BAGS_ECOMMERCE/FLIPKART BAG.webp"]
+      image: "/images/printed_and_plain_bags/flipkart-bag.webp",
+      images: ["/images/printed_and_plain_bags/flipkart-bag.webp"]
     },
     {
       id: "stretch-film-roll",
@@ -221,11 +221,11 @@ export const siteData = {
         width: "100mm / 150mm / 500mm",
         weight: "1.5 kg to 5 kg rolls"
       },
-      image: "/images/STRETCH FLIMROLL/SF 1.webp",
+      image: "/images/stretch-filmroll/sf-1.webp",
       images: [
-        "/images/STRETCH FLIMROLL/SF 1.webp",
-        "/images/STRETCH FLIMROLL/SF 2.webp",
-        "/images/STRETCH FLIMROLL/SF 3.webp"
+        "/images/stretch-filmroll/sf-1.webp",
+        "/images/stretch-filmroll/sf-2.webp",
+        "/images/stretch-filmroll/sf-3.webp"
       ]
     },
     {
@@ -242,9 +242,9 @@ export const siteData = {
         width: "Various (Customizable)",
         form: "Continuous Roll"
       },
-      image: "/images/COGROLL/CORUGGLATED ROLLL.webp",
+      image: "/images/cogroll/corrugated-roll.webp",
       images: [
-        "/images/COGROLL/CORUGGLATED ROLLL.webp"
+        "/images/cogroll/corrugated-roll.webp"
       ]
     },
     {
@@ -261,9 +261,9 @@ export const siteData = {
         width: "1m, 1.5m (Customizable)",
         length: "100m"
       },
-      image: "/images/AIR BUBBLE ROLL MAIN.webp",
+      image: "/images/air-bubble-roll-main.webp",
       images: [
-        "/images/AIR BUBBLE ROLL MAIN.webp"
+        "/images/air-bubble-roll-main.webp"
       ]
     },
     {
@@ -279,8 +279,8 @@ export const siteData = {
         size: "Standard",
         compatibility: "PP & PET Strapping"
       },
-      image: "/images/strapping/STRAPPING CLIP.webp",
-      images: ["/images/strapping/STRAPPING CLIP.webp"]
+      image: "/images/strapping/strapping-clip.webp",
+      images: ["/images/strapping/strapping-clip.webp"]
     },
     {
       id: "box-strapping-roll",
@@ -295,8 +295,8 @@ export const siteData = {
         width: "12mm, 15mm, 19mm",
         thickness: "0.5mm - 1.0mm"
       },
-      image: "/images/strapping/STRAPPING ROLLL.webp",
-      images: ["/images/strapping/STRAPPING ROLLL.webp"]
+      image: "/images/strapping/strapping-roll.webp",
+      images: ["/images/strapping/strapping-roll.webp"]
     }
   ],
   locations: [

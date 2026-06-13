@@ -111,22 +111,22 @@ const reviews = [
     name: "Rajesh Gupta",
     location: "Surat, Gujarat",
     date: "10-March-26",
-    product: "Corrugated Box",
+    product: "Printed & plain Ecommerce Polybags",
     industry: "FMCG Manufacturer",
     rating: 5,
     comment:
-      "Packmax's corrugated boxes are perfect for our FMCG packaging line. Plain & printed options give us flexibility. Strong crush resistance, fast dispatch, and competitive bulk pricing. Best corrugated box supplier we've worked with.",
+      "Packmax's printed & plain ecommerce polybags are perfect for our shipping line. Waterproof & tear-resistant options give us flexibility. Strong adhesive strip, fast dispatch, and competitive bulk pricing. Best polybag supplier we've worked with.",
   },
   // Pharma & Healthcare
   {
     name: "Dr. Neha Kulkarni",
     location: "Nagpur, Maharashtra",
     date: "15-February-26",
-    product: "Corrugated Box & Stretch Film",
+    product: "Printed & plain Ecommerce Polybags & Stretch Film",
     industry: "Pharma Company",
     rating: 5,
     comment:
-      "Pharma packaging demands precision and tamper-proof sealing. Packmax's corrugated boxes and stretch film meet our standards. UDYAM-registered, GST-compliant, and ISO-quality materials give us confidence for pharma packaging requirements. Fast dispatch across India is a major plus.",
+      "Pharma packaging demands precision and tamper-proof sealing. Packmax's ecommerce polybags and stretch film meet our standards. UDYAM-registered, GST-compliant, and ISO-quality materials give us confidence for pharma packaging requirements. Fast dispatch across India is a major plus.",
   },
   {
     name: "Abhishek Patel",
@@ -235,11 +235,11 @@ const reviews = [
     name: "Nilesh Bhave",
     location: "Nagpur, Maharashtra",
     date: "10-April-26",
-    product: "Corrugated Box",
+    product: "Printed & plain Ecommerce Polybags",
     industry: "Electronics Retailer",
     rating: 5,
     comment:
-      "We package consumer electronics and need strong corrugated boxes. Packmax delivers exactly that — high crush resistance, custom sizes available, and fast dispatch. Their corrugated box & printed packaging is ideal for electronics retail packaging. Reliable supplier.",
+      "We package consumer products and need strong ecommerce polybags. Packmax delivers exactly that — high tear resistance, custom sizes available, and fast dispatch. Their printed & plain packaging is ideal for retail packaging. Reliable supplier.",
   },
   {
     name: "Sheela Nambiar",

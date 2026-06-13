@@ -9,15 +9,13 @@ export const CATEGORIES = [
   "BOPP Transparent Tape",
   "BOPP Color Tape",
   "Stretch filmroll",
-  "Corrugated Box Plain Printed",
+  "Printed & plain Ecommerce Polybags",
   "Corrugated Roll",
   "Air bubble roll",
   "Box Strapping roll & clip",
 ];
 
-const CATEGORY_SLUG_OVERRIDES: Record<string, string> = {
-  "Corrugated Box Plain Printed": "corrugated-box-plain-printed",
-};
+const CATEGORY_SLUG_OVERRIDES: Record<string, string> = {};
 
 
 function generateSlug(name: string) {

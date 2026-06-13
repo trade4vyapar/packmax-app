@@ -23,9 +23,7 @@ function generateSlug(name: string) {
   return name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
 }
 
-const CATEGORY_SLUG_OVERRIDES: Record<string, string> = {
-  "Corrugated Box Plain Printed": "corrugated-box-plain-printed",
-};
+const CATEGORY_SLUG_OVERRIDES: Record<string, string> = {};
 
 function categoryToSlug(name: string) {
   return CATEGORY_SLUG_OVERRIDES[name] || generateSlug(name);

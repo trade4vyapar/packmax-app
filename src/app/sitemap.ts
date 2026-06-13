@@ -72,7 +72,7 @@ function buildLocationProducts(): MetadataRoute.Sitemap {
         lastModified: NOW,
         changeFrequency: "weekly",
         priority: isMarketplace ? 0.95 : 0.85,
-        images: [product.image],
+        images: [encodeURI(product.image)],
       });
     });
   });

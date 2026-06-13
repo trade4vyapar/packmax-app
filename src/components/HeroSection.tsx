@@ -13,7 +13,7 @@ const BASE_SLIDES = [
   { src: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/HOME%20PAGE%20COURSEL%20IMAGES/2.webp", label: "BOPP Transparent Tape", category: "bopp-transparent-tape" },
   { src: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/HOME%20PAGE%20COURSEL%20IMAGES/4.webp", label: "BOPP Colour Tape", category: "bopp-color-tape" },
   { src: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/HOME%20PAGE%20COURSEL%20IMAGES/7.webp", label: "Stretch Film Roll", category: "stretch-filmroll" },
-  { src: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/HOME%20PAGE%20COURSEL%20IMAGES/6.webp", label: "Corrugated Box", category: "corrugated-box-plain-printed" },
+  { src: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/HOME%20PAGE%20COURSEL%20IMAGES/6.webp", label: "Printed & plain Ecommerce Polybags", category: "printed-plain-ecommerce-polybags" },
   { src: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/HOME%20PAGE%20COURSEL%20IMAGES/9.webp", label: "Corrugated Roll", category: "corrugated-roll" },
   { src: "https://oqwg1j9jjcgxcmdg.public.blob.vercel-storage.com/HOME%20PAGE%20COURSEL%20IMAGES/1.webp", label: "Air Bubble Roll", category: "air-bubble-roll" },
 ];
