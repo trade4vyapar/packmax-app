@@ -19,6 +19,7 @@ import Preloader from "@/components/Preloader";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FloatingChat from "@/components/FloatingChat";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export default function RootLayout({
   children,
@@ -40,6 +41,7 @@ export default function RootLayout({
           <FloatingChat />
           <Footer />
         </SmoothScrollProvider>
+        <SpeedInsights />
       </body>
     </html>
   );
