@@ -4,21 +4,16 @@ import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, ArrowRight } from "lucide-react";
 import { FaInstagram, FaFacebookF } from "react-icons/fa6";
 import Link from "next/link";
-import { siteData } from "@/data/siteData";
+import { siteData, COMPANY_ADDRESS } from "@/data/siteData";
 import { CATEGORIES } from "@/components/EcommerceCategory";
-import { usePathname } from "next/navigation";
 
 function generateSlug(name: string) {
   return name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
 }
 
 export default function Footer() {
-  const pathname = usePathname() || "";
-  const currentSlug = pathname.split('/')[1] || '';
-  const location = siteData.locations.find(l => l.slug === currentSlug);
-
-  const officeTitle = location ? `${location.name} Office` : "Corporate Office";
-  const officeAddress = location ? location.address : "Survey no. 126/2/4, S. R. Compound, AB Road, Indore, Madhya Pradesh, 452010";
+  const officeTitle = "Corporate Office";
+  const officeAddress = COMPANY_ADDRESS.full;
 
   return (
     <footer

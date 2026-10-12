@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { COMPANY_ADDRESS } from "@/data/siteData";
 
 export const SITE_URL = "https://packmaxindia.in";
 export const BRAND = "Packmax India";
@@ -394,8 +395,6 @@ export interface LocalBusinessInput {
   image?: string;
   city: string;
   state: string;
-  streetAddress?: string;
-  postalCode?: string;
   description?: string;
 }
 
@@ -410,12 +409,13 @@ export function localBusinessSchema(b: LocalBusinessInput) {
     image: b.image || `${SITE_URL}/amazon-prime-tape.png`,
     description: b.description,
     priceRange: "₹₹",
+    // Single physical office in Indore — the city page's city is only the area served.
     address: {
       "@type": "PostalAddress",
-      streetAddress: b.streetAddress,
-      addressLocality: b.city,
-      addressRegion: b.state,
-      postalCode: b.postalCode,
+      streetAddress: COMPANY_ADDRESS.street,
+      addressLocality: COMPANY_ADDRESS.city,
+      addressRegion: COMPANY_ADDRESS.state,
+      postalCode: COMPANY_ADDRESS.postalCode,
       addressCountry: "IN",
     },
     areaServed: {

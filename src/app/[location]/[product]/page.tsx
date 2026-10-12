@@ -139,7 +139,6 @@ export default async function LocationProductOrCategoryPage({ params }: Props) {
         url: `/${location.slug}/${prodSlug}`,
         city: location.name,
         state: location.state,
-        streetAddress: location.address,
         description: `${category} manufacturer and wholesale supplier serving ${location.name}, ${location.state}.`,
       });
       const catFaq = faqSchema([
@@ -190,7 +189,6 @@ export default async function LocationProductOrCategoryPage({ params }: Props) {
     image: product.image,
     city: location.name,
     state: location.state,
-    streetAddress: location.address,
     description: `${product.name} manufacturer and wholesale supplier serving ${location.name}, ${location.state}.`,
   });
 

@@ -8,35 +8,7 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import ProductGallery from "@/components/ProductGallery";
 import InquiryButton from "@/components/InquiryButton";
-
-// WhatsApp number (with country code, no + sign)
-const WA_NUMBER = "919893115645";
-
-// Pre-filled WhatsApp messages per product slug
-const WA_MESSAGES: Record<string, string> = {
-  "custom-brand-printed-tape": "Hi Packmax! I'm interested in Custom Printed Tape (Brand/Logo/Name Printing) and would like to know more details, pricing, and minimum order quantity.",
-  "multi-color-printed-tape": "Hi Packmax! I'm interested in Custom Printed Tape (Brand/Logo/Name Printing) and would like to know more details, pricing, and minimum order quantity.",
-  "branded-kraft-white-tape": "Hi Packmax! I'm interested in Custom Printed Tape (Brand/Logo/Name Printing) and would like to know more details, pricing, and minimum order quantity.",
-  "amazon-prime-tape": "Hi Packmax! I'm interested in Ecommerce Tapes and would like to know more details, pricing, and minimum order quantity.",
-  "amazon-tape": "Hi Packmax! I'm interested in Ecommerce Tapes and would like to know more details, pricing, and minimum order quantity.",
-  "flipkart-tape": "Hi Packmax! I'm interested in Ecommerce Tapes and would like to know more details, pricing, and minimum order quantity.",
-  "meesho-tape": "Hi Packmax! I'm interested in Ecommerce Tapes and would like to know more details, pricing, and minimum order quantity.",
-  "bopp-brown-tape-roll": "Hi Packmax! I'm interested in BOPP Brown Tape and would like to know more details, pricing, and minimum order quantity.",
-  "bopp-transparent-tape-roll": "Hi Packmax! I'm interested in BOPP Transparent Tape and would like to know more details, pricing, and minimum order quantity.",
-  "bopp-color-tape-roll": "Hi Packmax! I'm interested in BOPP Color Tape and would like to know more details, pricing, and minimum order quantity.",
-  "stretch-film-roll": "Hi Packmax! I'm interested in Stretch Film and would like to know more details, pricing, and minimum order quantity.",
-  "corrugated-paper-roll": "Hi Packmax! I'm interested in Corrugated Roll and would like to know more details, pricing, and minimum order quantity.",
-  "air-bubble-wrap": "Hi Packmax! I'm interested in Air Bubble Roll and would like to know more details, pricing, and minimum order quantity.",
-  "box-strapping-roll": "Hi Packmax! I'm interested in Box Strapping Roll & Clip and would like to know more details, pricing, and minimum order quantity.",
-  "box-strapping-clip": "Hi Packmax! I'm interested in Box Strapping Roll & Clip and would like to know more details, pricing, and minimum order quantity.",
-  "plain-courier-bags": "Hi Packmax! I'm interested in Ecommerce Tapes and would like to know more details, pricing, and minimum order quantity.",
-  "amazon-courier-bags": "Hi Packmax! I'm interested in Ecommerce Tapes and would like to know more details, pricing, and minimum order quantity.",
-  "flipkart-courier-bags": "Hi Packmax! I'm interested in Ecommerce Tapes and would like to know more details, pricing, and minimum order quantity.",
-};
-
-function getWaMessage(slug: string, productName: string) {
-  return WA_MESSAGES[slug] || `Hi Packmax! I'm interested in ${productName} and would like to know more details, pricing, and minimum order quantity.`;
-}
+import { getWaLink } from "@/utils/whatsapp";
 
 // Display-only size specifications per product (keyed by slug). These are for
 // show — not selectable and not submitted with any inquiry.
@@ -211,7 +183,7 @@ export default function ProductClientPage({ slug, locationSlug, locationName }: 
               <div className="flex flex-col sm:flex-row gap-4 mb-5">
                 {/* WhatsApp Button */}
                 <a
-                  href={`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(getWaMessage(product.slug, product.name))}`}
+                  href={getWaLink(product.slug, product.name)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex-1 block"
