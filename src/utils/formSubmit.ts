@@ -1,11 +1,15 @@
 // Centralised FormSubmit (https://formsubmit.co) integration.
 //
-// Swap INQUIRY_EMAIL to the production address (info@packmaxindia.in) when ready.
-// FormSubmit requires the destination email to be activated once: the very first
+// Every inquiry (product bulk inquiry + contact page) is delivered to
+// INQUIRY_EMAIL and CC'd to INQUIRY_CC_EMAILS — all recipients get the full
+// email with every field (and the logo attachment, if any).
+//
+// FormSubmit requires the primary email to be activated once: the very first
 // POST will trigger a confirmation email at INQUIRY_EMAIL — click the link inside
 // it, after that all subsequent submissions are delivered silently.
 
-export const INQUIRY_EMAIL = "naniatworkmail@gmail.com";
+export const INQUIRY_EMAIL = "info.packmaxindia@gmail.com";
+export const INQUIRY_CC_EMAILS = ["marketingpackmaxindia@gmail.com"];
 
 const ENDPOINT = `https://formsubmit.co/ajax/${INQUIRY_EMAIL}`;
 
@@ -16,6 +20,7 @@ export interface FormSubmitPayload {
   _template?: "table" | "box";
   _captcha?: "true" | "false";
   _replyto?: string;
+  _cc?: string;
   _honey?: string;
 }
 
@@ -31,6 +36,7 @@ export async function sendInquiry(
   const fields: Record<string, string> = {
     _template: "table",
     _captcha: "false",
+    _cc: INQUIRY_CC_EMAILS.join(","),
     ...Object.fromEntries(
       Object.entries(payload).filter(([, v]) => v !== undefined) as [string, string][]
     ),
